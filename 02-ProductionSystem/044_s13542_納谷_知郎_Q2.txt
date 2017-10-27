@@ -1,0 +1,54 @@
+#include<stdio.h>
+
+main(){
+	char   wm[11] = "a*b-cd/e+fg"  //ワーキングメモリ
+		,goal[11] = "gfedcba+-*/"  //ゴール
+		,r1[26] = "abcdefghijklmnopqrstuvwxyz"  //ルール1
+		,save;  //値を一時的に格納する
+
+	int   count = 0
+		,finish = 0
+		,a = 1; //while文の条件
+
+	do{
+		for(int i = 0; i<11; i++){
+			//ワーキングメモリから文字を検出する
+			for(int j = 0; j<26; j++){
+				if(wm[i]==r1[j]&&i>0){
+					//文字を検出したら左隣が記号かどうか調べる
+					for(int k = 0; k<26; k++){
+						if(wm[i-1]==r1[k]){
+							//左隣が文字ならばカウント＋1
+							count++;
+							}
+						}
+					if(count==0){
+						//カウントされなかった時(左隣が記号の時)交換する
+						save = wm[i-1];
+						wm[i-1] = wm[i];
+						wm[i] = save;
+						printf("交換したため文字列を表示\n");
+						for(int l = 0; l<11; l++){
+							//交換後の文字列の表示
+							printf("%c",wm[l]);
+							}
+						} else if(count>0){
+							printf("交換はありませんでした\n");
+							}
+						printf("\n");
+						getchar(); //一つずつ表示
+					}
+				count = 0;
+				}
+			}
+		for(int g = 0; g<11; g++){ //終了判定
+			if(wm[g]==goal[g]){
+				finish++;
+				}
+			}
+		if(finish==11){
+			a = 0;
+			}
+		finish = 0;
+		} while(a==1);
+	}
