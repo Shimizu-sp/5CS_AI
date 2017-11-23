@@ -1,12 +1,12 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <string.h>
 
 int production_mem(int x, int y);
 
-char str_start[11] = { "a*b-cd/e+fg" };
+char str_start[11] = { "/*g-dc+bfea" };
 int strcode = 0;
 
-char working_mem[2][11];//ƒ[ƒLƒ“ƒOƒƒ‚ƒŠ
+char working_mem[2][11];//ãƒ¯ãƒ¼ã‚­ãƒ³ã‚°ãƒ¡ãƒ¢ãƒª
 
 int printmemory(char str[2][11]);
 
@@ -17,11 +17,11 @@ int symboliter = 0;
 
 int main(){
 	int i = 0, alphabet = 0, symbol = 0;
-	//ƒCƒ“ƒ^[ƒvƒŠƒ^
-	//„˜_ƒƒ‚ƒŠ
+	//ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ—ãƒªã‚¿
+	//æ¨è«–ãƒ¡ãƒ¢ãƒª
 	while (str_start[i] != '\0'){
 		strcode = (int)str_start[i];
-		//ƒvƒƒ_ƒNƒVƒ‡ƒ“ƒƒ‚ƒŠ
+		//ãƒ—ãƒ­ãƒ€ã‚¯ã‚·ãƒ§ãƒ³ãƒ¡ãƒ¢ãƒª
 		if (strcode > 50){
 			working_mem[0][alphabet] = str_start[i];
 			alphabet++;
@@ -38,10 +38,10 @@ int main(){
 	irekae(working_mem);
 
 }
-//ƒ[ƒLƒ“ƒOƒƒ‚ƒŠ‚Ì’†g‚ğ•\¦‚·‚éŠÖ”
+//ãƒ¯ãƒ¼ã‚­ãƒ³ã‚°ãƒ¡ãƒ¢ãƒªã®ä¸­èº«ã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°
 int printmemory(char str[][11]){
 	int i = 0;
-	printf("”z—ñ‚Ì’†g[");
+	printf("é…åˆ—ã®ä¸­èº«[");
 	while (str[0][i] != '\0'){
 		printf("%c ", str[0][i]);
 		i++;
@@ -57,7 +57,7 @@ int printmemory(char str[][11]){
 	getchar();
 }
 
-//“ü‚ê‘Ö‚¦‚ğ‚·‚éŠÖ”
+//å…¥ã‚Œæ›¿ãˆã‚’ã™ã‚‹é–¢æ•°
 int irekae(char x[][11]){
 	int i = 0;
 	int j, num;
@@ -85,7 +85,7 @@ int irekae(char x[][11]){
 	else if(iter==1){
 		while (x[iter][i] != '\0'){
 			for (j = num - 1; j > i; j--){
-				//ƒvƒƒ_ƒNƒVƒ‡ƒ“ƒƒ‚ƒŠ
+				//ãƒ—ãƒ­ãƒ€ã‚¯ã‚·ãƒ§ãƒ³ãƒ¡ãƒ¢ãƒª
 				if ((int)x[iter][j - 1] > (int)x[iter][j]){
 					temp = x[iter][j];
 					x[iter][j] = x[iter][j - 1];
@@ -104,7 +104,7 @@ int irekae(char x[][11]){
 			i++;
 
 		}
-		
+
 
 	}
 

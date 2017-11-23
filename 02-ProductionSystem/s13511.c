@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<ctype.h>
 
 int prodaction_R1();
@@ -6,7 +6,7 @@ int prodaction_R2();
 int prodaction_R3();
 int prodaction_R4();
 
-char string[] = { 'a', '*', 'b', '-', 'c', 'd', '/', 'e', '+', 'f', 'g', '0' };
+char string[] = { 'a', '+', 'f',  'c', 'd', '/', 'b', '-','e',  'g','*', '0' };
 
 int i, j=0;
 int ireko;
@@ -16,34 +16,34 @@ int ascii_r = 0;
 
 //========================================================================
 
-main(){
-	printf("R1“K—p\n");
+int main(){
+	printf("R1é©ç”¨\n");
 		prodaction_R1();
-	printf("R2“K—p\n");
+	printf("R2é©ç”¨\n");
 		prodaction_R2();
-	printf("R3“K—p\n");
+	printf("R3é©ç”¨\n");
 		prodaction_R3();
-	printf("R4“K—p\n");
+	printf("R4é©ç”¨\n");
 		prodaction_R4();
 }
 
-prodaction_R1(){
+int prodaction_R1(){
 
 	int flug_R1;
 
-	do{ //R1F•¶š‚ª‰E‚É‚ ‚é@È@‹L†‚ª¶‚É‚ ‚é@¨@•¶š‚ğ¶‚ÉˆÚ“®‚·‚é
+	do{ //R1ï¼šæ–‡å­—ãŒå³ã«ã‚ã‚‹ã€€âˆ§ã€€è¨˜å·ãŒå·¦ã«ã‚ã‚‹ã€€â†’ã€€æ–‡å­—ã‚’å·¦ã«ç§»å‹•ã™ã‚‹
 
-		flug_R1 = 0; //ƒtƒ‰ƒO‰Šú‰»
+		flug_R1 = 0; //ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
 
 		for (i = 0; i < 12; i++){
 
-			if (ispunct(string[i]) && isalpha(string[i + 1])){ //ispunct‚Í‹L†Cisalpha‚ÍƒAƒ‹ƒtƒ@ƒxƒbƒg‚Å‚ ‚é‚©”»’è‚·‚éŠÖ”
+			if (ispunct(string[i]) && isalpha(string[i + 1])){ //ispunctã¯è¨˜å·ï¼Œisalphaã¯ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã§ã‚ã‚‹ã‹åˆ¤å®šã™ã‚‹é–¢æ•°
 
 				ireko = string[i];
-				string[i] = string[i + 1]; //R1“K—p@
+				string[i] = string[i + 1]; //R1é©ç”¨ã€€
 				string[i + 1] = ireko;
 
-				flug_R1 = flug_R1 + 1; //ƒtƒ‰ƒO‚É‰ÁZ‚·‚é
+				flug_R1 = flug_R1 + 1; //ãƒ•ãƒ©ã‚°ã«åŠ ç®—ã™ã‚‹
 			}
 
 			for (j = 0; j < 11; j++){
@@ -52,31 +52,31 @@ prodaction_R1(){
 			printf("\n");
 		}
 
-	} while (flug_R1 != 0); //ŒğŠ·‚ª‚È‚©‚Á‚½‚Æ‚«I—¹
+	} while (flug_R1 != 0); //äº¤æ›ãŒãªã‹ã£ãŸã¨ãçµ‚äº†
 
 	return 0;
 }
 
-prodaction_R2(){
+int prodaction_R2(){
 
 	int flug_R2;
 
-	do{ //R2F•¶š‡˜‰º‚ª‰E‚É‚ ‚é@È@•¶š‡˜ã‚ª¶‚É‚ ‚é@¨@•¶š‡˜‰º‚ğ¶‚ÉˆÚ“®‚·‚é
+	do{ //R2ï¼šæ–‡å­—é †åºä¸‹ãŒå³ã«ã‚ã‚‹ã€€âˆ§ã€€æ–‡å­—é †åºä¸ŠãŒå·¦ã«ã‚ã‚‹ã€€â†’ã€€æ–‡å­—é †åºä¸‹ã‚’å·¦ã«ç§»å‹•ã™ã‚‹
 
-		flug_R2 = 0; //ƒtƒ‰ƒO‰Šú‰»
+		flug_R2 = 0; //ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
 
 		for (i = 0; i < 12; i++){
 
 			if (isalpha(string[i]) && isalpha(string[i+1])){
 				ascii_l = string[i];
 				ascii_r = string[i+1];
-			if (ascii_l < ascii_r){ //ƒAƒXƒL[ƒR[ƒh‡‚Å”»’è
+			if (ascii_l < ascii_r){ //ã‚¢ã‚¹ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰é †ã§åˆ¤å®š
 
 				ireko = string[i];
-				string[i] = string[i + 1]; //R1“K—p@
+				string[i] = string[i + 1]; //R1é©ç”¨ã€€
 				string[i + 1] = ireko;
 
-				flug_R2 = flug_R2 + 1; //ƒtƒ‰ƒO‚É‰ÁZ‚·‚é
+				flug_R2 = flug_R2 + 1; //ãƒ•ãƒ©ã‚°ã«åŠ ç®—ã™ã‚‹
 			}}
 
 			for (j = 0; j < 11; j++){
@@ -85,31 +85,31 @@ prodaction_R2(){
 			printf("\n");
 
 		}
-	} while (flug_R2 != 0); //ŒğŠ·‚ª‚È‚©‚Á‚½‚Æ‚«I—¹
+	} while (flug_R2 != 0); //äº¤æ›ãŒãªã‹ã£ãŸã¨ãçµ‚äº†
 
 	return 0;
 }
 
-prodaction_R3(){
+int prodaction_R3(){
 
 	int flug_R3;
 
-	do{ //R3F‹L†‡˜ã‚ª‰E‚É‚ ‚é@È@‹L†‡˜‰º‚ª¶‚É‚ ‚é@¨@‹L†‡˜ã‚ğ¶‚ÉˆÚ“®‚·‚é
+	do{ //R3ï¼šè¨˜å·é †åºä¸ŠãŒå³ã«ã‚ã‚‹ã€€âˆ§ã€€è¨˜å·é †åºä¸‹ãŒå·¦ã«ã‚ã‚‹ã€€â†’ã€€è¨˜å·é †åºä¸Šã‚’å·¦ã«ç§»å‹•ã™ã‚‹
 
-		flug_R3 = 0; //ƒtƒ‰ƒO‰Šú‰»
+		flug_R3 = 0; //ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
 
 		for (i = 0; i < 12; i++){
 
-			if (ispunct(string[i]) && ispunct(string[i + 1])){ //ispunct‚Í‹L†‚Å‚ ‚é‚©”»’è‚·‚éŠÖ”
+			if (ispunct(string[i]) && ispunct(string[i + 1])){ //ispunctã¯è¨˜å·ã§ã‚ã‚‹ã‹åˆ¤å®šã™ã‚‹é–¢æ•°
 				ascii_l = string[i];
 				ascii_r = string[i + 1];
-			if (ascii_l > ascii_r){ //ƒAƒXƒL[ƒR[ƒh‡‚Å”»’è
+			if (ascii_l > ascii_r){ //ã‚¢ã‚¹ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰é †ã§åˆ¤å®š
 
 				ireko = string[i];
-				string[i] = string[i + 1]; //R1“K—p@
+				string[i] = string[i + 1]; //R1é©ç”¨ã€€
 				string[i + 1] = ireko;
 
-				flug_R3 = flug_R3 + 1; //ƒtƒ‰ƒO‚É‰ÁZ‚·‚é
+				flug_R3 = flug_R3 + 1; //ãƒ•ãƒ©ã‚°ã«åŠ ç®—ã™ã‚‹
 			}}
 
 			for (j = 0; j < 11; j++){
@@ -118,35 +118,35 @@ prodaction_R3(){
 			    printf("\n");
 			}
 
-	} while (flug_R3 != 0); //ŒğŠ·‚ª‚È‚©‚Á‚½‚Æ‚«I—¹
+	} while (flug_R3 != 0); //äº¤æ›ãŒãªã‹ã£ãŸã¨ãçµ‚äº†
 
 	return 0;
 }
 
-prodaction_R4(){
+int prodaction_R4(){
 
 	int flug_R4;
 
-	do{ //R4Fu*v‚ªu/v‚Ì¶ˆÈŠO‚É‚ ‚é@È@u/v‚ªu*v‚Ì‰EˆÈŠO‚É‚ ‚é@¨@u*v‚ğ‰E‚ÉˆÚ“®‚·‚é
+	do{ //R4ï¼šã€Œ*ã€ãŒã€Œ/ã€ã®å·¦ä»¥å¤–ã«ã‚ã‚‹ã€€âˆ§ã€€ã€Œ/ã€ãŒã€Œ*ã€ã®å³ä»¥å¤–ã«ã‚ã‚‹ã€€â†’ã€€ã€Œ*ã€ã‚’å³ã«ç§»å‹•ã™ã‚‹
 
-		flug_R4 = 0; //ƒtƒ‰ƒO‰Šú‰»
+		flug_R4 = 0; //ãƒ•ãƒ©ã‚°åˆæœŸåŒ–
 
 		for (i = 0; i < 12; i++){
 
 			if (string[i] == '*' && string[i+1] != '/'){
 				ireko = string[i+1];
-				string[i+1] = string[i]; //R1“K—p@
+				string[i+1] = string[i]; //R1é©ç”¨ã€€
 				string[i] = ireko;
 
-				flug_R4 = flug_R4 + 1; //ƒtƒ‰ƒO‚É‰ÁZ‚·‚é
+				flug_R4 = flug_R4 + 1; //ãƒ•ãƒ©ã‚°ã«åŠ ç®—ã™ã‚‹
 			}}
 
 			for (j = 0; j < 11; j++){
 				printf("%c ", string[j]);
 			}
 			printf("\n");
-		
-	}while (flug_R4 != 0); //ŒğŠ·‚ª‚È‚©‚Á‚½‚Æ‚«I—¹
+
+	}while (flug_R4 != 0); //äº¤æ›ãŒãªã‹ã£ãŸã¨ãçµ‚äº†
 
 	return 0;
 }

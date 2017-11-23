@@ -1,4 +1,4 @@
-#include <vector>
+ï»¿#include <vector>
 #include <algorithm>
 #include <iostream>
 #include <set>
@@ -11,7 +11,7 @@ using namespace std;
 vector<char> str_sym = { '+', '-', '*', '/' };
 
 int Check(vector<char> input){
-	//‚Ì‚¤‚İ‚»‚«‚ñ‚É‚­
+	//ã®ã†ã¿ããã‚“ã«ã
 	return input[0] > input[1] &&
 		input[1] > input[2] &&
 		input[2] > input[3] &&
@@ -25,7 +25,7 @@ int Check(vector<char> input){
 }
 
 int SymChk(vector<char> input){
-	//‚±‚Â‚¸‚¢‚«‚ñ‚É‚­
+	//ã“ã¤ãšã„ãã‚“ã«ã
 	return input[0] == str_sym[0] &&
 		input[1] == str_sym[1] &&
 		input[2] == str_sym[2] &&
@@ -39,7 +39,7 @@ int main(){
 
 	int i = 0;
 
-	//ƒAƒ‹ƒtƒ@ƒxƒbƒg‚Ìˆ—E‹L†Šu—£
+	//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã®å‡¦ç†ãƒ»è¨˜å·éš”é›¢
 
 	while (!Check(question))
 	{
@@ -58,10 +58,10 @@ int main(){
 
 		//reverse(question.begin(), question.end());
 
-	//‹L†•”
+	//è¨˜å·éƒ¨
 
 	vector<char> symbol;
-	//assign‚Å‹L†•”‚Ì‚İƒRƒs[B––”ö‚ª•Ï‚È‚±‚Æ‚É‚È‚Á‚½‚Ì‚Å‚»‚±‚Í•ÊŒÂ‚Ë‚¶‚İ
+	//assignã§è¨˜å·éƒ¨ã®ã¿ã‚³ãƒ”ãƒ¼ã€‚æœ«å°¾ãŒå¤‰ãªã“ã¨ã«ãªã£ãŸã®ã§ãã“ã¯åˆ¥å€‹ã­ã˜è¾¼ã¿
 	symbol.assign(&question[sym], &question[renge]);
 	symbol.push_back(question[renge]);
 
@@ -71,7 +71,7 @@ int main(){
 	while (!SymChk(symbol)){
 		for (i = 0; i < 4; i++)
 		{
-			if (symbol[i] == '+'){//+•”‚ğ0‚É‚Ë‚¶‚Ş
+			if (symbol[i] == '+'){//+éƒ¨ã‚’0ã«ã­ã˜è¾¼ã‚€
 				temp = i;
 				while (temp != 0){
 					swap(symbol[temp], symbol[temp - 1]);
@@ -82,7 +82,7 @@ int main(){
 					cout << endl;
 				}
 			}
-			if (symbol[i] == '-'){//-•”‚ğ1‚É‚Ë‚¶‚Ş
+			if (symbol[i] == '-'){//-éƒ¨ã‚’1ã«ã­ã˜è¾¼ã‚€
 				temp = i;
 				while (temp != 1){
 					if (temp < 1)
@@ -97,7 +97,7 @@ int main(){
 					cout << endl;
 				}
 			}
-			if (symbol[i] == '*'){//*•”‚ğ2‚É‚Ë‚¶‚Ş
+			if (symbol[i] == '*'){//*éƒ¨ã‚’2ã«ã­ã˜è¾¼ã‚€
 				temp = i;
 				while (temp != 2){
 					if (temp < 2)
@@ -111,7 +111,7 @@ int main(){
 					cout << endl;
 				}
 			}
-			if (symbol[i] == '/'){//[/]•”‚ğ3‚É‚Ë‚¶‚Ş
+			if (symbol[i] == '/'){//[/]éƒ¨ã‚’3ã«ã­ã˜è¾¼ã‚€
 				temp = i;
 				while (temp != 3){
 					if (temp < 3){
@@ -130,18 +130,18 @@ int main(){
 			}
 		}
 	}
-	//ÅIŒ‹‰Ê‚Ìo—Í€”õ
+	//æœ€çµ‚çµæœã®å‡ºåŠ›æº–å‚™
 	vector<char> answer;
 	//symbol.assign(&question[sym], &question[renge]);
 
-	//ƒAƒ‹ƒtƒ@ƒxƒbƒg‚ğƒAƒTƒCƒ“+––”ö‚É‹L†•”‚ğ‘}“ü
+	//ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã‚’ã‚¢ã‚µã‚¤ãƒ³+æœ«å°¾ã«è¨˜å·éƒ¨ã‚’æŒ¿å…¥
 	answer.assign(&question[0], &question[7]);
 	for (i = 0; i < 4; i++)
 	{
 		answer.push_back(symbol[i]);
 
 	}
-	//ÅIŒ‹‰Êo—Í
+	//æœ€çµ‚çµæœå‡ºåŠ›
 	for (auto x : answer) {
 		cout << x << ",";
 	}

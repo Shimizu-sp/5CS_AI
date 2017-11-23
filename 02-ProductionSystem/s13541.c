@@ -1,9 +1,9 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
-char defalut[11] = { 'a', '*', 'b', '-', 'c', 'd', '/', 'e', '+', 'f', 'g' }; //‰Šúó‘Ô
-char end[11] = { 'g', 'f', 'e', 'd', 'c', 'b', 'a', '+', '-', '*', '/' };//I—¹ğŒ
+char defalut[11] = { 'a', '*', 'b', '-', 'c', 'd', '/', 'e', '+', 'f', 'g' }; //åˆæœŸçŠ¶æ…‹
+char end[11] = { 'g', 'f', 'e', 'd', 'c', 'b', 'a', '+', '-', '*', '/' };//çµ‚äº†æ¡ä»¶
 
 int hantei();
 int r1();
@@ -19,10 +19,10 @@ int main(){
 
 	int i, count = 0;
 	
-	printf("‰Šúó‘Ô\n"); //‰Šúó‘Ô
+	printf("åˆæœŸçŠ¶æ…‹\n"); //åˆæœŸçŠ¶æ…‹
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //‰Šúó‘Ô
+		printf("%c", defalut[i]); //åˆæœŸçŠ¶æ…‹
 	}
 	r1();
 	r2();
@@ -34,13 +34,13 @@ int main(){
 	r8();
 
 	printf("\n\n");
-	printf("\nÅIó‘Ô\n");
+	printf("\næœ€çµ‚çŠ¶æ…‹\n");
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //Œ‹‰Ê
+		printf("%c", defalut[i]); //çµæœ
 	}
 	count = hantei();
-	printf("\nÅIó‘Ô‚Æˆê’v‚µ‚½”:%d\n", count);
+	printf("\næœ€çµ‚çŠ¶æ…‹ã¨ä¸€è‡´ã—ãŸæ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -49,7 +49,7 @@ int r1(){
 	int i, count = 0;
 	char s;
 	s = defalut[10];
-	for (i = 0; i < 11; i++){	//g‚ğæ“ª‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//gã‚’å…ˆé ­ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 10){
 			break;
 		}
@@ -60,10 +60,10 @@ int r1(){
 	printf("\n");
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR1: g‚Í”z—ñ‚Ì1”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR1: gã¯é…åˆ—ã®1ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -73,7 +73,7 @@ int r2(){
 	char s;
 
 	s = defalut[10];
-	for (i = 0; i < 11; i++){	//f‚ğ2”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//fã‚’2ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 9){
 			break;
 		}
@@ -83,10 +83,10 @@ int r2(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR2: f‚Í”z—ñ‚Ì2”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR2: fã¯é…åˆ—ã®2ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -95,7 +95,7 @@ int r3(){
 	int i, count = 0;
 	char s;
 	s = defalut[9];
-	for (i = 0; i < 11; i++){	//e‚ğ3”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//eã‚’3ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 8){
 			break;
 		}
@@ -105,10 +105,10 @@ int r3(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR3: e‚Í”z—ñ‚Ì3”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR3: eã¯é…åˆ—ã®3ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -117,7 +117,7 @@ int r4(){
 	int i, count = 0;
 	char s;
 	s = defalut[8];
-	for (i = 0; i < 11; i++){	//d‚ğ4”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//dã‚’4ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 6){
 			break;
 		}
@@ -127,10 +127,10 @@ int r4(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR4: d‚Í”z—ñ‚Ì4”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR4: dã¯é…åˆ—ã®4ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -139,7 +139,7 @@ int r5(){
 	int i, count = 0;
 	char s;
 	s = defalut[8];
-	for (i = 0; i < 11; i++){	//c‚ğ5”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//cã‚’5ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 5){
 			break;
 		}
@@ -149,10 +149,10 @@ int r5(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR5: c‚Í”z—ñ‚Ì5”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR5: cã¯é…åˆ—ã®5ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -161,7 +161,7 @@ int r6(){
 	int i, count = 0;
 	char s;
 	s = defalut[7];
-	for (i = 0; i < 11; i++){	//b‚ğ6”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//bã‚’6ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 3){
 			break;
 		}
@@ -171,10 +171,10 @@ int r6(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR6: b‚Í”z—ñ‚Ì6”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR6: bã¯é…åˆ—ã®6ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -183,7 +183,7 @@ int r7(){
 	int i, count = 0;
 	char s;
 	s = defalut[10];
-	for (i = 0; i < 11; i++){	//+‚ğ8”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//+ã‚’8ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 3){
 			break;
 		}
@@ -193,10 +193,10 @@ int r7(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR7: +‚Í”z—ñ‚Ì8”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR7: +ã¯é…åˆ—ã®8ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
@@ -205,7 +205,7 @@ int r8(){
 	int i, count = 0;
 	char s;
 	s = defalut[9];
-	for (i = 0; i < 11; i++){	//-‚ğ‚ğ9”Ô–Ú‚Éƒ\[ƒg
+	for (i = 0; i < 11; i++){	//-ã‚’ã‚’9ç•ªç›®ã«ã‚½ãƒ¼ãƒˆ
 		if (i == 1){
 			break;
 		}
@@ -215,16 +215,16 @@ int r8(){
 
 	for (i = 0; i < 11; i++)
 	{
-		printf("%c", defalut[i]); //“r’†Œ‹‰Ê
+		printf("%c", defalut[i]); //é€”ä¸­çµæœ
 	}
 	count = hantei();
-	printf("\nR8: -‚Í”z—ñ‚Ì9”ÔÅ‰‚Éƒ\[ƒg‚³‚ê‚½ ˆê’v”:%d\n", count);
+	printf("\nR8: -ã¯é…åˆ—ã®9ç•ªæœ€åˆã«ã‚½ãƒ¼ãƒˆã•ã‚ŒãŸ ä¸€è‡´æ•°:%d\n", count);
 	printf("\n");
 	return(0);
 }
 	//**********************************************************************
 
-int hantei(){		//ÅIó‘Ô‚Æ‚Ìˆê’v“x
+int hantei(){		//æœ€çµ‚çŠ¶æ…‹ã¨ã®ä¸€è‡´åº¦
 	int i, count = 0;
 	for (i = 0; i < 11; i++)
 	{

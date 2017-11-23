@@ -1,12 +1,12 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <ctype.h>
 #include<string.h>
 
-int ProductionMemory(char *W);
+//int ProductionMemory(char *W);
 
 main(){
-	char W[] = "a*b-cd/e+fg";  //‰Šú’l
-	char end[] = "gfedcba+-*/";  //ƒS[ƒ‹
+	char W[] = "gfed-cba+*/";  //åˆæœŸå€¤
+	char end[] = "gfedcba+-*/";  //ã‚´ãƒ¼ãƒ«
 
 	int i;
 	int hikaku = 0;
@@ -24,7 +24,7 @@ int ProductionMemory(char *W,char *end){
 	int hikaku=0;
 
 	while (hikaku!=1){
-			if (W[0] != 'g'){   //g‚ªˆê”Ô¶‚¶‚á‚È‚©‚Á‚½‚çg‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			if (W[0] != 'g'){   //gãŒä¸€ç•ªå·¦ã˜ã‚ƒãªã‹ã£ãŸã‚‰gã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'g'){
 						place_g = j;
@@ -38,10 +38,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R1‚ğ“K—p");
+				}printf("  R1ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[1] != 'f'){   //f‚ª¶‚©‚ç2”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚çf‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[1] != 'f'){   //fãŒå·¦ã‹ã‚‰2ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰fã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'f'){
 						place_f = j;
@@ -55,10 +55,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R2‚ğ“K—p");
+				}printf("  R2ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[2] != 'e'){   //e‚ª¶‚©‚ç3”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚çe‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[2] != 'e'){   //eãŒå·¦ã‹ã‚‰3ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰eã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'e'){
 						place_e = j;
@@ -72,10 +72,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R3‚ğ“K—p");
+				}printf("  R3ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[3] != 'd'){   //d‚ª¶‚©‚ç4”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚çd‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[3] != 'd'){   //dãŒå·¦ã‹ã‚‰4ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰dã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'd'){
 						place_d = j;
@@ -89,10 +89,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R4‚ğ“K—p");
+				}printf("  R4ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[4] != 'c'){   //c‚ª¶‚©‚ç5”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚çc‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[4] != 'c'){   //cãŒå·¦ã‹ã‚‰5ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰cã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'c'){
 						place_c = j;
@@ -106,10 +106,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R5‚ğ“K—p");
+				}printf("  R5ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[5] != 'b'){   //b‚ª¶‚©‚ç6”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚çb‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[5] != 'b'){   //bãŒå·¦ã‹ã‚‰6ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰bã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'b'){
 						place_b = j;
@@ -123,10 +123,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R6‚ğ“K—p");
+				}printf("  R6ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[6] != 'a'){   //a‚ª¶‚©‚ç7”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚ça‚ğˆê‚Â‰E‚É‚¸‚ç‚·
+			else if (W[6] != 'a'){   //aãŒå·¦ã‹ã‚‰7ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰aã‚’ä¸€ã¤å³ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == 'a'){
 						place_a = j;
@@ -140,10 +140,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R7‚ğ“K—p");
+				}printf("  R7ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[7] != '+'){   //+‚ª¶‚©‚ç8”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚ç+‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[7] != '+'){   //+ãŒå·¦ã‹ã‚‰8ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰+ã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == '+'){
 						place_plus = j;
@@ -157,10 +157,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R8‚ğ“K—p");
+				}printf("  R8ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[8] != '-'){   //-‚ª¶‚©‚ç9”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚ç-‚ğˆê‚Â¶‚É‚¸‚ç‚·
+			else if (W[8] != '-'){   //-ãŒå·¦ã‹ã‚‰9ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰-ã‚’ä¸€ã¤å·¦ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == '-'){
 						place_mai = j;
@@ -174,10 +174,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R9‚ğ“K—p");
+				}printf("  R9ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[9] != '*'){   //*‚ª¶‚©‚ç10”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚ç*‚ğˆê‚Â‰E‚É‚¸‚ç‚·
+			else if (W[9] != '*'){   //*ãŒå·¦ã‹ã‚‰10ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰*ã‚’ä¸€ã¤å³ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == '*'){
 						place_kake = j;
@@ -191,10 +191,10 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R10‚ğ“K—p");
+				}printf("  R10ã‚’é©ç”¨");
 				printf("\n");
 			}
-			else if (W[10] != '/'){   ///‚ª¶‚©‚ç11”Ô–Ú‚¶‚á‚È‚©‚Á‚½‚ç/‚ğˆê‚Â‰E‚É‚¸‚ç‚·
+			else if (W[10] != '/'){   ///ãŒå·¦ã‹ã‚‰11ç•ªç›®ã˜ã‚ƒãªã‹ã£ãŸã‚‰/ã‚’ä¸€ã¤å³ã«ãšã‚‰ã™
 				for (j = 0; j < 11; j++){
 					if (W[j] == '/'){
 						place_wa = j;
@@ -208,7 +208,7 @@ int ProductionMemory(char *W,char *end){
 				for (j = 0; j < 11; j++){
 
 					printf("%c", W[j]);
-				}printf("  R11‚ğ“K—p");
+				}printf("  R11ã‚’é©ç”¨");
 				printf("\n");
 			}
 			if (strcmp(W,end)==0){

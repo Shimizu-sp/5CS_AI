@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+Ôªø#pragma warning(disable:4996)
 #include<stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -81,20 +81,20 @@ main() {
 		for (i = 0; i < 40; i++) {
 			if (m[i] == 37) {
 				if (m[i - 1] > 50 && 40 < m[i - 2] && m[i - 2] < 50 && y == 14) {
-					printf("R1ìKâû");
+					printf("R1ÈÅ©Âøú");
 					m[i] = m[i - 2];
 					m[i - 2] = m[i - 1];
 					m[i - 1] = 37;
 					i = 40;
 				}if (m[i - 1] > 50 && m[i - 2] > 50 && m[i - 3] < 50&&y==13) {
-					printf("R2ìKâû");
+					printf("R2ÈÅ©Âøú");
 					m[i] = m[i - 3];
 					m[i - 3] = m[i - 2];
 					m[i - 2] = m[i-1];
 					m[i - 1] = 37;
 						i = 40;
 					}if (m[i - 1] > 50 && m[i - 2] > 50 && m[i - 3]>50 && m[i - 4]<50&&y==12) {
-						printf("R3ìKâû");
+						printf("R3ÈÅ©Âøú");
 						m[i] = m[i - 4];
 						m[i - 4] = m[i - 3];
 						m[i - 3] = m[i - 2];
@@ -102,7 +102,7 @@ main() {
 						m[i - 1] = 37;
 						i = 40;
 					}if (m[i - 1] > 50 && m[i - 2] > 50 && m[i - 3]>50 && m[i - 4]>50 && m[i - 5]<50&&y==11) {
-						printf("R4ìKâû");
+						printf("R4ÈÅ©Âøú");
 						m[i] = m[i - 5];
 						m[i - 5] = m[i - 4];
 						m[i - 4] = m[i - 3];
@@ -111,7 +111,7 @@ main() {
 						m[i - 1] = 37;
 						i = 40;
 					}if (m[i - 1] > 50 && m[i - 2] > 50 && m[i - 3]>50 && m[i - 4]>50 && m[i - 5]>50 && m[i - 6]<50&&y==10) {
-						printf("R5ìKâû");
+						printf("R5ÈÅ©Âøú");
 						m[i] = m[i - 6];
 						m[i - 6] = m[i - 5];
 						m[i - 5] = m[i - 4];
@@ -121,7 +121,7 @@ main() {
 						m[i - 1] = 37;
 						i = 40;
 					}if (m[i - 1]<50 && m[i - 2]<50 && m[i - 3]<50 && m[i - 4]<50&&y==9) {
-						printf("R6ìKâû");
+						printf("R6ÈÅ©Âøú");
 						k = m[i - 1];
 						m[i - 1] = m[i - 2];
 						m[i - 2] = k;
@@ -133,7 +133,7 @@ main() {
 
 						break;
 					}if (y==8) {
-						printf("R7ìKâû");
+						printf("R7ÈÅ©Âøú");
 						m[i] = m[i + 1];
 						m[i + 1] = 37;
 						i = 40;
@@ -141,14 +141,14 @@ main() {
 			}
 			if (m[i] == 35) {
 				if (m[i -1] == 34 && y == 7) {
-					printf("R8ìKâû");
+					printf("R8ÈÅ©Âøú");
 					m[i-1] = 37;
 					m[i] = 0;
 					i = 40;
 
 				}
 				if (m[i + 1] == 36 && y == 6) {
-					printf("R9ìKâû");
+					printf("R9ÈÅ©Âøú");
 					for (j = i; j < 30; j++) {
 
 						m[j + 1] = m[j + 2];
@@ -156,14 +156,14 @@ main() {
 					m[i] = 35;
 					i = 40;
 				}if (m[i + 1] > 40 && y == 5) {
-					printf("R10ìKâû");
+					printf("R10ÈÅ©Âøú");
 					m[i] = m[i + 1];
 					m[i + 1] = 35;
 					i = 40;
 				}
 			}if (m[i] == 34) {
 				if (m[i + 1] < 50 && m[i + 2]>50 && m[i + 3] > 50 && m[i + 4] < 50 && y == 4) {
-					printf("R11ìKâû");
+					printf("R11ÈÅ©Âøú");
 					k = m[i + 1];
 					m[i] = m[i + 4];
 					m[i + 1] = m[i + 2];
@@ -173,20 +173,20 @@ main() {
 					i = 40;
 				}
 				if (m[i + 1] > 40 && y == 3) {
-					printf("R12ìKâû");
+					printf("R12ÈÅ©Âøú");
 					m[i] = m[i + 1];
 					m[i + 1] = 34;
 					i = 40;
 				}
 			}if (m[i] == 36) {
 				if (m[i + 1] == 36 && y == 2) {
-					printf("R13ìKâû");
+					printf("R13ÈÅ©Âøú");
 					m[i + 1] = 35;
 					m[i] = 34;
 					i = 40;
 				}
 				if (m[i + 1] >= 40 && m[i + 2] >= 40 && y == 1) {
-					printf("R14ìKâû");
+					printf("R14ÈÅ©Âøú");
 					k = m[i + 1];
 					p = m[i + 2];
 					m[i + 1] = m[i];
@@ -197,7 +197,7 @@ main() {
 			}
 		}
 		if (y == 0) {
-			printf("R15ìKâû");
+			printf("R15ÈÅ©Âøú");
 			for (j = 30; j >= 1; j--) {
 				m[j] = m[j - 1];
 			}

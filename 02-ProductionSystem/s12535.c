@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 
 int main(void){
 
@@ -7,33 +7,33 @@ int main(void){
 	int i;
 	P1(start); {
 		for (i = 0; i < 11; i++){
-		printf("a‚Æg‚ðŒðŠ·\n");
+		printf("aã¨gã‚’äº¤æ›\n");
 
 		}
 	}
 	P2(start) {
 		for (i = 0; i < 11; i++){
-		printf("*‚Æf‚ðŒðŠ·\n");
+		printf("*ã¨fã‚’äº¤æ›\n");
 			}
 		}
 	P3(start){
 		for (i = 0; i < 11; i++){
-			printf("b‚Æe‚ðŒðŠ·");
+			printf("bã¨eã‚’äº¤æ›");
 		}
 	}
 	P4(start){
 		for (i = 0; i < 11; i++){
-			printf("d‚Æ-‚ðŒðŠ·");
+			printf("dã¨-ã‚’äº¤æ›");
 		}
-@@@}
+ã€€ã€€ã€€}
 	P5(start){
 		for (i = 0; i < 11; i++){
-		printf("a‚Æ/‚ðŒðŠ·");
+		printf("aã¨/ã‚’äº¤æ›");
 		}
 	}
 	P6(start){
 		for (i = 0; i < 11; i++){
-			printf("+‚Æ-‚ðŒðŠ·");
+			printf("+ã¨-ã‚’äº¤æ›");
 		}
 	}
 	P7(start){
@@ -44,5 +44,5 @@ int main(void){
 }}}
 	
 
-‚ ‚é’ö“x‚Ì‚Æ‚±‚ë‚Í‚©‚¯‚Ü‚µ‚½B
+ã‚ã‚‹ç¨‹åº¦ã®ã¨ã“ã‚ã¯ã‹ã‘ã¾ã—ãŸã€‚
 

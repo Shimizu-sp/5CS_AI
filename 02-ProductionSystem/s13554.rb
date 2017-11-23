@@ -1,4 +1,4 @@
-# coding: utf-8
+﻿# coding: utf-8
 def MatchPattern(text)
   p text
   x = " "#1文字目

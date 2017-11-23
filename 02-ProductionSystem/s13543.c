@@ -1,37 +1,37 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 
 void change(char *);
-char str[11] = "a*b-cd/e+fg";//‰Šú”z—ñ
-char strS[11] = "a*b-cd/e+fg"; //ƒTƒ“ƒvƒ‹—p‰Šú”z—ñ
+char str[11] = "a*b-cd/e+fg";//åˆæœŸé…åˆ—
+char strS[11] = "a*b-cd/e+fg"; //ã‚µãƒ³ãƒ—ãƒ«ç”¨åˆæœŸé…åˆ—
 
 main()
 {
-	printf("‰Šúó‘Ô : %s\n\n", str);//‰Šúó‘Ô‚ğ•\¦
+	printf("åˆæœŸçŠ¶æ…‹ : %s\n\n", str);//åˆæœŸçŠ¶æ…‹ã‚’è¡¨ç¤º
 
-	change(str);//Às‚·‚éŠÖ”
+	change(str);//å®Ÿè¡Œã™ã‚‹é–¢æ•°
 
-	printf("\nŠ®¬@%s\n\n", str);//Š®¬ó‘Ô‚ğ•\¦
+	printf("\nå®Œæˆã€€%s\n\n", str);//å®ŒæˆçŠ¶æ…‹ã‚’è¡¨ç¤º
 	
 }
 void change(char *ansstr) {
 	int ans = 0;
 	int i = 0;
-	int j = 0; //•¶š”‚ğŠÇ—
-	int strans[] = { 11,10,8,6,5,3,1,9,4,2,7 }; //ƒ‹[ƒ‹
-	char tmp = "";//‰¼•Û‘¶—p
+	int j = 0; //æ–‡å­—æ•°ã‚’ç®¡ç†
+	int strans[] = { 11,10,8,6,5,3,1,9,4,2,7 }; //ãƒ«ãƒ¼ãƒ«
+	char tmp = "";//ä»®ä¿å­˜ç”¨
 
 	for (j=0; j < 11; j++) {
 
-		ans = strans[j]-1;//”z—ñ‚É‚Ô‚¿‚ŞŠÖŒW‚Å-1‚·‚é
-		printf("%c‚ğ’T‚µ‚ÄˆÚ“®\n", strS[ans]);
+		ans = strans[j]-1;//é…åˆ—ã«ã¶ã¡è¾¼ã‚€é–¢ä¿‚ã§-1ã™ã‚‹
+		printf("%cã‚’æ¢ã—ã¦ç§»å‹•\n", strS[ans]);
 		
 			
-			//printf("%c‚ğ’T‚µ‚Ü‚·\n", str[ans]);
+			//printf("%cã‚’æ¢ã—ã¾ã™\n", str[ans]);
 			//printf("I = %d\n", i);
 			//printf("J = %d\n", j);
 		while (str[j] != strS[ans]) {
-			for (i = 0; i < 11; i++) { //1•¶š–Ú‚©‚ç‡‚Éƒ`ƒFƒbƒN
-				if (str[i] == strS[ans]) { //Œ©‚Â‚¯‚½‚ç¶‚ÆŒğŠ·
+			for (i = 0; i < 11; i++) { //1æ–‡å­—ç›®ã‹ã‚‰é †ã«ãƒã‚§ãƒƒã‚¯
+				if (str[i] == strS[ans]) { //è¦‹ã¤ã‘ãŸã‚‰å·¦ã¨äº¤æ›
 					tmp = str[i];
 					str[i] = str[i - 1];
 					str[i - 1] = tmp;
@@ -40,8 +40,8 @@ void change(char *ansstr) {
 			}
 		}
 		
-		printf("%d •¶š–Ú(%c)‚¨‚í‚è\n", j + 1,strS[ans]);//i’»•ñ
-		printf("Œ»İ@%s\n\n", str);//i’»•ñ
+		printf("%d æ–‡å­—ç›®(%c)ãŠã‚ã‚Š\n", j + 1,strS[ans]);//é€²æ—å ±å‘Š
+		printf("ç¾åœ¨ã€€%s\n\n", str);//é€²æ—å ±å‘Š
 	
 	}
 }

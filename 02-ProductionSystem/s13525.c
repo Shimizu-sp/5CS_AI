@@ -1,207 +1,207 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 main(){
 
-	char First[11] = { 'a', '*', 'b', '-', 'c', 'd', '/', 'e', '+', 'f', 'g' };//11í—Ş‚Ì•¶š—ñ
-	int i = 0, j = 0;//ƒJƒEƒ“ƒg—p
-	int where = 0;//•¶š‚ÌˆÊ’u‹L‰¯
-	char n = '1';//•¶š—ñ‚Ì•Û‘¶—p
+	char First[11] = { 'a', '*', 'b', '-', 'c', 'd', '/', 'e', '+', 'f', 'g' };//11ç¨®é¡ã®æ–‡å­—åˆ—
+	int i = 0, j = 0;//ã‚«ã‚¦ãƒ³ãƒˆç”¨
+	int where = 0;//æ–‡å­—ã®ä½ç½®è¨˜æ†¶
+	char n = '1';//æ–‡å­—åˆ—ã®ä¿å­˜ç”¨
 
 	for (i = 0; i < 11; i++){
-		printf("%c", First[i]);//‰Šúó‘Ô‚ğÅ‰‚É•\¦
+		printf("%c", First[i]);//åˆæœŸçŠ¶æ…‹ã‚’æœ€åˆã«è¡¨ç¤º
 	}
 	printf("\n");
-	printf("•À‚Ñ‘Ö‚¦‚ğŠJn‚µ‚Ü‚·\n");
+	printf("ä¸¦ã³æ›¿ãˆã‚’é–‹å§‹ã—ã¾ã™\n");
 
-	while (First[0] != 'g'){//R1_•¶š—ñg‚Í1”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[0] != 'g'){//R1_æ–‡å­—åˆ—gã¯1ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'g'){
-				where = j;//g‚ÌêŠæ“¾
+				where = j;//gã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("g‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("gãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[1] != 'f'){//R2_•¶š—ñf‚Í2”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[1] != 'f'){//R2_æ–‡å­—åˆ—fã¯2ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'f'){
-				where = j;//f‚ÌêŠæ“¾
+				where = j;//fã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("f‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("fãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[2] != 'e'){//R3_•¶š—ñe‚Í3”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[2] != 'e'){//R3_æ–‡å­—åˆ—eã¯3ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'e'){
-				where = j;//e‚ÌêŠæ“¾
+				where = j;//eã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("e‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("eãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[3] != 'd'){//R4_•¶š—ñd‚Í4”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[3] != 'd'){//R4_æ–‡å­—åˆ—dã¯4ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'd'){
-				where = j;//d‚ÌêŠæ“¾
+				where = j;//dã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("d‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("dãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[4] != 'c'){//R5_•¶š—ñc‚Í5”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[4] != 'c'){//R5_æ–‡å­—åˆ—cã¯5ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'c'){
-				where = j;//c‚ÌêŠæ“¾
+				where = j;//cã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("c‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
-	while (First[5] != 'b'){//R6_•¶š—ñb‚Í6”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	printf("cãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
+	while (First[5] != 'b'){//R6_æ–‡å­—åˆ—bã¯6ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'b'){
-				where = j;//b‚ÌêŠæ“¾
+				where = j;//bã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("b‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("bãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[6] != 'a'){//R7_•¶š—ña‚Í7”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[6] != 'a'){//R7_æ–‡å­—åˆ—aã¯7ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == 'a'){
-				where = j;//a‚ÌêŠæ“¾
+				where = j;//aã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("a‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("aãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-		while (First[7] != '+'){//R8_•¶š—ñ+‚Í8”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+		while (First[7] != '+'){//R8_æ–‡å­—åˆ—+ã¯8ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == '+'){
-				where = j;//+‚ÌêŠæ“¾
+				where = j;//+ã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("+‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("+ãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[8] != '-'){//R9_•¶š—ñ-‚Í9”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[8] != '-'){//R9_æ–‡å­—åˆ—-ã¯9ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == '-'){
-				where = j;//-‚ÌêŠæ“¾
+				where = j;//-ã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("-‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("-ãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[9] != '*'){//R10_•¶š—ñ*‚Í10”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[9] != '*'){//R10_æ–‡å­—åˆ—*ã¯10ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == '*'){
-				where = j;//*‚ÌêŠæ“¾
+				where = j;//*ã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("*‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("*ãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 
-	while (First[10] != '/'){//R11_•¶š—ñ/‚Í11”Ô–Ú‚Å‚È‚¯‚ê‚Î‘O‚ÆŒğŠ·‚·‚é
+	while (First[10] != '/'){//R11_æ–‡å­—åˆ—/ã¯11ç•ªç›®ã§ãªã‘ã‚Œã°å‰ã¨äº¤æ›ã™ã‚‹
 		for (j = 0; j < 11; j++){
 			if (First[j] == '/'){
-				where = j;// /‚ÌêŠæ“¾
+				where = j;// /ã®å ´æ‰€å–å¾—
 				break;
 			}
 		}
 		n = First[where];
 		First[where] = First[where - 1];
-		First[where - 1] = n;//ŒğŠ·
+		First[where - 1] = n;//äº¤æ›
 		for (j = 0; j < 11; j++){
-			printf("%c", First[j]);//ˆÚ“®‰ß’ö(WM‚Ìó‘Ô•Ï‰»)
+			printf("%c", First[j]);//ç§»å‹•éç¨‹(WMã®çŠ¶æ…‹å¤‰åŒ–)
 		}
 		printf("\n");
 	}
-	printf("/‚ª³‚µ‚¢ˆÊ’u‚ÉˆÚ“®‚µ‚Ü‚µ‚½B\n");
+	printf("/ãŒæ­£ã—ã„ä½ç½®ã«ç§»å‹•ã—ã¾ã—ãŸã€‚\n");
 	printf("\n");
 	for (i = 0; i < 11; i++){
-		printf("%c", First[i]);//ƒS[ƒ‹ó‘Ô‚ğ•\¦
+		printf("%c", First[i]);//ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ã‚’è¡¨ç¤º
 	}
 	printf("\n");
-	printf("•À‚Ñ‘Ö‚¦‚ğI—¹‚µ‚Ü‚µ‚½B\n");
+	printf("ä¸¦ã³æ›¿ãˆã‚’çµ‚äº†ã—ã¾ã—ãŸã€‚\n");
 
 }

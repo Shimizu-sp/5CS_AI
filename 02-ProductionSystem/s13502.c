@@ -1,33 +1,33 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
-void Hyouji(char array[]);	// ó‘Ô•\¦—pŠÖ”
-void rule1(char array[]);	// ƒ‹[ƒ‹1
-void rule2(char array[]);	// ƒ‹[ƒ‹2
-void rule3(char array[]);	// ƒ‹[ƒ‹3
-void rule4(char array[]);	// ƒ‹[ƒ‹4
+void Hyouji(char array[]);	// çŠ¶æ…‹è¡¨ç¤ºç”¨é–¢æ•°
+void rule1(char array[]);	// ãƒ«ãƒ¼ãƒ«1
+void rule2(char array[]);	// ãƒ«ãƒ¼ãƒ«2
+void rule3(char array[]);	// ãƒ«ãƒ¼ãƒ«3
+void rule4(char array[]);	// ãƒ«ãƒ¼ãƒ«4
 
-main() {
+int main() {
 	int	pattern = 0;
 
-	char start[12] = "a*b-cd/e+fg";	// ‰Šúó‘Ô
+	char start[12] = "gfedcba+-*/";	// åˆæœŸçŠ¶æ…‹
 	char goal[12] = "gfedcba+-*/";
 
-	Hyouji(start); // ”z—ñ‘S•”•\¦
+	Hyouji(start); // é…åˆ—å…¨éƒ¨è¡¨ç¤º
 
-		rule1(start);  // ‹L†‚ª‰E‚É—ˆ‚é@ƒ‹[ƒ‹“K‰
+		rule1(start);  // è¨˜å·ãŒå³ã«æ¥ã‚‹ã€€ãƒ«ãƒ¼ãƒ«é©å¿œ
 
-		rule2(start);  // ”š‚ğ‚¿‚á‚ñ‚Æ•À‚×‚é@ƒ‹[ƒ‹“K‰
+		rule2(start);  // æ•°å­—ã‚’ã¡ã‚ƒã‚“ã¨ä¸¦ã¹ã‚‹ã€€ãƒ«ãƒ¼ãƒ«é©å¿œ
 
-		rule3(start);	// ‹L†‚ğ¬‚³‚¢‡‚É“ü‚ê‘Ö‚¦‚é@ƒ‹[ƒ‹“K‰
+		rule3(start);	// è¨˜å·ã‚’å°ã•ã„é †ã«å…¥ã‚Œæ›¿ãˆã‚‹ã€€ãƒ«ãƒ¼ãƒ«é©å¿œ
 
-		rule4(start);	// u*v‚ğ³‚µ‚¢êŠ‚É“ü‚ê‘Ö‚¦‚é@ƒ‹[ƒ‹“K‰
+		rule4(start);	// ã€Œ*ã€ã‚’æ­£ã—ã„å ´æ‰€ã«å…¥ã‚Œæ›¿ãˆã‚‹ã€€ãƒ«ãƒ¼ãƒ«é©å¿œ
 }
 
 
 
-//ŠÖ” 
+//é–¢æ•°
 
 //------------------------------------
 
@@ -45,12 +45,12 @@ void rule1(char array[]) {
 	int stay;
 
 	printf("\n");
-	printf("ƒ‹[ƒ‹1 ‹L†‚ğ‰E‚ÉŠñ‚¹‚é\n");
-	// ‹L†‚ğ‰E‚ÉŠñ‚¹‚é
+	printf("ãƒ«ãƒ¼ãƒ«1 è¨˜å·ã‚’å³ã«å¯„ã›ã‚‹\n");
+	// è¨˜å·ã‚’å³ã«å¯„ã›ã‚‹
 	for (k = 0; k < 11; k++) {
 		for (m = 0; m < 10; m++) {
-			if (ispunct(array[m]) != 0) {	// m‚ª‹L†‚È‚ç
-				stay = array[m + 1];		// ˆê‚Â—×‚ÆŒğŠ·
+			if (ispunct(array[m]) != 0) {	// mãŒè¨˜å·ãªã‚‰
+				stay = array[m + 1];		// ä¸€ã¤éš£ã¨äº¤æ›
 				array[m + 1] = array[m];
 				array[m] = stay;
 				Hyouji(array);
@@ -66,19 +66,19 @@ void rule2(char array[]) {
 	int stay;
 
 	printf("\n");
-	printf("ƒ‹[ƒ‹2 ƒAƒ‹ƒtƒ@ƒxƒbƒg‚ğ“ü‚ê‘Ö‚¦‚é(¸‡)\n");
-	// ƒAƒ‹ƒtƒ@ƒxƒbƒg‚ğ“ü‚ê‘Ö‚¦‚é
+	printf("ãƒ«ãƒ¼ãƒ«2 ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã‚’å…¥ã‚Œæ›¿ãˆã‚‹(æ˜‡é †)\n");
+	// ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã‚’å…¥ã‚Œæ›¿ãˆã‚‹
 	for (m = 0; m < 11; m++) {
 		for (i = 0; i < 11; i++) {
-			if (ispunct(array[i]) == 0) {		// ƒAƒ‹ƒtƒ@ƒxƒbƒg‚È‚ç
-				if (array[i] < array[i + 1]) {	// ‚È‚¨‚©‚Â‰E‚Ì‚Ù‚¤‚ªƒfƒJ‚¢
+			if (ispunct(array[i]) == 0) {		// ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆãªã‚‰
+				if (array[i] < array[i + 1]) {	// ãªãŠã‹ã¤å³ã®ã»ã†ãŒãƒ‡ã‚«ã„
 					stay = array[i + 1];
 					array[i + 1] = array[i];
 					array[i] = stay;
 					Hyouji(array);
 				}
 			}
-			
+
 		}
 	}
 
@@ -89,19 +89,19 @@ void rule3(char array[]) {
 	int stay;
 
 	printf("\n");
-	printf("ƒ‹[ƒ‹3 ‹L†‚ğ¬‚³‚¢‡‚É•À‚×‚é\n");
+	printf("ãƒ«ãƒ¼ãƒ«3 è¨˜å·ã‚’å°ã•ã„é †ã«ä¸¦ã¹ã‚‹\n");
 
 	for (m = 0; m < 11; m++) {
 		for (i = 0; i < 10; i++) {
-			if (ispunct(array[i]) != 0) {		// ‹L†‚È‚ç
-				if (array[i + 1] < array[i]) {	// —×‚ª¬‚³‚¢‚È‚ç
+			if (ispunct(array[i]) != 0) {		// è¨˜å·ãªã‚‰
+				if (array[i + 1] < array[i]) {	// éš£ãŒå°ã•ã„ãªã‚‰
 					stay = array[i + 1];
 					array[i + 1] = array[i];
 					array[i] = stay;
 					Hyouji(array);
 				}
 			}
-			
+
 		}
 	}
 }
@@ -111,20 +111,20 @@ void rule4(char array[]) {
 	int stay;
 
 	printf("\n");
-	printf("ƒ‹[ƒ‹4 u*v‚ğ³‚µ‚¢ˆÊ’u‚É‚à‚Á‚Ä‚­\n");
+	printf("ãƒ«ãƒ¼ãƒ«4 ã€Œ*ã€ã‚’æ­£ã—ã„ä½ç½®ã«ã‚‚ã£ã¦ã\n");
 
 	for (m = 7; m < 8; m++) {
 		for (i = m; i < 9; i++) {
-		  if (ispunct(array[i]) != 0) {		// ‹L†‚È‚ç
-			if (array[i] < array[i + 1]) {	// —×‚ª‚Å‚©‚¢‚È‚ç
-			
+		  if (ispunct(array[i]) != 0) {		// è¨˜å·ãªã‚‰
+			if (array[i] < array[i + 1]) {	// éš£ãŒã§ã‹ã„ãªã‚‰
+
 					stay = array[i];
 					array[i] = array[i + 1];
 					array[i+1] = stay;
 					Hyouji(array);
-				} 
+				}
 			 }
-			
+
 		    }
 		}
 

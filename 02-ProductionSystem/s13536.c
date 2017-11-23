@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 
 main(void){
 
@@ -15,7 +15,7 @@ main(void){
 	for(count = 0;count < 11;count++){
 		printf("%c ",str[count]);
 	}
-	printf(" ‰Šú”z’u\n");
+	printf(" åˆæœŸé…ç½®\n");
 
 	while(1){
 		for(count = 0;count < 10;count++){
@@ -27,7 +27,7 @@ main(void){
 			printf("%c ",str[count_view]);
 		}
 		count_sort++;
-		printf(" “ü‚ê‘Ö‚¦%d‰ñ\n",count_sort);
+		printf(" å…¥ã‚Œæ›¿ãˆ%då›ž\n",count_sort);
 
 	}
 	if(str[count]>90 && str[count+1]>90 && str[count]<str[count+1]){
@@ -38,7 +38,7 @@ main(void){
 			printf("%c ",str[count_view]);
 		}
 		count_sort++;
-		printf(" “ü‚ê‘Ö‚¦%d‰ñ\n",count_sort);
+		printf(" å…¥ã‚Œæ›¿ãˆ%då›ž\n",count_sort);
 	}
 	if(str[count]<90 && str[count]<90){
 
@@ -61,7 +61,7 @@ main(void){
 			printf("%c ",str[count_view]);
 		}
 		count_sort++;
-		printf(" “ü‚ê‘Ö‚¦%d‰ñ\n",count_sort);
+		printf(" å…¥ã‚Œæ›¿ãˆ%då›ž\n",count_sort);
 	}
 	}
 	rule3_flag1 = 0;
@@ -80,8 +80,8 @@ main(void){
 		   str[10]== true_str[10]&&
 		   str[11]== true_str[11]){
 
-			   printf("\nI—¹\n",count_sort);
-			    printf("‰½‚©ƒL[‚ð‰Ÿ‚µ‚Ä‰º‚³‚¢..\n",count_sort);
+			   printf("\nçµ‚äº†\n",count_sort);
+			    printf("ä½•ã‹ã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ä¸‹ã•ã„..\n",count_sort);
 			   getchar();
 			   break;
 		}
