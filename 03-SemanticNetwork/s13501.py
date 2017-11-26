@@ -1,4 +1,4 @@
-#各特長を定義
+﻿#各特長を定義
 Animal = ['Do_呼吸']
 Bird   = ['Have_翼',  'Animal']
 Owm    = ['Skill_モノマネ','Bird']

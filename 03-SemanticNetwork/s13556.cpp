@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <tchar.h>
 #include <string>
 #include <iostream>
@@ -9,18 +9,18 @@
 using namespace std;
 
 vector<string> attribute = {
-	//‚¼‚­‚¹‚¢
-	"¶•¨",
-	"ŒÄ‹z",
-	"’¹",
-	"—ƒ",
-	"ƒI[ƒ€",
-	"ƒ‚ƒmƒ}ƒl",
+	//ããã›ã„
+	"ç”Ÿç‰©",
+	"å‘¼å¸",
+	"é³¥",
+	"ç¿¼",
+	"ã‚ªãƒ¼ãƒ ",
+	"ãƒ¢ãƒãƒãƒ",
 	"NULL",
 };
 
 int rooting[6][4] = {
-	//ãˆÊ,‰ºˆÊ,“Á’¥,“Á‹Z‚Ö‚Ìƒ‹[ƒeƒBƒ“ƒO
+	//ä¸Šä½,ä¸‹ä½,ç‰¹å¾´,ç‰¹æŠ€ã¸ã®ãƒ«ãƒ¼ãƒ†ã‚£ãƒ³ã‚°
 	{ -1, 2, 1, -1 },
 	{ 0, -1, -1, -1 },
 	{ 0, 4, 3, -1 },
@@ -33,24 +33,24 @@ int rooting[6][4] = {
 int _tmain(int argc, _TCHAR* argv[])
 {
 
-	//¿–âFƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚©
+	//è³ªå•ï¼šã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã‹
 
 	int flg[2]{
 		-1, -1
 	};
 
-	cout << "ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚©" << endl;
+	cout << "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã‹" << endl;
 
 	vector<string> question = {
-		"ƒI[ƒ€",
-		"“Á‹Z"
+		"ã‚ªãƒ¼ãƒ ",
+		"ç‰¹æŠ€"
 	};
 
 	auto begin = attribute.begin();
 	auto end = attribute.end();
 	int i = 0;
 
-	//‘ÎÛIDƒT[ƒ`
+	//å¯¾è±¡IDã‚µãƒ¼ãƒ
 
 	for (auto itr = attribute.begin(); itr < attribute.end(); ++itr, ++i){
 		if (*itr == question[0] && flg[0] == -1){
@@ -61,7 +61,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	string answer;
 
-	//“Á’¥‚ğFetch
+	//ç‰¹å¾´ã‚’Fetch
 
 	if (flg[0] != -1) {
 		int read = rooting[flg[0]][flg[1]];
@@ -74,45 +74,45 @@ int _tmain(int argc, _TCHAR* argv[])
 	//
 	//getchar();
 
-	cout << "ƒI[ƒ€‚Ì“Á‹Z‚Í" << answer << "‚Å‚·" << endl;
+	cout << "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯" << answer << "ã§ã™" << endl;
 
-	cout << "ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©" << endl;
+	cout << "ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹" << endl;
 
 	question = {
-		"ƒI[ƒ€",
-		"ŒÄ‹z"
+		"ã‚ªãƒ¼ãƒ ",
+		"å‘¼å¸"
 	};
 
 	flg[0] = -1;
 
-	//‘ÎÛIDƒT[ƒ`
+	//å¯¾è±¡IDã‚µãƒ¼ãƒ
 
 	for (auto itr = attribute.begin(); itr < attribute.end(); ++itr, ++i) {
 		if (*itr == question[0] && flg[0] == -1)
 			flg[0] = i;
 	}
 
-	//ãˆÊ‘w‚ÉŒü‚©‚Á‚ÄŒ@‚é
+	//ä¸Šä½å±¤ã«å‘ã‹ã£ã¦æ˜ã‚‹
 
 	do {
-		//“Á’¥ŒŸo
+		//ç‰¹å¾´æ¤œå‡º
 		int read = rooting[flg[0]][2];
 		if (read != -1)
 			answer = attribute[read];
 
 		if (answer == question[1])
 		{
-			//‚ ‚Á‚½‚çYes‚Æ•Ô“šAI—¹
+			//ã‚ã£ãŸã‚‰Yesã¨è¿”ç­”ã€çµ‚äº†
 			cout << "Yes" << endl;
 			return 0;
 			//break;
 		}
 		else {
-			//ãˆÊ‘w‚É‘ÎÛ‚ğ•ÏX
+			//ä¸Šä½å±¤ã«å¯¾è±¡ã‚’å¤‰æ›´
 			flg[0] = rooting[flg[0]][0];
 		}
 	} while (flg[0] != -1);
-	//‚È‚©‚Á‚½‚çNo‚Æ•Ô“šAI—¹
+	//ãªã‹ã£ãŸã‚‰Noã¨è¿”ç­”ã€çµ‚äº†
 	cout << "No" << endl;
 	return 0;
 }

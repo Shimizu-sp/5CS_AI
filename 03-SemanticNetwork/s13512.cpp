@@ -1,15 +1,15 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 
 using namespace std;
 
-class seibutu{//¶•¨ƒNƒ‰ƒX‚ğ¶¬
+class seibutu{//ç”Ÿç‰©ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆ
 public:
-	string shubetsu ="¶•¨";
+	string shubetsu ="ç”Ÿç‰©";
 	string name;
-	string tokuchou1="ŒÄ‹z‚·‚é";
+	string tokuchou1="å‘¼å¸ã™ã‚‹";
 
-	seibutu(string s){//name‚É–¼‘O‚ğ‘ã“ü‚·‚éƒRƒ“ƒXƒgƒ‰ƒNƒ^
+	seibutu(string s){//nameã«åå‰ã‚’ä»£å…¥ã™ã‚‹ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 		name = s;
 	}
 	void tokuchouprint(){
@@ -17,60 +17,60 @@ public:
 		cout <<  "Yes" << endl;
 	}
 };
-class tori:public seibutu{//¶•¨ƒNƒ‰ƒX‚ğŒp³‚µ‚½’¹ƒNƒ‰ƒX‚ğ¶¬
+class tori:public seibutu{//ç”Ÿç‰©ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ãŸé³¥ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆ
 public:
-	string shurui = "’¹";
-	string tokuchou2 = "—ƒ‚ª‚ ‚é";
+	string shurui = "é³¥";
+	string tokuchou2 = "ç¿¼ãŒã‚ã‚‹";
 
 	tori(string s) :seibutu(s){}
 
 };
 
-class oumu :public tori{//’¹ƒNƒ‰ƒX‚ğŒp³‚µ‚½ƒI[ƒ€ƒNƒ‰ƒX‚ğ¶¬
+class oumu :public tori{//é³¥ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿ã—ãŸã‚ªãƒ¼ãƒ ã‚¯ãƒ©ã‚¹ã‚’ç”Ÿæˆ
 public:
-	string tokugi = "ƒ‚ƒmƒ}ƒl";
+	string tokugi = "ãƒ¢ãƒãƒãƒ";
 
 	oumu(string s) :tori(s){}
-	void tokugiha(){//“Á‹Z‚ğ¦‚·ƒƒ“ƒoŠÖ”
+	void tokugiha(){//ç‰¹æŠ€ã‚’ç¤ºã™ãƒ¡ãƒ³ãƒé–¢æ•°
 		cout << tokugi << endl;
 	}
-	void relationship(){//is-aŠÖŒW‚ğ¦‚·ƒƒ“ƒoŠÖ”
-		cout << name << "@is-a@" << shurui << "@is-a@" << shubetsu << endl;
-		cout << name << "‚Ì“Á‹Z‚Í" << tokugi << endl;
-		cout << shurui << "‚É‚Í" << tokuchou2 << endl;
-		cout << shubetsu << "‚Í" << tokuchou1 << endl;
+	void relationship(){//is-aé–¢ä¿‚ã‚’ç¤ºã™ãƒ¡ãƒ³ãƒé–¢æ•°
+		cout << name << "ã€€is-aã€€" << shurui << "ã€€is-aã€€" << shubetsu << endl;
+		cout << name << "ã®ç‰¹æŠ€ã¯" << tokugi << endl;
+		cout << shurui << "ã«ã¯" << tokuchou2 << endl;
+		cout << shubetsu << "ã¯" << tokuchou1 << endl;
 	}
 };
 
 int main(){
 	int flag = 0;
-	oumu baka("ƒI[ƒ€");
+	oumu baka("ã‚ªãƒ¼ãƒ ");
 
 	std::string temp;
-	cout << "¿–â1‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << endl;
+	cout << "è³ªå•1ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„" << endl;
 	cin >> temp;
 	while (flag == 0){
-		if (temp == "ƒI[ƒ€‚Ì“Á‹Z‚Í‚È‚ñ‚Å‚·‚©"){
+		if (temp == "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ãªã‚“ã§ã™ã‹"){
 			baka.tokugiha();
 			flag = 1;
 		}
 		else{
-			cout << "‚æ‚­•ª‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B‚à‚¤ˆê“x‚¨Šè‚¢‚µ‚Ü‚·B" << endl;
+			cout << "ã‚ˆãåˆ†ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚ã‚‚ã†ä¸€åº¦ãŠé¡˜ã„ã—ã¾ã™ã€‚" << endl;
 			cin >> temp;
 		}
 		
 	}
 	flag = 0;
-	cout << "¿–â2‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << endl;
+	cout << "è³ªå•2ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„" << endl;
 	cin >> temp;
 	while (flag == 0){
-		if (temp == "ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©"){
+		if (temp == "ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹"){
 			baka.relationship();
 			baka.tokuchouprint();
 			flag = 1;
 		}
 		else{
-			cout << "‚æ‚­•ª‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B‚à‚¤ˆê“x‚¨Šè‚¢‚µ‚Ü‚·B" << endl;
+			cout << "ã‚ˆãåˆ†ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚ã‚‚ã†ä¸€åº¦ãŠé¡˜ã„ã—ã¾ã™ã€‚" << endl;
 			cin >> temp;
 		}
 	}

@@ -1,100 +1,100 @@
-#include<stdio.h>
+﻿#include<stdio.h>
 #include<string.h>
 int main(void) {
-	int s = 0, t = 0, o = 0, k = 0, tu = 0, tk = 0, y = 0, n = 0, b = 0, d = 0, a = 0, lp = 0;//�ϐ��̒�`
-	char str1[] = "����";//���O�ݒ�̒P��̐ݒ�
-	char str2[] = "��";//���O�ݒ�̒P��̐ݒ�
-	char str3[] = "�I�[��";//���O�ݒ�̒P��̐ݒ�
-	char str4[] = "�ċz";//���O�ݒ�̒P��̐ݒ�
-	char str5[] = "��";//���O�ݒ�̒P��̐ݒ�
-	char str6[] = "���Z";//���O�ݒ�̒P��̐ݒ�
-	char str7[] = "����";//���O�ݒ�̒P��̐ݒ�
-	char str8[] = "�Ȃ�";//���O�ݒ�̒P��̐ݒ�
-	char str9[] = "����";//���O�ݒ�̒P��̐ݒ�
-	char str10[] = "���Ȃ�";//���O�ݒ�̒P��̐ݒ�
-	char str11[50];//���͂��镶���̒�`
+	int s = 0, t = 0, o = 0, k = 0, tu = 0, tk = 0, y = 0, n = 0, b = 0, d = 0, a = 0, lp = 0;//変数の定義
+	char str1[] = "生物";//事前設定の単語の設定
+	char str2[] = "鳥";//事前設定の単語の設定
+	char str3[] = "オーム";//事前設定の単語の設定
+	char str4[] = "呼吸";//事前設定の単語の設定
+	char str5[] = "翼";//事前設定の単語の設定
+	char str6[] = "特技";//事前設定の単語の設定
+	char str7[] = "ある";//事前設定の単語の設定
+	char str8[] = "ない";//事前設定の単語の設定
+	char str9[] = "する";//事前設定の単語の設定
+	char str10[] = "しない";//事前設定の単語の設定
+	char str11[50];//入力する文字の定義
 	while (b = !0) {
-		printf("���������͂��Ă�������\n");
-		scanf_s("%s", str11,50);//�����̓���
-		if (strstr(str11, str1) != NULL) {//�����ɐ��������邩�m�F
+		printf("文字列を入力してください\n");
+		scanf_s("%s", str11,50);//文字の入力
+		if (strstr(str11, str1) != NULL) {//文字に生物があるか確認
 			s = 1;
 			d = 1;
 		}
-		if (strstr(str11, str2) != NULL) {//�����ɒ������邩�m�F
+		if (strstr(str11, str2) != NULL) {//文字に鳥があるか確認
 			t = 1;
 			d = 1;
 		}
-		if (strstr(str11, str3) != NULL) {//�����ɃI�[�������邩�m�F
+		if (strstr(str11, str3) != NULL) {//文字にオームがあるか確認
 			o = 1;
 			d = 1;
 		}
-		if (strstr(str11, str4) != NULL) {//�����Ɍċz�����邩�m�F
+		if (strstr(str11, str4) != NULL) {//文字に呼吸があるか確認
 			k = 1;
 			lp = 1;
 		}
-		if (strstr(str11, str5) != NULL) {//�����ɗ������邩�m�F
+		if (strstr(str11, str5) != NULL) {//文字に翼があるか確認
 			tu = 1;
 			lp = 1;
 		}
-		if (strstr(str11, str6) != NULL) {//�����ɓ��Z�����邩�m�F
+		if (strstr(str11, str6) != NULL) {//文字に特技があるか確認
 			tk = 1;
 			lp = 1;
 		}
-		if (strstr(str11, str7) != NULL) {//�����ɂ��邪���邩�m�F
+		if (strstr(str11, str7) != NULL) {//文字にあるがあるか確認
 			y = 1;
 		}
-		if (strstr(str11, str8) != NULL) {//�����ɂȂ������邩�m�F
+		if (strstr(str11, str8) != NULL) {//文字にないがあるか確認
 			n = 1;
 		}
-		if (strstr(str11, str9) != NULL) {//�����ɂ��邪���邩�m�F
+		if (strstr(str11, str9) != NULL) {//文字にするがあるか確認
 			y = 1;
 		}
-		if (strstr(str11, str10) != NULL) {//�����ɂ��Ȃ������邩�m�F
+		if (strstr(str11, str10) != NULL) {//文字にしないがあるか確認
 			n = 1;
-		}if (d == 1) {//while�𔲂���
+		}if (d == 1) {//whileを抜ける
 			break;
-		}if (d = !1) {//�Ⴄ���������͂��ꂽ�ꍇ
-			printf("������x���肢���܂�");
+		}if (d = !1) {//違う文字が入力された場合
+			printf("もう一度お願いします");
 		}
 	}
 	while (b = !0) {
-		if (o == 1) {//�����ɃI�[��������ꍇ
-			if (tk == 1) {//�����ɓ��Z������ꍇ
+		if (o == 1) {//文字にオームがある場合
+			if (tk == 1) {//文字に特技がある場合
 				a = 1;
-				printf("�I�[���̓��Z�̓��m�}�l�ł���\n");
+				printf("オームの特技はモノマネである\n");
 				break;
 			}
-			else {//�����ɓ��Z���Ȃ��ꍇ
+			else {//文字に特技がない場合
 				t++;
 				o++;
-				printf("�I�[���͒��ł���\n");
+				printf("オームは鳥である\n");
 			}
 		}
-		if (t >= 1) {//�����ɒ�������ꍇ����ʂƂ��ČĂ΂ꂽ�ꍇ
-			if (tu == 1) {//�����ɗ�������ꍇ
+		if (t >= 1) {//文字に鳥がある場合か上位として呼ばれた場合
+			if (tu == 1) {//文字に翼がある場合
 				a = 2;
-				printf("���ɂ͗�������\n");
+				printf("鳥には翼がある\n");
 				break;
 			}
-			else {//�����ɗ����Ȃ��ꍇ
+			else {//文字に翼がない場合
 				s++;
-				printf("���͐����ł���\n");
+				printf("鳥は生物である\n");
 			}
 		}
-		if (s >= 1) {//�����ɐ���������ꍇ����ʂƂ��ČĂ΂ꂽ�ꍇ
-			if (k == 1) {//�����Ɍċz������ꍇ
+		if (s >= 1) {//文字に生物がある場合か上位として呼ばれた場合
+			if (k == 1) {//文字に呼吸がある場合
 				a = 3;
-				printf("�����͌ċz������\n");
+				printf("生物は呼吸をする\n");
 				break;
 			}
-			else {//�����Ɍċz���Ȃ��ꍇ
+			else {//文字に呼吸がない場合
 				a = 4;
 				break;
 			}
 		}
 	}
 	if (a == 1) {
-		printf("���m�}�l\n");
+		printf("モノマネ\n");
 	}
 	if (a == 2) {
 		if (y == 1) {

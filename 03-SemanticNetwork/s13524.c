@@ -1,20 +1,20 @@
-/*
-**�쐬�v���O����:�Ӗ��l�b�g���[�N
-**�쐬��:�K�����
-**�����:Visual Studio 2012
-**�g�����F�l�b�g���[�N�̃m�[�h�������1�̃m�[�h����Ȃ���q�m�[�h�̐��͖���
+﻿/*
+**作成プログラム:意味ネットワーク
+**作成者:桑原大輔
+**動作環境:Visual Studio 2012
+**拡張性：ネットワークのノード数および1つのノードからつながる子ノードの数は無限
 */
-//Visual Studio�p�ݒ藓
+//Visual Studio用設定欄
 #pragma warning(disable:4996)
 
-//�w�b�_�ǂݍ���
+//ヘッダ読み込み
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
-//�}�N����`
+//マクロ定義
 
-//�������i�[����ϐ��̃������m�ۂ��s���}�N���֐������̈Ӗ��́ux:�쐬���镶���������Network*�Ca:�����̐��Cb:�����ƃL�[���[�h�����܂�ŏ��̒l�v
+//特長を格納する変数のメモリ確保を行うマクロ関数引数の意味は「x:作成する文字列を持つNetwork*，a:特徴の数，b:特長とキーワードが収まる最小の値」
 #define STR(x,a,b) \
 	for(i=0;i<2;i++){\
 		if(NULL==((x)->forte[i]=(char**)malloc(sizeof(char*)*(a)))){\
@@ -33,23 +33,23 @@
 
 
 
-//�\���̒�`
+//構造体定義
 
-//�Ӗ��l�b�g���[�N�̊e�m�[�h�������\����
+//意味ネットワークの各ノードを示す構造体
 typedef struct def_Network{
-	char name[100];					//�m�[�h�̖��O���i�[����
-	char** forte[2];				//[1]�ɓ������C[0]�ɓ������q�b�g����L�[���[�h���i�[����
-	unsigned int char_length[2];	//forte�z��̑傫�����i�[����
+	char name[100];					//ノードの名前を格納する
+	char** forte[2];				//[1]に特長を，[0]に特徴がヒットするキーワードを格納する
+	unsigned int char_length[2];	//forte配列の大きさを格納する
 	unsigned int serch_flag;
-	struct def_Network** next;		//���w�̃l�b�g���[�N�ɂȂ���|�C���^
-	unsigned int next_num;			//�����ɂȂ����Ă���m�[�h�̐����i�[����
-	struct def_Network* back;		//�����̏�ʂ̃l�b�g���[�N�ɂȂ���|�C���^
+	struct def_Network** next;		//下層のネットワークにつながるポインタ
+	unsigned int next_num;			//自分につながっているノードの数を格納する
+	struct def_Network* back;		//自分の上位のネットワークにつながるポインタ
 } Network;
 
-//�֐��v���g�^�C�v��`
-int CreateNetwork(Network* net,size_t create_num);//�l�b�g���[�N���쐬����֐�
-int FreeNetwork(Network* head);//���ׂẴl�b�g���[�N�̃��������J������֐�
-Network* GoNext(Network* net);//���ɂǂ̃m�[�h��T������΂����̂��������֐�
+//関数プロトタイプ定義
+int CreateNetwork(Network* net,size_t create_num);//ネットワークを作成する関数
+int FreeNetwork(Network* head);//すべてのネットワークのメモリを開放する関数
+Network* GoNext(Network* net);//次にどのノードを探索すればいいのかを示す関数
 
 int main(){
 	Network* head;
@@ -59,16 +59,16 @@ int main(){
 	int flag=0;
 	char* str_head;
 
-	//���[�g�̃m�[�h���쐬
+	//ルートのノードを作成
 	if(NULL==(head=(Network*)malloc(sizeof(Network)))){
 		perror("malloc");
 		return -1;
 	}
 
-	//���݂̌����ʒu��p�Ɋi�[
+	//現在の検索位置をpに格納
 	p=head;
 
-	//���O�ɗ^����ꂽ�l�b�g���[�N���`
+	//事前に与えられたネットワークを定義
 	head->name[0]='\0';
 	head->serch_flag=1;
 
@@ -77,12 +77,12 @@ int main(){
 
 	CreateNetwork(p,1);
 	
-	//�m�[�h���̐ݒ���s��
+	//ノード毎の設定を行う
 	p=head;
 
 	STR(p,1,100);
-	sprintf(p->name,"����");
-	sprintf(p->forte[0][0],"�ċz");
+	sprintf(p->name,"生物");
+	sprintf(p->forte[0][0],"呼吸");
 	sprintf(p->forte[1][0],"YES");
 
 	p->back=NULL;
@@ -90,38 +90,38 @@ int main(){
 	p=p->next[0];
 
 	STR(p,1,100);
-	sprintf(p->name,"��");
-	sprintf(p->forte[0][0],"�H");
-	sprintf(p->forte[1][0],"�H������");
+	sprintf(p->name,"鳥");
+	sprintf(p->forte[0][0],"羽");
+	sprintf(p->forte[1][0],"羽がある");
 
 	p=p->next[0];
 
 	STR(p,1,100);
-	sprintf(p->name,"�I�[��");
-	sprintf(p->forte[0][0],"���Z");
-	sprintf(p->forte[1][0],"���m�}�l");
+	sprintf(p->name,"オーム");
+	sprintf(p->forte[0][0],"特技");
+	sprintf(p->forte[1][0],"モノマネ");
 
-	//����̎�t
-	printf("�������͂��Ă������� > ");
+	//質問の受付
+	printf("質問を入力してください > ");
 	scanf("%99s",question);
 	
 	question[99]='\0';
-	printf("���� : %s\n",question);
+	printf("質問 : %s\n",question);
 
 	while('\n'!=getchar());
 
-	//p�̏�����
+	//pの初期化
 	p=head;
 
-	//����Ώۂ̒T��
+	//質問対象の探索
 	while(1){
 		if(!flag){
-			//����Ώۂ̂��Ƃ������m�[�h�����邩������
+			//質問対象のことを示すノードがあるかを検索
 			if(NULL!=(str_head=strstr(question,p->name))){
 
-				//�����Ƀq�b�g�����͎̂�ꂩ���m�F
+				//検索にヒットしたのは主語かを確認
 				if(question==str_head){
-					//flag��ύX
+					//flagを変更
 					flag=1;
 					continue;
 				}
@@ -131,17 +131,17 @@ int main(){
 			if(NULL==(p=GoNext(head))) break;
 		}
 		else if(flag==1){
-			//�m�[�h���ɋ��߂Ă��铚�������݂��邩���m�F
+			//ノード内に求めている答えが存在するかを確認
 			for(i=0;i<p->char_length[0];i++){
 
-				 //�����ɑ��݂��邩���m�F
+				 //特長に存在するかを確認
 				if(NULL!=strstr(question,p->forte[0][i])){
-					printf("�� : %s\n",p->forte[1][i]);
+					printf("回答 : %s\n",p->forte[1][i]);
 					flag=2;
 					break;
-				}//�m�[�h�̖��O�ɑ��݂��邩���m�F	
-				else if(NULL!=(str_head=strstr(&question[1],p->name))){//&question[1]�Ƃ��Ă���̂́u�����́����H�v�Ƃ����₢�̂Ƃ��ɐ擪�́u�����v�Ɉ���������Ȃ��悤�ɂ��邽��
-					printf("�� : YES\n");
+				}//ノードの名前に存在するかを確認	
+				else if(NULL!=(str_head=strstr(&question[1],p->name))){//&question[1]としているのは「○○は△△？」という問いのときに先頭の「○○」に引っかからないようにするため
+					printf("回答 : YES\n");
 					flag=2;
 					break;
 
@@ -151,8 +151,8 @@ int main(){
 
 			if(flag==2) break;
 
-			//is-a�֌W�Ōp���֌W��T���������O��\��
-			printf("�o�� : %s is a ",p->name);
+			//is-a関係で継承関係を探索したログを表示
+			printf("経過 : %s is a ",p->name);
 			
 			if(p->back==NULL){
 				printf("NULL\n");
@@ -165,10 +165,10 @@ int main(){
 		
 	}
 
-	//������������Ȃ��ꍇ
-	if(flag==0 || flag==1) printf("�l�b�g���[�N��ɓ����͑��݂��܂���");
+	//答えが見つからない場合
+	if(flag==0 || flag==1) printf("ネットワーク上に答えは存在しません");
 
-	//�������̉��
+	//メモリの解放
 	FreeNetwork(head);
 
 	getchar();
@@ -177,19 +177,19 @@ int main(){
 
 }
 
-//�l�b�g���[�N�̃m�[�h���쐬����֐�
-//���� net:�쐬�����m�[�h��A�������錳, create_num:�쐬����m�[�h�̐�
+//ネットワークのノードを作成する関数
+//引数 net:作成したノードを連結させる元, create_num:作成するノードの数
 int CreateNetwork(Network* net,size_t create_num){
 	Network** p;
 	size_t i;
 
-	//��O����
+	//例外処理
 	if(create_num<=0){
 		perror("create_num");
 		return -1;
 	}
 	
-	//�������m��
+	//メモリ確保
 	if(NULL==(p=(Network**)malloc(sizeof(Network*)*create_num))){
 		perror("CreateNetwork->malloc");
 		return -2;
@@ -201,10 +201,10 @@ int CreateNetwork(Network* net,size_t create_num){
 		}
 	}
 
-	//net�̒l�ɕK�v�ȏ�����
+	//netの値に必要な情報を代入
 	net->next_num=(unsigned int)create_num;
 
-	//�쐬�����l�b�g���[�N�̒l��������
+	//作成したネットワークの値を初期化
 	for(i=0;i<create_num;i++){
 		net->next=p;
 
@@ -223,47 +223,47 @@ int CreateNetwork(Network* net,size_t create_num){
 	return 0;
 }
 
-//���ׂẴl�b�g���[�N�̃��������J������֐�
-//���� head:�l�b�g���[�N�̃m�[�h�������|�C���^
+//すべてのネットワークのメモリを開放する関数
+//引数 head:ネットワークのノードを示すポインタ
 int FreeNetwork(Network* head){
 	int i;
 
-	//������̉��
+	//文字列の解放
 	for(i=0;i<head->char_length[0];i++) free(head->forte[0][i]);
 	for(i=0;i<head->char_length[0];i++) free(head->forte[1][i]);
 	free(head->forte[0]);
 	free(head->forte[1]);
 
-	//������艺�̃m�[�h�����
+	//自分より下のノードを解放
 	if(head->next!=NULL) for(i=0;i<head->next_num;i++) FreeNetwork(head->next[i]);
 
-	//���M�����
+	//自信を解放
 	free(head);
 
 	return 0;
 
 }
 
-//���ɂǂ̃m�[�h��T������΂����̂��������ċN�֐�
-//�S�T���ŒT�����Ă��Ȃ����̂�T��
-//���� head:�l�b�g���[�N�̃m�[�h�������|�C���^
+//次にどのノードを探索すればいいのかを示す再起関数
+//全探索で探索していないものを探す
+//引数 head:ネットワークのノードを示すポインタ
 Network* GoNext(Network* head){
 	unsigned int i;
 	Network* ret=NULL;
 
-	//���g�����T���ł���Ύ�����Ԃ�
+	//自身が未探索であれば自分を返す
 	if(head->serch_flag==0){
 		head->serch_flag=1;
 		return head;
 	}
 
-	//next==NULL�Ȃ��NULL��Ԃ�
+	//next==NULLならばNULLを返す
 	if(head->next==NULL) return NULL;
 
-	//���g�����T���łȂ��ꍇ�C���̑w��T������
+	//自身が未探索でない場合，次の層を探索する
 	for(i=0;i<head->next_num;i++) if(NULL!=(ret=GoNext(head->next[i]))) break;
 	
-	//���w�̒T������߂��Ă����߂�l��Ԃ�
+	//下層の探索から戻ってきた戻り値を返す
 	return ret;
 
 }

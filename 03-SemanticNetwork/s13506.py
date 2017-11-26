@@ -1,4 +1,4 @@
-# 生物の概念
+﻿# 生物の概念
 class Creature():
     # メンバの初期化
     def __init__( self ):

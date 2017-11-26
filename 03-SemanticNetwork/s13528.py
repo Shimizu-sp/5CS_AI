@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
 class Creature(object): #生物クラス

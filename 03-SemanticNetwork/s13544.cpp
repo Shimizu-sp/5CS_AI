@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<string.h>
 
 #pragma warning(disable : 4996)
@@ -6,19 +6,19 @@
 class creature{
 public:
 	int attribute(char *data_q){
-		char data[] = "ŒÄ‹z‚·‚é";
+		char data[] = "å‘¼å¸ã™ã‚‹";
 		if (data_q == NULL){
 			printf("answer:%s\n", data);
 		}
 		else{
-			printf("‘æOŠK‘wF");
+			printf("ç¬¬ä¸‰éšå±¤ï¼š");
 			if (*data_q == *data){
 				
 				printf("YES\n");
 				return 0;
 			}
 			else{
-				printf("•s–¾\n");
+				printf("ä¸æ˜\n");
 				return 1;
 			}
 		}
@@ -28,18 +28,18 @@ public:
 class bird :public creature{
 public:
 	int Attribute(char *data_q){
-		char data[] = "—ƒ‚ª‚ ‚é";
+		char data[] = "ç¿¼ãŒã‚ã‚‹";
 		if (data_q == NULL){
 			printf("answer:%s\n", data);
 		}
 		else{
-			printf("‘æ“ñŠK‘wF");
+			printf("ç¬¬äºŒéšå±¤ï¼š");
 			if (*data_q == *data){
 				printf("YES\n");
 				return 0;
 			}
 			else{
-				printf("•s–¾\n");
+				printf("ä¸æ˜\n");
 				return 1;
 			}
 		}
@@ -49,18 +49,18 @@ public:
 class parrot :public bird{
 public:
 	int skill(char *data_q){
-		char data[] = "ƒ‚ƒmƒ}ƒl";
+		char data[] = "ãƒ¢ãƒãƒãƒ";
 		if (data_q == NULL){
 			printf("answer:%s\n", data);
 		}
 		else{
-			printf("‘æˆêŠK‘wF");
+			printf("ç¬¬ä¸€éšå±¤ï¼š");
 			if (*data_q == *data){
 				printf("YES\n");
 				return 0;
 			}
 			else{
-				printf("•s–¾\n");
+				printf("ä¸æ˜\n");
 				return 1;
 			}
 		}
@@ -75,35 +75,35 @@ int main(){
 	char *data_q = NULL;
 	int ck;
 
-	printf("¿–â‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
+	printf("è³ªå•ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„\n");
 	scanf("%s", question);
 
-	NM1 = strstr(question, "ƒI[ƒ€");
-	NM2 = strstr(question, "’¹");
-	NM3 = strstr(question, "¶•¨");
+	NM1 = strstr(question, "ã‚ªãƒ¼ãƒ ");
+	NM2 = strstr(question, "é³¥");
+	NM3 = strstr(question, "ç”Ÿç‰©");
 
 	if (NM1 == NULL){
 		if (NM2 == NULL){
 			if (NM3 == NULL){
-				printf("‚í‚©‚è‚Ü‚¹‚ñ\n");
+				printf("ã‚ã‹ã‚Šã¾ã›ã‚“\n");
 			}
 		}
 	}
 
 	if (NM1 != NULL){
 		parrot parrot;
-		NM1 = strstr(NM1, "“Á‹Z");
+		NM1 = strstr(NM1, "ç‰¹æŠ€");
 		if (NM1 != NULL){
-			NM1 = strstr(NM1, "‰½");
+			NM1 = strstr(NM1, "ä½•");
 			if (NM1 != NULL){
 				parrot.skill(data_q);
 			}
 		}
 		
-		NM1 = strstr(question, "ŒÄ‹z");
+		NM1 = strstr(question, "å‘¼å¸");
 		if (NM1 != NULL){
-			data_q = "ŒÄ‹z‚·‚é";
-			NM1 = strstr(NM1, "‚©");
+			data_q = "å‘¼å¸ã™ã‚‹";
+			NM1 = strstr(NM1, "ã‹");
 			if (NM1 != NULL){
 				ck = parrot.skill(data_q);
 				if (ck == 1){

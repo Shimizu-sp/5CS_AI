@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace _3syume
 {
-    class ikimono //¶•¨ƒNƒ‰ƒX
+    class ikimono //ç”Ÿç‰©ã‚¯ãƒ©ã‚¹
     {
-        public bool ikimonoclass; //¶•¨ƒNƒ‰ƒX‚Å‚ ‚é‚±‚Æ‚ğŠm‚©‚ß‚éƒƒ“ƒo•Ï”
-        public string ikimono_name; //¶•¨‚Ì–¼‘O‚ğ“ü‚ê‚éƒƒ“ƒo•Ï”
-        public bool kokyuu = true; //ŒÄ‹z‚·‚é‚©‚Ç‚¤‚©‚ğŠm‚©‚ß‚éƒƒ“ƒo•Ï”
+        public bool ikimonoclass; //ç”Ÿç‰©ã‚¯ãƒ©ã‚¹ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºã‹ã‚ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
+        public string ikimono_name; //ç”Ÿç‰©ã®åå‰ã‚’å…¥ã‚Œã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
+        public bool kokyuu = true; //å‘¼å¸ã™ã‚‹ã‹ã©ã†ã‹ã‚’ç¢ºã‹ã‚ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
     }
 
-    class tori : ikimono@//’¹ƒNƒ‰ƒX(¶•¨ƒNƒ‰ƒX‚ğŒp³)
+    class tori : ikimonoã€€//é³¥ã‚¯ãƒ©ã‚¹(ç”Ÿç‰©ã‚¯ãƒ©ã‚¹ã‚’ç¶™æ‰¿)
     {
-        public string tori_name; //’¹‚Ìí—Ş‚ğŠi”[‚·‚éƒƒ“ƒo•Ï”
-        public bool tsubasa = true; //’¹‚É—ƒ‚ª‚ ‚é‚©‚ğŠm‚©‚ß‚éƒƒ“ƒo•Ï”
-        public string tokugi; //’¹‚Ì“Á‹Z‚ğŠi”[‚·‚éƒƒ“ƒo•Ï”
+        public string tori_name; //é³¥ã®ç¨®é¡ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
+        public bool tsubasa = true; //é³¥ã«ç¿¼ãŒã‚ã‚‹ã‹ã‚’ç¢ºã‹ã‚ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
+        public string tokugi; //é³¥ã®ç‰¹æŠ€ã‚’æ ¼ç´ã™ã‚‹ãƒ¡ãƒ³ãƒå¤‰æ•°
 
     }
 
@@ -25,33 +25,33 @@ namespace _3syume
     {
         static void Main(string[] args)
         {
-            int select = 0; //‘I‘ğˆ‚ğŠi”[‚·‚é•Ï”
-            tori t1 = new tori(); //ƒIƒuƒWƒFƒNƒgì¬
+            int select = 0; //é¸æŠè‚¢ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+            tori t1 = new tori(); //ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆä½œæˆ
             
-            t1.tori_name = "ƒIƒEƒ€"; //‘®«‚ğ•t—^
-            t1.ikimono_name = "’¹"; //‘®«‚ğ•t—^
-            t1.tokugi = "ƒ‚ƒmƒ}ƒl"; //‘®«‚ğ•t—^
-            t1.ikimonoclass = true; //‘®«‚ğ•t—^
+            t1.tori_name = "ã‚ªã‚¦ãƒ "; //å±æ€§ã‚’ä»˜ä¸
+            t1.ikimono_name = "é³¥"; //å±æ€§ã‚’ä»˜ä¸
+            t1.tokugi = "ãƒ¢ãƒãƒãƒ"; //å±æ€§ã‚’ä»˜ä¸
+            t1.ikimonoclass = true; //å±æ€§ã‚’ä»˜ä¸
 
-            Console.WriteLine("s‚¢‚½‚¢¿–â‚ğ‘I‚ñ‚Å‚­‚¾‚³‚¢".ToString()); //‘I‘ğˆ‚ğ’ñ¦
-            Console.WriteLine("1 : ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©H".ToString());
-            Console.WriteLine("2 : ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©H".ToString());
-            select = int.Parse(System.Console.ReadLine()); //‘I‘ğˆ‚ğ“ü—Í
+            Console.WriteLine("è¡Œã„ãŸã„è³ªå•ã‚’é¸ã‚“ã§ãã ã•ã„".ToString()); //é¸æŠè‚¢ã‚’æç¤º
+            Console.WriteLine("1 : ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹ï¼Ÿ".ToString());
+            Console.WriteLine("2 : ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹ï¼Ÿ".ToString());
+            select = int.Parse(System.Console.ReadLine()); //é¸æŠè‚¢ã‚’å…¥åŠ›
 
             if (select == 1) {
-                Console.WriteLine("ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©H".ToString());
-                Console.WriteLine("ƒI[ƒ€‚Ì“Á‹Z‚Í " + t1.tokugi.ToString());
+                Console.WriteLine("ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹ï¼Ÿ".ToString());
+                Console.WriteLine("ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ " + t1.tokugi.ToString());
             }
             else if (select == 2)
             {
-                Console.WriteLine("ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©H".ToString()); //is-aŠÖŒW‚ğ—p‚¢‚½Ø–¾‚ğ‚·‚é
-                Console.WriteLine("‚Ü‚¸ƒI[ƒ€‚Í¶•¨‚©H@=@" + t1.ikimonoclass.ToString());
-                Console.WriteLine("¶•¨‚ÍŒÄ‹z‚ğ‚·‚é‚©H@=@" + t1.kokyuu.ToString());
-                Console.WriteLine("‚æ‚Á‚ÄƒI[ƒ€‚ÍŒÄ‹z‚ğ‚·‚é".ToString()); //is-aŠÖŒW‚ğ—p‚¢‚½Ø–¾I—¹
+                Console.WriteLine("ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹ï¼Ÿ".ToString()); //is-aé–¢ä¿‚ã‚’ç”¨ã„ãŸè¨¼æ˜ã‚’ã™ã‚‹
+                Console.WriteLine("ã¾ãšã‚ªãƒ¼ãƒ ã¯ç”Ÿç‰©ã‹ï¼Ÿã€€=ã€€" + t1.ikimonoclass.ToString());
+                Console.WriteLine("ç”Ÿç‰©ã¯å‘¼å¸ã‚’ã™ã‚‹ã‹ï¼Ÿã€€=ã€€" + t1.kokyuu.ToString());
+                Console.WriteLine("ã‚ˆã£ã¦ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã‚’ã™ã‚‹".ToString()); //is-aé–¢ä¿‚ã‚’ç”¨ã„ãŸè¨¼æ˜çµ‚äº†
             }
             else 
             {
-                Console.WriteLine("ƒGƒ‰[".ToString());
+                Console.WriteLine("ã‚¨ãƒ©ãƒ¼".ToString());
             }
         }
     }

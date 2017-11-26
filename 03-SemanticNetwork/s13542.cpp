@@ -1,33 +1,33 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include <string.h>
 
 int main(void)
 {
-	char concept[3][100] = {{"¶•¨"},{"’¹"},{"ƒI[ƒ€"}};
-	char    prop[3][100] = {{"ŒÄ‹z"},{"—ƒ"},{"ƒ‚ƒmƒ}ƒl"}};
+	char concept[3][100] = {{"ç”Ÿç‰©"},{"é³¥"},{"ã‚ªãƒ¼ãƒ "}};
+	char    prop[3][100] = {{"å‘¼å¸"},{"ç¿¼"},{"ãƒ¢ãƒãƒãƒ"}};
 
 	int loop, a = 0, b = 0;
 
-	printf("ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©\n\n");
+	printf("ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹\n\n");
 	for(loop = 0; loop<3; loop++)
 	{
-		if(!strcmp(concept[loop],"ƒI[ƒ€"))
+		if(!strcmp(concept[loop],"ã‚ªãƒ¼ãƒ "))
 		{
-			printf("%s‚Ì“Á‹Z‚Í%s‚Å‚·\n\n",concept[loop],prop[loop]);
+			printf("%sã®ç‰¹æŠ€ã¯%sã§ã™\n\n",concept[loop],prop[loop]);
 		}
 	}
 
-	printf("ƒI[ƒ€‚ÍŒÄ‹z‚µ‚Ü‚·‚©\n\n");
+	printf("ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã—ã¾ã™ã‹\n\n");
 	for(loop = 0; loop<3; loop++)
 	{
-		//ŒÄ‹z‚ª‘¶İ‚·‚é‚Æ‚«a‚ğ‚P‚É
-		if(!strcmp(prop[loop],"ŒÄ‹z"))
+		//å‘¼å¸ãŒå­˜åœ¨ã™ã‚‹ã¨ãaã‚’ï¼‘ã«
+		if(!strcmp(prop[loop],"å‘¼å¸"))
 		{
 			a++;
 		}
 
-		//Œp³æ‚ÉƒI[ƒ€‚ª‘¶İ‚·‚é‚Æ‚«b‚ğ‚P‚É
-		if(!strcmp(concept[loop],"ƒI[ƒ€"))
+		//ç¶™æ‰¿å…ˆã«ã‚ªãƒ¼ãƒ ãŒå­˜åœ¨ã™ã‚‹ã¨ãbã‚’ï¼‘ã«
+		if(!strcmp(concept[loop],"ã‚ªãƒ¼ãƒ "))
 		{
 			b++;
 		}

@@ -1,29 +1,29 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
 main() {
 
 	int a;
 	int i;
-	char str1[256];		//Ši”[
-	char str2[] = "ƒIƒEƒ€";
-	char str3[] = "“Á‹Z";
-	char str4[] = "ŒÄ‹z‚·‚é";
-	char str5[] = "’¹";
-	char str6[] = "¶•¨";
+	char str1[256];		//æ ¼ç´
+	char str2[] = "ã‚ªã‚¦ãƒ ";
+	char str3[] = "ç‰¹æŠ€";
+	char str4[] = "å‘¼å¸ã™ã‚‹";
+	char str5[] = "é³¥";
+	char str6[] = "ç”Ÿç‰©";
 
-	printf("•¶š‚Ì“ü—Í => ");
-	gets(str1);		//•¶š—ñ‚Ì“ü—Í
+	printf("æ–‡å­—ã®å…¥åŠ› => ");
+	gets(str1);		//æ–‡å­—åˆ—ã®å…¥åŠ›
 
-	printf("isaŠÖŒW‚Í1AhasaŠÖŒW‚Í2 => ");
-	scanf("%d", &i);	//”»’è
+	printf("isaé–¢ä¿‚ã¯1ã€hasaé–¢ä¿‚ã¯2 => ");
+	scanf("%d", &i);	//åˆ¤å®š
 
 
-	if (strstr(str1, str2) != NULL) {	//ƒIƒEƒ€‚ª“ü—Í‚³‚ê‚Ä‚¢‚ê‚Îa‚É1‚ğ‘ã“ü
+	if (strstr(str1, str2) != NULL) {	//ã‚ªã‚¦ãƒ ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚Œã°aã«1ã‚’ä»£å…¥
 		a = 1;
-	}if (strstr(str1, str5) != NULL) {	//’¹‚ª“ü—Í‚³‚ê‚Ä‚¢‚ê‚Îa‚É2‚ğ‘ã“ü
+	}if (strstr(str1, str5) != NULL) {	//é³¥ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚Œã°aã«2ã‚’ä»£å…¥
 		a = 2;
-	}if (strstr(str1, str6) != NULL) {	//¶•¨‚ª“ü—Í‚³‚ê‚Ä‚¢‚ê‚Îa‚É3‚ğ‘ã“ü
+	}if (strstr(str1, str6) != NULL) {	//ç”Ÿç‰©ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã‚Œã°aã«3ã‚’ä»£å…¥
 		a = 3;
 	
 	}
@@ -32,7 +32,7 @@ main() {
 		if (strstr(str1, str2) != NULL) {
 
 			if (strstr(str1, str3) != NULL) {
-				printf("ƒ‚ƒmƒ}ƒl\n");
+				printf("ãƒ¢ãƒãƒãƒ\n");
 			}
 		}
 	}
@@ -43,13 +43,13 @@ main() {
 		switch (a){
 			break;
 		case 1:
-			printf("isaŠÖŒW‚Í\n%s\n«\n%s\n«\n%s\n", str6, str5, str2);
+			printf("isaé–¢ä¿‚ã¯\n%s\nâ†“\n%s\nâ†“\n%s\n", str6, str5, str2);
 			break;
 		case 2:
-			printf("isaŠÖŒW‚Í\n%s\n«\n%s\n", str6, str5);
+			printf("isaé–¢ä¿‚ã¯\n%s\nâ†“\n%s\n", str6, str5);
 			break;
 		case 3:
-			printf("isaŠÖŒW‚Í\n%s\n", str6);
+			printf("isaé–¢ä¿‚ã¯\n%s\n", str6);
 			break;
 		default:
 			printf("ERROR\n");

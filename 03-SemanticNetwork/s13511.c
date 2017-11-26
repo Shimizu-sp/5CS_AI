@@ -1,29 +1,29 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<string.h>
 
 main(){
 
-	char array_name_1[100]; //”z—ñ–¼•Û‘¶—p
+	char array_name_1[100]; //é…åˆ—åä¿å­˜ç”¨
 	char array_name_2[100];
 	char array_name_3[100];
 	char array_name_4[100];
 	char array_name_5[100];
 
-	//is-aŠÖŒW
-	char is_a_1[50] = "¶•¨";
-	char is_a_2[50] = "’¹"; //¶•¨‚ÌŠT”O
-	char is_a_3[50] = "ƒI[ƒ€"; //’¹‚ÌŠT”O@
+	//is-aé–¢ä¿‚
+	char is_a_1[50] = "ç”Ÿç‰©";
+	char is_a_2[50] = "é³¥"; //ç”Ÿç‰©ã®æ¦‚å¿µ
+	char is_a_3[50] = "ã‚ªãƒ¼ãƒ "; //é³¥ã®æ¦‚å¿µã€€
 
-	//‘®«
-	char attribute_1[50] = "ŒÄ‹z" ; //¶•¨‚Ì‘®«
-	char attribute_2[50] = "—ƒ‚ª‚ ‚é"; //’¹‚Ì‘®«
-	char attribute_3[50] = "ƒ‚ƒmƒ}ƒl"; //ƒI[ƒ€‚Ì‘®«
-	char attribute_name3[50] = "“Á‹Z"; //ƒI[ƒ€‚Ì‘®«(Ú×)
+	//å±æ€§
+	char attribute_1[50] = "å‘¼å¸" ; //ç”Ÿç‰©ã®å±æ€§
+	char attribute_2[50] = "ç¿¼ãŒã‚ã‚‹"; //é³¥ã®å±æ€§
+	char attribute_3[50] = "ãƒ¢ãƒãƒãƒ"; //ã‚ªãƒ¼ãƒ ã®å±æ€§
+	char attribute_name3[50] = "ç‰¹æŠ€"; //ã‚ªãƒ¼ãƒ ã®å±æ€§(è©³ç´°)
 
-	//¿–â—p”z—ñ
-	char question_1[30] = "‰½‚Å‚·‚©";
-	char question_2[30] = "‚©";
+	//è³ªå•ç”¨é…åˆ—
+	char question_1[30] = "ä½•ã§ã™ã‹";
+	char question_2[30] = "ã‹";
 
 	int flag1,flag2,flag3;
 	int trueth = 0;
@@ -33,14 +33,14 @@ main(){
 
 	flag1 = 0; flag2 = 0; flag3 = 0; trueth = 0;
 
-	printf("\nƒƒjƒ…[(”š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢)\n1:¿–â“ü—Í\n2:I—¹\n\n");
+	printf("\nãƒ¡ãƒ‹ãƒ¥ãƒ¼(æ•°å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„)\n1:è³ªå•å…¥åŠ›\n2:çµ‚äº†\n\n");
 
 	scanf("%d",&input);
     
 	if(input == 1){
 
-	printf("\n ¿–â‚Ì’PŒêŠÔ‚É”¼ŠpƒXƒy[ƒX‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢\n");
-	printf(" ƒŒƒ|[ƒg“à‚Ì¿–â•¶‚ğƒRƒsƒy‚µ‚Ä’¸‚¯‚ê‚Î“®‚«‚Ü‚·\n\n");
+	printf("\n è³ªå•ã®å˜èªé–“ã«åŠè§’ã‚¹ãƒšãƒ¼ã‚¹ã‚’å…¥ã‚Œã¦ãã ã•ã„\n");
+	printf(" ãƒ¬ãƒãƒ¼ãƒˆå†…ã®è³ªå•æ–‡ã‚’ã‚³ãƒ”ãƒšã—ã¦é ‚ã‘ã‚Œã°å‹•ãã¾ã™\n\n");
 	printf("===========================================================\n");
 	printf("Q:");
 
@@ -50,31 +50,31 @@ main(){
 	scanf("%s", array_name_4);
 	scanf("%s", array_name_5);
 
-	//¿–â”»’è===============================================================
+	//è³ªå•åˆ¤å®š===============================================================
 
-	//is-aŠÖŒW”»’ès
-	if(strcmp(array_name_1,is_a_1) == 0){ //“ü—Í‚³‚ê‚½is-a‚ªu¶•¨v‚Å‚ ‚é‚©H
+	//is-aé–¢ä¿‚åˆ¤å®šs
+	if(strcmp(array_name_1,is_a_1) == 0){ //å…¥åŠ›ã•ã‚ŒãŸis-aãŒã€Œç”Ÿç‰©ã€ã§ã‚ã‚‹ã‹ï¼Ÿ
 		flag1++;
-		printf("\n¶•¨@¨");
+		printf("\nç”Ÿç‰©ã€€â†’");
 
-	}else if(strcmp(array_name_1,is_a_2) == 0){ //“ü—Í‚³‚ê‚½is-a‚ªu’¹v‚Å‚ ‚é‚©H
+	}else if(strcmp(array_name_1,is_a_2) == 0){ //å…¥åŠ›ã•ã‚ŒãŸis-aãŒã€Œé³¥ã€ã§ã‚ã‚‹ã‹ï¼Ÿ
 		flag2++;
-		printf("\n’¹@¨");
+		printf("\né³¥ã€€â†’");
 	
-	}else if(strcmp(array_name_1,is_a_3) == 0){ //“ü—Í‚³‚ê‚½is-a‚ªuƒI[ƒ€v‚Å‚ ‚é‚©H
+	}else if(strcmp(array_name_1,is_a_3) == 0){ //å…¥åŠ›ã•ã‚ŒãŸis-aãŒã€Œã‚ªãƒ¼ãƒ ã€ã§ã‚ã‚‹ã‹ï¼Ÿ
 		flag3++;
-		printf("\nƒI[ƒ€@¨");
+		printf("\nã‚ªãƒ¼ãƒ ã€€â†’");
 	}
 
-	//‘®«”»’è
+	//å±æ€§åˆ¤å®š
 
-	//ƒI[ƒ€=======
+	//ã‚ªãƒ¼ãƒ =======
 	if(flag3 == 1){
 		if(strcmp(array_name_3,attribute_name3) == 0){
 			
-			printf(" (“Á‹Z)ƒ‚ƒmƒ}ƒl");
+			printf(" (ç‰¹æŠ€)ãƒ¢ãƒãƒãƒ");
 
-			//¿–âŒê”»’è
+			//è³ªå•èªåˆ¤å®š
 	        if(strcmp(array_name_5,question_1) == 0){
 			  printf("\nA:%s\n",attribute_3);
 	        }else if(strcmp(array_name_5,question_2) == 0){
@@ -82,49 +82,49 @@ main(){
 		}
 	    }else if(strcmp(array_name_3,attribute_2) == 0){
 			
-           printf(" ’¹ ¨@—ƒ‚ª‚ ‚é");
+           printf(" é³¥ â†’ã€€ç¿¼ãŒã‚ã‚‹");
 
-		   //¿–âŒê”»’è
+		   //è³ªå•èªåˆ¤å®š
 	       if(strcmp(array_name_5,question_2) == 0){
 			  printf("\nA:YES\n");
 		}
 		}else if(strcmp(array_name_3,attribute_1) == 0){
 
-			printf(" ’¹ ¨@¶•¨@¨@ŒÄ‹z‚·‚é");
+			printf(" é³¥ â†’ã€€ç”Ÿç‰©ã€€â†’ã€€å‘¼å¸ã™ã‚‹");
 
-		   //¿–âŒê”»’è
+		   //è³ªå•èªåˆ¤å®š
 	       if(strcmp(array_name_5,question_2) == 0){
 			  printf("\nA:YES\n");
 		}
 	}}
 
-	//’¹=========
+	//é³¥=========
 	if(flag2 == 1){
 		if(strcmp(array_name_3,attribute_2) == 0){
 
-			printf(" —ƒ‚ª‚ ‚é");
+			printf(" ç¿¼ãŒã‚ã‚‹");
 
-		   //¿–âŒê”»’è
+		   //è³ªå•èªåˆ¤å®š
 	       if(strcmp(array_name_5,question_2) == 0){
 			  printf("\nA:YES\n");
 		}
 		}else if(strcmp(array_name_3,attribute_1) == 0){
 			
-			printf(" ¶•¨@¨@ŒÄ‹z‚·‚é");
+			printf(" ç”Ÿç‰©ã€€â†’ã€€å‘¼å¸ã™ã‚‹");
 
-		   //¿–âŒê”»’è
+		   //è³ªå•èªåˆ¤å®š
 		   if(strcmp(array_name_5,question_2) == 0){
 			  printf("\nA:YES\n");
 		   }
 	}}
 
-	//¶•¨=========
+	//ç”Ÿç‰©=========
     if(flag1 == 1){
 		if(strcmp(array_name_3,attribute_1) == 0){
 			
-		   printf(" ŒÄ‹z‚·‚é");
+		   printf(" å‘¼å¸ã™ã‚‹");
 
-		   //¿–âŒê”»’è
+		   //è³ªå•èªåˆ¤å®š
 		   if(strcmp(array_name_5,question_2) == 0){
 			  printf("\nA:YES\n");
 		   }

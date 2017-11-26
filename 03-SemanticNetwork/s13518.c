@@ -1,45 +1,45 @@
-#include<stdio.h>
+﻿#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 
 
 main(){
-	int flag=0;//is-a�֌W���g����
-	char q1[25] ="�I�[���̓��Z�͂Ȃ�ł���";//���1
-	char q2[25] ="�I�[���͌ċz����";//���2
+	int flag=0;//is-a関係を使う時
+	char q1[25] ="オームの特技はなんですか";//問題1
+	char q2[25] ="オームは呼吸する";//問題2
 
-//�Ӗ��l�b�g���[�N�̊e�������쐬����
-	char net1[25] = "�ċz����";//�����͌ċz����
-	char net2_1[25] = "����";//���͐����ł���
-	char net2_2[25] = "��������";//���ɂ͗�������
-	char net3_1[25] = "��";//�I�[���͂Ƃ�ł���
-	char net3_2[25] = "���m�}�l";//�I�[���̑�������
+//意味ネットワークの各属性を作成する
+	char net1[25] = "呼吸する";//生物は呼吸する
+	char net2_1[25] = "生物";//鳥は生物である
+	char net2_2[25] = "翼がある";//鳥には翼がある
+	char net3_1[25] = "鳥";//オームはとりである
+	char net3_2[25] = "モノマネ";//オームの属性入れ
 
-	printf("���P�̏ꍇ\n");
-	if (strstr(q1, "�I�[��") != NULL){//�������̒��ɃI�[������������
-		//���������Ɂu���Z�v����������A���m�}�l�ƕԂ�
-		if (strstr(q1, "���Z") != NULL){
-			printf("���m�}�l\n");
+	printf("問題１の場合\n");
+	if (strstr(q1, "オーム") != NULL){//もし問題の中にオームがあったら
+		//もし問題内に「特技」があったら、モノマネと返す
+		if (strstr(q1, "特技") != NULL){
+			printf("モノマネ\n");
 			flag = 1;
 		}
-		//�������̒��Ɂu���v���������璹�ƕԂ�
-		else if (strstr(q1, "��") != NULL) {
-			printf("��\n");
+		//もし問題の中に「鳥」があったら鳥と返す
+		else if (strstr(q1, "鳥") != NULL) {
+			printf("鳥\n");
 			flag = 1;
 		}
-		//������L�̓�ɓ��Ă͂܂�Ȃ��̂Ȃ��ʊT�O�Ɉړ�����
+		//もし上記の二つに当てはまらないのなら上位概念に移動する
 		else if (flag==0) {
-			printf("�I�[���̑������ɂ͔��f�ł�����̂����������̂ŏ�ʊT�O�Ɉړ�����\n");
-			//���������Ɂu���v����������A��������ƕԂ�
-			if (strstr(q1, "��") != NULL) {
-				printf("��������\n");
+			printf("オームの属性内には判断できるものが無かったので上位概念に移動する\n");
+			//もし問題内に「翼」があったら、翼があると返す
+			if (strstr(q1, "翼") != NULL) {
+				printf("翼がある\n");
 				flag = 1;
 			}
-			//������L�̂ЂƂ̑����ɂ�����Ȃ������ꍇ�͂���ɏ�ʊT�O�ւƈړ�����
+			//もし上記のひとつの属性にも入らなかった場合はさらに上位概念へと移動する
 			else if (flag==0) {
-				printf("���̑������ɂ͔��f�ł�����̂����������̂ŏ�ʊT�O�Ɉړ�����\n");
-				//���������Ɂu�ċz�v����������A�ċz����ƕԂ�
-				if (strstr(q1, "�ċz") != NULL) {
+				printf("鳥の属性内には判断できるものが無かったので上位概念に移動する\n");
+				//もし問題内に「呼吸」があったら、呼吸すると返す
+				if (strstr(q1, "呼吸") != NULL) {
 					printf("Yes\n");
 					flag = 1;
 				}
@@ -49,31 +49,31 @@ main(){
 
 	flag = 0;
 
-	printf("���2�̏ꍇ\n");
-	if (strstr(q2, "�I�[��") != NULL) {//�������̒��ɃI�[������������
-									//���������Ɂu���Z�v����������A���m�}�l�ƕԂ�
-		if (strstr(q2, "���Z") != NULL) {
-			printf("���m�}�l\n");
+	printf("問題2の場合\n");
+	if (strstr(q2, "オーム") != NULL) {//もし問題の中にオームがあったら
+									//もし問題内に「特技」があったら、モノマネと返す
+		if (strstr(q2, "特技") != NULL) {
+			printf("モノマネ\n");
 			flag = 1;
 		}
-		//�������̒��Ɂu���v���������璹�ƕԂ�
-		else if (strstr(q2, "��") != NULL) {
-			printf("��\n");
+		//もし問題の中に「鳥」があったら鳥と返す
+		else if (strstr(q2, "鳥") != NULL) {
+			printf("鳥\n");
 			flag = 1;
 		}
-		//������L�̓�ɓ��Ă͂܂�Ȃ��̂Ȃ��ʊT�O�Ɉړ�����
+		//もし上記の二つに当てはまらないのなら上位概念に移動する
 		else if (flag == 0) {
-			printf("�I�[���̑������ɂ͔��f�ł�����̂����������̂ŏ�ʊT�O�Ɉړ�����\n");
-			//���������Ɂu���v����������A��������ƕԂ�
-			if (strstr(q2, "��") != NULL) {
-				printf("��������\n");
+			printf("オームの属性内には判断できるものが無かったので上位概念に移動する\n");
+			//もし問題内に「翼」があったら、翼があると返す
+			if (strstr(q2, "翼") != NULL) {
+				printf("翼がある\n");
 				flag = 1;
 			}
-			//������L�̂ЂƂ̑����ɂ�����Ȃ������ꍇ�͂���ɏ�ʊT�O�ւƈړ�����
+			//もし上記のひとつの属性にも入らなかった場合はさらに上位概念へと移動する
 			else if (flag == 0) {
-				printf("���̑������ɂ͔��f�ł�����̂����������̂ŏ�ʊT�O�Ɉړ�����\n");
-				//���������Ɂu�ċz�v����������A�ċz����ƕԂ�
-				if (strstr(q2, "�ċz") != NULL) {
+				printf("鳥の属性内には判断できるものが無かったので上位概念に移動する\n");
+				//もし問題内に「呼吸」があったら、呼吸すると返す
+				if (strstr(q2, "呼吸") != NULL) {
 					printf("Yes\n");
 					flag = 1;
 				}

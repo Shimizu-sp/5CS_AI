@@ -1,47 +1,47 @@
-#include<stdio.h>
+﻿#include<stdio.h>
 typedef struct{
-	int num;//�l���������قǏ�ʊT�O
-	char Name[20];//�T�O�̖��O
-	int num_x;//num=1�c�����@num=2�c���Z
+	int num;//値が小さいほど上位概念
+	char Name[20];//概念の名前
+	int num_x;//num=1…属性　num=2…特技
 	char X[20];
 
 }SNetwork;
 main(){
 
 	int i, k = 0;
-	SNetwork n[3] = { { 1, "����", 1, "�ċz����" }, { 2, "��", 1, "��������" }, { 3, "�I�[��", 2, "���m�}�l" } };
+	SNetwork n[3] = { { 1, "生物", 1, "呼吸する" }, { 2, "鳥", 1, "翼がある" }, { 3, "オーム", 2, "モノマネ" } };
 
-	//�I�[���̓��Z�𕷂�����
-	printf("Q1.�I�[���̓��Z�͉��ł����H\n");
+	//オームの特技を聞く部分
+	printf("Q1.オームの特技は何ですか？\n");
 	for (i = 0; i < 3; i++){
-		if (!strcmp(n[i].Name, "�I�[��") && n[i].num_x == 2){//�I�[���ɓ��Z���L�^����Ă���Γ�����
-			printf("%d�Ԃ̊T�O��%s�̂��ߓ��Z�𒲂ׂ܂��c\n", n[i].num, n[i].Name);
-			printf("A1.%s�̓��Z��%s�ł��B\n\n", n[i].Name, n[i].X);
+		if (!strcmp(n[i].Name, "オーム") && n[i].num_x == 2){//オームに特技が記録されていれば答える
+			printf("%d番の概念は%sのため特技を調べます…\n", n[i].num, n[i].Name);
+			printf("A1.%sの特技は%sです。\n\n", n[i].Name, n[i].X);
 		}
 		else{
-			printf("%d�Ԃ̊T�O��%s���������߉��ʊT�O�𒲂ׂ܂��c\n", n[i].num, n[i].Name);
-			k++;//������Ȃ�������
+			printf("%d番の概念は%sだったため下位概念を調べます…\n", n[i].num, n[i].Name);
+			k++;//見つからなかった回数
 		}
 	}
-	if (k == 3){//�����I�[�����Ӗ��l�b�g���[�N�ɑ��݂��Ȃ����
-		printf("Error:�Ӗ��l�b�g���[�N��[�I�[��]�Ƃ����T�O�����݂��܂���\n");
+	if (k == 3){//もしオームが意味ネットワークに存在しなければ
+		printf("Error:意味ネットワークに[オーム]という概念が存在しません\n");
 	}
 
 	k = 0;
-	//�I�[���͌ċz���邩���₷�镔��
-	printf("Q2.�I�[���͌ċz���܂����H\n");
+	//オームは呼吸するか質問する部分
+	printf("Q2.オームは呼吸しますか？\n");
 	for (i = 2; i > -1; i--){
-		if (!strcmp(n[i].X, "�ċz����")){//��ʊT�O�Ɍċz���鑮���������Yes
-			printf("%d�Ԃ�%s�Ɍċz�ɂ��ċL�^������܂����c\n", n[i].num, n[i].Name);
+		if (!strcmp(n[i].X, "呼吸する")){//上位概念に呼吸する属性があればYes
+			printf("%d番の%sに呼吸について記録がありました…\n", n[i].num, n[i].Name);
 			printf("A2.Yes.\n\n");
 		}
 		else{
-			printf("%d�Ԃ�%s�ɂ͌ċz�ɂ��ċL�^���Ȃ��������ߏ�ʊT�O�𒲂ׂ܂��c\n", n[i].num, n[i].Name);
-			k++;//������Ȃ�������
+			printf("%d番の%sには呼吸について記録がなかったため上位概念を調べます…\n", n[i].num, n[i].Name);
+			k++;//見つからなかった回数
 		}
 	}
-	if (k == 3){//�����ċz�Ɋւ���L�^���Ӗ��l�b�g���[�N�ɑ��݂��Ȃ����
-		printf("Error:�Ӗ��l�b�g���[�N��[�ċz]�Ƃ������������݂��܂���\n");
+	if (k == 3){//もし呼吸に関する記録が意味ネットワークに存在しなければ
+		printf("Error:意味ネットワークに[呼吸]という属性が存在しません\n");
 	}
 
 	printf("end\n");

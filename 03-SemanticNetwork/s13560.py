@@ -1,4 +1,4 @@
-import inspect
+﻿import inspect
 class creature():
 
     def __init__( self ):

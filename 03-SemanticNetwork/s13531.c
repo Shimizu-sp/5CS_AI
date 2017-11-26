@@ -1,70 +1,70 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 #include<stdio.h>
 #include<string.h>
 
 int main(void){
-	char main[3][2][500] = { { "¶•¨", "ŒÄ‹z‚·‚é", },
-							{"’¹", "—ƒ‚ª‚ ‚é"},
-							{"ƒI[ƒ€", "ƒ‚ƒmƒ}ƒl"} };
-	char name[2][500] = { "‘®«", "“Á‹Z" };
+	char main[3][2][500] = { { "ç”Ÿç‰©", "å‘¼å¸ã™ã‚‹", },
+							{"é³¥", "ç¿¼ãŒã‚ã‚‹"},
+							{"ã‚ªãƒ¼ãƒ ", "ãƒ¢ãƒãƒãƒ"} };
+	char name[2][500] = { "å±æ€§", "ç‰¹æŠ€" };
 
 	char a[500];
 	int j,main_nomber=0,chara_nomber=0,answer=0;
 
-	printf("¿–â‚ğ“ü—Í‚¹‚æ\n");
+	printf("è³ªå•ã‚’å…¥åŠ›ã›ã‚ˆ\n");
 	scanf("%s",a);
 
 	//****************************************************************//
-	//ŠT”O‚Ì“Eo
+	//æ¦‚å¿µã®æ‘˜å‡º
 	for (j = 0; j <= 2;j++){
 		if (strstr(a, main[j][0]) != NULL){
 			main_nomber = j;
-			printf("u%svŠm”F\n", main[j][0]);
+			printf("ã€Œ%sã€ç¢ºèª\n", main[j][0]);
 			break;
 		}
 	}
 	//****************************************************************//
-	//¿–â“à—e‚Ì“Eo
+	//è³ªå•å†…å®¹ã®æ‘˜å‡º
 	for (j = 0; j <= 2; j++){
 		if (strstr(a, main[j][1]) != NULL){
 			chara_nomber = j + 1;
-			printf("u%svŠm”F\n", main[j][1]);
+			printf("ã€Œ%sã€ç¢ºèª\n", main[j][1]);
 			break;
 		}
 	}
 	for (j = 0; j <= 1; j++){
 		if (strstr(a, name[j]) != NULL){
 			chara_nomber = j + 11;
-			printf("u%svŠm”F\n", name[j]);
+			printf("ã€Œ%sã€ç¢ºèª\n", name[j]);
 			break;
 		}
 	}
 	//****************************************************************//
-	//„˜_
+	//æ¨è«–
 	j = main_nomber;
-	//uŠT”Ov‚Æu¿–âv‚ª—¼•û‚»‚ë‚Á‚Ä‚¢‚é‚©Šm”F
+	//ã€Œæ¦‚å¿µã€ã¨ã€Œè³ªå•ã€ãŒä¸¡æ–¹ãã‚ã£ã¦ã„ã‚‹ã‹ç¢ºèª
 	if (main_nomber != 0 && chara_nomber != 0) {
-		//u‘®«v‚©u“Á‹Zv‚Å‚ ‚ê‚Î‘®«‚ğ•\¦‚·‚é
+		//ã€Œå±æ€§ã€ã‹ã€Œç‰¹æŠ€ã€ã§ã‚ã‚Œã°å±æ€§ã‚’è¡¨ç¤ºã™ã‚‹
 		if (chara_nomber >=10) {
-			printf("%s‚Ì‘®«‚Íu%sv\n",main[main_nomber][0],main[main_nomber][1]);		
+			printf("%sã®å±æ€§ã¯ã€Œ%sã€\n",main[main_nomber][0],main[main_nomber][1]);		
 		}
-		//uŒÄ‹zvu—ƒvuƒ‚ƒmƒ}ƒlv‚Å‚ ‚ê‚Îis-a‚ğs‚¤
+		//ã€Œå‘¼å¸ã€ã€Œç¿¼ã€ã€Œãƒ¢ãƒãƒãƒã€ã§ã‚ã‚Œã°is-aã‚’è¡Œã†
 		else if (chara_nomber < 10) {
 			while (j!=-1) {
 				if (strstr(a, main[j][1]) != NULL) {
-					printf("[%s] - [%s] ˆê’v\n",main[j][0],main[j][1]);
+					printf("[%s] - [%s] ä¸€è‡´\n",main[j][0],main[j][1]);
 					answer = 1;
 					break;
 				}
-				printf("[%s] - [%s] •sˆê’v\n", main[j][0], main[j][1]);
+				printf("[%s] - [%s] ä¸ä¸€è‡´\n", main[j][0], main[j][1]);
 				j--;
 			}
-			//¿–â‚ÌŒ‹‰Ê
+			//è³ªå•ã®çµæœ
 			if (answer==1) {
-				printf("¿–â‚Ì‰ñ“š@uYesv\n");
+				printf("è³ªå•ã®å›ç­”ã€€ã€ŒYesã€\n");
 			}
 			else {
-				printf("¿–â‚Ì‰ñ“š@uNov\n");
+				printf("è³ªå•ã®å›ç­”ã€€ã€ŒNoã€\n");
 			}
 		}
 	}

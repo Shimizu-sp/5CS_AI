@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -9,72 +9,72 @@ int main(){
 	while (flug != 1){
 
 		//
-		char seibutu[100] = {"¶•¨"};
-		char tori[100] = { "’¹" };
-		char oumu[100] = { "ƒI[ƒ€" };
-		char kokyuu[100] = {"ŒÄ‹z"};
-		char tubasa[100] = { "—ƒ" };
-		char monomane[100] = { "ƒ‚ƒmƒ}ƒl" };
-		char nai[100] = { "‚È‚¢" };
-		char oumutokugi[100] = { "ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©" };
+		char seibutu[100] = {"ç”Ÿç‰©"};
+		char tori[100] = { "é³¥" };
+		char oumu[100] = { "ã‚ªãƒ¼ãƒ " };
+		char kokyuu[100] = {"å‘¼å¸"};
+		char tubasa[100] = { "ç¿¼" };
+		char monomane[100] = { "ãƒ¢ãƒãƒãƒ" };
+		char nai[100] = { "ãªã„" };
+		char oumutokugi[100] = { "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹" };
 		//
 		
-		//1‚Í¶•¨,2‚Í’¹,3‚ÍƒI[ƒ€
+		//1ã¯ç”Ÿç‰©,2ã¯é³¥,3ã¯ã‚ªãƒ¼ãƒ 
 		memset(s, 0, sizeof(s));
 		scanf("%99s", s);
 		if (strcmp(s, oumutokugi)==0){
-			printf("A.ƒ‚ƒmƒ}ƒl\n");
+			printf("A.ãƒ¢ãƒãƒãƒ\n");
 			flug = 0;
 			getchar();
 		}
 		else if (strstr(s, nai)){
-			printf("A.–³Œø\n");
+			printf("A.ç„¡åŠ¹\n");
 		}
 		else if (strstr(s, oumu)){
 			if (strstr(s, monomane)){
-				printf("ƒI[ƒ€‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("ã‚ªãƒ¼ãƒ ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else if (strstr(s, tubasa)){
-				printf("ƒI[ƒ€‚Ì“Á’¥‚É‘¶İ‚µ‚È‚¢\n");
-				printf("’¹‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("ã‚ªãƒ¼ãƒ ã®ç‰¹å¾´ã«å­˜åœ¨ã—ãªã„\n");
+				printf("é³¥ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else if (strstr(s, kokyuu)){
-				printf("ƒI[ƒ€‚Ì“Á’¥‚É‘¶İ‚µ‚È‚¢\n");
-				printf("’¹‚Ì“Á’¥‚É‘¶İ‚µ‚È‚¢\n");
-				printf("¶•¨‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("ã‚ªãƒ¼ãƒ ã®ç‰¹å¾´ã«å­˜åœ¨ã—ãªã„\n");
+				printf("é³¥ã®ç‰¹å¾´ã«å­˜åœ¨ã—ãªã„\n");
+				printf("ç”Ÿç‰©ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else{
-				printf("A.–³Œø\n");
+				printf("A.ç„¡åŠ¹\n");
 			}
 		}
 		else if (strstr(s, tori)){
 			if (strstr(s, tubasa)){
-				printf("’¹‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("é³¥ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else if (strstr(s, kokyuu)){
-				printf("’¹‚Ì“Á’¥‚É‘¶İ‚µ‚È‚¢\n");
-				printf("¶•¨‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("é³¥ã®ç‰¹å¾´ã«å­˜åœ¨ã—ãªã„\n");
+				printf("ç”Ÿç‰©ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else{
-				printf("A.–³Œø\n");
+				printf("A.ç„¡åŠ¹\n");
 			}
 		}
 		else if (strstr(s,seibutu)){
 			if (strstr(s, kokyuu)){
-				printf("¶•¨‚Ì“Á’¥‚É‘¶İ‚·‚é\n");
+				printf("ç”Ÿç‰©ã®ç‰¹å¾´ã«å­˜åœ¨ã™ã‚‹\n");
 				printf("A.Yes\n");
 			}
 			else{
-				printf("A.–³Œø\n");
+				printf("A.ç„¡åŠ¹\n");
 			}
 		}
 		else{
-			printf("A.–³Œø\n");
+			printf("A.ç„¡åŠ¹\n");
 		}
 		getchar();
 	}

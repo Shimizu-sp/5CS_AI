@@ -1,22 +1,22 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #pragma warning (disable:4996)
 
 typedef struct _NODE {
 
-	//–¼‘O‚â“Á’¥‚ªŠi”[‚³‚ê‚é
+	//åå‰ã‚„ç‰¹å¾´ãŒæ ¼ç´ã•ã‚Œã‚‹
 	char chara[100];
-	//ƒm[ƒh‚Ì«¿‚ğ¦‚·
-	//1EEEu¶•¨v‚âu’¹v‚Æ‚¢‚Á‚½–¼Œ‚ğ¦‚·‚Æ‚«
-	//2EEEuŒÄ‹z‚·‚év‚âu—ƒ‚ª‚ ‚év‚Æ‚¢‚Á‚½“Á’¥‚ğ¦‚·‚Æ‚«
-	//3EEEuƒ‚ƒmƒ}ƒlv‚Æ‚¢‚Á‚½“Á‹Z‚ğ¦‚·‚Æ‚«
+	//ãƒãƒ¼ãƒ‰ã®æ€§è³ªã‚’ç¤ºã™
+	//1ãƒ»ãƒ»ãƒ»ã€Œç”Ÿç‰©ã€ã‚„ã€Œé³¥ã€ã¨ã„ã£ãŸåè©ã‚’ç¤ºã™ã¨ã
+	//2ãƒ»ãƒ»ãƒ»ã€Œå‘¼å¸ã™ã‚‹ã€ã‚„ã€Œç¿¼ãŒã‚ã‚‹ã€ã¨ã„ã£ãŸç‰¹å¾´ã‚’ç¤ºã™ã¨ã
+	//3ãƒ»ãƒ»ãƒ»ã€Œãƒ¢ãƒãƒãƒã€ã¨ã„ã£ãŸç‰¹æŠ€ã‚’ç¤ºã™ã¨ã
 	int type;
 
-	//ƒuƒ‰ƒ“ƒ`•”•ª
-	//“Á’¥ƒm[ƒh‚É‚Â‚È‚ª‚é
+	//ãƒ–ãƒ©ãƒ³ãƒéƒ¨åˆ†
+	//ç‰¹å¾´ãƒãƒ¼ãƒ‰ã«ã¤ãªãŒã‚‹
 	struct _NODE *ch;
-	//is-aŠÖŒW‚Åe‚ğ‚½‚Ç‚é
+	//is-aé–¢ä¿‚ã§è¦ªã‚’ãŸã©ã‚‹
 	struct _NODE *back;
 }NODE;
 
@@ -30,29 +30,29 @@ int main() {
 	int flag=0;
 	NODE *node;
 
-	//–Ø‚ğì¬‚·‚é
+	//æœ¨ã‚’ä½œæˆã™ã‚‹
 	node = MakeTree();
 
 	while (flag != 2) {
-		//ƒL[ƒ{[ƒh‚©‚ç‚Ì“ü—Í‚ğó‚¯•t‚¯‚é
+		//ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‹ã‚‰ã®å…¥åŠ›ã‚’å—ã‘ä»˜ã‘ã‚‹
 		flag = 0;
 		while (flag == 0) {
-			printf("•¶š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢i100•¶šˆÈ“àj\nI—¹‚Æ“ü—Í‚·‚é‚ÆƒvƒƒOƒ‰ƒ€‚ğI—¹‚µ‚Ü‚·\n");
+			printf("æ–‡å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼ˆ100æ–‡å­—ä»¥å†…ï¼‰\nçµ‚äº†ã¨å…¥åŠ›ã™ã‚‹ã¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã—ã¾ã™\n");
 			printf("->");
 			scanf("%100s", str);
-			//ƒLƒƒƒbƒVƒ…ƒNƒŠƒA
+			//ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚¯ãƒªã‚¢
 			scanf("%*[^\n]%*c");
-			//•¶š”Šm”F
+			//æ–‡å­—æ•°ç¢ºèª
 			str_len = strlen(str);
 
 			if (str_len == 101) {
-				printf("100•¶šˆÈ“à‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
+				printf("100æ–‡å­—ä»¥å†…ã§å…¥åŠ›ã—ã¦ãã ã•ã„\n");
 			}
-			else if (strcmp(str, "I—¹") == 0) flag = 2;
+			else if (strcmp(str, "çµ‚äº†") == 0) flag = 2;
 			else flag = 1;
 		}
 
-		//–Ø‚Ì’Tõ‚ğs‚¢AŒ‹‰Ê‚ğ•\¦‚·‚é
+		//æœ¨ã®æ¢ç´¢ã‚’è¡Œã„ã€çµæœã‚’è¡¨ç¤ºã™ã‚‹
 		Answer(node, str);
 	}
 
@@ -60,9 +60,9 @@ int main() {
 }
 
 NODE *MakeTree() {
-	//is-aŠÖŒW‚Å‚Â‚È‚ª‚éß
+	//is-aé–¢ä¿‚ã§ã¤ãªãŒã‚‹ç¯€
 	NODE *seibutu, *tori, *oumu;
-	//“Á’¥‚ğ¦‚·ß
+	//ç‰¹å¾´ã‚’ç¤ºã™ç¯€
 	NODE *kokyu, *tubasa, *monomane;
 	
 	seibutu = (NODE*)malloc(sizeof(NODE));
@@ -70,7 +70,7 @@ NODE *MakeTree() {
 	oumu = (NODE*)malloc(sizeof(NODE));
 
 	if (seibutu == NULL || tori == NULL || oumu == NULL) {
-		printf("ƒƒ‚ƒŠ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½i–¼Œƒm[ƒhj");
+		printf("ãƒ¡ãƒ¢ãƒªã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸï¼ˆåè©ãƒãƒ¼ãƒ‰æ™‚ï¼‰");
 		return -1;
 	}
 
@@ -79,42 +79,42 @@ NODE *MakeTree() {
 	monomane = (NODE*)malloc(sizeof(NODE));
 
 	if (kokyu == NULL || tubasa == NULL || monomane == NULL) {
-		printf("ƒƒ‚ƒŠ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½i“Á’¥ƒm[ƒhj");
+		printf("ãƒ¡ãƒ¢ãƒªã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸï¼ˆç‰¹å¾´ãƒãƒ¼ãƒ‰æ™‚ï¼‰");
 		return -1;
 	}
-	//¶•¨ƒm[ƒhì¬
+	//ç”Ÿç‰©ãƒãƒ¼ãƒ‰ä½œæˆ
 	seibutu->type = 1;
-	strcpy(seibutu->chara,"¶•¨");
+	strcpy(seibutu->chara,"ç”Ÿç‰©");
 	seibutu->ch = kokyu;
 	seibutu->back = NULL;
 
-	//ŒÄ‹z‚ğ‚·‚éƒm[ƒhì¬
+	//å‘¼å¸ã‚’ã™ã‚‹ãƒãƒ¼ãƒ‰ä½œæˆ
 	kokyu->type = 2;
-	strcpy(kokyu->chara, "ŒÄ‹z");
+	strcpy(kokyu->chara, "å‘¼å¸");
 	kokyu->ch = NULL;
 	kokyu->back = seibutu;
 
-	//’¹ƒm[ƒhì¬
+	//é³¥ãƒãƒ¼ãƒ‰ä½œæˆ
 	tori->type = 1;
-	strcpy(tori->chara, "’¹");
+	strcpy(tori->chara, "é³¥");
 	tori->ch = tubasa;
 	tori->back = seibutu;
 
-	//—ƒ‚ª‚ ‚éƒm[ƒhì¬
+	//ç¿¼ãŒã‚ã‚‹ãƒãƒ¼ãƒ‰ä½œæˆ
 	tubasa->type = 2;
-	strcpy(tubasa->chara, "—ƒ");
+	strcpy(tubasa->chara, "ç¿¼");
 	tubasa->ch = NULL;
 	tubasa->back = tori;
 
-	//ƒIƒEƒ€ƒm[ƒ€ì¬
+	//ã‚ªã‚¦ãƒ ãƒãƒ¼ãƒ ä½œæˆ
 	oumu->type = 1;
-	strcpy(oumu->chara, "ƒI[ƒ€");
+	strcpy(oumu->chara, "ã‚ªãƒ¼ãƒ ");
 	oumu->ch = monomane;
 	oumu->back = tori;
 
-	//ƒ‚ƒmƒ}ƒlƒm[ƒhì¬
+	//ãƒ¢ãƒãƒãƒãƒãƒ¼ãƒ‰ä½œæˆ
 	monomane->type = 3;
-	strcpy(monomane->chara, "ƒ‚ƒmƒ}ƒl");
+	strcpy(monomane->chara, "ãƒ¢ãƒãƒãƒ");
 	monomane->ch = NULL;
 	monomane->back = oumu;
 
@@ -129,41 +129,41 @@ int Answer(NODE *node, char str[100]){
 	int flag=0;
 
 	if(node==NULL){
-		printf("ˆÓ–¡ƒlƒbƒgƒ[ƒN‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+		printf("æ„å‘³ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãŒå…¥åŠ›ã•ã‚Œã¦ã„ã¾ã›ã‚“");
 	}
 
 	start = node;
 
-	//åŒê‚Æ¿–â•”•ª‚É•ª‚¯‚é
-	subject = _mbstok(str, "‚Í");
+	//ä¸»èªã¨è³ªå•éƒ¨åˆ†ã«åˆ†ã‘ã‚‹
+	subject = _mbstok(str, "ã¯");
 	if (subject == NULL) {
-		printf("¿–â‚ª‰ğÍ‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½\n");
+		printf("è³ªå•ãŒè§£æã§ãã¾ã›ã‚“ã§ã—ãŸ\n");
 		return -1;
 	}
-	question = _mbstok(NULL, "?H");
+	question = _mbstok(NULL, "?ï¼Ÿ");
 	
-	//u››"‚Ì"¢¢‚Í`v‚¾‚Æyes/no‚Å‚Í“š‚¦‚ç‚ê‚È‚¢¿–â
-	//u››‚Í`v‚¾‚Æyes/no‚Å“š‚¦‚ç‚ê‚é¿–â‚Æ‰¼’è
-	if ((ret = strstr(subject, "‚Ì")) != NULL) {
-		subject = _mbstok(subject, "‚Ì");
+	//ã€Œâ—‹â—‹"ã®"â–³â–³ã¯ã€œã€ã ã¨yes/noã§ã¯ç­”ãˆã‚‰ã‚Œãªã„è³ªå•
+	//ã€Œâ—‹â—‹ã¯ã€œã€ã ã¨yes/noã§ç­”ãˆã‚‰ã‚Œã‚‹è³ªå•ã¨ä»®å®š
+	if ((ret = strstr(subject, "ã®")) != NULL) {
+		subject = _mbstok(subject, "ã®");
 		sub = _mbstok(NULL, "");
 
 		
 		while (flag == 0) {
 			if (strcmp(node->chara, subject) == 0) {
 				while (1) {
-					//“Á‹Z‚ğ¦‚·ƒuƒ‰ƒ“ƒ`‚Ítype3‚É•ª—Ş‚µ‚Ä‚ ‚é‚Ì‚Å‚»‚ê‚Å•ªŠò
-					if (strcmp(sub,"“Á‹Z")==0 && node->ch->type == 3) {
+					//ç‰¹æŠ€ã‚’ç¤ºã™ãƒ–ãƒ©ãƒ³ãƒã¯type3ã«åˆ†é¡ã—ã¦ã‚ã‚‹ã®ã§ãã‚Œã§åˆ†å²
+					if (strcmp(sub,"ç‰¹æŠ€")==0 && node->ch->type == 3) {
 						printf("%s\n", node->ch->chara);
 						flag = 1;
 						break;
 					}
 					else if(node->back != NULL){
-						printf("ŠT”OF%s‚Å‚Íu%sv‚©•ª‚©‚ç‚È‚¢‚½‚ßãˆÊŠT”OF%s‚ğQÆ‚µ‚Ü‚·\n",node->chara,sub,node->back->chara);
+						printf("æ¦‚å¿µï¼š%sã§ã¯ã€Œ%sã€ã‹åˆ†ã‹ã‚‰ãªã„ãŸã‚ä¸Šä½æ¦‚å¿µï¼š%sã‚’å‚ç…§ã—ã¾ã™\n",node->chara,sub,node->back->chara);
 						node = node->back;
 					}
 					else {
-						printf("ŠT”OF%s‚ÉA%s‚É‚Â‚¢‚Ä‚ÌŠÖŒW‚ª‚ ‚è‚Ü‚¹‚ñ\n", subject, sub);
+						printf("æ¦‚å¿µï¼š%sã«ã€%sã«ã¤ã„ã¦ã®é–¢ä¿‚ãŒã‚ã‚Šã¾ã›ã‚“\n", subject, sub);
 						flag = 1;
 						break;
 					}
@@ -172,7 +172,7 @@ int Answer(NODE *node, char str[100]){
 			else {
 				if (node->back != NULL) node = node->back;
 				else {
-					printf("ˆÓ–¡ƒlƒbƒgƒ[ƒN‚É%s‚ª‘¶İ‚µ‚Ü‚¹‚ñ\n", subject);
+					printf("æ„å‘³ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã«%sãŒå­˜åœ¨ã—ã¾ã›ã‚“\n", subject);
 					flag = 1;
 				}
 			}
@@ -188,7 +188,7 @@ int Answer(NODE *node, char str[100]){
 						break;
 					}
 					else if (node->back != NULL) { 
-						printf("ŠT”OF%s‚Å‚Íu%sv‚ª•ª‚©‚ç‚È‚¢‚½‚ßãˆÊŠT”OF%s‚ğQÆ‚µ‚Ü‚·\n", node->chara, question, node->back->chara);
+						printf("æ¦‚å¿µï¼š%sã§ã¯ã€Œ%sã€ãŒåˆ†ã‹ã‚‰ãªã„ãŸã‚ä¸Šä½æ¦‚å¿µï¼š%sã‚’å‚ç…§ã—ã¾ã™\n", node->chara, question, node->back->chara);
 						node = node->back;
 					}
 					else {
@@ -201,7 +201,7 @@ int Answer(NODE *node, char str[100]){
 			else {
 				if (node->back != NULL) node = node->back;
 				else {
-					printf("ˆÓ–¡ƒlƒbƒgƒ[ƒN‚É%s‚ª‘¶İ‚µ‚Ü‚¹‚ñ\n", subject);
+					printf("æ„å‘³ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã«%sãŒå­˜åœ¨ã—ã¾ã›ã‚“\n", subject);
 					flag = 1;
 				}
 			}

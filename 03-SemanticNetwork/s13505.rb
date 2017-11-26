@@ -1,4 +1,4 @@
-Array1 = ["鳥", "is-a", "生物"]
+﻿Array1 = ["鳥", "is-a", "生物"]
 Array2 = ["オウム", "is-a", "鳥"]
 Array3 = ["生物", "has-a", "呼吸"]
 Array4 = ["鳥", "has-a", "翼"]

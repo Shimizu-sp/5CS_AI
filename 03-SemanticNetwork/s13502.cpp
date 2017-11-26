@@ -1,37 +1,37 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<string>
 #include<stdio.h>
 #include<typeinfo.h>
 
 using namespace std;
 
-class Creature{	//¶•¨
+class Creature{	//ç”Ÿç‰©
 public:
-	bool breath = true;	// ŒÄ‹z‚·‚é
+	bool breath = true;	// å‘¼å¸ã™ã‚‹
 
 	bool breathless3() 
 	{
-		printf("¶•¨\n");
+		printf("ç”Ÿç‰©\n");
 		return breath;
 	}
 
 };
 
-class Bird : public Creature{	//’¹
+class Bird : public Creature{	//é³¥
 public:
-	bool HaveWing = true; // —ƒ‚ ‚é
+	bool HaveWing = true; // ç¿¼ã‚ã‚‹
 	
 	bool breathless2()
 	{
-		printf("’¹ ¨");
+		printf("é³¥ â†’");
 		return breathless3();
 	}
 
 };
 
-class Parrot : public Bird{	//ƒIƒEƒ€
+class Parrot : public Bird{	//ã‚ªã‚¦ãƒ 
 public:
-	string Speciality = "ƒ‚ƒmƒ}ƒl";	// “Á‹Z‚Íƒ‚ƒmƒ}ƒl
+	string Speciality = "ãƒ¢ãƒãƒãƒ";	// ç‰¹æŠ€ã¯ãƒ¢ãƒãƒãƒ
 
 	string tokugi()
 	{
@@ -41,7 +41,7 @@ public:
 	bool breathless1()
 	{
 
-		printf("ƒIƒEƒ€ ¨");
+		printf("ã‚ªã‚¦ãƒ  â†’");
 		return breathless2();
 
 	}
@@ -58,22 +58,22 @@ int main()
 	char answer[100] = "";
 
 
-	//ƒ‚ƒmƒ}ƒl
-	printf("uƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©v‚Æ‚²“ü—Í‚­‚¾‚³‚¢\n");
+	//ãƒ¢ãƒãƒãƒ
+	printf("ã€Œã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹ã€ã¨ã”å…¥åŠ›ãã ã•ã„\n");
 	
 	cin >> answer;
 
-	if (strcmp("ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©", answer) == 0)
+	if (strcmp("ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹", answer) == 0)
 	{
 		printf("%s\n", Havetokugi.c_str());
 	}
 
 
-	//Œp³
-	printf("uƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©v‚Æ‚²“ü—Í‚­‚¾‚³‚¢\n");
+	//ç¶™æ‰¿
+	printf("ã€Œã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹ã€ã¨ã”å…¥åŠ›ãã ã•ã„\n");
 	cin >> answer;
 
-	if (strcmp("ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©", answer) == 0)
+	if (strcmp("ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹", answer) == 0)
 	{
 		if (P_Bird.breathless1() == 1){
 			printf("Yes\n");

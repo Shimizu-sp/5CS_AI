@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
 
@@ -7,30 +7,30 @@ int main(void) {
 	char test[100];
 	char *a,*b;
 
-	scanf("%s", test);	//Ž¿–â“ü—Í
+	scanf("%s", test);	//è³ªå•å…¥åŠ›
 	
-	a = _mbsstr(test, "ƒI[ƒ€");	//ƒI[ƒ€‚Æ‚¢‚¤’PŒê‚ª‚ ‚é‚©•¶Žš—ñ‚ðŒŸõ‚µA–³‚¯‚ê‚ÎNULL‚ð•Ô‚·
+	a = _mbsstr(test, "ã‚ªãƒ¼ãƒ ");	//ã‚ªãƒ¼ãƒ ã¨ã„ã†å˜èªžãŒã‚ã‚‹ã‹æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã€ç„¡ã‘ã‚Œã°NULLã‚’è¿”ã™
 	if (a != NULL) {
 
-		b = _mbsstr(test, "“Á‹Z");	//“Á‹Z‚Æ‚¢‚¤’PŒê‚ª‚ ‚é‚©•¶Žš—ñ‚ðŒŸõ‚µA–³‚¯‚ê‚ÎNULL‚ð•Ô‚·
+		b = _mbsstr(test, "ç‰¹æŠ€");	//ç‰¹æŠ€ã¨ã„ã†å˜èªžãŒã‚ã‚‹ã‹æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã€ç„¡ã‘ã‚Œã°NULLã‚’è¿”ã™
 		
-		if (b != NULL) {	//NULL‚ª‚±‚È‚¯‚ê‚Îƒ‚ƒmƒ}ƒl‚Æ“š‚¦‚é
-			printf("ƒ‚ƒmƒ}ƒl\n");
+		if (b != NULL) {	//NULLãŒã“ãªã‘ã‚Œã°ãƒ¢ãƒŽãƒžãƒã¨ç­”ãˆã‚‹
+			printf("ãƒ¢ãƒŽãƒžãƒ\n");
 		}
-		else {	//NULL‚Å‚ ‚ê‚ÎãˆÊŠT”O‚Ö
+		else {	//NULLã§ã‚ã‚Œã°ä¸Šä½æ¦‚å¿µã¸
 
-			a = _mbsstr(test, "—ƒ‚ª‚ ‚é");	//—ƒ‚ª‚ ‚é‚Æ‚¢‚¤’PŒê‚ª‚ ‚é‚©•¶Žš—ñ‚ðŒŸõ‚µA–³‚¯‚ê‚ÎNULL‚ð•Ô‚·
+			a = _mbsstr(test, "ç¿¼ãŒã‚ã‚‹");	//ç¿¼ãŒã‚ã‚‹ã¨ã„ã†å˜èªžãŒã‚ã‚‹ã‹æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã€ç„¡ã‘ã‚Œã°NULLã‚’è¿”ã™
 
-			if (a != NULL) {	//NULL‚ª‚±‚È‚¯‚ê‚ÎYes‚Æ“š‚¦AƒvƒƒZƒX‚ðo—Í‚·‚é
-				printf("\n’¹¨—ƒ‚ª‚ ‚é\nª\nƒI[ƒ€\n");
+			if (a != NULL) {	//NULLãŒã“ãªã‘ã‚Œã°Yesã¨ç­”ãˆã€ãƒ—ãƒ­ã‚»ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
+				printf("\né³¥â†’ç¿¼ãŒã‚ã‚‹\nâ†‘\nã‚ªãƒ¼ãƒ \n");
 				printf("\nYes\n");
 			}
-			else {	//NULL‚Å‚ ‚ê‚ÎãˆÊŠT”O‚Ö
+			else {	//NULLã§ã‚ã‚Œã°ä¸Šä½æ¦‚å¿µã¸
 
-				a = _mbsstr(test, "ŒÄ‹z");	//ŒÄ‹z‚Æ‚¢‚¤’PŒê‚ª‚ ‚é‚©•¶Žš—ñ‚ðŒŸõ‚µA–³‚¯‚ê‚ÎNULL‚ð•Ô‚·
+				a = _mbsstr(test, "å‘¼å¸");	//å‘¼å¸ã¨ã„ã†å˜èªžãŒã‚ã‚‹ã‹æ–‡å­—åˆ—ã‚’æ¤œç´¢ã—ã€ç„¡ã‘ã‚Œã°NULLã‚’è¿”ã™
 
-				if (a != NULL) {	//NULL‚ª‚±‚È‚¯‚ê‚ÎYes‚Æ“š‚¦AƒvƒƒZƒX‚ðo—Í‚·‚é
-					printf("\n¶•¨¨ŒÄ‹z‚ð‚·‚é\nª\n’¹\nª\nƒI[ƒ€\n");
+				if (a != NULL) {	//NULLãŒã“ãªã‘ã‚Œã°Yesã¨ç­”ãˆã€ãƒ—ãƒ­ã‚»ã‚¹ã‚’å‡ºåŠ›ã™ã‚‹
+					printf("\nç”Ÿç‰©â†’å‘¼å¸ã‚’ã™ã‚‹\nâ†‘\né³¥\nâ†‘\nã‚ªãƒ¼ãƒ \n");
 					printf("\nYes\n");
 				}
 

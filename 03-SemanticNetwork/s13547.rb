@@ -1,4 +1,4 @@
-# 意味ネットワーク
+﻿# 意味ネットワーク
 module Meanetwork
   # 生物
   class Lives

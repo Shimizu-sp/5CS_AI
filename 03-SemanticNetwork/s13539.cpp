@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_DEPRECATE
+ï»¿#define _CRT_SECURE_NO_DEPRECATE
 
 #include <iostream>
 #include <typeinfo.h>
@@ -11,10 +11,10 @@ private:
 	bool seibutu_bless = true;
 
 public:
-	//¶•¨‚ª‘§‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·ŠÖ”
+	//ç”Ÿç‰©ãŒæ¯ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™é–¢æ•°
 	bool get_seibutu_bless()
 	{
-		cout << "¶•¨" << endl;
+		cout << "ç”Ÿç‰©" << endl;
 		return seibutu_bless;
 	}
 };
@@ -25,10 +25,10 @@ private:
 	bool wing = true;
 
 public:
-	//’¹‚ª‘§‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·ŠÖ”
+	//é³¥ãŒæ¯ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™é–¢æ•°
 	bool get_tori_bless()
 	{
-		cout << "’¹is a";
+		cout << "é³¥is a";
 		return get_seibutu_bless();
 	}
 };
@@ -36,18 +36,18 @@ public:
 class oumu : public tori
 {
 private:
-	char *oumu_tokugi = "ƒ‚ƒmƒ}ƒl";
+	char *oumu_tokugi = "ãƒ¢ãƒãƒãƒ";
 
 public:
-	//ƒIƒEƒ€‚Ì“Á‹Z‚ğ•Ô‚·ŠÖ”
+	//ã‚ªã‚¦ãƒ ã®ç‰¹æŠ€ã‚’è¿”ã™é–¢æ•°
 	char *get_oumu_tokugi()
 	{
 		return oumu_tokugi;
 	}
-	//ƒIƒEƒ€‚ª‘§‚ğ‚·‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·ŠÖ”
+	//ã‚ªã‚¦ãƒ ãŒæ¯ã‚’ã™ã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™é–¢æ•°
 	bool get_oumu_bless()
 	{
-		cout << "ƒI[ƒ€is a";
+		cout << "ã‚ªãƒ¼ãƒ is a";
 		return get_tori_bless();
 	}
 };
@@ -59,27 +59,27 @@ int main()
 	char *tokugi;
 	bool bless;
 	oumu o_mu;
-	cout << "I—¹‚·‚éê‡‚ÍuI—¹v‚Æ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢" << endl;
+	cout << "çµ‚äº†ã™ã‚‹å ´åˆã¯ã€Œçµ‚äº†ã€ã¨å…¥åŠ›ã—ã¦ãã ã•ã„" << endl;
 
-	//I—¹‚Æ“ü—Í‚³‚ê‚é‚Ü‚Åƒ‹[ƒv
-	while (strcmp(toi, "I—¹"))
+	//çµ‚äº†ã¨å…¥åŠ›ã•ã‚Œã‚‹ã¾ã§ãƒ«ãƒ¼ãƒ—
+	while (strcmp(toi, "çµ‚äº†"))
 	{
-		cout << "¿–â‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B" << endl;
+		cout << "è³ªå•ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚" << endl;
 		cin >> buf;
 
-		//Œ^•ÏŠ·
+		//å‹å¤‰æ›
 		toi = (char *)malloc(strlen(buf) + 1);
 		strcpy(toi, buf);
 
-		//ƒIƒEƒ€‚Ì“Á‹Z‚ğo—Í‚·‚é
-		if (!strcmp(toi, "ƒI[ƒ€‚Ì“Á‹Z‚Í‰½‚Å‚·‚©"))
+		//ã‚ªã‚¦ãƒ ã®ç‰¹æŠ€ã‚’å‡ºåŠ›ã™ã‚‹
+		if (!strcmp(toi, "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯ä½•ã§ã™ã‹"))
 		{
 			tokugi = o_mu.get_oumu_tokugi();
-			cout << "ƒI[ƒ€‚Ì“Á‹Z‚Í" << tokugi << endl << endl;
+			cout << "ã‚ªãƒ¼ãƒ ã®ç‰¹æŠ€ã¯" << tokugi << endl << endl;
 
 		}
-		//ƒIƒEƒ€‚ªŒÄ‹z‚·‚é‚©‚ğo—Í‚·‚é
-		else if (!strcmp(toi, "ƒI[ƒ€‚ÍŒÄ‹z‚·‚é‚©"))
+		//ã‚ªã‚¦ãƒ ãŒå‘¼å¸ã™ã‚‹ã‹ã‚’å‡ºåŠ›ã™ã‚‹
+		else if (!strcmp(toi, "ã‚ªãƒ¼ãƒ ã¯å‘¼å¸ã™ã‚‹ã‹"))
 		{
 			bless = o_mu.get_oumu_bless();
 

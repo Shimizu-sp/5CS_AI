@@ -1,26 +1,26 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include<string.h>
 
 void main(){
 	/*
-	����-�ċz����
+	生物-呼吸する
 	|
-	��-��������
+	鳥-翼がある
 	|
-	�I�[��-���Z�̓��m�}�l
+	オーム-特技はモノマネ
 	*/
 
-	//�e�v�f���i�[
+	//各要素を格納
 	char element[6][10] = {
-		 "����",
-		 "�ċz����",
-		 "��",
-		 "��������",
-		 "�I�[��",
-		 "���m�}�l"
+		 "生物",
+		 "呼吸する",
+		 "鳥",
+		 "翼がある",
+		 "オーム",
+		 "モノマネ"
 	};
 
-	//�e�v�f�̗אڃ��X�g
+	//各要素の隣接リスト
 	int connect[6][4]{
 		{-1,2,1,-1},
 		{0,-1,-1,-1},
@@ -29,82 +29,82 @@ void main(){
 		{2,-1,-1,5},
 		{4,-1,-1,-1},
 	};
-	//{"��ʊT�O","���ʊT�O","����","���Z"}
+	//{"上位概念","下位概念","属性","特技"}
 
-	//�Ӗ��l�b�g���[�N���o��
+	//意味ネットワークを出力
 	int i = 0;
 	while (1){
 		printf("%s", element[i]);
 		if (connect[i][2] != -1){
-			printf("�\(����)%s", element[connect[i][2]]);
+			printf("—(属性)%s", element[connect[i][2]]);
 		}
 		if (connect[i][3] != -1){
-			printf("�\(���Z)%s", element[connect[i][3]]);
+			printf("—(特技)%s", element[connect[i][3]]);
 		}
 		if (connect[i][1] != -1){
 			i = connect[i][1];
-			printf("\n�b\n");
+			printf("\n｜\n");
 		}
 		else break;
 	}
 
-	//����:�I�[���̓��Z�͂Ȃ�ł���
-	printf("\n\n����:�I�[���̓��Z�͂Ȃ�ł���\n");
-	int c = 4; //�I�[���̊i�[����Ă���ʒu
-	int d = 3; //���Z�̊i�[����Ă���ʒu
+	//質問:オームの特技はなんですか
+	printf("\n\n質問:オームの特技はなんですか\n");
+	int c = 4; //オームの格納されている位置
+	int d = 3; //特技の格納されている位置
 
-	//���Z�����݂���ꍇ���̓��e���o�͂���
-	if (connect[c][d] != -1)printf("��:%s\n", element[connect[c][d]]);
+	//特技が存在する場合その内容を出力する
+	if (connect[c][d] != -1)printf("回答:%s\n", element[connect[c][d]]);
 	else{
 		while (1){
-			if (connect[c][0] != -1)c = connect[c][0]; //��ʊT�O�����݂���ꍇ���̊T�O�Ɉړ�����
+			if (connect[c][0] != -1)c = connect[c][0]; //上位概念が存在する場合その概念に移動する
 
-			//��ʊT�O�����݂��Ȃ��ꍇ=������Ȃ����� �����no��Ԃ�
+			//上位概念が存在しない場合=見つからなかった よってnoを返す
 			else {
-				printf("��:�Ȃ�\n");
+				printf("回答:なし\n");
 				break;
 			}
 
-			//���Z�����݂���ꍇ���̓��e���o�͂���
+			//特技が存在する場合その内容を出力する
 			if (connect[c][d] != -1){
-				printf("��:%s\n", element[connect[c][d]]);
+				printf("回答:%s\n", element[connect[c][d]]);
 				break;
 			}
 		}
 	}
 
-	//����:�I�[���͌ċz���邩
-	printf("\n����:�I�[���͌ċz���邩\n");
-	c=4; //�I�[���̊i�[����Ă���ʒu
-	char question[10] = "�ċz����"; //������e(���̕�����ƈ�v���邩���ׂ�)
+	//質問:オームは呼吸するか
+	printf("\n質問:オームは呼吸するか\n");
+	c=4; //オームの格納されている位置
+	char question[10] = "呼吸する"; //質問内容(この文字列と一致するか調べる)
 
 	printf("%s", element[c]); 
 
-	//���������݂��� ���� ������e�Ƒ����̓��e����v 
-	//�̏ꍇyes��Ԃ�
+	//属性が存在する かつ 質問内容と属性の内容が一致 
+	//の場合yesを返す
 	if (connect[c][2] != -1 && strcmp(element[connect[c][2]], question)==0){
-		printf("�\%s��\n", element[connect[c][2]]);
-		printf("��:yes\n");
+		printf("—%s★\n", element[connect[c][2]]);
+		printf("回答:yes\n");
 	}
 	else{
 		
 		while (1){
-			//��ʊT�O�����݂���ꍇ���̊T�O�Ɉړ�����
+			//上位概念が存在する場合その概念に移動する
 			if (connect[c][0] != -1){
 				c = connect[c][0];
 				printf("\n|\n%s", element[c]);
 			}
 
-			//��ʊT�O�����݂��Ȃ��ꍇ=������Ȃ����� �����no��Ԃ�
+			//上位概念が存在しない場合=見つからなかった よってnoを返す
 			else {
-				printf("\n��:no\n");
+				printf("\n回答:no\n");
 				break;
 			}
 
-			//���������݂��� ���� ������e�Ƒ����̓��e����v �̏ꍇyes��Ԃ�
+			//属性が存在する かつ 質問内容と属性の内容が一致 の場合yesを返す
 			if (connect[c][2] != -1 && strcmp(element[connect[c][2]], question) == 0){
-				printf("�\%s��\n", element[connect[c][2]]);
-				printf("\n��:yes\n");
+				printf("—%s★\n", element[connect[c][2]]);
+				printf("\n回答:yes\n");
 				break;
 			}
 
