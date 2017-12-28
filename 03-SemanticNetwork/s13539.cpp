@@ -1,7 +1,7 @@
 ﻿#define _CRT_SECURE_NO_DEPRECATE
 
 #include <iostream>
-#include <typeinfo.h>
+#include <typeinfo>
 
 using namespace std;
 
@@ -54,7 +54,7 @@ public:
 
 
 int main()
-{	
+{
 	char *toi="a",buf[100];
 	char *tokugi;
 	bool bless;
