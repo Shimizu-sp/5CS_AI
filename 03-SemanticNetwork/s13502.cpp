@@ -1,7 +1,7 @@
 ﻿#include<iostream>
 #include<string>
 #include<stdio.h>
-#include<typeinfo.h>
+#include<typeinfo>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ class Creature{	//生物
 public:
 	bool breath = true;	// 呼吸する
 
-	bool breathless3() 
+	bool breathless3()
 	{
 		printf("生物\n");
 		return breath;
@@ -20,7 +20,7 @@ public:
 class Bird : public Creature{	//鳥
 public:
 	bool HaveWing = true; // 翼ある
-	
+
 	bool breathless2()
 	{
 		printf("鳥 →");
@@ -60,7 +60,7 @@ int main()
 
 	//モノマネ
 	printf("「オームの特技は何ですか」とご入力ください\n");
-	
+
 	cin >> answer;
 
 	if (strcmp("オームの特技は何ですか", answer) == 0)
@@ -80,6 +80,6 @@ int main()
 		}
 
 	}
-		
+
 
 }
