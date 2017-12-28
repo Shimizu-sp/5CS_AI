@@ -81,5 +81,5 @@ def main(moji):     #rule１から適用しスワップを行なったらまたr
     print("Finish!")
 
 if __name__ == '__main__':
-    start ='a*b-cd/e+fg'
+    start ='*gfedcba+-*/'
     main(list(start))

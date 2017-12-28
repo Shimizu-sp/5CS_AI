@@ -10,19 +10,19 @@ void swap(char *x, char *y);
 
 int main(){
     //ワーキングメモリ(p)
-    char p[12] = "a*b-cd/e+fg";
-    
+    char p[12] = "gfedcba+-*/";
+
     int count = 0;
     int c_rule[4] = {0};
-    
+
     printf("P = %s\n", p);
-    
+
     //+:43    -:45    *:42      /:47
     //a:97    g:103
     while(1){
         count++;
         printf(":::::::Count is %d:::::::\n", count);
-        
+
         for(int cnt = 0; cnt < MAX; cnt++){
             //ルールPM
             //1.現在の文字が記号 かつ 最後の要素でなければ、一つ後の文字と交換
@@ -50,14 +50,14 @@ int main(){
                 printf("\t%s\n", p);
             }
         }
-    
-        
+
+
         if(!strcmp(p, "gfedcba+-*/")){
             break;
         }
-        
+
     }
-    
+
     return 0;
 }
 
@@ -68,5 +68,3 @@ void swap(char *x, char *y){
     *x = *y;
     *y = tmp;
 }
-
-
