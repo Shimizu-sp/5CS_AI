@@ -1,7 +1,7 @@
 ﻿#include <stdio.h>
 #include<string.h>
 
-void main(){
+int main(){
 	/*
 	生物-呼吸する
 	|
@@ -11,7 +11,7 @@ void main(){
 	*/
 
 	//各要素を格納
-	char element[6][10] = {
+	char element[6][20] = {
 		 "生物",
 		 "呼吸する",
 		 "鳥",

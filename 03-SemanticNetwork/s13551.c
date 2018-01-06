@@ -15,7 +15,7 @@ int main(void) {
 	char str11[50];//入力する文字の定義
 	while (b = !0) {
 		printf("文字列を入力してください\n");
-		scanf_s("%s", str11,50);//文字の入力
+		scanf("%s", str11,50);//文字の入力
 		if (strstr(str11, str1) != NULL) {//文字に生物があるか確認
 			s = 1;
 			d = 1;
