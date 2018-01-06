@@ -78,16 +78,16 @@ void main(){
 	c=4; //オームの格納されている位置
 	char question[10] = "呼吸する"; //質問内容(この文字列と一致するか調べる)
 
-	printf("%s", element[c]); 
+	printf("%s", element[c]);
 
-	//属性が存在する かつ 質問内容と属性の内容が一致 
+	//属性が存在する かつ 質問内容と属性の内容が一致
 	//の場合yesを返す
 	if (connect[c][2] != -1 && strcmp(element[connect[c][2]], question)==0){
 		printf("—%s★\n", element[connect[c][2]]);
 		printf("回答:yes\n");
 	}
 	else{
-		
+
 		while (1){
 			//上位概念が存在する場合その概念に移動する
 			if (connect[c][0] != -1){

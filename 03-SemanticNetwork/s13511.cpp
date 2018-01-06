@@ -36,7 +36,7 @@ main(){
 	printf("\nメニュー(数字を入力してください)\n1:質問入力\n2:終了\n\n");
 
 	scanf("%d",&input);
-    
+
 	if(input == 1){
 
 	printf("\n 質問の単語間に半角スペースを入れてください\n");
@@ -60,7 +60,7 @@ main(){
 	}else if(strcmp(array_name_1,is_a_2) == 0){ //入力されたis-aが「鳥」であるか？
 		flag2++;
 		printf("\n鳥　→");
-	
+
 	}else if(strcmp(array_name_1,is_a_3) == 0){ //入力されたis-aが「オーム」であるか？
 		flag3++;
 		printf("\nオーム　→");
@@ -71,7 +71,7 @@ main(){
 	//オーム=======
 	if(flag3 == 1){
 		if(strcmp(array_name_3,attribute_name3) == 0){
-			
+
 			printf(" (特技)モノマネ");
 
 			//質問語判定
@@ -81,7 +81,7 @@ main(){
 			  printf("\nA:YES\n");
 		}
 	    }else if(strcmp(array_name_3,attribute_2) == 0){
-			
+
            printf(" 鳥 →　翼がある");
 
 		   //質問語判定
@@ -109,7 +109,7 @@ main(){
 			  printf("\nA:YES\n");
 		}
 		}else if(strcmp(array_name_3,attribute_1) == 0){
-			
+
 			printf(" 生物　→　呼吸する");
 
 		   //質問語判定
@@ -121,7 +121,7 @@ main(){
 	//生物=========
     if(flag1 == 1){
 		if(strcmp(array_name_3,attribute_1) == 0){
-			
+
 		   printf(" 呼吸する");
 
 		   //質問語判定
@@ -135,7 +135,7 @@ main(){
 		break;
 
 	}
-	
+
 	input = 0;
 
 	}
