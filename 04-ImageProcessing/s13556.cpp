@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -11,11 +11,11 @@ main(int argc, char **argv)
 	cv::Mat search_img = cv::imread("img/img_1.bmp", 1);
 	cv::Mat tmp_img = cv::imread("img/Timg_1.bmp", 1);
 
-	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//ƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏX
-	//cv::equalizeHist(search_img, search_img);//ƒqƒXƒgƒOƒ‰ƒ€‹Ïˆê‰»
+	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›´
+	//cv::equalizeHist(search_img, search_img);//ãƒ’ã‚¹ãƒˆã‚°ãƒ©ãƒ å‡ä¸€åŒ–
 
-	cv::cvtColor(tmp_img, tmp_img, CV_BGR2GRAY);//ƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏX
-	//cv::equalizeHist(tmp_img, tmp_img);//ƒqƒXƒgƒOƒ‰ƒ€‹Ïˆê‰»
+	cv::cvtColor(tmp_img, tmp_img, CV_BGR2GRAY);//ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›´
+	//cv::equalizeHist(tmp_img, tmp_img);//ãƒ’ã‚¹ãƒˆã‚°ãƒ©ãƒ å‡ä¸€åŒ–
 
 	cv::Mat result_img;
 	cv::matchTemplate(search_img, tmp_img, result_img, 3);
@@ -41,11 +41,11 @@ main(int argc, char **argv)
 	search_img = cv::imread("img/img_2.bmp", 1);
 	tmp_img = cv::imread("img/Timg_2.bmp", 1);
 
-	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//ƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏX
-													  //cv::equalizeHist(search_img, search_img);//ƒqƒXƒgƒOƒ‰ƒ€‹Ïˆê‰»
+	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›´
+													  //cv::equalizeHist(search_img, search_img);//ãƒ’ã‚¹ãƒˆã‚°ãƒ©ãƒ å‡ä¸€åŒ–
 
-	cv::cvtColor(tmp_img, tmp_img, CV_BGR2GRAY);//ƒOƒŒ[ƒXƒP[ƒ‹‚É•ÏX
-												//cv::equalizeHist(tmp_img, tmp_img);//ƒqƒXƒgƒOƒ‰ƒ€‹Ïˆê‰»
+	cv::cvtColor(tmp_img, tmp_img, CV_BGR2GRAY);//ã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ã«å¤‰æ›´
+												//cv::equalizeHist(tmp_img, tmp_img);//ãƒ’ã‚¹ãƒˆã‚°ãƒ©ãƒ å‡ä¸€åŒ–
 
 	
 	cv::matchTemplate(search_img, tmp_img, result_img, 3);

@@ -1,4 +1,4 @@
-
+ï»¿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        public const int MAX1_X1 = 512;//512*512(‰æ‘f”)
-        public const int MAX1= 262144;//512*512(‰æ‘f”)
-        public const int T_MAX1_X1 = 200;//512*512(‰æ‘f”)
-        public const int T_MAX1 = 40000;//200*200(‰æ‘f”)
+        public const int MAX1_X1 = 512;//512*512(ç”»ç´ æ•°)
+        public const int MAX1= 262144;//512*512(ç”»ç´ æ•°)
+        public const int T_MAX1_X1 = 200;//512*512(ç”»ç´ æ•°)
+        public const int T_MAX1 = 40000;//200*200(ç”»ç´ æ•°)
         static void Main(string[] args)
         {
             System.IO.StreamReader sr = new System.IO.StreamReader(
@@ -54,7 +54,7 @@ namespace ConsoleApplication1
             
             for (f=0;f<MAX1_X1;f++) {
                 
-               //Console.Write("\n"+(f+1)+"s–Ú\n");
+               //Console.Write("\n"+(f+1)+"è¡Œç›®\n");
                //Console.Write(Text3[f]);
             }
 
@@ -67,8 +67,8 @@ namespace ConsoleApplication1
             
             string Text_data2 = sr2.ReadToEnd();
  
-            string[] Text2 = new string[T_MAX1];//3•¶š‚²‚Æ‚É‹æØ‚Á‚Ä“ü‚ê‚é—p
-            string[] Text4 = new string[T_MAX1_X1];//1s‚¸‚Â“ü‚ê‚Ä‚¢‚­—p
+            string[] Text2 = new string[T_MAX1];//3æ–‡å­—ã”ã¨ã«åŒºåˆ‡ã£ã¦å…¥ã‚Œã‚‹ç”¨
+            string[] Text4 = new string[T_MAX1_X1];//1è¡Œãšã¤å…¥ã‚Œã¦ã„ãç”¨
             j = 0;
             b = 1;
 
@@ -101,7 +101,7 @@ namespace ConsoleApplication1
             for (f = 0; f < T_MAX1_X1; f++)
             {
 
-               // Console.Write("\n"+(f+1)+"s–Ú\n");
+               // Console.Write("\n"+(f+1)+"è¡Œç›®\n");
                 //Console.Write(Text4[f]);
             }
             

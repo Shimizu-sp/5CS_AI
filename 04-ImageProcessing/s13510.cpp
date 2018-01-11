@@ -1,4 +1,4 @@
-#include<stdlib.h>
+ï»¿#include<stdlib.h>
 #include<stdio.h>
 #include <opencv2/opencv.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
@@ -10,13 +10,13 @@ void matching2();
 
 
 void main(){
-	//ƒeƒ“ƒvƒŒ[ƒg1‚Å‚Ìƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
-	printf("matching1Œ‹‰Ê@g—p‰æ‘œFimg_1.bmp Timg_1.bmp\n");
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ1ã§ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
+	printf("matching1çµæœã€€ä½¿ç”¨ç”»åƒï¼šimg_1.bmp Timg_1.bmp\n");
 	matching1();
 
 	
-	//ƒeƒ“ƒvƒŒ[ƒg2‚Å‚Ìƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
-	printf("matching2Œ‹‰Ê g—p‰æ‘œFimg_2.bmp Timg_2.bmp\n");
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ2ã§ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
+	printf("matching2çµæœ ä½¿ç”¨ç”»åƒï¼šimg_2.bmp Timg_2.bmp\n");
 	matching2();
 }
 
@@ -27,25 +27,25 @@ void matching1(){
 
 	double pv = 0;
 
-	//‰æ‘œ“Ç‚İ‚İ
+	//ç”»åƒèª­ã¿è¾¼ã¿
 	src_image1 = imread("img_1.bmp", 0);
 	src_tmp1 = imread("Timg_1.bmp", 0);
 
-	//ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO‚ÌŒvZ
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°ã®è¨ˆç®—
 	matchTemplate(src_image1, src_tmp1, result_image3, CV_TM_CCORR_NORMED);
 	Rect roi_rect(0, 0, src_tmp1.cols, src_tmp1.rows);
 	Point max_pt;
-	//—Ş—“x‚ªÅ‘åEÅ¬‚Æ‚È‚é‰æ‘f‚ÌˆÊ’u‚Ìæ“¾
+	//é¡ä¼¼åº¦ãŒæœ€å¤§ãƒ»æœ€å°ã¨ãªã‚‹ç”»ç´ ã®ä½ç½®ã®å–å¾—
 	minMaxLoc(result_image3, NULL, NULL, NULL, &max_pt);
 	roi_rect.x = max_pt.x;
 	roi_rect.y = max_pt.y;
 
-	//ˆê’v‚·‚é•”•ª‚ğˆÍ‚Ş
+	//ä¸€è‡´ã™ã‚‹éƒ¨åˆ†ã‚’å›²ã‚€
 	rectangle(src_image1, Point(roi_rect.x, roi_rect.y), Point(roi_rect.x + src_tmp1.cols, roi_rect.y + src_tmp1.rows), Scalar(0, 0, 0), 3, 4);
 
 
-	//À•W•\¦
-	printf("À•W x=%d y=%d\n", roi_rect.x, roi_rect.y);
+	//åº§æ¨™è¡¨ç¤º
+	printf("åº§æ¨™ x=%d y=%d\n", roi_rect.x, roi_rect.y);
 
 
 	imshow("Timg_1", src_image1);
@@ -58,25 +58,25 @@ void matching2(){
 
 	double pv = 0;
 
-	//‰æ‘œ“Ç‚İ‚İ
+	//ç”»åƒèª­ã¿è¾¼ã¿
 	src_image1 = imread("img_2.bmp", 0);
 	src_tmp1 = imread("Timg_2.bmp", 0);
 	
 
-	//ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO‚ÌŒvZ(ƒeƒ“ƒvƒŒ[ƒg2)
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°ã®è¨ˆç®—(ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ2)
 	matchTemplate(src_image1, src_tmp1, result_image3, CV_TM_CCORR_NORMED);
 	Rect roi_rect(0, 0, src_tmp1.cols, src_tmp1.rows);
 	Point max_pt;
-	//—Ş—“x‚ªÅ‘åEÅ¬‚Æ‚È‚é‰æ‘f‚ÌˆÊ’u‚Ìæ“¾
+	//é¡ä¼¼åº¦ãŒæœ€å¤§ãƒ»æœ€å°ã¨ãªã‚‹ç”»ç´ ã®ä½ç½®ã®å–å¾—
 	minMaxLoc(result_image3, NULL, NULL, NULL, &max_pt);
 	roi_rect.x = max_pt.x;
 	roi_rect.y = max_pt.y;
 
-	//ƒ}ƒbƒ`ƒ“ƒO•”•ª‚ğˆÍ‚Ş
+	//ãƒãƒƒãƒãƒ³ã‚°éƒ¨åˆ†ã‚’å›²ã‚€
 	rectangle(src_image1, Point(roi_rect.x, roi_rect.y), Point(roi_rect.x + src_tmp1.cols, roi_rect.y + src_tmp1.rows), Scalar(0, 0, 0), 3, 4);
 
-	//À•W•\¦
-	printf("À•W x=%d y=%d\n", roi_rect.x, roi_rect.y);
+	//åº§æ¨™è¡¨ç¤º
+	printf("åº§æ¨™ x=%d y=%d\n", roi_rect.x, roi_rect.y);
 
 	imshow("Timg_2", src_image1);
 	waitKey(0);

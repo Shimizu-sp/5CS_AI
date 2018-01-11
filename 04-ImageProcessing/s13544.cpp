@@ -1,4 +1,4 @@
-#include<opencv2/highgui/highgui.hpp>
+ï»¿#include<opencv2/highgui/highgui.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
 #include <stdio.h>
 
@@ -20,21 +20,21 @@ int main(){
 
 	
 
-	//‰æ‘œ1
+	//ç”»åƒ1
 	image_src_1 = imread("img_1.bmp");
 	image_temp_1 = imread("Timg_1.bmp");
 
-	namedWindow("Œ³‰æ‘œ_‰æ‘œ1");
-	imshow("Œ³‰æ‘œ_‰æ‘œ1", image_src_1);
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1", image_temp_1);
+	namedWindow("å…ƒç”»åƒ_ç”»åƒ1");
+	imshow("å…ƒç”»åƒ_ç”»åƒ1", image_src_1);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1", image_temp_1);
 
-	//‚»‚Ì‚Ü‚Ü’Tõ
+	//ãã®ã¾ã¾æ¢ç´¢
 	matchTemplate(image_src_1, image_temp_1, image_result_1, CV_TM_CCORR);
 	Point max_1;
 	minMaxLoc(image_result_1, 0, 0, 0, &max_1);
 	rectangle(image_src_1, max_1, Point(max_1.x + image_temp_1.cols, max_1.y + image_temp_1.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ1_1...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
+	printf("ç”»åƒ1_1...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
 	
 	if (x > max_1.x&&y > max_1.y){
 		x = max_1.x;
@@ -43,7 +43,7 @@ int main(){
 
 	circle(image_src_1, Point(max_1.x, max_1.y), 3, Scalar(0, 255, 0),-1);
 
-	//¶‚É90“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«90åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	Point2f center = Point2f(static_cast<float>(image_temp_1.cols / 2), static_cast<float>(image_temp_1.rows / 2));
 	double angle = 90.0;
 	double scale = 1.0;
@@ -55,13 +55,13 @@ int main(){
 
 	warpAffine(image_temp_1, image_temp_1, affine, image_temp_1.size(), ipf);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_90");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_90", image_temp_1);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_90");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_90", image_temp_1);
 
 	matchTemplate(image_src_1, image_temp_1, image_result_1, CV_TM_CCORR);
 	minMaxLoc(image_result_1, 0, 0, 0, &max_1);
 	rectangle(image_src_1, max_1, Point(max_1.x + image_temp_1.cols, max_1.y + image_temp_1.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ1_2...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
+	printf("ç”»åƒ1_2...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
 
 	if (x > max_1.x&&y > max_1.y){
 		x = max_1.x;
@@ -70,7 +70,7 @@ int main(){
 
 	circle(image_src_1, Point(max_1.x, max_1.y), 3, Scalar(0, 255, 0), -1);
 
-	//¶‚É180“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«180åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	center = Point2f(static_cast<float>(image_temp_1.cols / 2), static_cast<float>(image_temp_1.rows / 2));
 	angle = 180.0;
 	scale = 1.0;
@@ -81,13 +81,13 @@ int main(){
 
 	warpAffine(image_temp_1, image_temp_1, affine, image_temp_1.size(), ipf);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_180");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_180", image_temp_1);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_180");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_180", image_temp_1);
 
 	matchTemplate(image_src_1, image_temp_1, image_result_1, CV_TM_CCORR);
 	minMaxLoc(image_result_1, 0, 0, 0, &max_1);
 	rectangle(image_src_1, max_1, Point(max_1.x + image_temp_1.cols, max_1.y + image_temp_1.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ1_3...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
+	printf("ç”»åƒ1_3...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
 
 	if (x > max_1.x&&y > max_1.y){
 		x = max_1.x;
@@ -96,7 +96,7 @@ int main(){
 
 	circle(image_src_1, Point(max_1.x, max_1.y), 3, Scalar(0, 255, 0), -1);
 
-	//¶‚É270“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«270åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	center = Point2f(static_cast<float>(image_temp_1.cols / 2), static_cast<float>(image_temp_1.rows / 2));
 	angle = 270.0;
 	scale = 1.0;
@@ -107,13 +107,13 @@ int main(){
 
 	warpAffine(image_temp_1, image_temp_1, affine, image_temp_1.size(), ipf);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_270");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ1_270", image_temp_1);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_270");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ1_270", image_temp_1);
 
 	matchTemplate(image_src_1, image_temp_1, image_result_1, CV_TM_CCORR);
 	minMaxLoc(image_result_1, 0, 0, 0, &max_1);
 	rectangle(image_src_1, max_1, Point(max_1.x + image_temp_1.cols, max_1.y + image_temp_1.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ1_4...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
+	printf("ç”»åƒ1_4...max.x:%d,max.y:%d\n", max_1.x, max_1.y);
 
 	if (x > max_1.x&&y > max_1.y){
 		x = max_1.x;
@@ -123,9 +123,9 @@ int main(){
 	circle(image_src_1, Point(max_1.x, max_1.y), 3, Scalar(0, 255, 0), -1);
 
 
-	//Œ‹‰Ê•\¦
-	namedWindow("Œ‹‰Ê_‰æ‘œ1");
-	imshow("Œ‹‰Ê_‰æ‘œ1", image_src_1);
+	//çµæœè¡¨ç¤º
+	namedWindow("çµæœ_ç”»åƒ1");
+	imshow("çµæœ_ç”»åƒ1", image_src_1);
 	printf("x=%d,y=%d\n", x, y);
 
 	
@@ -133,21 +133,21 @@ int main(){
 	
 
 
-	//‰æ‘œ2
+	//ç”»åƒ2
 	image_src_2 = imread("img_2.bmp");
 	image_temp_2 = imread("Timg_2.bmp");
 
-	namedWindow("Œ³‰æ‘œ_‰æ‘œ2");
-	imshow("Œ³‰æ‘œ_‰æ‘œ2", image_src_2);
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2");
-	//imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2", image_temp_2);
+	namedWindow("å…ƒç”»åƒ_ç”»åƒ2");
+	imshow("å…ƒç”»åƒ_ç”»åƒ2", image_src_2);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2");
+	//imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2", image_temp_2);
 
-	//‚»‚Ì‚Ü‚Ü’Tõ
+	//ãã®ã¾ã¾æ¢ç´¢
 	matchTemplate(image_src_2, image_temp_2, image_result_2, CV_TM_CCORR);
 	Point max_2;
 	minMaxLoc(image_result_2, 0, 0, 0, &max_2);
 	rectangle(image_src_2, max_2, Point(max_2.x + image_temp_2.cols, max_2.y + image_temp_2.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ2_1...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
+	printf("ç”»åƒ2_1...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
 
 	if (x > max_2.x&&y > max_2.y){
 	x = max_2.x;
@@ -156,11 +156,11 @@ int main(){
 
 	circle(image_src_2, Point(max_2.x, max_2.y), 3, Scalar(0, 255, 0),-1);
 
-	//¶‚É90“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«90åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	Mat image_temp_2_90(Size(image_temp_2.rows, image_temp_2.cols), CV_8U, Scalar::all(0));
 
 	Point2f center_2 = Point2f(static_cast<float>(image_temp_2.cols / 2), static_cast<float>(image_temp_2.rows / 2));
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2", image_temp_2);
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2", image_temp_2);
 
 	double angle_2 = 90.0;
 	double scale_2 = 1.0;
@@ -172,13 +172,13 @@ int main(){
 
 	warpAffine(image_temp_2, image_temp_2_90, affine_2, image_temp_2_90.size(), ipf_2);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_90");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_90", image_temp_2_90);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_90");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_90", image_temp_2_90);
 
 	matchTemplate(image_src_2, image_temp_2_90, image_result_2, CV_TM_CCORR);
 	minMaxLoc(image_result_2, 0, 0, 0, &max_2);
 	rectangle(image_src_2, max_2, Point(max_2.x + image_temp_2_90.cols, max_2.y + image_temp_2_90.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ2_2...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
+	printf("ç”»åƒ2_2...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
 
 	if (x > max_2.x&&y > max_2.y){
 	x = max_2.x;
@@ -187,7 +187,7 @@ int main(){
 
 	circle(image_src_2, Point(max_2.x, max_2.y), 3, Scalar(0, 255, 0), -1);
 
-	//¶‚É180“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«180åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	center_2 = Point2f(static_cast<float>(image_temp_2.cols / 2), static_cast<float>(image_temp_2.rows / 2));
 	angle_2 = 180.0;
 	scale_2 = 1.0;
@@ -199,13 +199,13 @@ int main(){
 
 	warpAffine(image_temp_2, image_temp_2, affine_2, image_temp_2.size(), ipf_2);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_180");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_180", image_temp_2);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_180");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_180", image_temp_2);
 
 	matchTemplate(image_src_2, image_temp_2, image_result_2, CV_TM_CCORR);
 	minMaxLoc(image_result_2, 0, 0, 0, &max_2);
 	rectangle(image_src_2, max_2, Point(max_2.x + image_temp_2.cols, max_2.y + image_temp_2.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ2_3...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
+	printf("ç”»åƒ2_3...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
 
 	if (x > max_2.x&&y > max_2.y){
 		x = max_2.x;
@@ -214,7 +214,7 @@ int main(){
 
 	circle(image_src_2, Point(max_2.x, max_2.y), 3, Scalar(0, 255, 0), -1);
 
-	//¶‚É270“x‰ñ“]‚³‚¹‚Ä’Tõ
+	//å·¦ã«270åº¦å›è»¢ã•ã›ã¦æ¢ç´¢
 	center_2 = Point2f(static_cast<float>(image_temp_2.cols / 2), static_cast<float>(image_temp_2.rows / 2));
 	angle_2 = 270.0;
 	scale_2 = 1.0;
@@ -226,13 +226,13 @@ int main(){
 
 	warpAffine(image_temp_2, image_temp_2, affine_2, image_temp_2.size(), ipf_2);
 
-	namedWindow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_270");
-	imshow("ƒeƒ“ƒvƒŒ[ƒg_‰æ‘œ2_270", image_temp_2);
+	namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_270");
+	imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ_ç”»åƒ2_270", image_temp_2);
 
 	matchTemplate(image_src_2, image_temp_2, image_result_2, CV_TM_CCORR);
 	minMaxLoc(image_result_2, 0, 0, 0, &max_2);
 	rectangle(image_src_2, max_2, Point(max_2.x + image_temp_2.cols, max_2.y + image_temp_2.rows), Scalar(0, 0, 255), 2, 8, 0);
-	printf("‰æ‘œ2_4...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
+	printf("ç”»åƒ2_4...max.x:%d,max.y:%d\n", max_2.x, max_2.y);
 
 	if (x > max_2.x&&y > max_2.y){
 		x = max_2.x;
@@ -241,9 +241,9 @@ int main(){
 
 	circle(image_src_2, Point(max_2.x, max_2.y), 3, Scalar(0, 255, 0), -1);
 
-	//Œ‹‰Ê•\¦
-	namedWindow("Œ‹‰Ê_‰æ‘œ2");
-	imshow("Œ‹‰Ê_‰æ‘œ2", image_src_2);
+	//çµæœè¡¨ç¤º
+	namedWindow("çµæœ_ç”»åƒ2");
+	imshow("çµæœ_ç”»åƒ2", image_src_2);
 	printf("x=%d,y=%d\n", x, y);
 
 

@@ -1,4 +1,4 @@
-import cv2
+﻿import cv2
 #画像をグレースケールで読み込む
 temp_1 =cv2.imread("Timg_1.bmp")
 data_1 =cv2.imread("img_1.bmp")

@@ -1,4 +1,4 @@
-require 'opencv'
+﻿require 'opencv'
 
 module TemplateMatcher
   # 与えられた引数からテンプレートマッチングを行い、結果を画像で出力する

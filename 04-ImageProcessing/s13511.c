@@ -1,28 +1,28 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
-//img_1.txt‚É‘Î‚·‚éƒvƒƒOƒ‰ƒ€
+//img_1.txtã«å¯¾ã™ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 
 main(){
 
-	//Timg_1.txtˆ——p
-	char temp[201][600]; //ƒeƒ“ƒvƒŒ[ƒg
-	char image[513][1536]; //ƒCƒ[ƒW‰æ‘œ
+	//Timg_1.txtå‡¦ç†ç”¨
+	char temp[201][600]; //ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ
+	char image[513][1536]; //ã‚¤ãƒ¡ãƒ¼ã‚¸ç”»åƒ
 
-	int line = 0; //s”Ô†‚ğ”‚¦‚é
-	int row = 0;  //—ñ”Ô†‚ğ”‚¦‚é
+	int line = 0; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
+	int row = 0;  //åˆ—ç•ªå·ã‚’æ•°ãˆã‚‹
 
-	int line_img = 0,row_img = 0; //ƒCƒ[ƒW—ps—ñ”Ô†
+	int line_img = 0,row_img = 0; //ã‚¤ãƒ¡ãƒ¼ã‚¸ç”¨è¡Œåˆ—ç•ªå·
 	int start_line = 0,start_row = 0;
 
-	int file_read = 0; //ƒtƒ@ƒCƒ‹“Ç‚İ‚İ—p
+	int file_read = 0; //ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ç”¨
 	
-	//—Ş—“x”»’è—p
+	//é¡ä¼¼åº¦åˆ¤å®šç”¨
 	int temp_hantei;
 	int image_hantei;
-	int RSSD; //·‚Ì“ñæ˜a
-	int RSSD_now = 99999999; //·‚Ìâ‘Î’l•Û‘¶—p
+	int RSSD; //å·®ã®äºŒä¹—å’Œ
+	int RSSD_now = 99999999; //å·®ã®çµ¶å¯¾å€¤ä¿å­˜ç”¨
 
 	int aiko=0;
 
@@ -32,101 +32,101 @@ main(){
 
 	FILE *temp_file, *image_file;
 
-	//ˆÈ‰º‚æ‚èˆ—ŠJn===========================
+	//ä»¥ä¸‹ã‚ˆã‚Šå‡¦ç†é–‹å§‹===========================
 	
 
-	//Timg_1.txt‚ğ“Ç‚İ‚Ş=======================
+	//Timg_1.txtã‚’èª­ã¿è¾¼ã‚€=======================
 
 	fopen_s(&temp_file, "Timg_data_1.txt", "r");
 
 	while (file_read != EOF){
 
-		file_read = fgetc(temp_file); //Timg_1.txt‚æ‚è”’l(intŒ^)‚ğ1•¶š“Ç‚İ‚Ş
-		temp[line][row] = file_read; //ƒeƒ“ƒvƒŒ[ƒg‚Æ‚µ‚Ä•Û‘¶
+		file_read = fgetc(temp_file); //Timg_1.txtã‚ˆã‚Šæ•°å€¤(intå‹)ã‚’1æ–‡å­—èª­ã¿è¾¼ã‚€
+		temp[line][row] = file_read; //ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ã—ã¦ä¿å­˜
 
-		row++; //—ñ”Ô†‚ğ”‚¦‚é
+		row++; //åˆ—ç•ªå·ã‚’æ•°ãˆã‚‹
 
 		if (row == 600){
-			row = 0; //—ñ”Ô†‚ğ‰Šú‰»
-			line++; //s”Ô†‚ğ”‚¦‚é
+			row = 0; //åˆ—ç•ªå·ã‚’åˆæœŸåŒ–
+			line++; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
 	}}
 
 	fclose(temp_file);
 
 
-	//img_1.txt‚ğ“Ç‚İ‚Ş=======================
+	//img_1.txtã‚’èª­ã¿è¾¼ã‚€=======================
 
 	fopen_s(&image_file, "img_data_1.txt", "r");
 
-	line = 0; row = 0; //s—ñ”Ô†‚Ì‰Šú‰»
+	line = 0; row = 0; //è¡Œåˆ—ç•ªå·ã®åˆæœŸåŒ–
 
 	for (i = 0; i < 786432; i++){
 
-		file_read = fgetc(image_file); //img_1.txt‚æ‚è”’l‚ğ1“Ç‚İ‚Ş
-		image[line][row] = file_read; //intrŒ^¨charŒ^‚É•ÏŠ·‚µ‚ÄƒCƒ[ƒW‚Æ‚µ‚Ä•Û‘¶
+		file_read = fgetc(image_file); //img_1.txtã‚ˆã‚Šæ•°å€¤ã‚’1èª­ã¿è¾¼ã‚€
+		image[line][row] = file_read; //intrå‹â†’charå‹ã«å¤‰æ›ã—ã¦ã‚¤ãƒ¡ãƒ¼ã‚¸ã¨ã—ã¦ä¿å­˜
 		
-		row++; //—ñ”Ô†‚ğ”‚¦‚é
+		row++; //åˆ—ç•ªå·ã‚’æ•°ãˆã‚‹
 
 		if (row == 1536){
-			row = 0; //—ñ”Ô†‚ğ‰Šú‰»
-			line++; //s”Ô†‚ğ”‚¦‚é
+			row = 0; //åˆ—ç•ªå·ã‚’åˆæœŸåŒ–
+			line++; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
 	}}
 
 	fclose(image_file);
 
-    //ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO====================
+    //ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°====================
 
 	do{
 
     line_img = start_line; 
 	row_img  = start_row;
 
-	line = 0; row = 0; //s—ñ”Ô†‚Ì‰Šú‰»
+	line = 0; row = 0; //è¡Œåˆ—ç•ªå·ã®åˆæœŸåŒ–
 	RSSD = 0;
 
-    //—Ş—‚ğ”»’è‚·‚éˆ—=========================
+    //é¡ä¼¼ã‚’åˆ¤å®šã™ã‚‹å‡¦ç†=========================
 
 	for (i = 0; i < 40000; i++){
 
-		temp_hantei = image_hantei = 0; //‰Šú‰»
+		temp_hantei = image_hantei = 0; //åˆæœŸåŒ–
 
-		//ƒeƒ“ƒvƒŒ[ƒg=======================================================
+		//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆ=======================================================
 		if(temp[line][row] < 48){ temp_hantei += 0; }else{
-			temp_hantei  += (48 - temp[line][row]) * 100; } //•SˆÊ‚ğ•Û‘¶
+			temp_hantei  += (48 - temp[line][row]) * 100; } //ç™¾ä½ã‚’ä¿å­˜
 		
 		if(temp[line][row + 1] < 48){ temp_hantei += 0; }else{
-			temp_hantei  += (48 - temp[line][row + 1]) * 10; } //\ˆÊ‚ğ•Û‘¶
+			temp_hantei  += (48 - temp[line][row + 1]) * 10; } //åä½ã‚’ä¿å­˜
 		
 		if(temp[line][row + 2] < 48){ temp_hantei += 0; }else{
-			temp_hantei  += (48 - temp[line][row + 2]); } //ˆêˆÊ‚ğ•Û‘¶
+			temp_hantei  += (48 - temp[line][row + 2]); } //ä¸€ä½ã‚’ä¿å­˜
 		//===================================================================
 
-		//ƒCƒ[ƒW===========================================================
+		//ã‚¤ãƒ¡ãƒ¼ã‚¸===========================================================
 		if(image[line_img][row_img] < 48){ temp_hantei += 0; }else{
-			image_hantei += (48 - image[line_img][row_img]) * 100; } //•SˆÊ‚ğ•Û‘¶
+			image_hantei += (48 - image[line_img][row_img]) * 100; } //ç™¾ä½ã‚’ä¿å­˜
 		
 		if(image[line_img][row_img + 1] < 48){ temp_hantei += 0; }else{
-			image_hantei += (48 - image[line_img][row_img + 1]) * 10; } //\ˆÊ‚ğ•Û‘¶
+			image_hantei += (48 - image[line_img][row_img + 1]) * 10; } //åä½ã‚’ä¿å­˜
 		
 		if(image[line_img][row_img + 2] < 48){ temp_hantei += 0; }else{
-			image_hantei += (48 - image[line_img][row_img + 2]); } //ˆêˆÊ‚ğ•Û‘¶
+			image_hantei += (48 - image[line_img][row_img + 2]); } //ä¸€ä½ã‚’ä¿å­˜
 		//===================================================================
  
-		RSSD += abs(image_hantei - temp_hantei); //”»’è®
+		RSSD += abs(image_hantei - temp_hantei); //åˆ¤å®šå¼
 
-		row = row + 3; //—ñ”Ô†‚ğ”‚¦‚é
+		row = row + 3; //åˆ—ç•ªå·ã‚’æ•°ãˆã‚‹
 		row_img = row_img + 3;
 
 		if (row == 600){
 			
-			row = 0; //—ñ”Ô†‚ğ‰Šú‰»
-			line++; //s”Ô†‚ğ”‚¦‚é
+			row = 0; //åˆ—ç•ªå·ã‚’åˆæœŸåŒ–
+			line++; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
 
-			line_img++; //s”Ô†‚ğ”‚¦‚é
+			line_img++; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
 	}}
 
 	if (RSSD_now > RSSD){
-		RSSD_now = RSSD; //·‚Ìâ‘Î’l‚ğ•Û‘¶‚·‚é
+		RSSD_now = RSSD; //å·®ã®çµ¶å¯¾å€¤ã‚’ä¿å­˜ã™ã‚‹
 		printf("RSAD %d\n",RSSD_now);
 	}
 
@@ -134,8 +134,8 @@ main(){
 
 	if (row == 600){
 			
-		row = 0; //—ñ”Ô†‚ğ‰Šú‰»
-		start_line++; //s”Ô†‚ğ”‚¦‚é
+		row = 0; //åˆ—ç•ªå·ã‚’åˆæœŸåŒ–
+		start_line++; //è¡Œç•ªå·ã‚’æ•°ãˆã‚‹
 	}
 
  }while(RSSD_now != 0);

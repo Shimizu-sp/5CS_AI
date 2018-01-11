@@ -1,4 +1,4 @@
-#include <opencv2/imgproc/imgproc.hpp>
+ï»¿#include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 using namespace std;
 using namespace cv;
@@ -6,63 +6,63 @@ using namespace cv;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	int i = 0;
-	printf("‚Ç‚¿‚ç‚Ì‰æ‘œ‚Ìƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO‚ğs‚¢‚Ü‚·‚©H\n1.img_1\n2.img_2\n");
+	printf("ã©ã¡ã‚‰ã®ç”»åƒã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã„ã¾ã™ã‹ï¼Ÿ\n1.img_1\n2.img_2\n");
 	scanf("%d", &i);
 
 	switch (i) {
 	case(1):
-		//Še‰æ‘œ‚Ì“Ç‚İ‚İ
+		//å„ç”»åƒã®èª­ã¿è¾¼ã¿
 		Mat image_1 = imread("img_1.bmp");
-		namedWindow("Œ³‚Ì‰æ‘œ(img_1)");
-		imshow("Œ³‚Ì‰æ‘œ(img_1)", img_1);
-		//img_1.bmp‚Ì“Ç‚İ‚İ‚Æ•\¦
+		namedWindow("å…ƒã®ç”»åƒ(img_1)");
+		imshow("å…ƒã®ç”»åƒ(img_1)", img_1);
+		//img_1.bmpã®èª­ã¿è¾¼ã¿ã¨è¡¨ç¤º
 
 		Mat Timg_1 = imread("Timg_1.bmp");
-		namedWindow("ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ(Timg_1)");
-		imshow("ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ(Timg_1)", Timg_1);
-		//Timg_1.bmp‚Ì“Ç‚İ‚İ‚Æ•\¦
+		namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ(Timg_1)");
+		imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ(Timg_1)", Timg_1);
+		//Timg_1.bmpã®èª­ã¿è¾¼ã¿ã¨è¡¨ç¤º
 
-		//img_1‚ÆTimg_1‚Ìƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+		//img_1ã¨Timg_1ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
 		Mat result_1;
 		matchTemplate(img_1, Timg_1, result, TM_CCORR_NORED);
-		namedWindow("ƒ}ƒbƒ`ƒ“ƒO‰æ‘œ_1");
-		imshow("ƒ}ƒbƒ`ƒ“ƒO‰æ‘œ", result_1);
+		namedWindow("ãƒãƒƒãƒãƒ³ã‚°ç”»åƒ_1");
+		imshow("ãƒãƒƒãƒãƒ³ã‚°ç”»åƒ", result_1);
 		Point maxPt;
 		minMaxLoc(result_1, 0, 0, 0, &maxPt);
-		//ƒ}ƒbƒ`ƒ“ƒO‚Ì•\¦
+		//ãƒãƒƒãƒãƒ³ã‚°ã®è¡¨ç¤º
 		rectangle(img_1, maxPt, Point(maxPt.x + Timg_1.cols, maxPt.y + Timg_1.rows), Scalar(0, 255, 255), 2, 8, 0);
-		namedWindow("img_1‚ÆTimg_1‚Ìƒ}ƒbƒ`ƒ“ƒO•\¦");
-		imshow("img_1‚ÆTimg_1‚Ìƒ}ƒbƒ`ƒ“ƒO•\¦", img_1)
+		namedWindow("img_1ã¨Timg_1ã®ãƒãƒƒãƒãƒ³ã‚°è¡¨ç¤º");
+		imshow("img_1ã¨Timg_1ã®ãƒãƒƒãƒãƒ³ã‚°è¡¨ç¤º", img_1)
 
 			break;
 
 	case(2):
 		image_2 = imread("img_2.bmp");
-		namedWindow("Œ³‚Ì‰æ‘œ(img_2)");
-		imshow("Œ³‚Ì‰æ‘œ(img_2)", img_2);
-		//img_2.bmp‚Ì“Ç‚İ‚İ‚Æ•\¦
+		namedWindow("å…ƒã®ç”»åƒ(img_2)");
+		imshow("å…ƒã®ç”»åƒ(img_2)", img_2);
+		//img_2.bmpã®èª­ã¿è¾¼ã¿ã¨è¡¨ç¤º
 
 		Timg_2 = imread("Timg_2.bmp");
-		namedWindow("ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ(Timg_2)");
-		imshow("ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ(Timg_2)", Timg_2);
-		//Timg_2.bmp‚Ì“Ç‚İ‚İ‚Æ•\¦
+		namedWindow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ(Timg_2)");
+		imshow("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ(Timg_2)", Timg_2);
+		//Timg_2.bmpã®èª­ã¿è¾¼ã¿ã¨è¡¨ç¤º
 
-		//img_2‚ÆTimg_2‚Ìƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+		//img_2ã¨Timg_2ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
 		Mat result_2;
 		matchTemplate(img_2, Timg_2, result, TM_CCORR_NORED);
-		namedWindow("ƒ}ƒbƒ`ƒ“ƒO‰æ‘œ_2");
-		imshow("ƒ}ƒbƒ`ƒ“ƒO‰æ‘œ", result_2);
+		namedWindow("ãƒãƒƒãƒãƒ³ã‚°ç”»åƒ_2");
+		imshow("ãƒãƒƒãƒãƒ³ã‚°ç”»åƒ", result_2);
 		Point maxPt;
 		minMaxLoc(result_2, 0, 0, 0, &maxPt);
-		//ƒ}ƒbƒ`ƒ“ƒO‚Ì•\¦
+		//ãƒãƒƒãƒãƒ³ã‚°ã®è¡¨ç¤º
 		rectangle(img_2, maxPt, Point(maxPt.x + Timg_2.cols, maxPt.y + Timg_2.rows), Scalar(0, 255, 255), 2, 8, 0);
-		namedWindow("img_2‚ÆTimg_2‚Ìƒ}ƒbƒ`ƒ“ƒO•\¦");
-		imshow("img_2‚ÆTimg_2‚Ìƒ}ƒbƒ`ƒ“ƒO•\¦", img_2)
+		namedWindow("img_2ã¨Timg_2ã®ãƒãƒƒãƒãƒ³ã‚°è¡¨ç¤º");
+		imshow("img_2ã¨Timg_2ã®ãƒãƒƒãƒãƒ³ã‚°è¡¨ç¤º", img_2)
 
 			break;
 
 	default:
-		printf("’l‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("å€¤ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“\n");
 		break;
 	}
 }

@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -15,7 +15,7 @@ char buf[1];
 
 int main(void){
 
-	//‘ÎÛ‰æ‘œ‚Ì“Ç‚İ‚İ
+	//å¯¾è±¡ç”»åƒã®èª­ã¿è¾¼ã¿
 	img = fopen("img_data_1.txt","r");
 		
 	for(i = 0; i < 512; i++)
@@ -37,7 +37,7 @@ int main(void){
 
 	fclose(img);
 
-	//ƒeƒ“ƒvƒŒ[ƒg‚Ì“Ç‚İ‚İ
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã®èª­ã¿è¾¼ã¿
 	timg = fopen("Timg_data_1.txt","r");
 
 	for(i = 0; i < 200; i++)
@@ -59,7 +59,7 @@ int main(void){
 
 	fclose(timg);
 
-	//—Ş—“x‚Ì”»’è
+	//é¡ä¼¼åº¦ã®åˆ¤å®š
 	for(x= 0; x < 312; x++)
 	{
 		for(y = 0; y < 312; y++)
@@ -82,5 +82,5 @@ int main(void){
 		}
 		//sum = 0;
 	}
-	printf("ƒeƒ“ƒvƒŒ[ƒg‚Æƒ}ƒbƒ`ƒ“ƒO‚µ‚½¶ã‚ÌÀ•W‚Í[%d %d]\n",ans_x,ans_y);
+	printf("ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã¨ãƒãƒƒãƒãƒ³ã‚°ã—ãŸå·¦ä¸Šã®åº§æ¨™ã¯[%d %d]\n",ans_x,ans_y);
 }

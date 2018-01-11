@@ -1,4 +1,4 @@
-import cv2
+﻿import cv2
 
 moto = cv2.imread("img_2.bmp", 0)
 temp = cv2.imread("Timg_2.bmp", 0)

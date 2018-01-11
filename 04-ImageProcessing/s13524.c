@@ -1,4 +1,4 @@
-/*
+ï»¿/*
 **What is this programm:Template Matching
 **Author:Daisuke Kuwahara
 **Mail:abcexe1@gmail.com
@@ -14,98 +14,98 @@
 #include<stdlib.h>
 #include<string.h>
 
-//ƒ}ƒNƒ’è‹`•”
+//ãƒã‚¯ãƒ­å®šç¾©éƒ¨
 
-//ƒ}ƒNƒŠÖ”’è‹`•”
+//ãƒã‚¯ãƒ­é–¢æ•°å®šç¾©éƒ¨
 
-//—ñ‹“‘ÌéŒ¾•”
-//Winodws‚©OS2‚©‚ğ¦‚·—ñ‹“‘Ì
+//åˆ—æŒ™ä½“å®£è¨€éƒ¨
+//Winodwsã‹OS2ã‹ã‚’ç¤ºã™åˆ—æŒ™ä½“
 enum Format{
 	OS2,
 	Windows
 };
 
-//\‘¢‘ÌéŒ¾•”
+//æ§‹é€ ä½“å®£è¨€éƒ¨
 
-//Bitmap File Header—p\‘¢‘Ì
+//Bitmap File Headerç”¨æ§‹é€ ä½“
 struct file_header{
-	unsigned int bfType;			//ƒtƒ@ƒCƒ‹ƒ^ƒCƒv
-	unsigned long bfSize;			//ƒtƒ@ƒCƒ‹ƒTƒCƒY[byte]
-	unsigned int bfReserved1;		//—\–ñ—Ìˆæ‚P
-	unsigned int bfReserved2;		//—\–ñ—Ìˆæ‚Q
-	unsigned long bfOffBit;			//ƒtƒ@ƒCƒ‹æ“ª‚©‚ç‰æ‘œƒf[ƒ^‚Ü‚Å‚ÌƒIƒtƒZƒbƒg[byte]	
+	unsigned int bfType;			//ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—
+	unsigned long bfSize;			//ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚º[byte]
+	unsigned int bfReserved1;		//äºˆç´„é ˜åŸŸï¼‘
+	unsigned int bfReserved2;		//äºˆç´„é ˜åŸŸï¼’
+	unsigned long bfOffBit;			//ãƒ•ã‚¡ã‚¤ãƒ«å…ˆé ­ã‹ã‚‰ç”»åƒãƒ‡ãƒ¼ã‚¿ã¾ã§ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ[byte]	
 };
 
-//Windows—pî•ñƒwƒbƒ_—p\‘¢‘Ì
+//Windowsç”¨æƒ…å ±ãƒ˜ãƒƒãƒ€ç”¨æ§‹é€ ä½“
 struct information_header_Windows{
-	unsigned long biSize;			//î•ñƒwƒbƒ_ƒTƒCƒY[byte]
-	long biWidth;					//‰æ‘œ‚Ì•[ƒsƒNƒZƒ‹]
-	long biHeight;					//‰æ‘œ‚Ì‚‚³[ƒsƒNƒZƒ‹]
-	unsigned int biPlanes;			//ƒvƒŒ[ƒ“”
-	unsigned int biBitCount;		//Fƒrƒbƒg”[bit]
-	unsigned long biCompression;	//ˆ³kŒ`®
-	unsigned long biSizeImage;		//‰æ‘œƒf[ƒ^ƒTƒCƒY[byte]	
-	long biXPixPerMeter;			//…•½‰ğ‘œ“x[dot/m]
-	long biYPixPerMeter;			//‚’¼‰ğ‘œ“x[dot/m]
-	unsigned long biClrUsed;		//Ši”[ƒpƒŒƒbƒg”[g—pF”]
-	unsigned long biCirImportant;	//d—vF”
+	unsigned long biSize;			//æƒ…å ±ãƒ˜ãƒƒãƒ€ã‚µã‚¤ã‚º[byte]
+	long biWidth;					//ç”»åƒã®å¹…[ãƒ”ã‚¯ã‚»ãƒ«]
+	long biHeight;					//ç”»åƒã®é«˜ã•[ãƒ”ã‚¯ã‚»ãƒ«]
+	unsigned int biPlanes;			//ãƒ—ãƒ¬ãƒ¼ãƒ³æ•°
+	unsigned int biBitCount;		//è‰²ãƒ“ãƒƒãƒˆæ•°[bit]
+	unsigned long biCompression;	//åœ§ç¸®å½¢å¼
+	unsigned long biSizeImage;		//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚º[byte]	
+	long biXPixPerMeter;			//æ°´å¹³è§£åƒåº¦[dot/m]
+	long biYPixPerMeter;			//å‚ç›´è§£åƒåº¦[dot/m]
+	unsigned long biClrUsed;		//æ ¼ç´ãƒ‘ãƒ¬ãƒƒãƒˆæ•°[ä½¿ç”¨è‰²æ•°]
+	unsigned long biCirImportant;	//é‡è¦è‰²æ•°
 };
 
-//OS2—pî•ñƒwƒbƒ_—p\‘¢‘Ì
+//OS2ç”¨æƒ…å ±ãƒ˜ãƒƒãƒ€ç”¨æ§‹é€ ä½“
 
 struct information_header_OS2{
-	unsigned long bcSize;			//î•ñƒwƒbƒ_ƒTƒCƒY[byte]
-	int bcWidth;					//‰æ‘œ‚Ì•[ƒsƒNƒZƒ‹]
-	int bcHeight;					//‰æ‘œ‚Ì‚‚³[ƒsƒNƒZƒ‹]
-	unsigned int bcPlanes;			//ƒvƒŒ[ƒ“”
-	unsigned int bcBitCount;		//Fƒrƒbƒg”[bit]
+	unsigned long bcSize;			//æƒ…å ±ãƒ˜ãƒƒãƒ€ã‚µã‚¤ã‚º[byte]
+	int bcWidth;					//ç”»åƒã®å¹…[ãƒ”ã‚¯ã‚»ãƒ«]
+	int bcHeight;					//ç”»åƒã®é«˜ã•[ãƒ”ã‚¯ã‚»ãƒ«]
+	unsigned int bcPlanes;			//ãƒ—ãƒ¬ãƒ¼ãƒ³æ•°
+	unsigned int bcBitCount;		//è‰²ãƒ“ãƒƒãƒˆæ•°[bit]
 };
 
-//Windows—pƒpƒŒƒbƒgƒf[ƒ^
+//Windowsç”¨ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿
 struct palette_data_Windows{
-	unsigned char rgbBlue;			//Â
-	unsigned char rgbGreen;			//—Î
-	unsigned char rgbRed;			//Ô
-	unsigned char rgbReserved;		//—\–ñ—Ìˆæ
+	unsigned char rgbBlue;			//é’
+	unsigned char rgbGreen;			//ç·‘
+	unsigned char rgbRed;			//èµ¤
+	unsigned char rgbReserved;		//äºˆç´„é ˜åŸŸ
 };
 
-//OS2—pƒpƒŒƒbƒgƒf[ƒ^
+//OS2ç”¨ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿
 struct palette_data_OS2{
-	unsigned char rgbBlue;			//Â
-	unsigned char rgbGreen;			//—Î
-	unsigned char rgbRed;			//Ô
+	unsigned char rgbBlue;			//é’
+	unsigned char rgbGreen;			//ç·‘
+	unsigned char rgbRed;			//èµ¤
 };
 
-//‰æ‘fƒf[ƒ^
+//ç”»ç´ ãƒ‡ãƒ¼ã‚¿
 typedef struct pix_data{
-	unsigned char rgbBlue;			//Â
-	unsigned char rgbGreen;			//—Î
-	unsigned char rgbRed;			//Ô
-	unsigned char rgbReserved;		//—\–ñ—Ìˆæ
+	unsigned char rgbBlue;			//é’
+	unsigned char rgbGreen;			//ç·‘
+	unsigned char rgbRed;			//èµ¤
+	unsigned char rgbReserved;		//äºˆç´„é ˜åŸŸ
 } RGB;
 
-//BMPƒtƒ@ƒCƒ‹ƒf[ƒ^‚ğŠi”[‚·‚é\‘¢‘Ì
+//BMPãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹æ§‹é€ ä½“
 typedef struct def_BMP{
-	enum Format format;							//Winodws‹KŠi‚©OS2‹KŠi‚©‚ğ¦‚·—ñ‹“‘Ì
-	struct file_header fh;						//BMP‚Ìƒtƒ@ƒCƒ‹ƒwƒbƒ_
-	struct information_header_Windows ih_w;		//Winodws‚Ìê‡‚Ìî•ñƒwƒbƒ_
-	struct information_header_OS2 ih_o;			//OS2‚Ìê‡‚Ìî•ñƒwƒbƒ_
-	struct palette_data_Windows *pd_w;			//Winodws‚Ìê‡‚ÌƒpƒŒƒbƒgƒf[ƒ^
-	struct palette_data_OS2 *pd_o;				//OS2‚Ìê‡‚ÌƒpƒŒƒbƒgƒf[ƒ^
-	unsigned char **def_color_data;				//BMPƒtƒ@ƒCƒ‹“à‚Ì‰æ‘f”z—ñ
-	RGB **color_data;							//lŠÔ‚ª”F¯‚µ‚â‚·‚¢cx‰¡‚Ì‰æ‘f”z—ñ
-	size_t palette_size;						//ƒpƒŒƒbƒgƒf[ƒ^‚Ì”z—ñ”‚ğŠi”[‚·‚é
-	size_t def_color_data_row_size;				//BMP“à‚Ì‰æ‘œƒf[ƒ^‚ÌsƒTƒCƒY[byte]
-	size_t def_color_data_calumn_size;			//BMP“à‚Ì‰æ‘œƒf[ƒ^‚ÌcƒTƒCƒY[byte]
-	size_t color_data_row_size;				//lŠÔ‚ª”F¯‚µ‚â‚·‚¢‰æ‘œƒf[ƒ^‚ÌsƒTƒCƒY[byte]
-	size_t color_data_calumn_size;			//lŠÔ‚ª”F¯‚µ‚â‚·‚¢‰æ‘œƒf[ƒ^‚ÌcƒTƒCƒY[byte]
+	enum Format format;							//Winodwsè¦æ ¼ã‹OS2è¦æ ¼ã‹ã‚’ç¤ºã™åˆ—æŒ™ä½“
+	struct file_header fh;						//BMPã®ãƒ•ã‚¡ã‚¤ãƒ«ãƒ˜ãƒƒãƒ€
+	struct information_header_Windows ih_w;		//Winodwsã®å ´åˆã®æƒ…å ±ãƒ˜ãƒƒãƒ€
+	struct information_header_OS2 ih_o;			//OS2ã®å ´åˆã®æƒ…å ±ãƒ˜ãƒƒãƒ€
+	struct palette_data_Windows *pd_w;			//Winodwsã®å ´åˆã®ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿
+	struct palette_data_OS2 *pd_o;				//OS2ã®å ´åˆã®ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿
+	unsigned char **def_color_data;				//BMPãƒ•ã‚¡ã‚¤ãƒ«å†…ã®ç”»ç´ é…åˆ—
+	RGB **color_data;							//äººé–“ãŒèªè­˜ã—ã‚„ã™ã„ç¸¦xæ¨ªã®ç”»ç´ é…åˆ—
+	size_t palette_size;						//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®é…åˆ—æ•°ã‚’æ ¼ç´ã™ã‚‹
+	size_t def_color_data_row_size;				//BMPå†…ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®è¡Œã‚µã‚¤ã‚º[byte]
+	size_t def_color_data_calumn_size;			//BMPå†…ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ç¸¦ã‚µã‚¤ã‚º[byte]
+	size_t color_data_row_size;				//äººé–“ãŒèªè­˜ã—ã‚„ã™ã„ç”»åƒãƒ‡ãƒ¼ã‚¿ã®è¡Œã‚µã‚¤ã‚º[byte]
+	size_t color_data_calumn_size;			//äººé–“ãŒèªè­˜ã—ã‚„ã™ã„ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ç¸¦ã‚µã‚¤ã‚º[byte]
 } BMP;
 
-//ŠÖ”’è‹`•”
+//é–¢æ•°å®šç¾©éƒ¨
 
 /*
-BMP‚ğ“Ç‚İ‚ŞŠÖ”
-ƒGƒ‰[‚É‚ÍNULL‚ğ•Ô‚·
+BMPã‚’èª­ã¿è¾¼ã‚€é–¢æ•°
+ã‚¨ãƒ©ãƒ¼æ™‚ã«ã¯NULLã‚’è¿”ã™
 */
 BMP* ReadBMP(const char* filename){
 	BMP* bmp;
@@ -113,27 +113,27 @@ BMP* ReadBMP(const char* filename){
 	size_t s;
 	size_t t;
 
-	int bmp_type=0;//BMP‚ªƒ{ƒgƒ€ƒAƒbƒv‚Å•Û‘¶‚³‚ê‚Ä‚¢‚éê‡1‚É‚È‚éƒtƒ‰ƒO
+	int bmp_type=0;//BMPãŒãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ä¿å­˜ã•ã‚Œã¦ã„ã‚‹å ´åˆ1ã«ãªã‚‹ãƒ•ãƒ©ã‚°
 
-	//BMP‚Ì\‘¢‘Ì‚ğŠm•Û
+	//BMPã®æ§‹é€ ä½“ã‚’ç¢ºä¿
 	if(NULL==(bmp=(BMP*)malloc(sizeof(BMP)))){
 		perror("malloc:BMP");
 		return 0;
 	}
 
-	//\‘¢‘Ì“à‚Ì’l‚ğ‰Šú‰»
+	//æ§‹é€ ä½“å†…ã®å€¤ã‚’åˆæœŸåŒ–
 	memset(bmp,0,sizeof(BMP));
 
-	//ƒtƒ@ƒCƒ‹‚Ì“Ç‚İ‚İ
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿
 	if (NULL == (fp = fopen(filename, "r"))){ 
 		perror("Readbmp->fopen");
 		return 0;
 	}
 
-	//ƒtƒ@ƒCƒ‹ƒwƒbƒ_‚Ì“Ç‚İ‚İ
+	//ãƒ•ã‚¡ã‚¤ãƒ«ãƒ˜ãƒƒãƒ€ã®èª­ã¿è¾¼ã¿
 	fread(&(bmp->fh.bfType), 2, 1, fp);
 
-	//BMPƒtƒ@ƒCƒ‹‚Å‚ ‚é‚©‚ğŠm”F(bfType="BM"‚©‚ğŠm”F)
+	//BMPãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚ã‚‹ã‹ã‚’ç¢ºèª(bfType="BM"ã‹ã‚’ç¢ºèª)
 	if (bmp->fh.bfType != 0x4d42){
 		perror("Not BMP file");
 		return 0;
@@ -144,10 +144,10 @@ BMP* ReadBMP(const char* filename){
 	fread(&(bmp->fh.bfReserved2), 2, 1, fp);
 	fread(&(bmp->fh.bfOffBit), 4, 1, fp);
 
-	//î•ñƒwƒbƒ_‚Ì“Ç‚İ‚İ
+	//æƒ…å ±ãƒ˜ãƒƒãƒ€ã®èª­ã¿è¾¼ã¿
 	fread(&(bmp->ih_o.bcSize), 4, 1, fp);
 
-	//OS2‹KŠi‚©Windows‹KŠi‚©‚ğ”»’f
+	//OS2è¦æ ¼ã‹Windowsè¦æ ¼ã‹ã‚’åˆ¤æ–­
 	if (bmp->ih_o.bcSize == 12){
 		//OS2
 		bmp->format = OS2;
@@ -156,9 +156,9 @@ BMP* ReadBMP(const char* filename){
 		fread(&(bmp->ih_o.bcPlanes), 2, 1, fp);
 		fread(&(bmp->ih_o.bcBitCount), 2, 1, fp);
 
-		//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚ ‚é‚©‚ğ”»’è
+		//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ã‚ã‚‹ã‹ã‚’åˆ¤å®š
 		if(bmp->ih_o.bcHeight>0){
-			//‚‚³‚ª®”@-> ƒ{ƒgƒ€ƒAƒbƒv‚Å‚ ‚é
+			//é«˜ã•ãŒæ•´æ•°ã€€-> ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ã‚ã‚‹
 			bmp_type=1;
 		}
 	}
@@ -177,9 +177,9 @@ BMP* ReadBMP(const char* filename){
 		fread(&(bmp->ih_w.biClrUsed), 4, 1, fp);
 		fread(&(bmp->ih_w.biCirImportant), 4, 1, fp);
 
-		//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚ ‚é‚©‚ğ”»’è
+		//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ã‚ã‚‹ã‹ã‚’åˆ¤å®š
 		if(bmp->ih_w.biHeight>0){
-			//‚‚³‚ª®”@-> ƒ{ƒgƒ€ƒAƒbƒv‚Å‚ ‚é
+			//é«˜ã•ãŒæ•´æ•°ã€€-> ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ã‚ã‚‹
 			bmp_type=1;
 		}
 	}
@@ -188,21 +188,21 @@ BMP* ReadBMP(const char* filename){
 		return 0;
 	}
 
-	//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+	//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 	if (bmp->format == OS2){
 		switch (bmp->ih_o.bcBitCount){
 		case 1:
-			perror("ƒpƒŒƒbƒgƒTƒCƒY=1‚Í–¢‘Î‰‚Å‚·D");
+			perror("ãƒ‘ãƒ¬ãƒƒãƒˆã‚µã‚¤ã‚º=1ã¯æœªå¯¾å¿œã§ã™ï¼");
 			return 0;
 			/*
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=2;
 			if(NULL==(bmp->pd_o=(struct palette_data_OS2*)malloc(sizeof(struct palette_data_OS2)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_o[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_o[s].rgbGreen), 1, 1, fp);
@@ -211,17 +211,17 @@ BMP* ReadBMP(const char* filename){
 			*/
 			break;
 		case 4:
-			perror("ƒpƒŒƒbƒgƒTƒCƒY=4‚Í–¢‘Î‰‚Å‚·D");
+			perror("ãƒ‘ãƒ¬ãƒƒãƒˆã‚µã‚¤ã‚º=4ã¯æœªå¯¾å¿œã§ã™ï¼");
 			return 0;
 			/*
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=16;
 			if(NULL==(bmp->pd_o=(struct palette_data_OS2*)malloc(sizeof(struct palette_data_OS2)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_o[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_o[s].rgbGreen), 1, 1, fp);
@@ -230,14 +230,14 @@ BMP* ReadBMP(const char* filename){
 			*/
 			break;
 		case 8:
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=256;
 			if(NULL==(bmp->pd_o=(struct palette_data_OS2*)malloc(sizeof(struct palette_data_OS2)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_o[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_o[s].rgbGreen), 1, 1, fp);
@@ -250,17 +250,17 @@ BMP* ReadBMP(const char* filename){
 	else if (bmp->format == Windows){
 		switch (bmp->ih_w.biBitCount){
 		case 1:
-			perror("ƒpƒŒƒbƒgƒTƒCƒY=1‚Í–¢‘Î‰‚Å‚·D");
+			perror("ãƒ‘ãƒ¬ãƒƒãƒˆã‚µã‚¤ã‚º=1ã¯æœªå¯¾å¿œã§ã™ï¼");
 			return 0;
 			/*
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=2;
 			if(NULL==(bmp->pd_w=(struct palette_data_Windows*)malloc(sizeof(struct palette_data_Windows)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_w[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_w[s].rgbGreen), 1, 1, fp);
@@ -270,17 +270,17 @@ BMP* ReadBMP(const char* filename){
 			*/
 			break;
 		case 4:
-			perror("ƒpƒŒƒbƒgƒTƒCƒY=4‚Í–¢‘Î‰‚Å‚·D");
+			perror("ãƒ‘ãƒ¬ãƒƒãƒˆã‚µã‚¤ã‚º=4ã¯æœªå¯¾å¿œã§ã™ï¼");
 			return 0;
 			/*
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=16;
 			if(NULL==(bmp->pd_w=(struct palette_data_Windows*)malloc(sizeof(struct palette_data_Windows)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_w[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_w[s].rgbGreen), 1, 1, fp);
@@ -291,14 +291,14 @@ BMP* ReadBMP(const char* filename){
 			break;
 			*/
 		case 8:
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ìƒƒ‚ƒŠŠm•Û
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			bmp->palette_size=256;
 			if(NULL==(bmp->pd_w=(struct palette_data_Windows*)malloc(sizeof(struct palette_data_Windows)*bmp->palette_size))){
 				perror("palettedata->malloc");
 				return 0;
 			}
 
-			//ƒpƒŒƒbƒgƒf[ƒ^‚Ì“Ç‚İ‚İ
+			//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
 			for(s=0;s<bmp->palette_size;s++){
 				fread(&(bmp->pd_w[s].rgbBlue), 1, 1, fp);
 				fread(&(bmp->pd_w[s].rgbGreen), 1, 1, fp);
@@ -310,33 +310,33 @@ BMP* ReadBMP(const char* filename){
 		}
 	}
 
-	//‰æ‘œƒf[ƒ^‚Ì“Ç‚İ‚İ
-	//BitCount‚ª8,24,32ˆÈŠO‚Ìê‡‚ÍŒ»ó‚Å‚Í‚±‚±‚æ‚èæ‚Éi‚Ş‚±‚Æ‚Í‚ ‚è‚Ü‚¹‚ñD
+	//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
+	//BitCountãŒ8,24,32ä»¥å¤–ã®å ´åˆã¯ç¾çŠ¶ã§ã¯ã“ã“ã‚ˆã‚Šå…ˆã«é€²ã‚€ã“ã¨ã¯ã‚ã‚Šã¾ã›ã‚“ï¼
 
-	//‰æ‘œƒf[ƒ^‚ÌŠi”[ƒTƒCƒY„’è
+	//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´ã‚µã‚¤ã‚ºæ¨å®š
 	if(bmp->format==Windows){
 
-		//ƒpƒŒƒbƒgƒf[ƒ^‚ ‚è‚Ìê‡
+		//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚ã‚Šã®å ´åˆ
 		if(bmp->ih_w.biBitCount==1 || bmp->ih_w.biBitCount==4 || bmp->ih_w.biBitCount==8){
-			unsigned int real_Width_size=bmp->ih_w.biWidth*bmp->ih_w.biBitCount;	//ÀÛ‚Ì‰æ‘œƒf[ƒ^‚ÌƒTƒCƒY[bit]
-			unsigned int padding=32-((bmp->ih_w.biWidth*bmp->ih_w.biBitCount)%32);		//‹l‚ß•¨‚ÌƒTƒCƒY[bit]
+			unsigned int real_Width_size=bmp->ih_w.biWidth*bmp->ih_w.biBitCount;	//å®Ÿéš›ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ã‚µã‚¤ã‚º[bit]
+			unsigned int padding=32-((bmp->ih_w.biWidth*bmp->ih_w.biBitCount)%32);		//è©°ã‚ç‰©ã®ã‚µã‚¤ã‚º[bit]
 
-			//‹l‚ß•¨ƒTƒCƒY‚ª32bit‚É‚È‚Á‚Ä‚µ‚Ü‚¤ê‡‚ÍC32bit=4byte‚È‚Ì‚Å‹l‚ß‚È‚­‚Ä‚¢‚¢
+			//è©°ã‚ç‰©ã‚µã‚¤ã‚ºãŒ32bitã«ãªã£ã¦ã—ã¾ã†å ´åˆã¯ï¼Œ32bit=4byteãªã®ã§è©°ã‚ãªãã¦ã„ã„
 			if(padding==32) padding=0;
 
-			//\‘¢‘Ì‚ÉC‰æ‘œƒf[ƒ^‚Ì”z—ñƒTƒCƒY‚ğŠi”[
-			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0‹l‚ß‚³‚ê‚½‰¡•
+			//æ§‹é€ ä½“ã«ï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã®é…åˆ—ã‚µã‚¤ã‚ºã‚’æ ¼ç´
+			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0è©°ã‚ã•ã‚ŒãŸæ¨ªå¹…
 			bmp->def_color_data_calumn_size=bmp->ih_w.biHeight;
 			bmp->color_data_row_size=bmp->ih_w.biWidth;
 			bmp->color_data_calumn_size=bmp->ih_w.biHeight;
 
-			//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚È‚¢ê‡CbiHeight‚ªƒ}ƒCƒiƒX‚È‚Ì‚ÅCƒvƒ‰ƒX‚É’¼‚·
+			//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ãªã„å ´åˆï¼ŒbiHeightãŒãƒã‚¤ãƒŠã‚¹ãªã®ã§ï¼Œãƒ—ãƒ©ã‚¹ã«ç›´ã™
 			if(!bmp_type){
 				bmp->def_color_data_calumn_size*=-1;
 				bmp->color_data_calumn_size*=-1;
 			}
 
-			//‰æ‘œƒf[ƒ^—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->def_color_data=(unsigned char**)malloc(sizeof(unsigned char*)*(bmp->def_color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->unsigned char**");
 				return 0;
@@ -348,7 +348,7 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚ğRGB’l‚É•ÏŠ·‚µ‚½î•ñ—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’RGBå€¤ã«å¤‰æ›ã—ãŸæƒ…å ±ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->color_data=(RGB**)malloc(sizeof(RGB*)*(bmp->color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->RGB**");
 				return 0;
@@ -360,44 +360,44 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚Ìæ“¾(8bit‚Ì‚İj
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®å–å¾—(8bitã®ã¿ï¼‰
 			for(t=0;t<bmp->def_color_data_calumn_size;t++){
 				for(s=0;s<bmp->def_color_data_row_size;s++){
 					fread(&(bmp->def_color_data[t][s]), 1, 1, fp);
 				}
 			}
 
-			//ƒpƒŒƒbƒhƒf[ƒ^‚É]‚¢CRGB’l‚É•ÏŠ·
+			//ãƒ‘ãƒ¬ãƒƒãƒ‰ãƒ‡ãƒ¼ã‚¿ã«å¾“ã„ï¼ŒRGBå€¤ã«å¤‰æ›
 			for(t=0;t<bmp->color_data_calumn_size;t++){
 				for(s=0;s<bmp->color_data_row_size;s++){
-					//RGBƒf[ƒ^‚ÌŠi”[\‘¢.F‚Ìí—Ş = ƒpƒŒƒbƒgƒf[ƒ^”z—ñ[‰æ‘œƒf[ƒ^].F‚Ìí—Ş
+					//RGBãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´æ§‹é€ .è‰²ã®ç¨®é¡ = ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿é…åˆ—[ç”»åƒãƒ‡ãƒ¼ã‚¿].è‰²ã®ç¨®é¡
 					bmp->color_data[t][s].rgbBlue=bmp->pd_w[bmp->def_color_data[t][s]].rgbBlue;
 					bmp->color_data[t][s].rgbGreen=bmp->pd_w[bmp->def_color_data[t][s]].rgbGreen;
 					bmp->color_data[t][s].rgbRed=bmp->pd_w[bmp->def_color_data[t][s]].rgbRed;
 				}
 			}
 
-		}//ƒpƒŒƒbƒgƒf[ƒ^‚È‚µ‚Ìê‡
+		}//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãªã—ã®å ´åˆ
 		else{
-			unsigned int real_Width_size=bmp->ih_w.biWidth*bmp->ih_w.biBitCount;	//ÀÛ‚Ì‰æ‘œƒf[ƒ^‚ÌƒTƒCƒY[bit]
-			unsigned int padding=32-((bmp->ih_w.biWidth*bmp->ih_w.biBitCount)%32);	//‹l‚ß•¨‚ÌƒTƒCƒY[bit]
+			unsigned int real_Width_size=bmp->ih_w.biWidth*bmp->ih_w.biBitCount;	//å®Ÿéš›ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ã‚µã‚¤ã‚º[bit]
+			unsigned int padding=32-((bmp->ih_w.biWidth*bmp->ih_w.biBitCount)%32);	//è©°ã‚ç‰©ã®ã‚µã‚¤ã‚º[bit]
 
-			//‹l‚ß•¨ƒTƒCƒY‚ª32bit‚É‚È‚Á‚Ä‚µ‚Ü‚¤ê‡‚ÍC32bit=4byte‚È‚Ì‚Å‹l‚ß‚È‚­‚Ä‚¢‚¢
+			//è©°ã‚ç‰©ã‚µã‚¤ã‚ºãŒ32bitã«ãªã£ã¦ã—ã¾ã†å ´åˆã¯ï¼Œ32bit=4byteãªã®ã§è©°ã‚ãªãã¦ã„ã„
 			if(padding==32) padding=0;
 
-			//\‘¢‘Ì‚ÉC‰æ‘œƒf[ƒ^‚Ì”z—ñƒTƒCƒY‚ğŠi”[
-			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0‹l‚ß‚³‚ê‚½‰¡•
+			//æ§‹é€ ä½“ã«ï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã®é…åˆ—ã‚µã‚¤ã‚ºã‚’æ ¼ç´
+			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0è©°ã‚ã•ã‚ŒãŸæ¨ªå¹…
 			bmp->def_color_data_calumn_size=bmp->ih_w.biHeight;
 			bmp->color_data_row_size=bmp->ih_w.biWidth;
 			bmp->color_data_calumn_size=bmp->ih_w.biHeight;
 
-			//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚È‚¢ê‡CbiHeight‚ªƒ}ƒCƒiƒX‚È‚Ì‚ÅCƒvƒ‰ƒX‚É’¼‚·
+			//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ãªã„å ´åˆï¼ŒbiHeightãŒãƒã‚¤ãƒŠã‚¹ãªã®ã§ï¼Œãƒ—ãƒ©ã‚¹ã«ç›´ã™
 			if(!bmp_type){
 				bmp->def_color_data_calumn_size*=-1;
 				bmp->color_data_calumn_size*=-1;
 			}
 
-			//‰æ‘œƒf[ƒ^‚ğRGB’l‚É•ÏŠ·‚µ‚½î•ñ—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’RGBå€¤ã«å¤‰æ›ã—ãŸæƒ…å ±ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->color_data=(RGB**)malloc(sizeof(RGB*)*(bmp->color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->RGB**");
 				return 0;
@@ -409,7 +409,7 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚Ìæ“¾
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®å–å¾—
 			for(t=0;t<bmp->def_color_data_calumn_size;t++){
 				unsigned char delete_data;
 				
@@ -418,12 +418,12 @@ BMP* ReadBMP(const char* filename){
 					fread(&(bmp->color_data[t][s].rgbGreen), 1, 1, fp);
 					fread(&(bmp->color_data[t][s].rgbRed), 1, 1, fp);
 
-					//—\–ñ—Ìˆæ‚ÍbitCount=32‚È‚ç“Ç‚İ‚İC‚»‚¤‚Å‚È‚¢ê‡‚É‚Í0‚ğ‘ã“ü‚·‚éD
+					//äºˆç´„é ˜åŸŸã¯bitCount=32ãªã‚‰èª­ã¿è¾¼ã¿ï¼Œãã†ã§ãªã„å ´åˆã«ã¯0ã‚’ä»£å…¥ã™ã‚‹ï¼
 					if(bmp->ih_w.biBitCount==32) fread(&(bmp->color_data[t][s].rgbReserved), 1, 1, fp);
 					bmp->color_data[t][s].rgbReserved=0;
 				}
 
-				//0‹l‚ß•”•ª‚ğ“Ç‚İÌ‚Ä
+				//0è©°ã‚éƒ¨åˆ†ã‚’èª­ã¿æ¨ã¦
 				for(s=0;s<(padding/8);s++) fread(&delete_data,1,1,fp);
 			}
 
@@ -431,27 +431,27 @@ BMP* ReadBMP(const char* filename){
 			
 	}
 	else if(bmp->format==OS2){
-		//ƒpƒŒƒbƒgƒf[ƒ^‚ ‚è‚Ìê‡
+		//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚ã‚Šã®å ´åˆ
 		if(bmp->ih_o.bcBitCount==1 || bmp->ih_o.bcBitCount==4 || bmp->ih_o.bcBitCount==8){
-			unsigned int real_Width_size=bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount;	//ÀÛ‚Ì‰æ‘œƒf[ƒ^‚ÌƒTƒCƒY[bit]
-			unsigned int padding=32-((bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount)%32);	//‹l‚ß•¨‚ÌƒTƒCƒY[bit]
+			unsigned int real_Width_size=bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount;	//å®Ÿéš›ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ã‚µã‚¤ã‚º[bit]
+			unsigned int padding=32-((bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount)%32);	//è©°ã‚ç‰©ã®ã‚µã‚¤ã‚º[bit]
 
-			//‹l‚ß•¨ƒTƒCƒY‚ª32bit‚É‚È‚Á‚Ä‚µ‚Ü‚¤ê‡‚ÍC32bit=4byte‚È‚Ì‚Å‹l‚ß‚È‚­‚Ä‚¢‚¢
+			//è©°ã‚ç‰©ã‚µã‚¤ã‚ºãŒ32bitã«ãªã£ã¦ã—ã¾ã†å ´åˆã¯ï¼Œ32bit=4byteãªã®ã§è©°ã‚ãªãã¦ã„ã„
 			if(padding==32) padding=0;
 
-			//\‘¢‘Ì‚ÉC‰æ‘œƒf[ƒ^‚Ì”z—ñƒTƒCƒY‚ğŠi”[
-			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0‹l‚ß‚³‚ê‚½‰¡•
+			//æ§‹é€ ä½“ã«ï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã®é…åˆ—ã‚µã‚¤ã‚ºã‚’æ ¼ç´
+			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0è©°ã‚ã•ã‚ŒãŸæ¨ªå¹…
 			bmp->def_color_data_calumn_size=bmp->ih_o.bcHeight;
 			bmp->color_data_row_size=bmp->ih_o.bcWidth;
 			bmp->color_data_calumn_size=bmp->ih_o.bcHeight;
 
-			//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚È‚¢ê‡CbcHeight‚ªƒ}ƒCƒiƒX‚È‚Ì‚ÅCƒvƒ‰ƒX‚É’¼‚·
+			//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ãªã„å ´åˆï¼ŒbcHeightãŒãƒã‚¤ãƒŠã‚¹ãªã®ã§ï¼Œãƒ—ãƒ©ã‚¹ã«ç›´ã™
 			if(!bmp_type){
 				bmp->def_color_data_calumn_size*=-1;
 				bmp->color_data_calumn_size*=-1;
 			}
 
-			//‰æ‘œƒf[ƒ^—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->def_color_data=(unsigned char**)malloc(sizeof(unsigned char*)*(bmp->def_color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->unsigned char**");
 				return 0;
@@ -463,7 +463,7 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚ğRGB’l‚É•ÏŠ·‚µ‚½î•ñ—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’RGBå€¤ã«å¤‰æ›ã—ãŸæƒ…å ±ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->color_data=(RGB**)malloc(sizeof(RGB*)*(bmp->color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->RGB**");
 				return 0;
@@ -475,44 +475,44 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚Ìæ“¾(8bit‚Ì‚İj
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®å–å¾—(8bitã®ã¿ï¼‰
 			for(t=0;t<bmp->def_color_data_calumn_size;t++){
 				for(s=0;s<bmp->def_color_data_row_size;s++){
 					fread(&(bmp->def_color_data[t][s]), 1, 1, fp);
 				}
 			}
 
-			//ƒpƒŒƒbƒhƒf[ƒ^‚É]‚¢CRGB’l‚É•ÏŠ·
+			//ãƒ‘ãƒ¬ãƒƒãƒ‰ãƒ‡ãƒ¼ã‚¿ã«å¾“ã„ï¼ŒRGBå€¤ã«å¤‰æ›
 			for(t=0;t<bmp->color_data_calumn_size;t++){
 				for(s=0;s<bmp->color_data_row_size;s++){
-					//RGBƒf[ƒ^‚ÌŠi”[\‘¢.F‚Ìí—Ş = ƒpƒŒƒbƒgƒf[ƒ^”z—ñ[‰æ‘œƒf[ƒ^].F‚Ìí—Ş
+					//RGBãƒ‡ãƒ¼ã‚¿ã®æ ¼ç´æ§‹é€ .è‰²ã®ç¨®é¡ = ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿é…åˆ—[ç”»åƒãƒ‡ãƒ¼ã‚¿].è‰²ã®ç¨®é¡
 					bmp->color_data[t][s].rgbBlue=bmp->pd_w[bmp->def_color_data[t][s]].rgbBlue;
 					bmp->color_data[t][s].rgbGreen=bmp->pd_w[bmp->def_color_data[t][s]].rgbGreen;
 					bmp->color_data[t][s].rgbRed=bmp->pd_w[bmp->def_color_data[t][s]].rgbRed;
 				}
 			}
 
-		}//ƒpƒŒƒbƒgƒf[ƒ^‚È‚µ‚Ìê‡
+		}//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãªã—ã®å ´åˆ
 		else{
-			unsigned int real_Width_size=bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount;	//ÀÛ‚Ì‰æ‘œƒf[ƒ^‚ÌƒTƒCƒY[bit]
-			unsigned int padding=32-((bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount)%32);	//‹l‚ß•¨‚ÌƒTƒCƒY[bit]
+			unsigned int real_Width_size=bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount;	//å®Ÿéš›ã®ç”»åƒãƒ‡ãƒ¼ã‚¿ã®ã‚µã‚¤ã‚º[bit]
+			unsigned int padding=32-((bmp->ih_o.bcWidth*bmp->ih_o.bcBitCount)%32);	//è©°ã‚ç‰©ã®ã‚µã‚¤ã‚º[bit]
 
-			//‹l‚ß•¨ƒTƒCƒY‚ª32bit‚É‚È‚Á‚Ä‚µ‚Ü‚¤ê‡‚ÍC32bit=4byte‚È‚Ì‚Å‹l‚ß‚È‚­‚Ä‚¢‚¢
+			//è©°ã‚ç‰©ã‚µã‚¤ã‚ºãŒ32bitã«ãªã£ã¦ã—ã¾ã†å ´åˆã¯ï¼Œ32bit=4byteãªã®ã§è©°ã‚ãªãã¦ã„ã„
 			if(padding==32) padding=0;
 
-			//\‘¢‘Ì‚ÉC‰æ‘œƒf[ƒ^‚Ì”z—ñƒTƒCƒY‚ğŠi”[
-			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0‹l‚ß‚³‚ê‚½‰¡•
+			//æ§‹é€ ä½“ã«ï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã®é…åˆ—ã‚µã‚¤ã‚ºã‚’æ ¼ç´
+			bmp->def_color_data_row_size=(real_Width_size+padding)/8;//0è©°ã‚ã•ã‚ŒãŸæ¨ªå¹…
 			bmp->def_color_data_calumn_size=bmp->ih_o.bcHeight;
 			bmp->color_data_row_size=bmp->ih_o.bcWidth;
 			bmp->color_data_calumn_size=bmp->ih_o.bcHeight;
 
-			//ƒ{ƒgƒ€ƒAƒbƒv‚Å‚È‚¢ê‡CbcHeight‚ªƒ}ƒCƒiƒX‚È‚Ì‚ÅCƒvƒ‰ƒX‚É’¼‚·
+			//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ãªã„å ´åˆï¼ŒbcHeightãŒãƒã‚¤ãƒŠã‚¹ãªã®ã§ï¼Œãƒ—ãƒ©ã‚¹ã«ç›´ã™
 			if(!bmp_type){
 				bmp->def_color_data_calumn_size*=-1;
 				bmp->color_data_calumn_size*=-1;
 			}
 
-			//‰æ‘œƒf[ƒ^‚ğRGB’l‚É•ÏŠ·‚µ‚½î•ñ—p‚Ìƒƒ‚ƒŠŠm•Û
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’RGBå€¤ã«å¤‰æ›ã—ãŸæƒ…å ±ç”¨ã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			if(NULL==(bmp->color_data=(RGB**)malloc(sizeof(RGB*)*(bmp->color_data_calumn_size+1)))){
 				perror("RGBRead->malloc->RGB**");
 				return 0;
@@ -524,33 +524,33 @@ BMP* ReadBMP(const char* filename){
 				}
 			}
 
-			//‰æ‘œƒf[ƒ^‚Ìæ“¾
+			//ç”»åƒãƒ‡ãƒ¼ã‚¿ã®å–å¾—
 			for(t=0;t<bmp->color_data_calumn_size;t++){
 				unsigned char delete_data;
 
-				//‰æ‘œƒf[ƒ^‚ğ“Ç‚İ‚İ
+				//ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿
 				for(s=0;s<bmp->color_data_row_size;s++){
 					fread(&(bmp->color_data[t][s].rgbBlue), 1, 1, fp);
 					fread(&(bmp->color_data[t][s].rgbGreen), 1, 1, fp);
 					fread(&(bmp->color_data[t][s].rgbRed), 1, 1, fp);
 					
-					//—\–ñ—Ìˆæ‚ÍbitCount=32‚È‚ç“Ç‚İ‚İC‚»‚¤‚Å‚È‚¢ê‡‚É‚Í0‚ğ‘ã“ü‚·‚éD
+					//äºˆç´„é ˜åŸŸã¯bitCount=32ãªã‚‰èª­ã¿è¾¼ã¿ï¼Œãã†ã§ãªã„å ´åˆã«ã¯0ã‚’ä»£å…¥ã™ã‚‹ï¼
 					if(bmp->ih_w.biBitCount==32) fread(&(bmp->color_data[t][s].rgbReserved), 1, 1, fp);
 					bmp->color_data[t][s].rgbReserved=0;
 				}
 
-				//0‹l‚ß•”•ª‚ğ“Ç‚İÌ‚Ä
+				//0è©°ã‚éƒ¨åˆ†ã‚’èª­ã¿æ¨ã¦
 				for(s=0;s<(padding/8);s++) fread(&delete_data,1,1,fp);
 			}
 
 		}
 	}
 
-	//ƒ{ƒgƒ€ƒAƒbƒv‚Å•Û‘¶‚³‚ê‚Ä‚¢‚éê‡C‰æ‘œƒf[ƒ^‚ğã‰º”½“]‚·‚é•K—v‚ª‚ ‚é
+	//ãƒœãƒˆãƒ ã‚¢ãƒƒãƒ—ã§ä¿å­˜ã•ã‚Œã¦ã„ã‚‹å ´åˆï¼Œç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’ä¸Šä¸‹åè»¢ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 	if(bmp_type){
-		RGB** rgb;	//ˆê“I‚ÉC“Ç‚İ‚ñ‚¾‰æ‘œƒf[ƒ^‚ğ•Û‘¶‚·‚é‚½‚ß‚Ì•Ï”
+		RGB** rgb;	//ä¸€æ™‚çš„ã«ï¼Œèª­ã¿è¾¼ã‚“ã ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’ä¿å­˜ã™ã‚‹ãŸã‚ã®å¤‰æ•°
 
-		//ƒƒ‚ƒŠ‚ğ•Û‘¶
+		//ãƒ¡ãƒ¢ãƒªã‚’ä¿å­˜
 		if(NULL==(rgb=(RGB**)malloc(sizeof(RGB*)*(bmp->color_data_calumn_size+1)))){
 			perror("RGBRead->malloc->RGB**");
 			return 0;
@@ -562,13 +562,13 @@ BMP* ReadBMP(const char* filename){
 			}
 		}
 
-		//ƒf[ƒ^‚ğˆê“I‚ÉƒRƒs[
+		//ãƒ‡ãƒ¼ã‚¿ã‚’ä¸€æ™‚çš„ã«ã‚³ãƒ”ãƒ¼
 		for(t=0;t<bmp->color_data_calumn_size;t++) for(s=0;s<bmp->color_data_row_size;s++) rgb[t][s]=bmp->color_data[t][s];
 
-		//ƒf[ƒ^‚ğ”½“]‚³‚¹‚È‚ª‚çbmp->color_data‚ÉŠi”[
+		//ãƒ‡ãƒ¼ã‚¿ã‚’åè»¢ã•ã›ãªãŒã‚‰bmp->color_dataã«æ ¼ç´
 		for(t=1;t<=bmp->color_data_calumn_size;t++) for(s=1;s<=bmp->color_data_row_size;s++) bmp->color_data[bmp->color_data_calumn_size-t][s-1]=rgb[t-1][s-1];
 
-		//ƒƒ‚ƒŠ‚ğ‰ğ•ú
+		//ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾
 		for(s=0;s<bmp->color_data_calumn_size;s++) free(rgb[s]);
 		free(rgb);
 
@@ -579,47 +579,47 @@ BMP* ReadBMP(const char* filename){
 }
 
 /*
-BMP\‘¢‘Ì‚Ìƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚éŠÖ”
+BMPæ§‹é€ ä½“ã®ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾ã™ã‚‹é–¢æ•°
 */
 int freeBMP(BMP* bmp){
 	size_t i;
 
 	if(bmp->format==Windows){
-		//ƒpƒŒƒbƒgƒf[ƒ^‚ª—LŒø‚Èê‡ -> ƒpƒŒƒbƒgƒf[ƒ^‚ğ‰ğ•ú
+		//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãŒæœ‰åŠ¹ãªå ´åˆ -> ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚’è§£æ”¾
 		if(bmp->ih_w.biBitCount==1 || bmp->ih_w.biBitCount==4 || bmp->ih_w.biBitCount==8){
 			free(bmp->pd_w);
 
-			//“Ç‚İ‚ñ‚¾‰æ‘œƒf[ƒ^‚ğ‰ğ•ú
+			//èª­ã¿è¾¼ã‚“ã ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’è§£æ”¾
 			for(i=0;i<bmp->def_color_data_calumn_size;i++) free(bmp->def_color_data[i]);
 			free(bmp->def_color_data);
 
-			//RGBƒf[ƒ^‚ğŠi”[‚µ‚½•Ï”‚ğ‰ğ•ú
+			//RGBãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã—ãŸå¤‰æ•°ã‚’è§£æ”¾
 			for(i=0;i<bmp->color_data_calumn_size;i++) free(bmp->color_data[i]);
 			free(bmp->color_data);
 
-		}//ƒpƒŒƒbƒgƒf[ƒ^‚ğg—p‚µ‚Ä‚¢‚È‚¢ê‡
+		}//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦ã„ãªã„å ´åˆ
 		else{
-			//RGBƒf[ƒ^‚ğŠi”[‚µ‚½•Ï”‚ğ‰ğ•ú
+			//RGBãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã—ãŸå¤‰æ•°ã‚’è§£æ”¾
 			for(i=0;i<bmp->color_data_calumn_size;i++) free(bmp->color_data[i]);
 			free(bmp->color_data);
 		}
 	}
 	else if(bmp->format==OS2){
-		//ƒpƒŒƒbƒgƒf[ƒ^‚ª—LŒø‚Èê‡ -> ƒpƒŒƒbƒgƒf[ƒ^‚ğ‰ğ•ú
+		//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãŒæœ‰åŠ¹ãªå ´åˆ -> ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚’è§£æ”¾
 		if(bmp->ih_o.bcBitCount==1 || bmp->ih_o.bcBitCount==4 || bmp->ih_o.bcBitCount==8){
 			free(bmp->pd_o);
 
-			//“Ç‚İ‚ñ‚¾‰æ‘œƒf[ƒ^‚ğ‰ğ•ú
+			//èª­ã¿è¾¼ã‚“ã ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’è§£æ”¾
 			for(i=0;i<bmp->def_color_data_calumn_size;i++) free(bmp->def_color_data[i]);
 			free(bmp->def_color_data);
 
-			//RGBƒf[ƒ^‚ğŠi”[‚µ‚½•Ï”‚ğ‰ğ•ú
+			//RGBãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã—ãŸå¤‰æ•°ã‚’è§£æ”¾
 			for(i=0;i<bmp->color_data_calumn_size;i++) free(bmp->color_data[i]);
 			free(bmp->color_data);
 
-		}//ƒpƒŒƒbƒgƒf[ƒ^‚ğg—p‚µ‚Ä‚¢‚È‚¢ê‡
+		}//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã‚’ä½¿ç”¨ã—ã¦ã„ãªã„å ´åˆ
 		else{
-			//RGBƒf[ƒ^‚ğŠi”[‚µ‚½•Ï”‚ğ‰ğ•ú
+			//RGBãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã—ãŸå¤‰æ•°ã‚’è§£æ”¾
 			for(i=0;i<bmp->color_data_calumn_size;i++) free(bmp->color_data[i]);
 			free(bmp->color_data);
 		}
@@ -631,35 +631,35 @@ int freeBMP(BMP* bmp){
 }
 
 int main(){
-	BMP *target1,*target2;		//ŒŸõ‘ÎÛ‚Ì‰æ‘œ
-	BMP *temp1,*temp2;			//ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ
-	unsigned int min=UINT_MAX;	//Å‚à—Ş—“x‚ª’á‚¢’l‚ğŠi”[‚·‚é•Ï”
-	unsigned int mi=-1,mk=-1;	//min‚Ì’l‚ğo—Í‚µ‚½‰æ‘œ‚Ì¶ã‚ÌÀ•W
-	unsigned int i,k,p,q;		//ƒ‹[ƒv—p•Ï”	
+	BMP *target1,*target2;		//æ¤œç´¢å¯¾è±¡ã®ç”»åƒ
+	BMP *temp1,*temp2;			//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ
+	unsigned int min=UINT_MAX;	//æœ€ã‚‚é¡ä¼¼åº¦ãŒä½ã„å€¤ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+	unsigned int mi=-1,mk=-1;	//minã®å€¤ã‚’å‡ºåŠ›ã—ãŸç”»åƒã®å·¦ä¸Šã®åº§æ¨™
+	unsigned int i,k,p,q;		//ãƒ«ãƒ¼ãƒ—ç”¨å¤‰æ•°	
 
-	unsigned int sum=0;			//—Ş—“xŠi”[—p•Ï”
+	unsigned int sum=0;			//é¡ä¼¼åº¦æ ¼ç´ç”¨å¤‰æ•°
 
-	/*‰æ‘œ“Ç‚İ‚İ•”*/
+	/*ç”»åƒèª­ã¿è¾¼ã¿éƒ¨*/
 
-	//img_1.bmp‚Ì“Ç‚İ‚İ
+	//img_1.bmpã®èª­ã¿è¾¼ã¿
 	target1=ReadBMP("img_1.bmp");
 	if(target1==NULL){
 		perror("ReadBMP");
 		return -1;
 	}
-	//img_2.bmp‚Ì“Ç‚İ‚İ
+	//img_2.bmpã®èª­ã¿è¾¼ã¿
 	target2=ReadBMP("img_2.bmp");
 	if(target2==NULL){
 		perror("ReadBMP");
 		return -1;
 	}
-	//img_1.bmp‚Ì“Ç‚İ‚İ
+	//img_1.bmpã®èª­ã¿è¾¼ã¿
 	temp1=ReadBMP("Timg_1.bmp");
 	if(temp1==NULL){
 		perror("ReadBMP");
 		return -1;
 	}
-	//img_1.bmp‚Ì“Ç‚İ‚İ
+	//img_1.bmpã®èª­ã¿è¾¼ã¿
 	temp2=ReadBMP("Timg_2.bmp");
 	if(temp2==NULL){
 		perror("ReadBMP");
@@ -667,165 +667,165 @@ int main(){
 	}
 
 	/*
-	**ƒ}ƒbƒ`ƒ“ƒO•”
-	**ƒ}ƒbƒ`ƒ“ƒO•û–@F’Tõ‘ÎÛ‚Ì‰æ‘œ‚É‘Î‚µ‚ÄCŠp“x‚ğ•ÏX‚µ‚È‚¢‘S‚Ä‚Ìƒpƒ^[ƒ“‚Åƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚Æ‚Ì—Ş—“x‚ğo—Í‚·‚éD
-	**—Ş—“x‚ÌZo–@FÂF‰æ‘f‚ğg—p‚µ‚½CŒë·‚Ìâ‘Î’l‚Ì‘˜aD
-	**‰æ‘œ‚Ì”»•Ê–@F—Ş—“x‚ªÅ‚à’á‚¢‚à‚Ì‚ğˆê’v‚µ‚Ä‚¢‚é‚Æˆµ‚¤D
+	**ãƒãƒƒãƒãƒ³ã‚°éƒ¨
+	**ãƒãƒƒãƒãƒ³ã‚°æ–¹æ³•ï¼šæ¢ç´¢å¯¾è±¡ã®ç”»åƒã«å¯¾ã—ã¦ï¼Œè§’åº¦ã‚’å¤‰æ›´ã—ãªã„å…¨ã¦ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒã¨ã®é¡ä¼¼åº¦ã‚’å‡ºåŠ›ã™ã‚‹ï¼
+	**é¡ä¼¼åº¦ã®ç®—å‡ºæ³•ï¼šé’è‰²ç”»ç´ ã‚’ä½¿ç”¨ã—ãŸï¼Œèª¤å·®ã®çµ¶å¯¾å€¤ã®ç·å’Œï¼
+	**ç”»åƒã®åˆ¤åˆ¥æ³•ï¼šé¡ä¼¼åº¦ãŒæœ€ã‚‚ä½ã„ã‚‚ã®ã‚’ä¸€è‡´ã—ã¦ã„ã‚‹ã¨æ‰±ã†ï¼
 	*/
 
-	//ƒ}ƒbƒ`ƒ“ƒO•û–@‚ğo—Í
-	printf("ƒ}ƒbƒ`ƒ“ƒO•û–@F\n@@’Tõ‘ÎÛ‚Ì‰æ‘œ‚É‘Î‚µ‚ÄCŠp“x‚ğ•ÏX‚µ‚È‚¢‘S‚Ä‚Ìƒpƒ^[ƒ“‚Åƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚Æ‚Ì—Ş—“x‚ğo—Í‚·‚éD\n");
-	printf("—Ş—“x‚ÌZo–@F\n@@ÂF‰æ‘f‚ğg—p‚µ‚½CŒë·‚Ìâ‘Î’l‚Ì‘˜aD\n");
-	printf("‰æ‘œ‚Ì”»•Ê–@F\n@@—Ş—“x‚ªÅ‚à’á‚¢‚à‚Ì‚ğˆê’v‚µ‚Ä‚¢‚é‚Æˆµ‚¤D\n");
+	//ãƒãƒƒãƒãƒ³ã‚°æ–¹æ³•ã‚’å‡ºåŠ›
+	printf("ãƒãƒƒãƒãƒ³ã‚°æ–¹æ³•ï¼š\nã€€ã€€æ¢ç´¢å¯¾è±¡ã®ç”»åƒã«å¯¾ã—ã¦ï¼Œè§’åº¦ã‚’å¤‰æ›´ã—ãªã„å…¨ã¦ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã§ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒã¨ã®é¡ä¼¼åº¦ã‚’å‡ºåŠ›ã™ã‚‹ï¼\n");
+	printf("é¡ä¼¼åº¦ã®ç®—å‡ºæ³•ï¼š\nã€€ã€€é’è‰²ç”»ç´ ã‚’ä½¿ç”¨ã—ãŸï¼Œèª¤å·®ã®çµ¶å¯¾å€¤ã®ç·å’Œï¼\n");
+	printf("ç”»åƒã®åˆ¤åˆ¥æ³•ï¼š\nã€€ã€€é¡ä¼¼åº¦ãŒæœ€ã‚‚ä½ã„ã‚‚ã®ã‚’ä¸€è‡´ã—ã¦ã„ã‚‹ã¨æ‰±ã†ï¼\n");
 	printf("\n");
 
 	/*target1 & temp1*/
 
-	printf("img_1‚É‘Î‚µ‚ÄTimag_1‚Å‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤D\n");
+	printf("img_1ã«å¯¾ã—ã¦Timag_1ã§ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†ï¼\n");
 
-	//‰æ‘œ‚ÌÆ‡
+	//ç”»åƒã®ç…§åˆ
 	for(i=0;i<=(target1->color_data_calumn_size-temp1->color_data_calumn_size);i++){
 		for(k=0;k<=(target1->color_data_row_size-temp1->color_data_row_size);k++){
 			
-			//—Ş—“x‚ÌŒvZ
+			//é¡ä¼¼åº¦ã®è¨ˆç®—
 			for(p=0;p<temp1->color_data_calumn_size;p++){
 				for(q=0;q<temp1->color_data_row_size;q++){
 					sum+=(unsigned int)abs((int)(target1->color_data[i+p][k+q].rgbBlue)-(int)(temp1->color_data[p][q].rgbBlue));
 				}
 			}
 
-			//—Ş—“x‚ÌÅ¬’l‚ğXV
+			//é¡ä¼¼åº¦ã®æœ€å°å€¤ã‚’æ›´æ–°
 			if(min>sum){
 				min=sum;
 				mi=i;
 				mk=k;
 			}
 
-			//—Ş—“xŠi”[—p‚Ì•Ï”‚ğƒŠƒZƒbƒg
+			//é¡ä¼¼åº¦æ ¼ç´ç”¨ã®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 			sum=0;
 
 		}
 	}
 
-	printf("Å‚à‡’v‚µ‚Ä‚¢‚é‰æ‘œ‚Ì¶ã‚ÌÀ•W‚Í(%u,%u)‚Å‚·D\n—Ş—“x‚Í%u‚Å‚µ‚½D\n",mk,mi,min);
+	printf("æœ€ã‚‚åˆè‡´ã—ã¦ã„ã‚‹ç”»åƒã®å·¦ä¸Šã®åº§æ¨™ã¯(%u,%u)ã§ã™ï¼\né¡ä¼¼åº¦ã¯%uã§ã—ãŸï¼\n",mk,mi,min);
 
 	printf("\n");
 
 	/*target1 & temp2*/
 
-	printf("img_1‚É‘Î‚µ‚ÄTimag_2‚Å‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤D\n");
+	printf("img_1ã«å¯¾ã—ã¦Timag_2ã§ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†ï¼\n");
 
-	//Šeí•Ï”‚ğƒŠƒZƒbƒg
+	//å„ç¨®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 	sum=0;
 	min=UINT_MAX;
 	mi=-1;
 	mk=-1;
 
-	//‰æ‘œ‚ÌÆ‡
+	//ç”»åƒã®ç…§åˆ
 	for(i=0;i<(target1->color_data_calumn_size-temp2->color_data_calumn_size);i++){
 		for(k=0;k<(target1->color_data_row_size-temp2->color_data_row_size);k++){
 			
-			//—Ş—“x‚ÌŒvZ
+			//é¡ä¼¼åº¦ã®è¨ˆç®—
 			for(p=0;p<temp2->color_data_calumn_size;p++){
 				for(q=0;q<temp2->color_data_row_size;q++){
 					sum+=(unsigned int)abs((int)(target1->color_data[i+p][k+q].rgbBlue)-(int)(temp2->color_data[p][q].rgbBlue));
 				}
 			}
 
-			//—Ş—“x‚ÌÅ¬’l‚ğXV
+			//é¡ä¼¼åº¦ã®æœ€å°å€¤ã‚’æ›´æ–°
 			if(min>sum){
 				min=sum;
 				mi=i;
 				mk=k;
 			}
 
-			//—Ş—“xŠi”[—p‚Ì•Ï”‚ğƒŠƒZƒbƒg
+			//é¡ä¼¼åº¦æ ¼ç´ç”¨ã®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 			sum=0;
 		}
 	}
 
-	printf("Å‚à‡’v‚µ‚Ä‚¢‚é‰æ‘œ‚Ì¶ã‚ÌÀ•W‚Í(%u,%u)‚Å‚·D\n—Ş—“x‚Í%u‚Å‚µ‚½D\n",mk,mi,min);
+	printf("æœ€ã‚‚åˆè‡´ã—ã¦ã„ã‚‹ç”»åƒã®å·¦ä¸Šã®åº§æ¨™ã¯(%u,%u)ã§ã™ï¼\né¡ä¼¼åº¦ã¯%uã§ã—ãŸï¼\n",mk,mi,min);
 
 	printf("\n");
 	
 	/*target2 & temp1*/
 
-	printf("img_2‚É‘Î‚µ‚ÄTimag_1‚Å‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤D\n");
+	printf("img_2ã«å¯¾ã—ã¦Timag_1ã§ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†ï¼\n");
 
-	//Šeí•Ï”‚ğƒŠƒZƒbƒg
+	//å„ç¨®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 	sum=0;
 	min=UINT_MAX;
 	mi=-1;
 	mk=-1;
 
-	//‰æ‘œ‚ÌÆ‡
+	//ç”»åƒã®ç…§åˆ
 	for(i=0;i<(target2->color_data_calumn_size-temp1->color_data_calumn_size);i++){
 		for(k=0;k<(target2->color_data_row_size-temp1->color_data_row_size);k++){
 			
-			//—Ş—“x‚ÌŒvZ
+			//é¡ä¼¼åº¦ã®è¨ˆç®—
 			for(p=0;p<temp1->color_data_calumn_size;p++){
 				for(q=0;q<temp1->color_data_row_size;q++){
 					sum+=(unsigned int)abs((int)(target2->color_data[i+p][k+q].rgbBlue)-(int)(temp1->color_data[p][q].rgbBlue));
 				}
 			}
 
-			//—Ş—“x‚ÌÅ¬’l‚ğXV
+			//é¡ä¼¼åº¦ã®æœ€å°å€¤ã‚’æ›´æ–°
 			if(min>sum){
 				min=sum;
 				mi=i;
 				mk=k;
 			}
 
-			//—Ş—“xŠi”[—p‚Ì•Ï”‚ğƒŠƒZƒbƒg
+			//é¡ä¼¼åº¦æ ¼ç´ç”¨ã®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 			sum=0;
 
 		}
 	}
 
-	printf("Å‚à‡’v‚µ‚Ä‚¢‚é‰æ‘œ‚Ì¶ã‚ÌÀ•W‚Í(%u,%u)‚Å‚·D\n—Ş—“x‚Í%u‚Å‚µ‚½D\n",mk,mi,min);
+	printf("æœ€ã‚‚åˆè‡´ã—ã¦ã„ã‚‹ç”»åƒã®å·¦ä¸Šã®åº§æ¨™ã¯(%u,%u)ã§ã™ï¼\né¡ä¼¼åº¦ã¯%uã§ã—ãŸï¼\n",mk,mi,min);
 
 	printf("\n");
 
 	/*target2 & temp2*/
 
-	printf("img_2‚É‘Î‚µ‚ÄTimag_2‚Å‚Ìƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤D\n");
+	printf("img_2ã«å¯¾ã—ã¦Timag_2ã§ã®ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†ï¼\n");
 
-	//Šeí•Ï”‚ğƒŠƒZƒbƒg
+	//å„ç¨®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 	sum=0;
 	min=UINT_MAX;
 	mi=-1;
 	mk=-1;
 
-	//‰æ‘œ‚ÌÆ‡
+	//ç”»åƒã®ç…§åˆ
 	for(i=0;i<(target2->color_data_calumn_size-temp2->color_data_calumn_size);i++){
 		for(k=0;k<(target2->color_data_row_size-temp2->color_data_row_size);k++){
 			
-			//—Ş—“x‚ÌŒvZ
+			//é¡ä¼¼åº¦ã®è¨ˆç®—
 			for(p=0;p<temp2->color_data_calumn_size;p++){
 				for(q=0;q<temp2->color_data_row_size;q++){
 					sum+=(unsigned int)abs((int)(target2->color_data[i+p][k+q].rgbBlue)-(int)(temp2->color_data[p][q].rgbBlue));
 				}
 			}
 			
-			//—Ş—“x‚ÌÅ¬’l‚ğXV
+			//é¡ä¼¼åº¦ã®æœ€å°å€¤ã‚’æ›´æ–°
 			if(min>sum){
 				min=sum;
 				mi=i;
 				mk=k;
 			}
 			
-			//—Ş—“xŠi”[—p‚Ì•Ï”‚ğƒŠƒZƒbƒg
+			//é¡ä¼¼åº¦æ ¼ç´ç”¨ã®å¤‰æ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
 			sum=0;
 
 		}
 	}
 
-	printf("Å‚à‡’v‚µ‚Ä‚¢‚é‰æ‘œ‚Ì¶ã‚ÌÀ•W‚Í(%u,%u)‚Å‚·D\n—Ş—“x‚Í%u‚Å‚µ‚½D\n",mk,mi,min);
+	printf("æœ€ã‚‚åˆè‡´ã—ã¦ã„ã‚‹ç”»åƒã®å·¦ä¸Šã®åº§æ¨™ã¯(%u,%u)ã§ã™ï¼\né¡ä¼¼åº¦ã¯%uã§ã—ãŸï¼\n",mk,mi,min);
 
 	printf("\n");
 
 
-	/*‰æ‘œ‰ğ•ú•”*/
+	/*ç”»åƒè§£æ”¾éƒ¨*/
 	freeBMP(target1);
 	freeBMP(target2);
 	freeBMP(temp1);

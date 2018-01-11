@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -8,35 +8,35 @@ using namespace cv;
 using namespace std;
 
 int main(void) {
-	//opencv320‚ðŽg—p
+	//opencv320ã‚’ä½¿ç”¨
 
 	int i=1;
 
 	for (i = 1;i < 3;i++) {
 		char base[20], temp[20];
 
-		sprintf_s(base, 20, "images/img_%d.bmp", i); //ƒtƒ@ƒCƒ‹‚ÌƒpƒX(Œ³‰æ‘œ)
-		sprintf_s(temp, 20, "images/Timg_%d.bmp", i);//ƒtƒ@ƒCƒ‹‚ÌƒpƒX(ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ)
+		sprintf_s(base, 20, "images/img_%d.bmp", i); //ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹(å…ƒç”»åƒ)
+		sprintf_s(temp, 20, "images/Timg_%d.bmp", i);//ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹(ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ)
 
-		Mat image_base = imread(base); //Œ³‰æ‘œ‚Ì“Ç‚Ýž‚Ý
+		Mat image_base = imread(base); //å…ƒç”»åƒã®èª­ã¿è¾¼ã¿
 
-		Mat image_temp = imread(temp); //ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚Ì“Ç‚Ýž‚Ý
+		Mat image_temp = imread(temp); //ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒã®èª­ã¿è¾¼ã¿
 
-		//ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚Ì•\Ž¦
+		//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒã®è¡¨ç¤º
 		namedWindow("Template");
 		imshow("Template", image_temp);
 
 		Mat result;
-		matchTemplate(image_base, image_temp, result, TM_CCOEFF_NORMED); //ƒAƒ‹ƒSƒŠƒYƒ€‚ÉŠî‚Ã‚¢‚½ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+		matchTemplate(image_base, image_temp, result, TM_CCOEFF_NORMED); //ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã«åŸºã¥ã„ãŸãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒžãƒƒãƒãƒ³ã‚°
 
 		Point rPt; 
-		minMaxLoc(result, 0, 0, 0, &rPt); //Œ‹‰ÊÀ•W‚ÌŽæ“¾
+		minMaxLoc(result, 0, 0, 0, &rPt); //çµæžœåº§æ¨™ã®å–å¾—
 
-		rectangle(image_base, rPt, Point(rPt.x + image_temp.cols, rPt.y + image_temp.rows), Scalar(0, 0, 255), 2, 8, 0); //Œ³‰æ‘œ‚Éƒ}ƒbƒ`ƒ“ƒO‚µ‚½‰ÓŠ‚Ì•`‰æ
+		rectangle(image_base, rPt, Point(rPt.x + image_temp.cols, rPt.y + image_temp.rows), Scalar(0, 0, 255), 2, 8, 0); //å…ƒç”»åƒã«ãƒžãƒƒãƒãƒ³ã‚°ã—ãŸç®‡æ‰€ã®æç”»
 
-		printf("img_%d  %d,%d\n\n",i,rPt.x,rPt.y); //À•W‚Ì•\Ž¦
+		printf("img_%d  %d,%d\n\n",i,rPt.x,rPt.y); //åº§æ¨™ã®è¡¨ç¤º
 
-		//ƒ}ƒbƒ`ƒ“ƒO‰æ‘œ‚Ì•\Ž¦
+		//ãƒžãƒƒãƒãƒ³ã‚°ç”»åƒã®è¡¨ç¤º
 		namedWindow("Matching");
 		imshow("Matching", image_base);
 

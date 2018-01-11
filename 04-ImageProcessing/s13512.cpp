@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -6,38 +6,38 @@
 
 int main(int argc, char *argv[])
 {
-	// ’Tõ‰æ‘œ1
-	cv::Mat search_img1 = cv::imread("../../images/img_1.bmp", 1);//ƒ\[ƒXƒR[ƒh‚ğ’u‚¢‚½ƒtƒHƒ‹ƒ_‚Ì“ñ‚Âã‚ÉimageƒtƒHƒ‹ƒ_‚ğ’u‚¢‚½
-	if (search_img1.empty()){//’Tõ‰æ‘œ‚ª‚È‚¢ê‡‚ÍƒvƒƒOƒ‰ƒ€‚ğI—¹
-		std::cout << "’Tõ‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñ" << std::endl;
+	// æ¢ç´¢ç”»åƒ1
+	cv::Mat search_img1 = cv::imread("../../images/img_1.bmp", 1);//ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ç½®ã„ãŸãƒ•ã‚©ãƒ«ãƒ€ã®äºŒã¤ä¸Šã«imageãƒ•ã‚©ãƒ«ãƒ€ã‚’ç½®ã„ãŸ
+	if (search_img1.empty()){//æ¢ç´¢ç”»åƒãŒãªã„å ´åˆã¯ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†
+		std::cout << "æ¢ç´¢ç”»åƒãŒã‚ã‚Šã¾ã›ã‚“" << std::endl;
 		abort();
 	}
-	// ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ1
+	// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ1
 	cv::Mat tmp_img1 = cv::imread("../../images/Timg_1.bmp", 1);
 	if (tmp_img1.empty()) {
-		std::cout << "ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñ" << std::endl;
+		std::cout << "ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒãŒã‚ã‚Šã¾ã›ã‚“" << std::endl;
 		abort();
 	}
 
-	// ’Tõ‰æ‘œ2
+	// æ¢ç´¢ç”»åƒ2
 	cv::Mat search_img2 = cv::imread("../../images/img_2.bmp", 1);
 	if (search_img2.empty()){
-		std::cout << "’Tõ‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñ" << std::endl;
+		std::cout << "æ¢ç´¢ç”»åƒãŒã‚ã‚Šã¾ã›ã‚“" << std::endl;
 		abort();
 	}
-	// ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ2
+	// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒ2
 	cv::Mat tmp_img2 = cv::imread("../../images/Timg_2.bmp", 1);
 	if (tmp_img2.empty()) { 
-		std::cout << "ƒeƒ“ƒvƒŒ[ƒg‰æ‘œ‚ª‚ ‚è‚Ü‚¹‚ñ" << std::endl;
+		std::cout << "ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆç”»åƒãŒã‚ã‚Šã¾ã›ã‚“" << std::endl;
 		abort();
 	}
 
 
 	cv::Mat result_img;
-	// ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+	// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
 	cv::matchTemplate(search_img1, tmp_img1, result_img, CV_TM_CCOEFF_NORMED);
 
-	// —Ş—“x‚ªÅ‘å‚ÌƒXƒRƒA‚ÌêŠ‚ğ’T‚·
+	// é¡ä¼¼åº¦ãŒæœ€å¤§ã®ã‚¹ã‚³ã‚¢ã®å ´æ‰€ã‚’æ¢ã™
 	cv::Rect roi_rect1(0, 0, tmp_img1.cols, tmp_img1.rows);
 	cv::Point max_pt;
 	double maxVal;
@@ -45,35 +45,35 @@ int main(int argc, char *argv[])
 
 	roi_rect1.x = max_pt.x;
 	roi_rect1.y = max_pt.y;
-	std::cout << "¶ãÀ•W(" << max_pt.x << ", " << max_pt.y << "), score=" << maxVal << std::endl;
-	// ’TõŒ‹‰Ê‚ÌêŠ‚É‹éŒ`‚ğ•`‰æ
+	std::cout << "å·¦ä¸Šåº§æ¨™(" << max_pt.x << ", " << max_pt.y << "), score=" << maxVal << std::endl;
+	// æ¢ç´¢çµæœã®å ´æ‰€ã«çŸ©å½¢ã‚’æç”»
 	cv::rectangle(search_img1, roi_rect1, cv::Scalar(0, 0, 255), 3);
 
-	cv::namedWindow("’Tõ‰æ‘œ1", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
-	cv::namedWindow("Œ‹‰Ê", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
-	cv::imshow("’Tõ‰æ‘œ1", search_img1);
-	cv::imshow("Œ‹‰Ê", result_img);
-	//“ü—Í‘Ò‚¿
+	cv::namedWindow("æ¢ç´¢ç”»åƒ1", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	cv::namedWindow("çµæœ", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	cv::imshow("æ¢ç´¢ç”»åƒ1", search_img1);
+	cv::imshow("çµæœ", result_img);
+	//å…¥åŠ›å¾…ã¡
 	cv::waitKey(0);
-	//ƒEƒBƒ“ƒhƒE‚ğÁ‹
-	cv::destroyWindow("’Tõ‰æ‘œ1");
-	cv::destroyWindow("Œ‹‰Ê");
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’æ¶ˆå»
+	cv::destroyWindow("æ¢ç´¢ç”»åƒ1");
+	cv::destroyWindow("çµæœ");
 
-	// ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+	// ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
 	cv::matchTemplate(search_img2, tmp_img2, result_img, CV_TM_CCOEFF_NORMED);
-	// —Ş—“x‚ªÅ‘å‚ÌƒXƒRƒA‚ÌêŠ‚ğ’T‚·
+	// é¡ä¼¼åº¦ãŒæœ€å¤§ã®ã‚¹ã‚³ã‚¢ã®å ´æ‰€ã‚’æ¢ã™
 	cv::Rect roi_rect2(0, 0, tmp_img2.cols, tmp_img2.rows);
 	cv::minMaxLoc(result_img, NULL, &maxVal, NULL, &max_pt);
 	roi_rect2.x = max_pt.x;
 	roi_rect2.y = max_pt.y;
-	std::cout << "¶ãÀ•W(" << max_pt.x << ", " << max_pt.y << "), score=" << maxVal << std::endl;
-	// ’TõŒ‹‰Ê‚ÌêŠ‚É‹éŒ`‚ğ•`‰æ
+	std::cout << "å·¦ä¸Šåº§æ¨™(" << max_pt.x << ", " << max_pt.y << "), score=" << maxVal << std::endl;
+	// æ¢ç´¢çµæœã®å ´æ‰€ã«çŸ©å½¢ã‚’æç”»
 	cv::rectangle(search_img2, roi_rect2, cv::Scalar(0, 0, 255), 3);
 
-	cv::namedWindow("’Tõ‰æ‘œ2", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
-	cv::namedWindow("Œ‹‰Ê", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
-	cv::imshow("’Tõ‰æ‘œ2", search_img2);
-	cv::imshow("Œ‹‰Ê", result_img);
-	//“ü—Í‘Ò‚¿
+	cv::namedWindow("æ¢ç´¢ç”»åƒ2", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	cv::namedWindow("çµæœ", CV_WINDOW_AUTOSIZE | CV_WINDOW_FREERATIO);
+	cv::imshow("æ¢ç´¢ç”»åƒ2", search_img2);
+	cv::imshow("çµæœ", result_img);
+	//å…¥åŠ›å¾…ã¡
 	cv::waitKey(0);
 }

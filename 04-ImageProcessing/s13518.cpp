@@ -1,4 +1,4 @@
-// ConsoleApplication1.cpp : ƒRƒ“ƒ\[ƒ‹ ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒGƒ“ƒgƒŠ ƒ|ƒCƒ“ƒg‚ğ’è‹`‚µ‚Ü‚·B
+ï»¿// ConsoleApplication1.cpp : ã‚³ãƒ³ã‚½ãƒ¼ãƒ« ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¨ãƒ³ãƒˆãƒª ãƒã‚¤ãƒ³ãƒˆã‚’å®šç¾©ã—ã¾ã™ã€‚
 //
 
 #include "stdafx.h"
@@ -12,14 +12,14 @@ using namespace cv;
 int main()
 {
 
-	//Œ´‰æ‘œ“Ç‚İ‚İ
+	//åŸç”»åƒèª­ã¿è¾¼ã¿
 	Mat ol_image1 = imread("img_1.bmp",1);
 	if (ol_image1.empty()) return -1;
 	
 	Mat ol_image2 = imread("img_2.bmp", 1);
 	if (ol_image2.empty()) return -1;
 	
-	//ƒeƒ“ƒvƒŒ[ƒg“Ç‚İ‚İ
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆèª­ã¿è¾¼ã¿
 	Mat tm_image1 = imread("Timg_1.bmp");
 	if (ol_image1.empty()) return -1;
 
@@ -27,21 +27,21 @@ int main()
 	if (ol_image2.empty()) return -1;
 
 	
-	//ƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO
+	//ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°
 	Mat result1;
 	matchTemplate(ol_image1,tm_image1,result1, TM_CCORR_NORMED);
 
 	Mat result2;
 	matchTemplate(ol_image2, tm_image2, result2, TM_CCORR_NORMED);
 
-	//ƒ}ƒbƒ`ƒ“ƒO“_‚ğ‹‚ß‚é
+	//ãƒãƒƒãƒãƒ³ã‚°ç‚¹ã‚’æ±‚ã‚ã‚‹
 	Point maxPt1;
 	minMaxLoc(result1,0,0,0, &maxPt1);
 
 	Point maxPt2;
 	minMaxLoc(result2, 0, 0, 0, &maxPt2);
 
-	//ƒ}ƒbƒ`ƒ“ƒO‚ğ•\¦‚·‚é
+	//ãƒãƒƒãƒãƒ³ã‚°ã‚’è¡¨ç¤ºã™ã‚‹
 	rectangle(ol_image1, maxPt1, Point(maxPt1.x + tm_image1.cols, maxPt1.y + tm_image1.rows ),Scalar(0,255,255),2,8,0);
 	printf("anser1 x=%d y=%d\n",maxPt1.x,maxPt1.y);
 

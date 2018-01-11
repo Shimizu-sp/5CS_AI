@@ -1,31 +1,31 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 #include <Math.h>
 #pragma warning(disable : 4996)
 
-//ƒƒ‚ Ql http://www.umekkii.jp/data/computer/file_format/bitmap.cgi
+//ãƒ¡ãƒ¢ å‚è€ƒ http://www.umekkii.jp/data/computer/file_format/bitmap.cgi
 
 typedef struct _BMP{
 
-	//ƒtƒ@ƒCƒ‹ƒwƒbƒ_
-	//ƒtƒ@ƒCƒ‹ƒ^ƒCƒvˆÈŠO‚Í“Ç‚İÌ‚Ä
+	//ãƒ•ã‚¡ã‚¤ãƒ«ãƒ˜ãƒƒãƒ€
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ä»¥å¤–ã¯èª­ã¿æ¨ã¦
 	unsigned  bfType;
 
-	//î•ñƒwƒbƒ_
-	//•A‚‚³ˆÈŠO‚Í“Ç‚İÌ‚Ä
-	long biWidth; //‰æ‘œ‚Ì•
-	long biHeight; //‰æ‘œ‚Ì‚‚³
-	int biBitCount; //Fƒrƒbƒg” 
+	//æƒ…å ±ãƒ˜ãƒƒãƒ€
+	//å¹…ã€é«˜ã•ä»¥å¤–ã¯èª­ã¿æ¨ã¦
+	long biWidth; //ç”»åƒã®å¹…
+	long biHeight; //ç”»åƒã®é«˜ã•
+	int biBitCount; //è‰²ãƒ“ãƒƒãƒˆæ•° 
 
-	//ƒpƒŒƒbƒgƒf[ƒ^
-	//“Ç‚İÌ‚Ä
+	//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿
+	//èª­ã¿æ¨ã¦
 
-	//‰æ‘œƒf[ƒ^
+	//ç”»åƒãƒ‡ãƒ¼ã‚¿
 	unsigned int *pixels;
 
 }BMP;
 
-//ƒvƒƒgƒ^ƒCƒvéŒ¾
+//ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
 int BmpInit(char *filepass, BMP *bmp);
 int SetPixels(BMP *bmp, FILE *fp);
 long int SADmatching(BMP *input, BMP *trim, int num);
@@ -33,7 +33,7 @@ long int SADmatching(BMP *input, BMP *trim, int num);
 
 int main(){
 
-	//“Ç‚İ‚İ—pƒrƒbƒgƒ}ƒbƒvì¬
+	//èª­ã¿è¾¼ã¿ç”¨ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ä½œæˆ
 	BMP *input, *trim;
 	int i,q;
 	long int sad;
@@ -41,17 +41,17 @@ int main(){
 	int x, y;
 	int tx, ty;
 
-	//2ƒpƒ^[ƒ“‚Ì‘g‚İ‡‚í‚¹‚ğs‚¤
+	//2ãƒ‘ã‚¿ãƒ¼ãƒ³ã®çµ„ã¿åˆã‚ã›ã‚’è¡Œã†
 	for (q = 0; q < 2; q++) {
 
 		sad = -1;
 		result = -1;
 
-		//ƒƒ‚ƒŠŠm•Û
+		//ãƒ¡ãƒ¢ãƒªç¢ºä¿
 		input = (BMP*)malloc(sizeof(BMP));
 		trim = (BMP*)malloc(sizeof(BMP));
 
-		//ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+		//ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 		switch (q) {
 		case 0:
 			BmpInit("img_1.bmp", input);
@@ -66,17 +66,17 @@ int main(){
 				break;
 		}
 
-		printf("’Tõ’†‚Å‚·B‚µ‚Î‚ç‚­‚¨‘Ò‚¿‚­‚¾‚³‚¢");
-		//“ü—Í‰æ‘œ‚Ì‚·‚×‚Ä‚Ì‰æ‘f‚ğŒŸ¸
+		printf("æ¢ç´¢ä¸­ã§ã™ã€‚ã—ã°ã‚‰ããŠå¾…ã¡ãã ã•ã„");
+		//å…¥åŠ›ç”»åƒã®ã™ã¹ã¦ã®ç”»ç´ ã‚’æ¤œæŸ»
 		for (i = 0; i < input->biHeight*input->biWidth; i++) {
-			//’Tõis“x‚ğ‰Â‹‰»
-			if (i % (input->biHeight*input->biWidth / 10) == 0) printf("E");
-			//‘ÎÛ‚Ì‰æ‘f‚ªŒŸ¸”ÍˆÍ“à‚È‚çƒeƒ“ƒvƒŒ[ƒgƒ}ƒbƒ`ƒ“ƒO‚ğs‚¤
+			//æ¢ç´¢é€²è¡Œåº¦ã‚’å¯è¦–åŒ–
+			if (i % (input->biHeight*input->biWidth / 10) == 0) printf("ãƒ»");
+			//å¯¾è±¡ã®ç”»ç´ ãŒæ¤œæŸ»ç¯„å›²å†…ãªã‚‰ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆãƒãƒƒãƒãƒ³ã‚°ã‚’è¡Œã†
 			tx = i % input->biWidth;
 			ty = i / input->biWidth;
 			if (tx <= input->biWidth - trim->biWidth && ty <= input->biHeight - trim->biHeight) {
 				result = SADmatching(input, trim, i);
-				//ƒ}ƒbƒ`ƒ“ƒOŒ‹‰Ê‚ÌXV
+				//ãƒãƒƒãƒãƒ³ã‚°çµæœã®æ›´æ–°
 				if (sad == -1 || result < sad && result > 0) {
 					sad = result;
 					x = tx;
@@ -86,9 +86,9 @@ int main(){
 			}
 		}
 
-		printf("\n’TõŒ‹‰Ê‚ğ•\¦‚µ‚Ü‚·\nx=%d,y=%d sad=%ld\n\n", x, y, sad);
+		printf("\næ¢ç´¢çµæœã‚’è¡¨ç¤ºã—ã¾ã™\nx=%d,y=%d sad=%ld\n\n", x, y, sad);
 
-		//ƒƒ‚ƒŠ‰ğ•ú
+		//ãƒ¡ãƒ¢ãƒªè§£æ”¾
 		free(input->pixels);
 		free(trim->pixels);
 		free(input);
@@ -101,7 +101,7 @@ int main(){
 	getchar();
 }
 
-//ƒrƒbƒgƒ}ƒbƒv‚ğBMP\‘¢‘Ì‚Å•Û‘¶‚·‚é
+//ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã‚’BMPæ§‹é€ ä½“ã§ä¿å­˜ã™ã‚‹
 int BmpInit(char *filepass, BMP *bmp){
 
 	FILE *fp;
@@ -116,20 +116,20 @@ int BmpInit(char *filepass, BMP *bmp){
 	bmp->biHeight = 0;
 	bmp->biWidth = 0;
 
-	printf("ƒtƒ@ƒCƒ‹–¼:%s ‚Ì“Ç‚İ‚İ‚ğŠJn‚µ‚Ü‚·\n", filepass);
+	printf("ãƒ•ã‚¡ã‚¤ãƒ«å:%s ã®èª­ã¿è¾¼ã¿ã‚’é–‹å§‹ã—ã¾ã™\n", filepass);
 
-	//ƒrƒbƒgƒ}ƒbƒv“Ç‚İ‚İ
+	//ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—èª­ã¿è¾¼ã¿
 	fp = fopen(filepass, "r");
 	if (fp == NULL){
-		printf("ƒGƒ‰[:ƒtƒ@ƒCƒ‹‚ªŠJ‚¯‚Ü‚¹‚ñ‚Å‚µ‚½\n");
+		printf("ã‚¨ãƒ©ãƒ¼:ãƒ•ã‚¡ã‚¤ãƒ«ãŒé–‹ã‘ã¾ã›ã‚“ã§ã—ãŸ\n");
 		return -1;
 	}
 
-	//ƒtƒ@ƒCƒ‹ƒwƒbƒ_“Ç‚İ‚İ
-	//Šg’£q”»’è
+	//ãƒ•ã‚¡ã‚¤ãƒ«ãƒ˜ãƒƒãƒ€èª­ã¿è¾¼ã¿
+	//æ‹¡å¼µå­åˆ¤å®š
 	rc = fread(c, 1, 2, fp);
 	if (rc == 0){
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 	bmp->bfType = 0;
@@ -139,111 +139,111 @@ int BmpInit(char *filepass, BMP *bmp){
 
 	printf("%x\n", bmp->bfType);
 	if (bmp->bfType != 0x424d){
-		printf("ƒGƒ‰[Fƒrƒbƒgƒ}ƒbƒvˆÈŠO‚ª“ü—Í‚³‚ê‚Ü‚µ‚½\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ä»¥å¤–ãŒå…¥åŠ›ã•ã‚Œã¾ã—ãŸ\n");
 		return -1;
 	}
-	//ˆÈ‰º“Ç‚İÌ‚Äiƒtƒ@ƒCƒ‹ƒTƒCƒYA—\–ñ—ÌˆæAƒtƒ@ƒCƒ‹æ“ª‚©‚ç‰æ‘œƒf[ƒ^‚Ü‚Å‚ÌƒIƒtƒZƒbƒgj
+	//ä»¥ä¸‹èª­ã¿æ¨ã¦ï¼ˆãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã€äºˆç´„é ˜åŸŸã€ãƒ•ã‚¡ã‚¤ãƒ«å…ˆé ­ã‹ã‚‰ç”»åƒãƒ‡ãƒ¼ã‚¿ã¾ã§ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆï¼‰
 	for (i = 0; i < 3; i++){
 		rc = fread(c, 1, 4, fp);
 		if (rc == 0){
-			printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+			printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 			return -1;
 		}
 	}
 	
-	//î•ñƒwƒbƒ_“Ç‚İ‚İ
-	//“Ç‚İÌ‚Äiî•ñƒwƒbƒ_ƒTƒCƒYj
+	//æƒ…å ±ãƒ˜ãƒƒãƒ€èª­ã¿è¾¼ã¿
+	//èª­ã¿æ¨ã¦ï¼ˆæƒ…å ±ãƒ˜ãƒƒãƒ€ã‚µã‚¤ã‚ºï¼‰
 	rc = fread(c, 1, 4, fp);
 	if (rc == 0){
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
-	//ƒrƒbƒgƒ}ƒbƒv‚Ì•‚Æ‚‚³‚ğæ“¾
+	//ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®å¹…ã¨é«˜ã•ã‚’å–å¾—
 	rc = fread(&bmp->biWidth, 1, 4, fp);
 	if (rc == 0){
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 	rc = fread(&bmp->biHeight, 1, 4, fp);
 	if (rc == 0){
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 
-	printf("•F%ld ‚‚³F%ld\n", bmp->biWidth, bmp->biHeight);
+	printf("å¹…ï¼š%ld é«˜ã•ï¼š%ld\n", bmp->biWidth, bmp->biHeight);
 	
 	rc = fread(c, 1, 2, fp);
 	if (rc == 0) {
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 
-	//Fƒrƒbƒg”‚ğæ“¾
+	//è‰²ãƒ“ãƒƒãƒˆæ•°ã‚’å–å¾—
 	rc = fread(&bmp->biBitCount, 1, 2, fp);
 	if (rc == 0) {
-		printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 	if (bmp->biBitCount != 24) {
-		printf("ƒrƒbƒgƒ}ƒbƒv‚ÌFƒrƒbƒg”‚ª24‚Å‚Í‚ ‚è‚Ü‚¹‚ñ\n");
+		printf("ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®è‰²ãƒ“ãƒƒãƒˆæ•°ãŒ24ã§ã¯ã‚ã‚Šã¾ã›ã‚“\n");
 		return -1;
 	}
 
-	printf("Fƒrƒbƒg”:%d\n", bmp->biBitCount);
+	printf("è‰²ãƒ“ãƒƒãƒˆæ•°:%d\n", bmp->biBitCount);
 
-	//ˆÈ‰º“Ç‚İÌ‚Ä
+	//ä»¥ä¸‹èª­ã¿æ¨ã¦
 	for (i = 0; i < 6; i++) {
 		rc = fread(c, 1, 4, fp);
 		if (rc == 0) {
-			printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+			printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 			return -1;
 		}
 	}
 
-	//ƒpƒŒƒbƒgƒf[ƒ^“Ç‚İÌ‚Ä
-	//¡‰ñ‚ÍFƒrƒbƒg”‚ª24ƒrƒbƒg‚Ì‚İ‚ğ“Ç‚İ‚ñ‚Å‚¢‚é‚½‚ßˆ—‚ğ”ò‚Î‚·(ƒpƒŒƒbƒgƒf[ƒ^‚ª‘¶İ‚µ‚È‚¢‚½‚ß)
+	//ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿èª­ã¿æ¨ã¦
+	//ä»Šå›ã¯è‰²ãƒ“ãƒƒãƒˆæ•°ãŒ24ãƒ“ãƒƒãƒˆã®ã¿ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã‚‹ãŸã‚å‡¦ç†ã‚’é£›ã°ã™(ãƒ‘ãƒ¬ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ãŒå­˜åœ¨ã—ãªã„ãŸã‚)
 	/*
 	for (i = 0; i < 4; i++) {
 		rc = fread(c, 1, 1, fp);
 		if (rc == 0) {
-			printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ\n");
+			printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“\n");
 			return -1;
 		}
 			
 	}*/
 
-	//‰æ‘œƒf[ƒ^“Ç‚İ‚İ
+	//ç”»åƒãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
 	SetPixels(bmp, fp);
 
 	rc = fread(c, 1, 1, fp);
 	if (rc != 0) {
-		printf("ƒGƒ‰[Fƒf[ƒ^‚ª‚Ü‚¾c‚Á‚Ä‚¢‚Ü‚·\n\n");
+		printf("ã‚¨ãƒ©ãƒ¼ï¼šãƒ‡ãƒ¼ã‚¿ãŒã¾ã æ®‹ã£ã¦ã„ã¾ã™\n\n");
 		return -1;
 	}
 
 	fclose(fp);
 }
 
-//‰æ‘œƒf[ƒ^“ü—Í@
+//ç”»åƒãƒ‡ãƒ¼ã‚¿å…¥åŠ›ã€€
 int SetPixels(BMP *bmp, FILE *fp){
 
 	int color = 0;
 	int rc = 0;
 	int i = 0, n = 0;;
 
-	//‘ÎÛ‰æ‘f‚Ì•A‚‚³
+	//å¯¾è±¡ç”»ç´ ã®å¹…ã€é«˜ã•
 	int w, h;
-	//ƒrƒbƒgƒ}ƒbƒvƒwƒbƒ_‚Ì‹l‚ß•¨
+	//ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ãƒ˜ãƒƒãƒ€ã®è©°ã‚ç‰©
 	int pad;
 
-	//‰æ‘f’l‚ğ•Û‘¶‚·‚é”z—ñ‚ğì¬
+	//ç”»ç´ å€¤ã‚’ä¿å­˜ã™ã‚‹é…åˆ—ã‚’ä½œæˆ
 	bmp->pixels = (int*)malloc((bmp->biHeight*bmp->biWidth) * sizeof(int));
 	
-	//‹l‚ß•¨‚Ì•‚ğŒvZ(ƒrƒbƒgƒ}ƒbƒv‚Ì•‚ğ4‚Ì”{”‚É‚·‚é)
+	//è©°ã‚ç‰©ã®å¹…ã‚’è¨ˆç®—(ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã®å¹…ã‚’4ã®å€æ•°ã«ã™ã‚‹)
 	pad = bmp->biWidth % 4;
 	if (pad != 0) pad = 4 - pad;
 
-	//‰æ‘f’l‚ğ“Ç‚İ‚Ş
+	//ç”»ç´ å€¤ã‚’èª­ã¿è¾¼ã‚€
 	for (h = bmp->biHeight - 1; h >= 0; h--) {
 		for(w = 0; w < bmp->biWidth; w++) {
 			rc = fread(&color, 1, 3, fp);
@@ -251,27 +251,27 @@ int SetPixels(BMP *bmp, FILE *fp){
 				bmp->pixels[h*bmp->biWidth+w] = color;
 			}
 			else {
-				printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ •%d‚‚³%d\n", w, h);
+				printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“ å¹…%dé«˜ã•%d\n", w, h);
 				return -1;
 			}
 		}
-		//‹l‚ß•¨‚Ì•ª‚ğ“Ç‚İÌ‚Ä‚é
+		//è©°ã‚ç‰©ã®åˆ†ã‚’èª­ã¿æ¨ã¦ã‚‹
 		for (n = pad; n > 0; n--) {
 			rc = fread(&color, 1, 3, fp);
 			if (rc == 0) {
-				printf("ƒGƒ‰[F“Ç‚İ‚İƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ •%d‚‚³%d\n", w, h);
+				printf("ã‚¨ãƒ©ãƒ¼ï¼šèª­ã¿è¾¼ã¿ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“ å¹…%dé«˜ã•%d\n", w, h);
 				return -1;
 			}
 		}
 	}
 
-	printf("³í‚É‰æ‘œƒf[ƒ^‚ğ“Ç‚İ‚İ‚Ü‚µ‚½\n\n");
+	printf("æ­£å¸¸ã«ç”»åƒãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿ã¾ã—ãŸ\n\n");
 
 	return 0;
 
 }
 
-//SADƒ}ƒbƒ`ƒ“ƒO(‰æ‘f’l‚Ì·•ª‚Ìâ‘Î’l‚Ì˜a‚ğŒvZ)
+//SADãƒãƒƒãƒãƒ³ã‚°(ç”»ç´ å€¤ã®å·®åˆ†ã®çµ¶å¯¾å€¤ã®å’Œã‚’è¨ˆç®—)
 long int SADmatching(BMP *input, BMP *trim, int num) {
 	int x, y;
 	int w, h;
@@ -279,30 +279,30 @@ long int SADmatching(BMP *input, BMP *trim, int num) {
 	long int sad=0;
 	int result;
 
-	//‰æ‘f’læ“¾—p
+	//ç”»ç´ å€¤å–å¾—ç”¨
 	int r=0x000011;
-	//¡‰ñ‚Ìƒrƒbƒgƒ}ƒbƒv‚Ír=g=b‚¾‚Á‚½‚½‚ßŠ„ˆ¤
+	//ä»Šå›ã®ãƒ“ãƒƒãƒˆãƒãƒƒãƒ—ã¯r=g=bã ã£ãŸãŸã‚å‰²æ„›
 	//int g=0x001100;
 	//int b=0x110000;
 
-	//‘ÎÛ‚Ì‰æ‘f’l
+	//å¯¾è±¡ã®ç”»ç´ å€¤
 	int Icolor,Tcolor;
 
-	//ŒŸ¸‚·‚é‰æ‘f’l‚Ì‚¸‚ê‚ğŒvZ
+	//æ¤œæŸ»ã™ã‚‹ç”»ç´ å€¤ã®ãšã‚Œã‚’è¨ˆç®—
 	x = num % input->biWidth;
 	y = num / input->biWidth;
 	
-	//ƒgƒŠƒ~ƒ“ƒO‰æ‘œ‚Ì‚·‚×‚Ä‚Ì‰æ‘f’l‚ğŒvZ
+	//ãƒˆãƒªãƒŸãƒ³ã‚°ç”»åƒã®ã™ã¹ã¦ã®ç”»ç´ å€¤ã‚’è¨ˆç®—
 	for (h = 0; h < trim->biHeight; h++) {
 		for (w = 0; w < trim->biWidth; w++) {
 
-			//ƒrƒbƒg‰‰Z‚É‚æ‚è‰æ‘f’l‚ğæ“¾
+			//ãƒ“ãƒƒãƒˆæ¼”ç®—ã«ã‚ˆã‚Šç”»ç´ å€¤ã‚’å–å¾—
 			Icolor = input->pixels[((y + h)*input->biWidth) + (x + w)] & r;
 			Tcolor = trim->pixels[(h*trim->biWidth) + w] & r;
 
 			//result = abs(Icolor - Tcolor);
 			sad += abs(Icolor - Tcolor);
-			//sad‚ª‘å‚«‚­‚È‚è‚·‚¬‚½‚ç’†~
+			//sadãŒå¤§ãããªã‚Šã™ããŸã‚‰ä¸­æ­¢
 			if (sad < 0) return -1;
 		}
 	}
