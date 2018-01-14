@@ -4,9 +4,9 @@ from PIL import Image
 import os
 try:
     os.mkdir("./textimage")
-    print "./textimageを作成しました．"
+    print("./textimageを作成しました．")
 except:
-    print "既に./textimageは作成されています．"
+    print("既に./textimageは作成されています．")
 Timg_1 = Image.open("./images/Timg_1.bmp")
 Timg_2 = Image.open("./images/Timg_2.bmp")
 

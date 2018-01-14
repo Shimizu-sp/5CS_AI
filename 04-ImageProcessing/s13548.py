@@ -3,14 +3,14 @@ import numpy as np
 from matplotlib import pyplot as plt
 from PIL import Image, ImageDraw
 
-img_1 = cv2.imread('./images/img_1.bmp')    #画像の読み込み
-img_2 = cv2.imread('./images/img_2.bmp')    #画像の読み込み
+img_1 = cv2.imread('img_1.bmp')    #画像の読み込み
+img_2 = cv2.imread('img_2.bmp')    #画像の読み込み
 
 img_1_gray = cv2.cvtColor(img_1, cv2.COLOR_BGR2GRAY)    #グレースケール化
 img_2_gray = cv2.cvtColor(img_2, cv2.COLOR_BGR2GRAY)    #グレースケール化
 
-temp_1 = cv2.imread('./images/Timg_1.bmp',0)    #テンプレート読み込み
-temp_2 = cv2.imread('./images/Timg_2.bmp',0)    #テンプレート読み込み
+temp_1 = cv2.imread('Timg_1.bmp',0)    #テンプレート読み込み
+temp_2 = cv2.imread('Timg_2.bmp',0)    #テンプレート読み込み
 
 w1, h1 = temp_1.shape[::-1]     #領域調整
 w2, h2 = temp_2.shape[::-1]     #領域調整
