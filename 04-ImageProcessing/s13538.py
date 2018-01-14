@@ -4,15 +4,15 @@ import numpy as np
 
 def main():
     # 入力画像とテンプレート画像を取得
-    img1 = cv2.imread("./images/img_1.bmp")
-    temp1 = cv2.imread("./images/Timg_1.bmp")
-    
-    img2 = cv2.imread("./images/img_2.bmp")
-    temp2 = cv2.imread("./images/Timg_2.bmp")
+    img1 = cv2.imread("img_1.bmp")
+    temp1 = cv2.imread("Timg_1.bmp")
+
+    img2 = cv2.imread("img_2.bmp")
+    temp2 = cv2.imread("Timg_2.bmp")
 
 
     # グレースケールに変換
-    Gimg1 = cv2.cvtColor(img1, cv2.COLOR_RGB2GRAY)   
+    Gimg1 = cv2.cvtColor(img1, cv2.COLOR_RGB2GRAY)
     Gtemp1 = cv2.cvtColor(temp1, cv2.COLOR_RGB2GRAY)
     
     Gimg2 = cv2.cvtColor(img2, cv2.COLOR_RGB2GRAY)   

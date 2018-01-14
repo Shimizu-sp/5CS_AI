@@ -1,6 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#include <Math.h>
+#include <math.h>
 #pragma warning(disable : 4996)
 
 //メモ 参考 http://www.umekkii.jp/data/computer/file_format/bitmap.cgi
