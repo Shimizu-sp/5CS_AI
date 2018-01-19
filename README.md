@@ -50,7 +50,15 @@
 
 なお，A*アルゴリズムにおいては，発見的関数
 <img src="https://latex.codecogs.com/gif.latex?f(p)=g(p)&plus;h(p)"/>
-において，$g(p)$は初期状態から現在の状態$p$までのスライド回数，$h(p)$は現在状態$p$から目標位置までのマンハッタン距離の総和とする．マンハッタン距離は，1から8の数字までを計算するものとする．
+において，
+<img src="https://latex.codecogs.com/gif.latex?g(p)"/>
+は初期状態から現在の状態
+<img src="https://latex.codecogs.com/gif.latex?p"/>
+までのスライド回数，
+<img src="https://latex.codecogs.com/gif.latex?h(p)"/>
+は現在状態
+<img src="https://latex.codecogs.com/gif.latex?p"/>
+から目標位置までのマンハッタン距離の総和とする．マンハッタン距離は，1から8の数字までを計算するものとする．
 
 レポートについて
 1. アルゴリズムの説明
@@ -60,5 +68,5 @@
     2. 発見的関数の値の推移をグラフで示せ
 ### 02-プロダクションシステム
 ### 03-意味ネットワーク
-### 04-メディアの知識処理（画像処理）
+### 04-メディアの知識処理（画像処理）
 ### 05-遺伝的アルゴリズム
