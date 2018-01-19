@@ -20,8 +20,8 @@ def main():
 #画像1
 def pic1():
 	#画像の読み込み
-	img = cv2.imread("img_1.bmp")
-	temp = cv2.imread("Timg_1.bmp")
+	img = cv2.imread("images/img_1.bmp")
+	temp = cv2.imread("images/Timg_1.bmp")
 	yAxis = cv2.flip(temp, 1) #テンプレート画像を左右反転する
 
 	#テンプレートと同じやつがないか調べる
@@ -40,8 +40,8 @@ def pic1():
 #画像2
 def pic2():
 	#画像の読み込み
-	img = cv2.imread("img_2.bmp",0)
-	temp = cv2.imread("Timg_2.bmp",0)
+	img = cv2.imread("images/img_2.bmp",0)
+	temp = cv2.imread("images/Timg_2.bmp",0)
 
 	#テンプレートと同じやつがないか調べる
 	result = cv2.matchTemplate(img,temp,cv2.TM_SQDIFF) #類似度は差の二乗和を使う(値が小さいほど似ている)

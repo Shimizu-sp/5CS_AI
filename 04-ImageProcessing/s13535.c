@@ -54,12 +54,12 @@ int main(){
 		//ファイルを読み込む
 		switch (q) {
 		case 0:
-			BmpInit("img_1.bmp", input);
-			BmpInit("Timg_1.bmp", trim);
+			BmpInit("images/img_1.bmp", input);
+			BmpInit("images/Timg_1.bmp", trim);
 			break;
 		case 1:
-			BmpInit("img_2.bmp", input);
-			BmpInit("Timg_2.bmp", trim);
+			BmpInit("images/img_2.bmp", input);
+			BmpInit("images/Timg_2.bmp", trim);
 			break;
 		default:
 				return -1;

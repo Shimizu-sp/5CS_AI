@@ -12,12 +12,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	switch (i) {
 	case(1):
 		//各画像の読み込み
-		Mat image_1 = imread("img_1.bmp");
+		Mat image_1 = imread("imagas/img_1.bmp");
 		namedWindow("元の画像(img_1)");
 		imshow("元の画像(img_1)", img_1);
 		//img_1.bmpの読み込みと表示
 
-		Mat Timg_1 = imread("Timg_1.bmp");
+		Mat Timg_1 = imread("images/Timg_1.bmp");
 		namedWindow("テンプレート画像(Timg_1)");
 		imshow("テンプレート画像(Timg_1)", Timg_1);
 		//Timg_1.bmpの読み込みと表示
@@ -37,12 +37,12 @@ int _tmain(int argc, _TCHAR* argv[])
 			break;
 
 	case(2):
-		image_2 = imread("img_2.bmp");
+		image_2 = imread("images/img_2.bmp");
 		namedWindow("元の画像(img_2)");
 		imshow("元の画像(img_2)", img_2);
 		//img_2.bmpの読み込みと表示
 
-		Timg_2 = imread("Timg_2.bmp");
+		Timg_2 = imread("images/Timg_2.bmp");
 		namedWindow("テンプレート画像(Timg_2)");
 		imshow("テンプレート画像(Timg_2)", Timg_2);
 		//Timg_2.bmpの読み込みと表示

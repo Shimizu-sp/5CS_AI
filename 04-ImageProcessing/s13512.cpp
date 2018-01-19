@@ -7,26 +7,26 @@
 int main(int argc, char *argv[])
 {
 	// 探索画像1
-	cv::Mat search_img1 = cv::imread("../../images/img_1.bmp", 1);//ソースコードを置いたフォルダの二つ上にimageフォルダを置いた
+	cv::Mat search_img1 = cv::imread("images/img_1.bmp", 1);//ソースコードを置いたフォルダの二つ上にimageフォルダを置いた
 	if (search_img1.empty()){//探索画像がない場合はプログラムを終了
 		std::cout << "探索画像がありません" << std::endl;
 		abort();
 	}
 	// テンプレート画像1
-	cv::Mat tmp_img1 = cv::imread("../../images/Timg_1.bmp", 1);
+	cv::Mat tmp_img1 = cv::imread("images/Timg_1.bmp", 1);
 	if (tmp_img1.empty()) {
 		std::cout << "テンプレート画像がありません" << std::endl;
 		abort();
 	}
 
 	// 探索画像2
-	cv::Mat search_img2 = cv::imread("../../images/img_2.bmp", 1);
+	cv::Mat search_img2 = cv::imread("images/img_2.bmp", 1);
 	if (search_img2.empty()){
 		std::cout << "探索画像がありません" << std::endl;
 		abort();
 	}
 	// テンプレート画像2
-	cv::Mat tmp_img2 = cv::imread("../../images/Timg_2.bmp", 1);
+	cv::Mat tmp_img2 = cv::imread("images/Timg_2.bmp", 1);
 	if (tmp_img2.empty()) { 
 		std::cout << "テンプレート画像がありません" << std::endl;
 		abort();

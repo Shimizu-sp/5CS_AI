@@ -19,7 +19,7 @@ int main(){
     
     
     //ファイルストリーム
-    if(NULL == (img_data = fopen("images/gccimg_data_1.txt", "r"))){
+    if(NULL == (img_data = fopen("images/img_data_1.txt", "r"))){
         printf("Image open error\n");
         return -1;
     }

@@ -1,7 +1,7 @@
 ﻿import cv2
 
-moto = cv2.imread("img_2.bmp", 0)
-temp = cv2.imread("Timg_2.bmp", 0)
+moto = cv2.imread("images/img_2.bmp", 0)
+temp = cv2.imread("images/Timg_2.bmp", 0)
 
 result = cv2.matchTemplate(moto, temp, cv2.TM_CCOEFF_NORMED)
 

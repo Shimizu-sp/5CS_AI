@@ -14,8 +14,8 @@ module TemplateMatcher
   #                      - それぞれについて正規化したものも存在する(CV_TM_CCORR_NORMEDなど)
   def self.operate(base_img_name, template_img_name,
                    matching_operation = OpenCV::CV_TM_SQDIFF)
-    base_img = OpenCV::IplImage.load('./imgs/' + base_img_name)
-    template = OpenCV::IplImage.load('./imgs/' + template_img_name)
+    base_img = OpenCV::IplImage.load('./images/' + base_img_name)
+    template = OpenCV::IplImage.load('./images/' + template_img_name)
 
     result = base_img.match_template(template, matching_operation)
 

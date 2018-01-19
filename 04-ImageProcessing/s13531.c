@@ -13,10 +13,10 @@ void main() {
 	int img_1[512][512], img_2[512][512], Timg_1[200][200], Timg_2[136][215];
 
 	//テキストファイル読み込み
-	fopen_s(&IMG_1_main, "img_data_1.txt", "r");
-	fopen_s(&IMG_1_match, "Timg_data_1.txt", "r");
-	fopen_s(&IMG_2_main, "img_data_2.txt", "r");
-	fopen_s(&IMG_2_match, "Timg_data_1.txt", "r");
+	fopen_s(&IMG_1_main, "images/img_data_1.txt", "r");
+	fopen_s(&IMG_1_match, "images/Timg_data_1.txt", "r");
+	fopen_s(&IMG_2_main, "images/img_data_2.txt", "r");
+	fopen_s(&IMG_2_match, "images/Timg_data_1.txt", "r");
 
 	/******************************************************************/
 	//ファイル内のデータを配列に移動

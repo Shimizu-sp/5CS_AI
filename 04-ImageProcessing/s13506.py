@@ -25,16 +25,16 @@ tmp2 = np.zeros( (IMG2_HEIGHT - TEMPLATE2_HEIGHT, IMG2_WIDTH - TEMPLATE2_WIDTH),
 
 if __name__ == '__main__':
     # テキストから文字列を取得
-    with open('img_data_1.txt', 'r') as f:
+    with open('images/img_data_1.txt', 'r') as f:
         img1_str = f.read()
 
-    with open('Timg_data_1.txt', 'r') as f:
+    with open('images/Timg_data_1.txt', 'r') as f:
         template1_str = f.read()
 
-    with open('img_data_2.txt', 'r') as f:
+    with open('images/img_data_2.txt', 'r') as f:
         img2_str = f.read()
         
-    with open('Timg_data_2.txt', 'r') as f:
+    with open('images/Timg_data_2.txt', 'r') as f:
         template2_str = f.read()
 
 

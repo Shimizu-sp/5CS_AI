@@ -8,8 +8,8 @@ using namespace cv;
 int
 main(int argc, char **argv)
 {
-	cv::Mat search_img = cv::imread("img/img_1.bmp", 1);
-	cv::Mat tmp_img = cv::imread("img/Timg_1.bmp", 1);
+	cv::Mat search_img = cv::imread("imagese/img_1.bmp", 1);
+	cv::Mat tmp_img = cv::imread("images/Timg_1.bmp", 1);
 
 	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//グレースケールに変更
 	//cv::equalizeHist(search_img, search_img);//ヒストグラム均一化
@@ -38,8 +38,8 @@ main(int argc, char **argv)
 	imshow("result_1", search_img);
 	cv::imwrite("output_1.png", search_img);
 
-	search_img = cv::imread("img/img_2.bmp", 1);
-	tmp_img = cv::imread("img/Timg_2.bmp", 1);
+	search_img = cv::imread("images/img_2.bmp", 1);
+	tmp_img = cv::imread("images/Timg_2.bmp", 1);
 
 	cv::cvtColor(search_img, search_img, CV_BGR2GRAY);//グレースケールに変更
 													  //cv::equalizeHist(search_img, search_img);//ヒストグラム均一化

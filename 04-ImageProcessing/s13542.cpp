@@ -16,7 +16,7 @@ char buf[1];
 int main(void){
 
 	//対象画像の読み込み
-	img = fopen("img_data_1.txt","r");
+	img = fopen("images/img_data_1.txt","r");
 		
 	for(i = 0; i < 512; i++)
 	{
@@ -38,7 +38,7 @@ int main(void){
 	fclose(img);
 
 	//テンプレートの読み込み
-	timg = fopen("Timg_data_1.txt","r");
+	timg = fopen("images/Timg_data_1.txt","r");
 
 	for(i = 0; i < 200; i++)
 	{

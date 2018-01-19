@@ -37,7 +37,7 @@ main(){
 
 	//Timg_1.txtを読み込む=======================
 
-	fopen_s(&temp_file, "Timg_data_1.txt", "r");
+	fopen_s(&temp_file, "images/Timg_data_1.txt", "r");
 
 	while (file_read != EOF){
 
@@ -56,7 +56,7 @@ main(){
 
 	//img_1.txtを読み込む=======================
 
-	fopen_s(&image_file, "img_data_1.txt", "r");
+	fopen_s(&image_file, "images/img_data_1.txt", "r");
 
 	line = 0; row = 0; //行列番号の初期化
 

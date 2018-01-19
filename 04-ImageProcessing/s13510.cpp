@@ -28,8 +28,8 @@ void matching1(){
 	double pv = 0;
 
 	//画像読み込み
-	src_image1 = imread("img_1.bmp", 0);
-	src_tmp1 = imread("Timg_1.bmp", 0);
+	src_image1 = imread("images/img_1.bmp", 0);
+	src_tmp1 = imread("images/Timg_1.bmp", 0);
 
 	//テンプレートマッチングの計算
 	matchTemplate(src_image1, src_tmp1, result_image3, CV_TM_CCORR_NORMED);
@@ -59,8 +59,8 @@ void matching2(){
 	double pv = 0;
 
 	//画像読み込み
-	src_image1 = imread("img_2.bmp", 0);
-	src_tmp1 = imread("Timg_2.bmp", 0);
+	src_image1 = imread("images/img_2.bmp", 0);
+	src_tmp1 = imread("images/Timg_2.bmp", 0);
 	
 
 	//テンプレートマッチングの計算(テンプレート2)

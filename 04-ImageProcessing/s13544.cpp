@@ -21,8 +21,8 @@ int main(){
 	
 
 	//画像1
-	image_src_1 = imread("img_1.bmp");
-	image_temp_1 = imread("Timg_1.bmp");
+	image_src_1 = imread("imagas/img_1.bmp");
+	image_temp_1 = imread("images/Timg_1.bmp");
 
 	namedWindow("元画像_画像1");
 	imshow("元画像_画像1", image_src_1);
@@ -134,8 +134,8 @@ int main(){
 
 
 	//画像2
-	image_src_2 = imread("img_2.bmp");
-	image_temp_2 = imread("Timg_2.bmp");
+	image_src_2 = imread("images/img_2.bmp");
+	image_temp_2 = imread("images/Timg_2.bmp");
 
 	namedWindow("元画像_画像2");
 	imshow("元画像_画像2", image_src_2);

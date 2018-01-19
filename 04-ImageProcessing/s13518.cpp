@@ -13,17 +13,17 @@ int main()
 {
 
 	//原画像読み込み
-	Mat ol_image1 = imread("img_1.bmp",1);
+	Mat ol_image1 = imread("images/img_1.bmp",1);
 	if (ol_image1.empty()) return -1;
 	
-	Mat ol_image2 = imread("img_2.bmp", 1);
+	Mat ol_image2 = imread("images/img_2.bmp", 1);
 	if (ol_image2.empty()) return -1;
 	
 	//テンプレート読み込み
-	Mat tm_image1 = imread("Timg_1.bmp");
+	Mat tm_image1 = imread("images/Timg_1.bmp");
 	if (ol_image1.empty()) return -1;
 
-	Mat tm_image2 = imread("Timg_2.bmp");
+	Mat tm_image2 = imread("images/Timg_2.bmp");
 	if (ol_image2.empty()) return -1;
 
 	
