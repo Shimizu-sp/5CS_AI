@@ -142,7 +142,7 @@
     - 突然変異は全体の5%に対し，10桁のうちの1桁分の数値が変化するものとする
     - 500世代まで実施する
 
-<img src="https://latex.codecogs.com/svg.latex?f(x)&space;=\large&space;\sin&space;\frac{x&space;\pi}{7}&space;\times&space;\frac{4&space;\log_2(x&space;&plus;&space;15)}{x&plus;15}&space;&plus;&space;0.35&space;\sqrt{x&space;&plus;&space;8.5}"/>
+<img src="https://latex.codecogs.com/svg.latex?\large&space;f(x)&space;=&space;\sin&space;\frac{x&space;\pi}{7}&space;\times&space;\frac{4&space;\log_2(x&space;&plus;&space;15)}{x&plus;15}&space;&plus;&space;0.35&space;\sqrt{x&space;&plus;&space;8.5}" title="\large f(x) = \sin \frac{x \pi}{7} \times \frac{4 \log_2(x + 15)}{x+15} + 0.35 \sqrt{x + 8.5}" />
 
 ### レポートについて
 1. アルゴリズムの説明
