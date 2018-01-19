@@ -1,4 +1,4 @@
-
+ï»¿
 #include<cstdio>
 #include<iostream>
 #include<cmath>
@@ -11,7 +11,7 @@ using namespace std;
 #define N2 (9)
 #define MBAN (30);
 
-//ˆÚ“®•ûŒü‚Ìİ’è
+//ç§»å‹•æ–¹å‘ã®è¨­å®š
 static const int dx[4] = { 0, -1, 0, 1 };
 static const int dy[4] = { 1, 0, -1, 0 };
 static const char dir[4] = { 'r', 'u', 'l', 'd' };
@@ -21,10 +21,10 @@ static const int question[N2] = {
 	6, 3, 7
 };
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£ˆê——
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ä¸€è¦§
 int man_d[N2][N2];
 
-//ƒpƒYƒ‹–{‘Ì
+//ãƒ‘ã‚ºãƒ«æœ¬ä½“
 struct Puzzle {
 	int f[N2], space, man;
 	int cost;
@@ -38,7 +38,7 @@ struct Puzzle {
 	}
 };
 
-//ƒKƒ ‘ƒRƒXƒg‚à—pˆÓ
+//ã‚¬ãƒ¯ ç·ã‚³ã‚¹ãƒˆã‚‚ç”¨æ„
 struct State {
 	Puzzle puzzle;
 	int estimated;
@@ -47,11 +47,11 @@ struct State {
 	}
 };
 
-//‘‚«o‚µ—p
+//æ›¸ãå‡ºã—ç”¨
 vector<State> ban(30);
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£Zo
-//‚¢‚¿‚¢‚¿abs‚â‚é‚Ì–Ê“|‚È‚Ì‚Åˆê——‚©‚çæ“¾
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ç®—å‡º
+//ã„ã¡ã„ã¡absã‚„ã‚‹ã®é¢å€’ãªã®ã§ä¸€è¦§ã‹ã‚‰å–å¾—
 int GetManhattan(Puzzle pz) {
 	int sum = 0;
 	for (int i = 0; i < N2; i++) {
@@ -63,9 +63,9 @@ int GetManhattan(Puzzle pz) {
 	return sum;
 }
 
-//•\¦Aƒtƒ@ƒCƒ‹‘‚«‚±‚İ
+//è¡¨ç¤ºã€ãƒ•ã‚¡ã‚¤ãƒ«æ›¸ãã“ã¿
 void Write(int count){
-	FILE *fp, *fp2,*fp3;//fp‚Í„ˆÚAfp2‚ÍƒRƒXƒg‚Æƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	FILE *fp, *fp2,*fp3;//fpã¯æ¨ç§»ã€fp2ã¯ã‚³ã‚¹ãƒˆã¨ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	fopen_s(&fp, "Puzzle.txt", "w");
 	fopen_s(&fp2, "Cost.txt", "w");
 	fopen_s(&fp3, "Man.txt", "w");
@@ -103,15 +103,15 @@ bool Answer(Puzzle p){
 		p.f[8] == 9;
 }
 
-//–{‘Ì
+//æœ¬ä½“
 int Astar(Puzzle s) {
-	//‰ŠúéŒ¾
+	//åˆæœŸå®£è¨€
 	priority_queue<State> PQ;
 	s.man = GetManhattan(s);
 	s.cost = 0;
 	map<Puzzle, bool>V;
 	Puzzle u, v, temp;
-	//‰Šú’lì¬
+	//åˆæœŸå€¤ä½œæˆ
 	State init;
 	init.puzzle = s;
 	init.estimated = GetManhattan(s);
@@ -120,12 +120,12 @@ int Astar(Puzzle s) {
 	ban[init.puzzle.cost] = init;
 
 	while (!PQ.empty()) {
-		//æ“ªæ‚èo‚µ
+		//å…ˆé ­å–ã‚Šå‡ºã—
 		State st = PQ.top(); PQ.pop();
 
 		u = st.puzzle;
 
-		//ƒ}ƒ“ƒnƒbƒ^ƒ“Zo
+		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³ç®—å‡º
 		if (u.man == 0){
 			ban[st.puzzle.cost] = st;
 			return u.cost;
@@ -134,12 +134,12 @@ int Astar(Puzzle s) {
 
 		//Write(u);
 
-		//À•Wæ“¾
+		//åº§æ¨™å–å¾—
 		int sx = u.space / N;
 		int sy = u.space % N;
 
 		for (int r = 0; r < 4; r++) {
-			//Še•ûŒü‚ÆŒğŠ·
+			//å„æ–¹å‘ã¨äº¤æ›
 			int tx = sx + dx[r];
 			int ty = sy + dy[r];
 			if (tx < 0 || ty < 0 || tx >= N || ty >= N)continue;
@@ -147,13 +147,13 @@ int Astar(Puzzle s) {
 			v.man -= man_d[tx * N + ty][v.f[tx * N + ty] - 1];
 			v.man += man_d[sx * N + sy][v.f[tx * N + ty] - 1];
 
-			//À•WŒğŠ·
+			//åº§æ¨™äº¤æ›
 			swap(v.f[sx * N + sy], v.f[tx * N + ty]);
 
 			v.space = tx * N + ty;
-			//Šùo‚©”Û‚©
+			//æ—¢å‡ºã‹å¦ã‹
 			if (!V[v]) {
-				//ŒğŠ·Œã‚Ì”Õ–Ê‚ğƒLƒ…[‚ÉƒVƒ…ƒDƒDƒD[ƒbI
+				//äº¤æ›å¾Œã®ç›¤é¢ã‚’ã‚­ãƒ¥ãƒ¼ã«ã‚·ãƒ¥ã‚¥ã‚¥ã‚¥ãƒ¼ãƒƒï¼
 				v.cost++;
 				State news;
 				news.puzzle = v;
@@ -167,11 +167,11 @@ int Astar(Puzzle s) {
 }
 
 int main() {
-	//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‚Ë‚¶‚Ş
+	//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’ã­ã˜è¾¼ã‚€
 	for (int i = 0; i < N2; i++)
 		for (int j = 0; j < N2; j++)
 			man_d[i][j] = abs(i / N - j / N) + abs(i%N - j%N);
-	//‰Šú”z’u
+	//åˆæœŸé…ç½®
 	Puzzle in;
 
 	/*
@@ -183,7 +183,7 @@ int main() {
 	}
 	}
 	*/
-	//‰ŠúéŒ¾
+	//åˆæœŸå®£è¨€
 	in.f[0] = 8; in.f[1] = 1; in.f[2] = 5;
 	in.f[3] = 2; in.f[4] = 0; in.f[5] = 4;
 	in.f[6] = 6; in.f[7] = 3; in.f[8] = 7;

@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #pragma warning(disable:4996)
 
@@ -8,14 +8,14 @@
 
 
 
-/* \‘¢‘Ì‚Ì’è‹` */
+/* æ§‹é€ ä½“ã®å®šç¾© */
 struct Box{
 
-	int pazzle_model[3][3];//ƒpƒYƒ‹‚Ìó‘Ô
-	int hierarchy;//ŠK‘w
-	int ID;//ƒm[ƒh”Ô†
-	int FChi;//F’l
-	struct Box* next[4];//ƒŠƒXƒg next[0]‚Í¶‚ÉˆÚ“® next[1]‚Íã‚ÉˆÚ“® next[2]‚Í‰º‚ÉˆÚ“® next[3]‚Í‰E‚ÉˆÚ“®
+	int pazzle_model[3][3];//ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹
+	int hierarchy;//éšŽå±¤
+	int ID;//ãƒŽãƒ¼ãƒ‰ç•ªå·
+	int FChi;//Få€¤
+	struct Box* next[4];//ãƒªã‚¹ãƒˆ next[0]ã¯å·¦ã«ç§»å‹• next[1]ã¯ä¸Šã«ç§»å‹• next[2]ã¯ä¸‹ã«ç§»å‹• next[3]ã¯å³ã«ç§»å‹•
 };
 typedef struct Box Box;
 
@@ -26,23 +26,23 @@ struct List {
 }; 
 typedef struct List List;
 
-int goal[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };//‚®‚ë[‚Î‚é•Ï”
+int goal[3][3] = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };//ãã‚ãƒ¼ã°ã‚‹å¤‰æ•°
 
 List* openlist=NULL;
 List* closelist=NULL;
 List* closelistS = NULL;
 
 
-Box* OpenListR();//“Ç‚Ýž‚Ý—pƒI[ƒvƒ“ƒŠƒXƒg
-int OpenListW(Box* box);//‘‚«ž‚Ý—pƒI[ƒvƒ“ƒŠƒXƒg ˆø”‚Æ‚µ‚ÄŽè‚ÉŽ‚Á‚Ä‚¢‚ébox‚ð“n‚·
+Box* OpenListR();//èª­ã¿è¾¼ã¿ç”¨ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆ
+int OpenListW(Box* box);//æ›¸ãè¾¼ã¿ç”¨ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆ å¼•æ•°ã¨ã—ã¦æ‰‹ã«æŒã£ã¦ã„ã‚‹boxã‚’æ¸¡ã™
 
-int CloseListR(Box* box);//“Ç‚Ýž‚Ý—pƒNƒ[ƒYƒŠƒXƒg
-int CloseListW(Box* box);//‘‚«ž‚Ý—pƒNƒ[ƒYƒŠƒXƒg@ˆø”‚Æ‚µ‚Äbox‚ð“n‚·
+int CloseListR(Box* box);//èª­ã¿è¾¼ã¿ç”¨ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆ
+int CloseListW(Box* box);//æ›¸ãè¾¼ã¿ç”¨ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã€€å¼•æ•°ã¨ã—ã¦boxã‚’æ¸¡ã™
 
-int Fchi(int FChi);//“ü—Í‚µ‚½F’l(ˆø”)‘‚«o‚µ—p@
-int Pazzle(int pazzle_model[3][3]);//“ü—Í‚µ‚½ƒpƒYƒ‹‚ÌŒ^‘‚«o‚µ
+int Fchi(int FChi);//å…¥åŠ›ã—ãŸFå€¤(å¼•æ•°)æ›¸ãå‡ºã—ç”¨ã€€
+int Pazzle(int pazzle_model[3][3]);//å…¥åŠ›ã—ãŸãƒ‘ã‚ºãƒ«ã®åž‹æ›¸ãå‡ºã—
 
-int CreateBox(Box* nextbox);//ƒpƒYƒ‹‚ÌŽŸ‚Ìó‘Ô‚ðì¬‚µ‚Ä‚­‚ê‚éŠÖ”@ˆø”‚ÉŒ»Ý‚ÌƒpƒYƒ‹‚Ìó‘Ô‚ð“n‚·
+int CreateBox(Box* nextbox);//ãƒ‘ã‚ºãƒ«ã®æ¬¡ã®çŠ¶æ…‹ã‚’ä½œæˆã—ã¦ãã‚Œã‚‹é–¢æ•°ã€€å¼•æ•°ã«ç¾åœ¨ã®ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’æ¸¡ã™
 int MANHATTAN(int start[3][3]);
 
 int main(){
@@ -53,10 +53,10 @@ int main(){
 	int total = -1;
 	int mannhattan;
 	Box* box;
-	Box* p;//‚¸‚Á‚ÆŽè‚ÉŽ‚Á‚Ä‚¨‚©‚È‚¢‚Æ‚¢‚¯‚È‚¢” 
+	Box* p;//ãšã£ã¨æ‰‹ã«æŒã£ã¦ãŠã‹ãªã„ã¨ã„ã‘ãªã„ç®±
 
 	MEMORI(box);
-	//ƒvƒƒOƒ‰ƒ€‚Í‚±‚±‚©‚ç
+	//ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã¯ã“ã“ã‹ã‚‰
 	box->ID=1;
 	box->hierarchy = 0;
 	for (i = 0; i < 3; i++) {
@@ -92,7 +92,7 @@ int main(){
 		}
 			box = OpenListR();
 	}
-	//‚±‚±‚Ü‚Å
+	//ã“ã“ã¾ã§
 	free(box);
 	getchar();
 }
@@ -103,13 +103,13 @@ int MANHATTAN(int start[3][3]){
 	int total = 0;
 	int subi[9], subj[9];
 
-	//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ÌŒvŽZ
+	//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®è¨ˆç®—
 	for (s = 1; s < 9; s++){
 		for (i = 0; i < 3; i++){
 			for (j = 0; j < 3; j++){
 				if (start[i][j] == s){
 
-					//printf("Œ»Ý%d‚ÌêŠ %d %d\n", s, i, j);//’l‚ÌÀ•W•\Ž¦
+					//printf("ç¾åœ¨%dã®å ´æ‰€ %d %d\n", s, i, j);//å€¤ã®åº§æ¨™è¡¨ç¤º
 					mani[s] = i;
 					manj[s] = j;
 
@@ -122,7 +122,7 @@ int MANHATTAN(int start[3][3]){
 			for (j = 0; j < 3; j++){
 				if (goal[i][j] == s){
 
-					//printf("ÅI‚Ì%d‚ÌêŠ %d %d\n", s, i, j);//’l‚ÌÀ•W•\Ž¦
+					//printf("æœ€çµ‚ã®%dã®å ´æ‰€ %d %d\n", s, i, j);//å€¤ã®åº§æ¨™è¡¨ç¤º
 					subi[s] = i;
 					subj[s] = j;
 				}
@@ -139,7 +139,7 @@ int MANHATTAN(int start[3][3]){
 
 }
 
-//“Ç‚Ýž‚Ý—pƒI[ƒvƒ“ƒŠƒXƒg
+//èª­ã¿è¾¼ã¿ç”¨ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆ
 Box* OpenListR() {
 	List* p = openlist;
 	int fnow,fnext;
@@ -188,10 +188,10 @@ Box* OpenListR() {
 	}
 }
 
-//‘‚«ž‚Ý—pƒI[ƒvƒ“ƒŠƒXƒg ˆø”‚Æ‚µ‚ÄŽè‚ÉŽ‚Á‚Ä‚¢‚ébox‚ð“n‚·
+//æ›¸ãè¾¼ã¿ç”¨ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆ å¼•æ•°ã¨ã—ã¦æ‰‹ã«æŒã£ã¦ã„ã‚‹boxã‚’æ¸¡ã™
 int OpenListW(Box* box){
-	List* memo;//¡Ž‚Á‚Ä‚¢‚é” ‚ÌƒAƒhƒŒƒX‚Ìƒƒ‚
-	if (1==CloseListR(box)) {//‚à‚µCloselist‚É“¯‚¶‚Ì‚ª‚ ‚Á‚½ê‡
+	List* memo;//ä»ŠæŒã£ã¦ã„ã‚‹ç®±ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ãƒ¡ãƒ¢
+	if (1==CloseListR(box)) {//ã‚‚ã—Closelistã«åŒã˜ã®ãŒã‚ã£ãŸå ´åˆ
 		return 0;
 	}
 	if (openlist == NULL) {
@@ -207,7 +207,7 @@ int OpenListW(Box* box){
 	return 0;
 }
 
-//“Ç‚Ýž‚Ý—pƒNƒ[ƒYƒŠƒXƒg
+//èª­ã¿è¾¼ã¿ç”¨ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆ
 int CloseListR(Box* box) {
 	List* p = closelist;
 	int n, m;
@@ -236,9 +236,9 @@ int CloseListR(Box* box) {
 	}
 }
 
-//‘‚«ž‚Ý—pƒNƒ[ƒYƒŠƒXƒg@ˆø”‚Æ‚µ‚Äbox‚ð“n‚·
+//æ›¸ãè¾¼ã¿ç”¨ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã€€å¼•æ•°ã¨ã—ã¦boxã‚’æ¸¡ã™
 int CloseListW(Box* box){
-	List* memo;//¡Ž‚Á‚Ä‚¢‚é” ‚ÌƒAƒhƒŒƒX‚Ìƒƒ‚
+	List* memo;//ä»ŠæŒã£ã¦ã„ã‚‹ç®±ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ãƒ¡ãƒ¢
 	
 	if (closelist == NULL) {
 		MEMORI(closelist);
@@ -254,40 +254,40 @@ int CloseListW(Box* box){
 	return 0;
 }
 
-//F’l‘‚«o‚µ—p@
+//Få€¤æ›¸ãå‡ºã—ç”¨ã€€
 int Fchi(int FChi) {
-	FILE* outfchi;         // o—ÍƒXƒgƒŠ[ƒ€
+	FILE* outfchi;         // å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 
-	outfchi = fopen("fchi.txt", "a+");  // ƒtƒ@ƒCƒ‹‚ð‘‚«ž‚Ý—p‚ÉƒI[ƒvƒ“(ŠJ‚­)
-	if (outfchi == NULL) {          // ƒI[ƒvƒ“‚ÉŽ¸”s‚µ‚½ê‡
-		printf("can't open\n");         // ƒGƒ‰[ƒƒbƒZ[ƒW‚ðo‚µ‚Ä
-		exit(1);                         // ˆÙíI—¹
+	outfchi = fopen("fchi.txt", "a+");  // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãè¾¼ã¿ç”¨ã«ã‚ªãƒ¼ãƒ—ãƒ³(é–‹ã)
+	if (outfchi == NULL) {          // ã‚ªãƒ¼ãƒ—ãƒ³ã«å¤±æ•—ã—ãŸå ´åˆ
+		printf("can't open\n");         // ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºã—ã¦
+		exit(1);                         // ç•°å¸¸çµ‚äº†
 	}
 
-	fprintf(outfchi,"%d\n",FChi); // ƒtƒ@ƒCƒ‹‚É‘‚­
+	fprintf(outfchi,"%d\n",FChi); // ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ã
 
-	fclose(outfchi);          // ƒtƒ@ƒCƒ‹‚ðƒNƒ[ƒY(•Â‚¶‚é)
+	fclose(outfchi);          // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¯ãƒ­ãƒ¼ã‚º(é–‰ã˜ã‚‹)
 	return 0;
 }
 
-//ƒpƒYƒ‹‚ÌŒ^‘‚«o‚µ
+//ãƒ‘ã‚ºãƒ«ã®åž‹æ›¸ãå‡ºã—
 int Pazzle(int pazzle_model[3][3]){
-	FILE* outpazzlemodel;         // o—ÍƒXƒgƒŠ[ƒ€
+	FILE* outpazzlemodel;         // å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 
-	outpazzlemodel = fopen("pazzle.txt", "a+");  // ƒtƒ@ƒCƒ‹‚ð‘‚«ž‚Ý—p‚ÉƒI[ƒvƒ“(ŠJ‚­)
-	if (outpazzlemodel == NULL) {          // ƒI[ƒvƒ“‚ÉŽ¸”s‚µ‚½ê‡
-		printf("can't open\n");         // ƒGƒ‰[ƒƒbƒZ[ƒW‚ðo‚µ‚Ä
-		exit(1);                         // ˆÙíI—¹
+	outpazzlemodel = fopen("pazzle.txt", "a+");  // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ›¸ãè¾¼ã¿ç”¨ã«ã‚ªãƒ¼ãƒ—ãƒ³(é–‹ã)
+	if (outpazzlemodel == NULL) {          // ã‚ªãƒ¼ãƒ—ãƒ³ã«å¤±æ•—ã—ãŸå ´åˆ
+		printf("can't open\n");         // ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºã—ã¦
+		exit(1);                         // ç•°å¸¸çµ‚äº†
 	}
 
-	fprintf(outpazzlemodel, "%d %d %d\n%d %d %d\n%d %d %d\n\n",pazzle_model[0][0], pazzle_model[0][1], pazzle_model[0][2], pazzle_model[1][0], pazzle_model[1][1], pazzle_model[1][2], pazzle_model[2][0], pazzle_model[2][1], pazzle_model[2][2]); // ƒtƒ@ƒCƒ‹‚É‘‚­
+	fprintf(outpazzlemodel, "%d %d %d\n%d %d %d\n%d %d %d\n\n",pazzle_model[0][0], pazzle_model[0][1], pazzle_model[0][2], pazzle_model[1][0], pazzle_model[1][1], pazzle_model[1][2], pazzle_model[2][0], pazzle_model[2][1], pazzle_model[2][2]); // ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ã
 
-	fclose(outpazzlemodel);          // ƒtƒ@ƒCƒ‹‚ðƒNƒ[ƒY(•Â‚¶‚é)
+	fclose(outpazzlemodel);          // ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¯ãƒ­ãƒ¼ã‚º(é–‰ã˜ã‚‹)
 	return 0;
 }
 
 int CreateBox(Box* nextbox) {
-	//Box‚Ìnext‚ðì¬‚µ‚½‚Æ‚«‚É\‘¢‘Ì‚Ì’†g‚ðŽ©“®ì¬‚·‚é‚æ‚¤‚É‚·‚é
+	//Boxã®nextã‚’ä½œæˆã—ãŸã¨ãã«æ§‹é€ ä½“ã®ä¸­èº«ã‚’è‡ªå‹•ä½œæˆã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
 	int i, j;
 	int q;
 	static int ID = 1;
@@ -313,7 +313,7 @@ int CreateBox(Box* nextbox) {
 			if (nowpazzle[i][j] == 0) {
 				//left
 				if (j != 0) {
-					//À•W‚Ì“ü‚ê‘Ö‚¦
+					//åº§æ¨™ã®å…¥ã‚Œæ›¿ãˆ
 					nextbox->next[0]->pazzle_model[i][j] = nextbox->next[0]->pazzle_model[i][j - 1];
 					nextbox->next[0]->pazzle_model[i][j - 1] = 0;
 				}
@@ -323,7 +323,7 @@ int CreateBox(Box* nextbox) {
 
 				//up
 				if (i != 0) {
-					//À•W‚Ì“ü‚ê‘Ö‚¦
+					//åº§æ¨™ã®å…¥ã‚Œæ›¿ãˆ
 					nextbox->next[1]->pazzle_model[i][j] = nextbox->next[1]->pazzle_model[i - 1][j];
 					nextbox->next[1]->pazzle_model[i - 1][j] = 0;
 				}
@@ -333,7 +333,7 @@ int CreateBox(Box* nextbox) {
 
 				//down
 				if (i != 2) {
-					//À•W‚Ì“ü‚ê‘Ö‚¦
+					//åº§æ¨™ã®å…¥ã‚Œæ›¿ãˆ
 					nextbox->next[2]->pazzle_model[i][j] = nextbox->next[2]->pazzle_model[i + 1][j];
 					nextbox->next[2]->pazzle_model[i + 1][j] = 0;
 				}
@@ -343,7 +343,7 @@ int CreateBox(Box* nextbox) {
 
 				//right
 				if (j != 2) {
-					//À•W‚Ì“ü‚ê‘Ö‚¦
+					//åº§æ¨™ã®å…¥ã‚Œæ›¿ãˆ
 					nextbox->next[3]->pazzle_model[i][j] = nextbox->next[3]->pazzle_model[i][j + 1];
 					nextbox->next[3]->pazzle_model[i][j + 1] = 0;
 

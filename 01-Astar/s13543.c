@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 
 int main(int  argc, char*argv[])
 {
@@ -9,12 +9,12 @@ int main(int  argc, char*argv[])
 	int  PR[3][3] = { { 0,0,0 },{ 0,0,0 },{ 0,0,0 } };
 	int  PD[3][3] = { { 0,0,0 },{ 0,0,0 },{ 0,0,0 } };
 	int MHT = 0;
-	int X = 0;//0‚ÌˆÊ’u‚ğ•Û‘¶(s)
-	int Y = 0; //0‚ÌˆÊ’u‚ğ•Û‘¶(—ñ)
+	int X = 0;//0ã®ä½ç½®ã‚’ä¿å­˜(è¡Œ)
+	int Y = 0; //0ã®ä½ç½®ã‚’ä¿å­˜(åˆ—)
 	int X2 = 0;
 	int Y2 = 0;
 	int End =0,End2=0;
-	int c1 = 0, c2 = 0;//ƒJƒEƒ“ƒg
+	int c1 = 0, c2 = 0;//ã‚«ã‚¦ãƒ³ãƒˆ
 	int zero_left = 0;
 	int zero_up = 0;
 	int zero_right = 0;
@@ -26,8 +26,8 @@ int main(int  argc, char*argv[])
 	int C = 0;
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//‰Šú•\¦
-	printf("‰Šú‚Ìó‘Ô             ƒS[ƒ‹ó‘Ô\n");
+	//åˆæœŸè¡¨ç¤º
+	printf("åˆæœŸã®çŠ¶æ…‹             ã‚´ãƒ¼ãƒ«çŠ¶æ…‹\n");
 	for (int PreG = 0; PreG < 3; PreG++) {
 		for (int PreR = 0; PreR < 3; PreR++) {
 			printf(" %d ", Pst[PreG][PreR]);
@@ -41,11 +41,11 @@ int main(int  argc, char*argv[])
 		printf("\n");
 
 	}
-	//‰Šú•\¦I‚í‚è
+	//åˆæœŸè¡¨ç¤ºçµ‚ã‚ã‚Š
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//0‚ğ’T‚·
+	//0ã‚’æ¢ã™
 	for (c1 = 0; c1 < 3; c1++) {
 		for (c2 = 0; c2 < 3; c2++) {
 			if (Pst[c1][c2] == 0) {
@@ -53,7 +53,7 @@ int main(int  argc, char*argv[])
 				X = c1;
 				Y = c2;
 
-				printf("Œ»İ‚Ì0‚ÌˆÊ’u‚ğ’T‚µ‚Ü‚·\ns=%d  —ñ=%d\n\n",X+1,Y+1);
+				printf("ç¾åœ¨ã®0ã®ä½ç½®ã‚’æ¢ã—ã¾ã™\nè¡Œ=%d  åˆ—=%d\n\n",X+1,Y+1);
 				
 				End = 1;
 				break;
@@ -69,19 +69,19 @@ int main(int  argc, char*argv[])
 		}
 	}
 	if (End == 0) {
-		printf("0‚ª“ü‚Á‚Ä‚È‚¢‚â‚ñ\n\n");
+		printf("0ãŒå…¥ã£ã¦ãªã„ã‚„ã‚“\n\n");
 		exit();
 	}
 
 	End = 0;
-	//0’T‚µI‚í‚è
+	//0æ¢ã—çµ‚ã‚ã‚Š
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 
-	//0‚Ìü‚è‚Ìî•ñæ“¾
-	if (X == 0) {	//ã’i‚Ìê‡
+	//0ã®å‘¨ã‚Šã®æƒ…å ±å–å¾—
+	if (X == 0) {	//ä¸Šæ®µã®å ´åˆ
 
-		zero_up = arien;//X=0‚æ‚èã‚ª‚È‚¢‚±‚Æ‚ÍŠmÀ
+		zero_up = arien;//X=0ã‚ˆã‚Šä¸ŠãŒãªã„ã“ã¨ã¯ç¢ºå®Ÿ
 
 		if (Y == 1) {
 			zero_left = Pst[X][Y - 1];
@@ -100,7 +100,7 @@ int main(int  argc, char*argv[])
 		}
 
 	}
-	else if (X == 1) {	//’†’i‚Ìê‡
+	else if (X == 1) {	//ä¸­æ®µã®å ´åˆ
 		if (Y == 1) {
 			zero_left = Pst[X][Y - 1];
 			zero_up = Pst[X - 1][Y];
@@ -121,9 +121,9 @@ int main(int  argc, char*argv[])
 		}
 		
 	}
-	else if (X == 2) {	//‰º’i‚Ìê‡
+	else if (X == 2) {	//ä¸‹æ®µã®å ´åˆ
 
-		zero_down = arien;//X=0‚æ‚è‰º‚ª‚È‚¢‚±‚Æ‚ÍŠmÀ
+		zero_down = arien;//X=0ã‚ˆã‚Šä¸‹ãŒãªã„ã“ã¨ã¯ç¢ºå®Ÿ
 
 		if (Y == 1) {
 			zero_left = Pst[X][Y - 1];
@@ -145,25 +145,25 @@ int main(int  argc, char*argv[])
 
 
 	if (zero_left==-1) {
-		printf("0‚Ì¶‚Í...‚È‚¢‚Å‚·\n");
+		printf("0ã®å·¦ã¯...ãªã„ã§ã™\n");
 	}
 	else {
-		printf("0‚Ì¶‚Í...%d\n", zero_left);
+		printf("0ã®å·¦ã¯...%d\n", zero_left);
 	}
 		if (zero_up == -1) {
-			printf("0‚Ìã‚Í...‚È‚¢‚Å‚·\n");
+			printf("0ã®ä¸Šã¯...ãªã„ã§ã™\n");
 		}else{
-			printf("0‚Ìã‚Í...%d\n", zero_up);
+			printf("0ã®ä¸Šã¯...%d\n", zero_up);
 
 		}if (zero_right == -1) {
-			printf("0‚Ì‰E‚Í...‚È‚¢‚Å‚·\n");
+			printf("0ã®å³ã¯...ãªã„ã§ã™\n");
 		}
 		else {
-			printf("0‚Ì‰E‚Í...%d\n", zero_right);
+			printf("0ã®å³ã¯...%d\n", zero_right);
 		}if (zero_down == -1) {
-			printf("0‚Ì‰º‚Í...‚È‚¢‚Å‚·\n");
+			printf("0ã®ä¸‹ã¯...ãªã„ã§ã™\n");
 		}else {
-			printf("0‚Ì‰º‚Í...%d\n\n", zero_down);
+			printf("0ã®ä¸‹ã¯...%d\n\n", zero_down);
 
 
 		
@@ -171,9 +171,9 @@ int main(int  argc, char*argv[])
 
 	}
 
-		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£Œv‘ª€”õ
+		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢è¨ˆæ¸¬æº–å‚™
 
-		if (zero_left != -1) { //¶‚ÉƒVƒtƒg‰Â”\‚È‚çŒvZŠJn
+		if (zero_left != -1) { //å·¦ã«ã‚·ãƒ•ãƒˆå¯èƒ½ãªã‚‰è¨ˆç®—é–‹å§‹
 			for (int PreG = 0; PreG < 3; PreG++) {
 				for (int PreR = 0; PreR < 3; PreR++) {
 					PL[PreG][PreR] = Pst[PreG][PreR];
@@ -185,9 +185,9 @@ int main(int  argc, char*argv[])
 
 			PL[X][Y - 1] = 0;
 			tmp = 0;
-			//¶‚Æ‚Ì“ü‚ê‘Ö‚¦I—¹(”z—ñPL)
+			//å·¦ã¨ã®å…¥ã‚Œæ›¿ãˆçµ‚äº†(é…åˆ—PL)
 		}
-		if (zero_up != -1) { //ã‚ÉƒVƒtƒg‰Â”\‚È‚çŒvZŠJn
+		if (zero_up != -1) { //ä¸Šã«ã‚·ãƒ•ãƒˆå¯èƒ½ãªã‚‰è¨ˆç®—é–‹å§‹
 			for (int PreG = 0; PreG < 3; PreG++) {
 				for (int PreR = 0; PreR < 3; PreR++) {
 					PU[PreG][PreR] = Pst[PreG][PreR];
@@ -199,9 +199,9 @@ int main(int  argc, char*argv[])
 
 			PU[X-1][Y] = 0;
 			tmp = 0;
-			//ã‚Æ‚Ì“ü‚ê‘Ö‚¦I—¹(”z—ñPU)
+			//ä¸Šã¨ã®å…¥ã‚Œæ›¿ãˆçµ‚äº†(é…åˆ—PU)
 		}
-		if (zero_right != -1) { //‰E‚ÉƒVƒtƒg‰Â”\‚È‚çŒvZŠJn
+		if (zero_right != -1) { //å³ã«ã‚·ãƒ•ãƒˆå¯èƒ½ãªã‚‰è¨ˆç®—é–‹å§‹
 			for (int PreG = 0; PreG < 3; PreG++) {
 				for (int PreR = 0; PreR < 3; PreR++) {
 					PR[PreG][PreR] = Pst[PreG][PreR];
@@ -213,9 +213,9 @@ int main(int  argc, char*argv[])
 
 			PR[X][Y+1] = 0;
 			tmp = 0;
-			//‰E‚Æ‚Ì“ü‚ê‘Ö‚¦I—¹(”z—ñPR)
+			//å³ã¨ã®å…¥ã‚Œæ›¿ãˆçµ‚äº†(é…åˆ—PR)
 		}
-		if (zero_down != -1) { //‰º‚ÉƒVƒtƒg‰Â”\‚È‚çŒvZŠJn
+		if (zero_down != -1) { //ä¸‹ã«ã‚·ãƒ•ãƒˆå¯èƒ½ãªã‚‰è¨ˆç®—é–‹å§‹
 			for (int PreG = 0; PreG < 3; PreG++) {
 				for (int PreR = 0; PreR < 3; PreR++) {
 					PD[PreG][PreR] = Pst[PreG][PreR];
@@ -227,15 +227,15 @@ int main(int  argc, char*argv[])
 
 			PD[X+1][Y] = 0;
 			tmp = 0;
-			//‰º‚Æ‚Ì“ü‚ê‘Ö‚¦I—¹(”z—ñPD)
+			//ä¸‹ã¨ã®å…¥ã‚Œæ›¿ãˆçµ‚äº†(é…åˆ—PD)
 		}
 		else {
-			printf("ƒGƒ‰[");
+			printf("ã‚¨ãƒ©ãƒ¼");
 		}
 
 
 
-			//Še”š‚ğ’T‚µ‚ÄƒS[ƒ‹ó‘Ô‚Æ“¯‚¶‚É‚È‚é‚æ‚¤‚ÉˆÚ“®
+			//å„æ•°å­—ã‚’æ¢ã—ã¦ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ã¨åŒã˜ã«ãªã‚‹ã‚ˆã†ã«ç§»å‹•
 			//SeachAndMove(Xs,Ys);
 			/*for (C = 1; C <= 9; C++) {
 				for (c1 = 0; c1 < 3; c1++) {
@@ -248,12 +248,12 @@ int main(int  argc, char*argv[])
 							Y = c2;
 
 
-							printf("Œ»İ‚Ì%d‚ÌˆÊ’u‚ğ’T‚µ‚Ü‚·\ns=%d  —ñ=%d\n\n", C, X + 1, Y + 1);
+							printf("ç¾åœ¨ã®%dã®ä½ç½®ã‚’æ¢ã—ã¾ã™\nè¡Œ=%d  åˆ—=%d\n\n", C, X + 1, Y + 1);
 							
 
 									X2 = c1;
 									Y2 = c2;
-									printf("ƒS[ƒ‹‚Ì%d‚ÌˆÊ’u‚ğ’T‚µ‚Ü‚·\ns=%d  —ñ=%d\n\n", C, X2 + 1, Y2 + 1);
+									printf("ã‚´ãƒ¼ãƒ«ã®%dã®ä½ç½®ã‚’æ¢ã—ã¾ã™\nè¡Œ=%d  åˆ—=%d\n\n", C, X2 + 1, Y2 + 1);
 									End2 = 1;
 									
 				
@@ -273,12 +273,12 @@ int main(int  argc, char*argv[])
 
 		
 
-				//ƒ}ƒ“ƒnƒbƒ^ƒ“I‚í‚è
+				//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³çµ‚ã‚ã‚Š
 
-			//•\¦
+			//è¡¨ç¤º
 				Count++;
-				printf("‚½‚¾‚¢‚Ü%dè–Ú\n", Count);
-				printf("Œ»İ‚Ìó‘Ô             ƒS[ƒ‹ó‘Ô\n");
+				printf("ãŸã ã„ã¾%dæ‰‹ç›®\n", Count);
+				printf("ç¾åœ¨ã®çŠ¶æ…‹             ã‚´ãƒ¼ãƒ«çŠ¶æ…‹\n");
 				for (int PreG = 0; PreG < 3; PreG++) {
 					for (int PreR = 0; PreR < 3; PreR++) {
 						printf(" %d ", Pst[PreG][PreR]);
@@ -292,7 +292,7 @@ int main(int  argc, char*argv[])
 					printf("\n");
 
 				}
-				//•\¦I‚í‚è
+				//è¡¨ç¤ºçµ‚ã‚ã‚Š
 
 			}
 

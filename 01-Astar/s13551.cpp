@@ -1,4 +1,4 @@
-# include<stdio.h>
+ï»¿# include<stdio.h>
 main() {
 	int s[3][3] = { { 8,1,5 }, { 2, 0, 4 }, { 6, 3, 7 } };
 	int g[3][3] = { { 1,2,3 }, {4, 5, 6}, {7, 8, 0} };
@@ -50,7 +50,7 @@ main() {
 			}
 			for (j = 0; j < 3; j++) {
 				for (i = 0; i < 3; i++) {
-					printf("ŒŸØ%d", t1[j][i]);
+					printf("æ¤œè¨¼%d", t1[j][i]);
 					if (n == 0) {
 						r1[j][i] = t1[j][i];
 					}if ( n== 1 ) {
@@ -83,7 +83,7 @@ main() {
 				z = 0;
 				for (j = 0; j < 3; j++) {
 					for (i = 0; i < 3; i++) {
-						printf("’á‚¢");
+						printf("ä½Žã„");
 						t2[j][i] = t1[j][i];
 						m1 = m;
 					}
@@ -93,7 +93,7 @@ main() {
 				if (z == 1) {
 					for (j = 0; j < 3; j++) {
 						for (i = 0; i < 3; i++) {
-							printf("“¯‚¶");
+							printf("åŒã˜");
 							if (n == 0) {
 								t2[j][i] = r1[j][i];
 							}
@@ -103,7 +103,7 @@ main() {
 				if (z == 2) {
 					for (j = 0; j < 3; j++) {
 						for (i = 0; i < 3; i++) {
-							printf("“¯‚¶");
+							printf("åŒã˜");
 							if (n == 1) {
 								t2[j][i] = r1[j][i];
 							}
@@ -113,7 +113,7 @@ main() {
 				if (z == 3) {
 					for (j = 0; j < 3; j++) {
 						for (i = 0; i < 3; i++) {
-							printf("“¯‚¶");
+							printf("åŒã˜");
 							if (n == 2) {
 								t2[j][i] = r1[j][i];
 							}
@@ -123,7 +123,7 @@ main() {
 				if (z == 4) {
 					for (j = 0; j < 3; j++) {
 						for (i = 0; i < 3; i++) {
-							printf("“¯‚¶");
+							printf("åŒã˜");
 							if (n == 3) {
 								t2[j][i] = r1[j][i];
 							}

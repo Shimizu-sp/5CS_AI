@@ -1,11 +1,11 @@
-
+ï»¿
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
 
-//•Ï”éŒ¾
-int mondai[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } };//[yÀ•W][xÀ•W]
+//å¤‰æ•°å®£è¨€
+int mondai[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } };//[yåº§æ¨™][xåº§æ¨™]
 int kansei[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 int tmp[3][3];
 
@@ -13,38 +13,38 @@ int i = 0, j = 0;
 int x = 0, y = 0;
 
 int zero_x = 0, zero_y = 0;
-int kyori_tmp[4];//q‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+int kyori_tmp[4];//å­ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 int min_num = 0;
-int min_manhattan;//q‚Ì’†‚ÌÅ­‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
-int loop=0;//q‚ÌƒpƒYƒ‹ˆÚ“®‰ñ”
-int loop_mondai;//e‚ÌƒpƒYƒ‹ˆÚ“®‰ñ”
-int move;//ƒpƒYƒ‹‚ª‚Ç‚Ì•ûŒü‚É“®‚¢‚½‚©
+int min_manhattan;//å­ã®ä¸­ã®æœ€å°‘ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
+int loop=0;//å­ã®ãƒ‘ã‚ºãƒ«ç§»å‹•å›æ•°
+int loop_mondai;//è¦ªã®ãƒ‘ã‚ºãƒ«ç§»å‹•å›æ•°
+int move;//ãƒ‘ã‚ºãƒ«ãŒã©ã®æ–¹å‘ã«å‹•ã„ãŸã‹
 
-//ŠÖ”éŒ¾
+//é–¢æ•°å®£è¨€
 int manhattan(int[3][3]);
 void zero_zahyo(int[3][3]);
 void print_puzzle(int[3][3]);
 void create_tmp();
 
-//ƒXƒ^ƒbƒN
+//ã‚¹ã‚¿ãƒƒã‚¯
 void push(int, int[3][3], int);
 int pop();
 
 int stack_manhattan[1000];
 int stack_loop[1000];
 int stack_pazzle[1000][3][3];
-int stack_num = 0;//ƒXƒ^ƒbƒN‚³‚ê‚Ä‚¢‚é”
+int stack_num = 0;//ã‚¹ã‚¿ãƒƒã‚¯ã•ã‚Œã¦ã„ã‚‹æ•°
 int stack_move[1000];
-int stack_num_tmp;//ƒXƒ^ƒbƒN‚Ì’†g•\¦‚·‚é‚Æ‚«—p
+int stack_num_tmp;//ã‚¹ã‚¿ãƒƒã‚¯ã®ä¸­èº«è¡¨ç¤ºã™ã‚‹ã¨ãç”¨
 
 
 void main()
 {
 
-	push(loop, mondai,-1);//‰Šúó‘Ô‚ğpush
+	push(loop, mondai,-1);//åˆæœŸçŠ¶æ…‹ã‚’push
 
 	create_tmp(mondai);
-	while (manhattan(tmp) > 0 && stack_num > 0)//Š®¬‚·‚é‚©ƒXƒ^ƒbƒN‚ª‹ó‚É‚È‚é‚Ü‚Å
+	while (manhattan(tmp) > 0 && stack_num > 0)//å®Œæˆã™ã‚‹ã‹ã‚¹ã‚¿ãƒƒã‚¯ãŒç©ºã«ãªã‚‹ã¾ã§
 	{
 		loop_mondai = pop();
 		print_puzzle(mondai);
@@ -60,16 +60,16 @@ void main()
 
 			kyori_tmp[1] = 99999999;
 			kyori_tmp[3] = 99999999;
-			create_tmp(mondai);//tmp‚Émondai‚ğƒRƒs[
-			zero_zahyo(mondai);//‚O‚ÌÀ•Wget
+			create_tmp(mondai);//tmpã«mondaiã‚’ã‚³ãƒ”ãƒ¼
+			zero_zahyo(mondai);//ï¼ã®åº§æ¨™get
 
-			switch (zero_x)		//tmp‚ğg‚Á‚ÄƒpƒYƒ‹‚ÌˆÚ“®‚Æ‹——£‚ÌŒvZ
+			switch (zero_x)		//tmpã‚’ä½¿ã£ã¦ãƒ‘ã‚ºãƒ«ã®ç§»å‹•ã¨è·é›¢ã®è¨ˆç®—
 			{
 			case 0:
-				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];//ƒpƒYƒ‹ˆÚ“®
+				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];//ãƒ‘ã‚ºãƒ«ç§»å‹•
 				tmp[zero_y][zero_x + 1] = 0;
 
-				kyori_tmp[0] = manhattan(tmp);//”äŠr‚·‚é‚½‚ß‚É‹——£‚ğ•Û‘¶
+				kyori_tmp[0] = manhattan(tmp);//æ¯”è¼ƒã™ã‚‹ãŸã‚ã«è·é›¢ã‚’ä¿å­˜
 
 
 				break;
@@ -80,7 +80,7 @@ void main()
 				kyori_tmp[0] = manhattan(tmp);
 
 
-				create_tmp(mondai);//tmp‚ğƒŠƒZƒbƒg
+				create_tmp(mondai);//tmpã‚’ãƒªã‚»ãƒƒãƒˆ
 
 
 				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];
@@ -100,11 +100,11 @@ void main()
 			}
 
 
-			create_tmp(mondai);//tmp‚ğƒŠƒZƒbƒg
+			create_tmp(mondai);//tmpã‚’ãƒªã‚»ãƒƒãƒˆ
 
 
 
-			switch (zero_y)//y‚Å‚à“¯‚¶‚±‚Æ‚ğ
+			switch (zero_y)//yã§ã‚‚åŒã˜ã“ã¨ã‚’
 			{
 			case 0:
 				tmp[zero_y][zero_x] = tmp[zero_y + 1][zero_x];
@@ -120,7 +120,7 @@ void main()
 				kyori_tmp[2] = manhattan(tmp);
 
 
-				create_tmp(mondai);//tmp‚ğŒ³‚É–ß‚·
+				create_tmp(mondai);//tmpã‚’å…ƒã«æˆ»ã™
 
 
 
@@ -145,7 +145,7 @@ void main()
 
 
 			min_manhattan = 100000000;
-			for (i = 0; i < 4; i++)//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì”äŠr
+			for (i = 0; i < 4; i++)//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®æ¯”è¼ƒ
 			{
 				if (min_manhattan > kyori_tmp[i])
 				{
@@ -157,19 +157,19 @@ void main()
 			
 
 
-			//move‚ÍA0‚ª¨ˆÚ“®‚Å1,©2,«3,ª4
+			//moveã¯ã€0ãŒâ†’ç§»å‹•ã§1,â†2,â†“3,â†‘4
 
 			create_tmp(mondai);
-			zero_zahyo(mondai);//‚O‚ÌÀ•Wget
+			zero_zahyo(mondai);//ï¼ã®åº§æ¨™get
 
-			switch (zero_x)//Å­‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‚à‚Ì‚ğpush
+			switch (zero_x)//æœ€å°‘ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ã‚‚ã®ã‚’push
 			{
 			case 0:
 
-				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];//ƒpƒYƒ‹ˆÚ“®
+				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];//ãƒ‘ã‚ºãƒ«ç§»å‹•
 				tmp[zero_y][zero_x + 1] = 0;
 
-				//q‚Ì’†‚ÅÅ­‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‚Æ‚«‚Ì‚İpushi‚Ü‚½Amove‚ğg‚¤‚±‚Æ‚Å‘O‰ñ‚Ì”Õ–Ê‚É–ß‚é“®‚«‚ğ‚³‚¹‚È‚¢j
+				//å­ã®ä¸­ã§æœ€å°‘ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ã¨ãã®ã¿pushï¼ˆã¾ãŸã€moveã‚’ä½¿ã†ã“ã¨ã§å‰å›ã®ç›¤é¢ã«æˆ»ã‚‹å‹•ãã‚’ã•ã›ãªã„ï¼‰
 				if (min_manhattan == manhattan(tmp) && move != 2)
 				{
 					push(loop, tmp,1);
@@ -185,7 +185,7 @@ void main()
 					push(loop, tmp,2);
 				}
 
-				create_tmp(mondai);//tmp‚ğƒŠƒZƒbƒg
+				create_tmp(mondai);//tmpã‚’ãƒªã‚»ãƒƒãƒˆ
 
 
 				tmp[zero_y][zero_x] = tmp[zero_y][zero_x + 1];
@@ -209,11 +209,11 @@ void main()
 
 				break;
 			}
-			create_tmp(mondai);//tmp‚ğƒŠƒZƒbƒg
+			create_tmp(mondai);//tmpã‚’ãƒªã‚»ãƒƒãƒˆ
 
 
 
-			switch (zero_y)//y‚Å‚à“¯‚¶‚±‚Æ‚ğ
+			switch (zero_y)//yã§ã‚‚åŒã˜ã“ã¨ã‚’
 			{
 			case 0:
 				tmp[zero_y][zero_x] = tmp[zero_y + 1][zero_x];
@@ -235,7 +235,7 @@ void main()
 				}
 
 
-				create_tmp(mondai);//tmp‚ğŒ³‚É–ß‚·
+				create_tmp(mondai);//tmpã‚’å…ƒã«æˆ»ã™
 
 
 
@@ -267,7 +267,7 @@ void main()
 
 	print_puzzle(tmp);
 	
-	//ƒXƒ^ƒbƒN‚Ì—v‘f‚ğ‘S‚Äo—Í(Œ»óƒXƒ^ƒbƒN‚ª‘S‚Ä‹ó‚Ìó‘Ô‚ÅI—¹‚·‚é‚½‚ßˆÓ–¡–³‚µ)
+	//ã‚¹ã‚¿ãƒƒã‚¯ã®è¦ç´ ã‚’å…¨ã¦å‡ºåŠ›(ç¾çŠ¶ã‚¹ã‚¿ãƒƒã‚¯ãŒå…¨ã¦ç©ºã®çŠ¶æ…‹ã§çµ‚äº†ã™ã‚‹ãŸã‚æ„å‘³ç„¡ã—)
 	for (stack_num_tmp = stack_num - 1; 0 <= stack_num_tmp; stack_num_tmp--)
 	{
 		printf("manhattan:%d\n", manhattan(stack_pazzle[stack_num_tmp]));
@@ -298,12 +298,12 @@ int manhattan(int pazzle[3][3])
 		{
 
 
-			for (i = 0; i < 3; i++)//tmp‚Æ“¯‚¶’l‚ÌêŠ‚ğ’T‚·
+			for (i = 0; i < 3; i++)//tmpã¨åŒã˜å€¤ã®å ´æ‰€ã‚’æ¢ã™
 			{
 				for (j = 0; j < 3; j++)
 				{
 
-					//0ˆÈŠO‚Ì‚É“¯‚¶’l‚ğŒ©‚Â‚¯‚½‚ç‹——£‚ğƒ}ƒ“ƒnƒbƒ^ƒ“‚Ì‘˜a‚É‘«‚·
+					//0ä»¥å¤–ã®æ™‚ã«åŒã˜å€¤ã‚’è¦‹ã¤ã‘ãŸã‚‰è·é›¢ã‚’ãƒãƒ³ãƒãƒƒã‚¿ãƒ³ã®ç·å’Œã«è¶³ã™
 					if (pazzle[y][x] == kansei[i][j] && pazzle[y][x] != 0)
 					{
 						x_kyori = abs(x - j);
@@ -320,13 +320,13 @@ int manhattan(int pazzle[3][3])
 
 }
 
-void zero_zahyo(int pazzle[3][3])//‹ó‚ÌÀ•W‚ğ“üè‚Å‚«‚é
+void zero_zahyo(int pazzle[3][3])//ç©ºã®åº§æ¨™ã‚’å…¥æ‰‹ã§ãã‚‹
 {
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
 		{
-			if (pazzle [i][j] == 0)//0‚ÌÀ•W‚ğ•Û‘¶
+			if (pazzle [i][j] == 0)//0ã®åº§æ¨™ã‚’ä¿å­˜
 			{
 				zero_x = j;
 				zero_y = i;
@@ -335,13 +335,13 @@ void zero_zahyo(int pazzle[3][3])//‹ó‚ÌÀ•W‚ğ“üè‚Å‚«‚é
 	}
 }
 
-void print_puzzle(int puzzle[3][3])//‰æ–Êo—Í‚·‚é
+void print_puzzle(int puzzle[3][3])//ç”»é¢å‡ºåŠ›ã™ã‚‹
 {
 	zero_zahyo(puzzle);
 	//printf("move:%d\n", move);
-	printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜aF%d \n", manhattan(puzzle));
-	printf("ˆÚ“®ƒRƒXƒgF%d \n", loop);
-	//printf("‹ó‚ÌÀ•W[%d][%d] \n", zero_y, zero_x);
+	printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’Œï¼š%d \n", manhattan(puzzle));
+	printf("ç§»å‹•ã‚³ã‚¹ãƒˆï¼š%d \n", loop);
+	//printf("ç©ºã®åº§æ¨™[%d][%d] \n", zero_y, zero_x);
 
 	for (i = 0; i < 3; i++)
 	{
@@ -355,7 +355,7 @@ void print_puzzle(int puzzle[3][3])//‰æ–Êo—Í‚·‚é
 	//getchar();	
 }
 
-void create_tmp(int pazzle[3][3])//‘€ì‚·‚é—p‚Ì”Õ–Ê‚ğì¬‚·‚é
+void create_tmp(int pazzle[3][3])//æ“ä½œã™ã‚‹ç”¨ã®ç›¤é¢ã‚’ä½œæˆã™ã‚‹
 {
 	for (i = 0; i < 3; i++)
 	{
@@ -366,7 +366,7 @@ void create_tmp(int pazzle[3][3])//‘€ì‚·‚é—p‚Ì”Õ–Ê‚ğì¬‚·‚é
 	}
 }
 
-void push(int push_loop,int pazzle[3][3],int push_move)//ƒXƒ^ƒbƒN‚Épush
+void push(int push_loop,int pazzle[3][3],int push_move)//ã‚¹ã‚¿ãƒƒã‚¯ã«push
 {
 
 	stack_loop[stack_num] = push_loop;
@@ -383,7 +383,7 @@ void push(int push_loop,int pazzle[3][3],int push_move)//ƒXƒ^ƒbƒN‚Épush
 
 }
 
-int pop()//ƒXƒ^ƒbƒN‚©‚çpop
+int pop()//ã‚¹ã‚¿ãƒƒã‚¯ã‹ã‚‰pop
 {
 
 	stack_num--;

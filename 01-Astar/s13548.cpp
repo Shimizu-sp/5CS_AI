@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <math.h>
 #include <fstream>
 #define WIDTH 3         //パズルの幅

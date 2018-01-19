@@ -1,9 +1,9 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 
-int defalut[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } }; //‰Šúó‘Ô
-int end[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } }; //ƒS[ƒ‹ó‘Ô
+int defalut[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } }; //åˆæœŸçŠ¶æ…‹
+int end[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } }; //ã‚´ãƒ¼ãƒ«çŠ¶æ…‹
 
 int trade(int x_axis, int y_axis);
 int manhattan(int x_axis, int y_axis);
@@ -19,13 +19,13 @@ int main(){
 		for (i = 0; i < 3; i++){
 
 			for (n = 0; n < 3; n++){
-				printf("%d ", defalut[i][n]);; //Œ»İ‚Ìó‘Ô‚ğ•\¦
+				printf("%d ", defalut[i][n]);; //ç¾åœ¨ã®çŠ¶æ…‹ã‚’è¡¨ç¤º
 
-				if (defalut[i][n] == -1){ //ƒs[ƒX‚Ì“ü‚ê‘Ö‚¦
+				if (defalut[i][n] == -1){ //ãƒ”ãƒ¼ã‚¹ã®å…¥ã‚Œæ›¿ãˆ
 					trade(i, n);
 				}
 
-				man = man + manhattan(i, n); //Œ»İ‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ
+				man = man + manhattan(i, n); //ç¾åœ¨ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—
 
 			}
 			printf("\n");
@@ -33,13 +33,13 @@ int main(){
 			if (defalut[i][n] == end[i][n]){
 				flag = flag + 1;
 			}
-			if (flag == 9){ //I—¹ğŒ
+			if (flag == 9){ //çµ‚äº†æ¡ä»¶
 				break;
 			}
 
 
 		}
-		printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£@= %d\n", man); //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ•\¦
+		printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã€€= %d\n", man); //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¡¨ç¤º
 		getchar();
 		flag = 0;
 		man = 0;
@@ -50,7 +50,7 @@ int main(){
 	for (i = 0; i < 3; i++){
 
 		for (n = 0; n < 3; n++){
-			printf("%d ", defalut[i][n]);; //Œ»İ‚Ìó‘Ô‚ğ•\¦
+			printf("%d ", defalut[i][n]);; //ç¾åœ¨ã®çŠ¶æ…‹ã‚’è¡¨ç¤º
 		}
 		printf("\n");
 	}
@@ -58,7 +58,7 @@ int main(){
 
 }
 
-int manhattan(int x_axis, int y_axis){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ‚·‚éŠÖ”
+int manhattan(int x_axis, int y_axis){ //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
 	int i, n;
 	int m = 0;
 
@@ -76,7 +76,7 @@ int manhattan(int x_axis, int y_axis){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ‚·‚éŠÖ”
 	return m;
 }
 
-int trade(int x_axis, int y_axis){ //ƒs[ƒX‚Ì“ü‚ê‘Ö‚¦
+int trade(int x_axis, int y_axis){ //ãƒ”ãƒ¼ã‚¹ã®å…¥ã‚Œæ›¿ãˆ
 
 	return 0;
 }

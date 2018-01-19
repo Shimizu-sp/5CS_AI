@@ -1,40 +1,40 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<math.h>
 #pragma warning(disable:4996)
 #define QUEUE_SIZE 50
 
-//—×ÚƒŠƒXƒg
+//éš£æ¥ãƒªã‚¹ãƒˆ
 int rin[9][6] = {
 	1, 2, -1, -1, -1, 8, 0, 5, -1, -1, 1, 4, -1, -1, -1,
 	8, 0, 6, -1, -1, 1, 2, 3, 4, -1, -1, 5, 0, 7, -1, -1,
 	2, 3, -1, -1, -1, 6, 0, 7, -1, -1, 4, 3, -1, -1, -1, };
 
-int goal[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };//ƒS[ƒ‹ó‘Ô
+int goal[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };//ã‚´ãƒ¼ãƒ«çŠ¶æ…‹
 int cell1[3][3] = { { 8, 1, 5 },
 					{ 2, 0, 4 },
-					{ 6, 3, 7 } };//‰Šúó‘Ô
+					{ 6, 3, 7 } };//åˆæœŸçŠ¶æ…‹
 int q, r, j = 0;
-//ƒLƒ…[—pŠÖ”
+//ã‚­ãƒ¥ãƒ¼ç”¨é–¢æ•°
 int enqueue(int min);
 int dequeue(int min2);
 int queue[QUEUE_SIZE];
 int head, tail = 0;
-//ƒpƒYƒ‹‚ğ“®‚©‚·‚½‚ß‚ÌŠÖ”
+//ãƒ‘ã‚ºãƒ«ã‚’å‹•ã‹ã™ãŸã‚ã®é–¢æ•°
 int moveup(int cell1[3][3]);
 int movedown(int cell1[3][3]);
 int moveleft(int cell1[3][3]);
 int moveright(int cell1[3][3]);
-//ƒ}ƒ“ƒnƒbƒ^ƒ“—pŠÖ”
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³ç”¨é–¢æ•°
 int manhattan(int cell[3][3]);
-//Å¬ƒRƒXƒg—pŠÖ”
+//æœ€å°ã‚³ã‚¹ãƒˆç”¨é–¢æ•°
 int mostmin(int min1, int min2, int min3, int min4);
 
 int hozon(int cell1[3][3]);
 typedef int data_t;
 
-int moveup(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Äã‚Æ“ü‚ê‘Ö‚¦
+int moveup(int cell1[][3]){//ï¼ã‚’ç™ºè¦‹ã—ã¦ä¸Šã¨å…¥ã‚Œæ›¿ãˆ
 	int x1, y1=0;
 	int c = 0;
 	int con1  =  0 ;
@@ -42,18 +42,18 @@ int moveup(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Äã‚Æ“ü‚ê‘Ö‚¦
 
 	for (x1 = 0; x1 <= 2; x1++){
 		for (y1 = 0; y1 <= 2; y1++){
-			if (cell1[x1][y1] == 0 && c==0){//ã
+			if (cell1[x1][y1] == 0 && c==0){//ä¸Š
 				con1 = cell1[x1 - 1][y1];
 				cell1[x1][y1] = con1;
 				cell1[x1 - 1][y1] = 0;
-				c++;//ˆê‰ñˆÈã“ü‚ê‘Ö‚í‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+				c++;//ä¸€å›ä»¥ä¸Šå…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 			}
 		}
 	}
 	return cell1[x1][y1];
 }
 
-int movedown(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Ä‰º‚Æ“ü‚ê‘Ö‚¦
+int movedown(int cell1[][3]){//ï¼ã‚’ç™ºè¦‹ã—ã¦ä¸‹ã¨å…¥ã‚Œæ›¿ãˆ
 	int x1, y1,n=0;
 	int con2=0;
 	int c = 0;
@@ -64,51 +64,51 @@ int movedown(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Ä‰º‚Æ“ü‚ê‘Ö‚¦
 				con2= cell1[x1 + 1][y1];
 				cell1[x1 + 1][y1] = 0;
 				cell1[x1][y1] = con2;
-				c++; //ˆê‰ñˆÈã“ü‚ê‘Ö‚í‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+				c++; //ä¸€å›ä»¥ä¸Šå…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 			}
 		}
 	}
 	return cell1[x1][y1];
 }
 
-int moveleft(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Ä¶‚Æ“ü‚ê‘Ö‚¦
+int moveleft(int cell1[][3]){//ï¼ã‚’ç™ºè¦‹ã—ã¦å·¦ã¨å…¥ã‚Œæ›¿ãˆ
 	int x1, y1;
 	int con3 =  0 ;
 	int c = 0;
 
 	for (x1 = 0; x1 <= 2; x1++){
 		for (y1 = 0; y1 <= 2; y1++){
-			if (cell1[x1][y1] == 0 && c==0){//ã
+			if (cell1[x1][y1] == 0 && c==0){//ä¸Š
 				con3 = cell1[x1][y1 - 1];
 				cell1[x1][y1 - 1] = 0;
 				cell1[x1][y1] = con3;
-				c++;//ˆê‰ñˆÈã“ü‚ê‘Ö‚í‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+				c++;//ä¸€å›ä»¥ä¸Šå…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 			}
 		}
 	}
 	return cell1[x1][y1];
 }
 
-int moveright(int cell1[][3]){//‚O‚ğ”­Œ©‚µ‚Ä‰E‚Æ“ü‚ê‘Ö‚¦
+int moveright(int cell1[][3]){//ï¼ã‚’ç™ºè¦‹ã—ã¦å³ã¨å…¥ã‚Œæ›¿ãˆ
 	int x1, y1;
 	int con4 =  0 ;
 	int c = 0;
 	
 	for (x1 = 0; x1 <= 2; x1++){
 		for (y1 = 0; y1 <= 2; y1++){
-			if (cell1[x1][y1] == 0 && c==0){//ã
+			if (cell1[x1][y1] == 0 && c==0){//ä¸Š
 				con4 = cell1[x1][y1 + 1];
 
 				cell1[x1][y1 + 1] = 0;
 				cell1[x1][y1] = con4; 
-				c++;//ˆê‰ñˆÈã“ü‚ê‘Ö‚í‚ç‚È‚¢‚æ‚¤‚É‚·‚é
+				c++;//ä¸€å›ä»¥ä¸Šå…¥ã‚Œæ›¿ã‚ã‚‰ãªã„ã‚ˆã†ã«ã™ã‚‹
 			}
 		}
 	}
 	return cell1[x1][y1];
 }
 
-int manhattan(int cell[][3]){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‹‚ß‚é
+int manhattan(int cell[][3]){ //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’æ±‚ã‚ã‚‹
 	
 	int value[8] = { 0 };
 	int value2 = 0;
@@ -118,12 +118,12 @@ int manhattan(int cell[][3]){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‹‚ß‚é
 
 	for (x1 = 0; x1 <= 2; x1++){
 	 for (y1 = 0; y1 <= 2; y1++){
-		n = cell[x1][y1];//ƒZƒ‹‚Ì’†gæ“¾
+		n = cell[x1][y1];//ã‚»ãƒ«ã®ä¸­èº«å–å¾—
 		//printf("n==%d\n", n);
-		w = x1;//À•WˆÊ’uæ“¾
+		w = x1;//åº§æ¨™ä½ç½®å–å¾—
 		t = y1;
 
-		switch (n){ //ƒ}ƒ“ƒnƒbƒ^ƒ“ŒvZ(’†g‚É‰‚¶‚Ä•Ï“®)
+		switch (n){ //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è¨ˆç®—(ä¸­èº«ã«å¿œã˜ã¦å¤‰å‹•)
 			case 0:
 				break;
 			case 1:
@@ -177,7 +177,7 @@ int manhattan(int cell[][3]){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‹‚ß‚é
 		}
 	}
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“WŒv------------------------
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³é›†è¨ˆ------------------------
 	for (i = 0; i < 8; i++){
 		value2 +=  abs(value[i]);
 	}
@@ -187,7 +187,7 @@ int manhattan(int cell[][3]){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‹‚ß‚é
 }
 
 int mostmin(int min1, int min2, int min3, int min4){
-	//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ÌÅ¬’l‚ÌZo		
+	//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®æœ€å°å€¤ã®ç®—å‡º		
 	int min = 0;
 	
 	min = min1;
@@ -205,15 +205,15 @@ int mostmin(int min1, int min2, int min3, int min4){
 	
 
 	printf("MIN=%d \n",min);
-	return min; //Å¬‚ÌƒRƒXƒg‚ğ•Ô‚·
+	return min; //æœ€å°ã®ã‚³ã‚¹ãƒˆã‚’è¿”ã™
 }
 
-int enqueue(int min){//ƒLƒ…[‚ÉÅ¬ƒRƒXƒg‘}“ü
+int enqueue(int min){//ã‚­ãƒ¥ãƒ¼ã«æœ€å°ã‚³ã‚¹ãƒˆæŒ¿å…¥
 		queue[tail++] = min;
 		return 0;	
 }
 
-int dequeue(int *min2){//ƒLƒ…[‚©‚ç’l‚ğæ‚èo‚µ
+int dequeue(int *min2){//ã‚­ãƒ¥ãƒ¼ã‹ã‚‰å€¤ã‚’å–ã‚Šå‡ºã—
 		*min2 = queue[head++];
 		return 0;
 }
@@ -236,7 +236,7 @@ int main(void){
 	int man4 = 0;
 	int min = 0;
 	int max = 0;
-	//ƒpƒYƒ‹‚Ìó‘Ô‚ğ•Û‘¶
+	//ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’ä¿å­˜
 	int c_1[3][3] = { 0 };
 	int c_2[3][3] = { 0 };
 	int c_3[3][3] = { 0 };
@@ -244,59 +244,59 @@ int main(void){
 
 	//while (cell1 != goal){
 	
-		//ã‚É“®‚©‚·-------------------------------------------------------------
+		//ä¸Šã«å‹•ã‹ã™-------------------------------------------------------------
 		moveup(cell1);
 		man = manhattan(cell1);
-		//”Õ–Ê•Û‘¶
+		//ç›¤é¢ä¿å­˜
 		for (int x1 = 0; x1 <= 2; x1++){
 			for (int y1 = 0; y1 <= 2; y1++){
 				c_1[x1][y1] = cell1[x1][y1];
 			}
 		}
-		movedown(cell1);//Œ³‚É–ß‚·
+		movedown(cell1);//å…ƒã«æˆ»ã™
 		printf("MAN1=%d\n", man);
 
-		//‰º‚É“®‚©‚·--------------------------------------------------------------
+		//ä¸‹ã«å‹•ã‹ã™--------------------------------------------------------------
 		movedown(cell1);
 		man2 = manhattan(cell1);
-		for (int x1 = 0; x1 <= 2; x1++){//”Õ–Ê•Û‘¶
+		for (int x1 = 0; x1 <= 2; x1++){//ç›¤é¢ä¿å­˜
 
 			for (int y1 = 0; y1 <= 2; y1++){
 				c_2[x1][y1] = cell1[x1][y1];
 			}
 		}
-		moveup(cell1);//Œ³‚É–ß‚·
+		moveup(cell1);//å…ƒã«æˆ»ã™
 		printf("MAN2=%d\n", man2);
 
-		//¶‚É“®‚©‚·--------------------------------------------------------------
+		//å·¦ã«å‹•ã‹ã™--------------------------------------------------------------
 		moveleft(cell1);
 		man3 = manhattan(cell1);
-		for (int x1 = 0; x1 <= 2; x1++){//”Õ–Ê•Û‘¶
+		for (int x1 = 0; x1 <= 2; x1++){//ç›¤é¢ä¿å­˜
 			for (int y1 = 0; y1 <= 2; y1++){
 				c_3[x1][y1] = cell1[x1][y1];
 			}
 		}
-		moveright(cell1);//Œ³‚É–ß‚·
+		moveright(cell1);//å…ƒã«æˆ»ã™
 		printf("MAN3=%d\n", man3);
 
-		//‰E‚É“®‚©‚·--------------------------------------------------------------
+		//å³ã«å‹•ã‹ã™--------------------------------------------------------------
 		moveright(cell1);
 		man4 = manhattan(cell1);
-		for (int x1 = 0; x1 <= 2; x1++){//”Õ–Ê•Û‘¶
+		for (int x1 = 0; x1 <= 2; x1++){//ç›¤é¢ä¿å­˜
 			for (int y1 = 0; y1 <= 2; y1++){
 				c_4[x1][y1] = cell1[x1][y1];
 			}
 		}
-		moveleft(cell1);//Œ³‚É–ß‚·
+		moveleft(cell1);//å…ƒã«æˆ»ã™
 		printf("MAN4=%d\n", man4);
-		//-ƒpƒYƒ‹‚ÌˆÚ“®‚±‚±‚Ü‚Å-------------------------------------------------------------
+		//-ãƒ‘ã‚ºãƒ«ã®ç§»å‹•ã“ã“ã¾ã§-------------------------------------------------------------
 
-		//Å¬ƒRƒXƒg‚ğ‹‚ß‚Ämin‚É“ü‚ê‚é
+		//æœ€å°ã‚³ã‚¹ãƒˆã‚’æ±‚ã‚ã¦minã«å…¥ã‚Œã‚‹
 		min = mostmin(man, man2, man3, man4);
 
-		if (min == man){//man1‚ªÅ¬ƒRƒXƒg‚¾‚Á‚½
-			//Å¬ƒRƒXƒg‚ğƒXƒ^ƒbƒN‚É“ü‚ê‚é
-			printf("Å¬‚Íman1\n");
+		if (min == man){//man1ãŒæœ€å°ã‚³ã‚¹ãƒˆã ã£ãŸæ™‚
+			//æœ€å°ã‚³ã‚¹ãƒˆã‚’ã‚¹ã‚¿ãƒƒã‚¯ã«å…¥ã‚Œã‚‹
+			printf("æœ€å°ã¯man1\n");
 			enqueue(min);
 			hozon(c_1);
 			for (int x1 = 0; x1 <= 2; x1++){
@@ -306,8 +306,8 @@ int main(void){
 			}
 		}
 
-		if (min == man2){//man2‚Ì‚Æ‚«
-			//Å¬ƒRƒXƒg‚ğƒXƒ^ƒbƒN‚É“ü‚ê‚é
+		if (min == man2){//man2ã®ã¨ã
+			//æœ€å°ã‚³ã‚¹ãƒˆã‚’ã‚¹ã‚¿ãƒƒã‚¯ã«å…¥ã‚Œã‚‹
 			enqueue(min);
 			hozon(c_2);
 			for (int x1 = 0; x1 <= 2; x1++){
@@ -317,7 +317,7 @@ int main(void){
 			}
 		}
 		if (min == man3){
-			//Å¬ƒRƒXƒg‚ğƒXƒ^ƒbƒN‚É“ü‚ê‚é
+			//æœ€å°ã‚³ã‚¹ãƒˆã‚’ã‚¹ã‚¿ãƒƒã‚¯ã«å…¥ã‚Œã‚‹
 			enqueue(min);
 			hozon(c_3);
 			for (int x1 = 0; x1 <= 2; x1++){
@@ -327,7 +327,7 @@ int main(void){
 			}
 		}
 		if (min == man4){
-			//Å¬ƒRƒXƒg‚ğƒXƒ^ƒbƒN‚É“ü‚ê‚é
+			//æœ€å°ã‚³ã‚¹ãƒˆã‚’ã‚¹ã‚¿ãƒƒã‚¯ã«å…¥ã‚Œã‚‹
 			enqueue(min);
 			hozon(c_4);
 			for (int x1 = 0; x1 <= 2; x1++){
@@ -341,7 +341,7 @@ int main(void){
 
 
 
-		//ƒtƒ@ƒCƒ‹o—Í
+		//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
 		FILE *outputfile;
 		outputfile = fopen("output.txt", "w");
 		for (int x1 = 0; x1 <= 2; x1++){
@@ -349,7 +349,7 @@ int main(void){
 				fprintf(outputfile, "%d \n", cell1[x1][y1]);
 			}
 		}
-		fprintf(outputfile, "”­Œ©“IŠÖ”‚Ì’l%d \n", min);
+		fprintf(outputfile, "ç™ºè¦‹çš„é–¢æ•°ã®å€¤ï¼%d \n", min);
 		fclose(outputfile);
 
 	}

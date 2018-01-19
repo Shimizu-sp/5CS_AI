@@ -1,20 +1,20 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 int pn[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
 main(){
-	//-------------‰Šú’è‹`------------
+	//-------------åˆæœŸå®šç¾©------------
 	int p[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } };
 	int pnow[3][3] = { { 8, 1, 5 }, { 2, 0, 4 }, { 6, 3, 7 } };
 	int p_patern[3][3] = { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
 	int ma[4] = { 0, 0, 0, 0 };
-	int gp, i, i2, patern = 4 , pt, min, min_i,flag;//g(p):ƒ^ƒCƒ‹ƒXƒ‰ƒCƒh‰ñ”
+	int gp, i, i2, patern = 4 , pt, min, min_i,flag;//g(p):ã‚¿ã‚¤ãƒ«ã‚¹ãƒ©ã‚¤ãƒ‰å›æ•°
 	gp = 0;
 
 	while (1){
 		gp++;
 
-		printf("Œ»İ‚ÌƒpƒYƒ‹«\n");
+		printf("ç¾åœ¨ã®ãƒ‘ã‚ºãƒ«â†“\n");
 		for (i = 0; i < 3; i++){
 			for (i2 = 0; i2 < 3; i2++){
 				printf("%d ", pnow[i][i2]);
@@ -26,10 +26,10 @@ main(){
 			ma[i] = 0;
 		}
 
-		//“ü‚ê‘Ö‚¦•”
+		//å…¥ã‚Œæ›¿ãˆéƒ¨
 		for (pt = 0; pt < patern; pt++){
-			flag = 0;//flag‚Ì‰Šú‰»
-			//p_patern‚É‘ã“ü•”
+			flag = 0;//flagã®åˆæœŸåŒ–
+			//p_paternã«ä»£å…¥éƒ¨
 			for (i = 0; i < 3; i++){
 				for (i2 = 0; i2 < 3; i2++){
 					p_patern[i][i2] = pnow[i][i2];
@@ -38,22 +38,22 @@ main(){
 			for (i = 0; i < 3; i++){
 				for (i2 = 0; i2 < 3; i2++){
 					if (pnow[i][i2] == 0){
-						if (pt == 0&&i2+1<3){//‰E‚ÉˆÚ“®
+						if (pt == 0&&i2+1<3){//å³ã«ç§»å‹•
 							p_patern[i][i2] = pnow[i][i2 + 1];
 							p_patern[i][i2 + 1] = 0;
 							flag = 1;
 						}
-						if (pt == 1&&i2-1>=0){//¶‚ÉˆÚ“®
+						if (pt == 1&&i2-1>=0){//å·¦ã«ç§»å‹•
 							p_patern[i][i2] = pnow[i][i2 - 1];
 							p_patern[i][i2 - 1] = 0;
 							flag = 1;
 						}
-						if (pt == 2&&i+1<3){//‰º‚ÉˆÚ“®
+						if (pt == 2&&i+1<3){//ä¸‹ã«ç§»å‹•
 							p_patern[i][i2] = pnow[i + 1][i2];
 							p_patern[i + 1][i2] = 0;
 							flag = 1;
 						}
-						if (pt == 3&&i-1>=0){//ã‚ÉˆÚ“®
+						if (pt == 3&&i-1>=0){//ä¸Šã«ç§»å‹•
 							p_patern[i][i2] = pnow[i - 1][i2];
 							p_patern[i - 1][i2] = 0;
 							flag = 1;
@@ -61,7 +61,7 @@ main(){
 					}
 				}
 			}
-			//---------•\¦---------
+			//---------è¡¨ç¤º---------
 			for (i = 0; i < 3; i++){
 				for (i2 = 0; i2 < 3; i2++){
 
@@ -71,18 +71,18 @@ main(){
 			}
 			printf("\n");
 
-			/*----ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£-----*/
+			/*----ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢-----*/
 			if (flag == 1){
 				ma[pt] = Manhattan(p_patern);
 			}
 			else{
 				ma[pt] = 100;
 			}
-			printf("ƒpƒ^[ƒ“%dŒÂ–Ú‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“=%d\n", pt + 1, ma[pt]);
+			printf("ãƒ‘ã‚¿ãƒ¼ãƒ³%då€‹ç›®ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³=%d\n", pt + 1, ma[pt]);
 		}
 
 
-		/*--pnowXV--*/
+		/*--pnowæ›´æ–°--*/
 		for (i = 0; i < 4; i++){
 			if (i == 0){
 				min = ma[i];
@@ -96,7 +96,7 @@ main(){
 
 		printf("min_i=%d\n", min_i);
 
-		//p_patern‚É‘ã“ü•”
+		//p_paternã«ä»£å…¥éƒ¨
 		for (i = 0; i < 3; i++){
 			for (i2 = 0; i2 < 3; i2++){
 				p_patern[i][i2] = pnow[i][i2];
@@ -125,7 +125,7 @@ main(){
 			}
 		}
 
-		/*---Œ»İ‚ÌƒpƒYƒ‹•\¦----*/
+		/*---ç¾åœ¨ã®ãƒ‘ã‚ºãƒ«è¡¨ç¤º----*/
 		for (i = 0; i < 3; i++){
 			for (i2 = 0; i2 < 3; i2++){
 				pnow[i][i2] = p_patern[i][i2];
@@ -135,7 +135,7 @@ main(){
 		}
 		printf("\n");
 
-		/*---ƒS[ƒ‹ó‘Ôipnj‚©‚Ì”»’f---*/
+		/*---ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ï¼ˆpnï¼‰ã‹ã®åˆ¤æ–­---*/
 		printf("\ngp=%d\n\n",gp);
 		if (pnow ==pn ){
 			break;
@@ -143,7 +143,7 @@ main(){
 
 	}
 }
-int Manhattan(int input[3][3]){ 		/*--ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ÌŒvZ--*/
+int Manhattan(int input[3][3]){ 		/*--ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®è¨ˆç®—--*/
 	int M,i3,i4,i5,i6,i7;
 	M = 0;
 	for (i5 = 1; i5 < 9;i5++){

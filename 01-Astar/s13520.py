@@ -1,4 +1,4 @@
-
+﻿
 def printer():#txtに出力
     tx.write('version' + str(version_c)+ '\n')
     for printer_c1 in  range(3):

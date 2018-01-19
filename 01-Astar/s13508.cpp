@@ -1,18 +1,18 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
 
-#define N 3		// ƒpƒlƒ‹‚Ìc‰¡‚Ì’·‚³
+#define N 3		// ãƒ‘ãƒãƒ«ã®ç¸¦æ¨ªã®é•·ã•
 #define A 100
 
 
-int Tp[N][N] = {	//³‰ğƒpƒlƒ‹
+int Tp[N][N] = {	//æ­£è§£ãƒ‘ãƒãƒ«
 	{ 1, 2, 3 },
 	{ 4, 5, 6 },
 	{ 7, 8, 0 } };
 
-int Fp[N][N] = {	//–â‘èƒpƒlƒ‹
+int Fp[N][N] = {	//å•é¡Œãƒ‘ãƒãƒ«
 	{ 8, 1, 5 },
 	{ 2, 0, 4 },
 	{ 6, 3, 7 } };
@@ -25,7 +25,7 @@ int Openlist[A][N][N],
 int hp(int hantei[N][N]);
 
 
-int hp(int hantei[N][N]) {		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‹‚ß‚é
+int hp(int hantei[N][N]) {		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’æ±‚ã‚ã‚‹
 	int a, b, x, y, i;
 	int manhattan;
 	manhattan = 0;
@@ -77,7 +77,7 @@ int main() {
 	}
 
 
-	for (x = 0; x < N; x++) {	//0‚ÌÀ•W‚ğ‹‚ß‚é
+	for (x = 0; x < N; x++) {	//0ã®åº§æ¨™ã‚’æ±‚ã‚ã‚‹
 		for (y = 0; y < N; y++) {
 			if (Fp[x][y] == 0) {
 				x2 = x;
@@ -89,7 +89,7 @@ int main() {
 	//printf("%d,%d", x2, y2);
 
 
-	switch (x2) {	//0‚Ì‰ñ‚è‚Ìƒ}ƒX‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZicj
+	switch (x2) {	//0ã®å›ã‚Šã®ãƒã‚¹ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—ï¼ˆç¸¦ï¼‰
 	case 0:
 		p1[x2][y2] = Fp[x2 + 1][y2];
 		p1[x2 + 1][y2] = 0;
@@ -117,7 +117,7 @@ int main() {
 	}
 
 
-	switch (y2) {	//0‚Ì‰ñ‚è‚Ìƒ}ƒX‚Ìƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZi‰¡j
+	switch (y2) {	//0ã®å›ã‚Šã®ãƒã‚¹ã®ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—ï¼ˆæ¨ªï¼‰
 	case 0:
 		p3[x2][y2] = Fp[x2][y2 + 1];
 		p3[x2][y2 + 1] = 0;
@@ -150,5 +150,5 @@ int main() {
 		}
 	}/*/
 	
-		printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£F%d,%d,%d,%d\n", p1_hantei, p2_hantei, p3_hantei, p4_hantei);
+		printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ï¼š%d,%d,%d,%d\n", p1_hantei, p2_hantei, p3_hantei, p4_hantei);
 }

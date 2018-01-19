@@ -1,4 +1,4 @@
-
+ï»¿
 #include<cstdio>
 #include<iostream>
 #include<cmath>
@@ -9,21 +9,21 @@ using namespace std;
 
 
 
-#define N 3		//ƒpƒYƒ‹‚Ì‘å‚«‚³‚ğw’è
+#define N 3		//ãƒ‘ã‚ºãƒ«ã®å¤§ãã•ã‚’æŒ‡å®š
 #define N2 9	//N~2
 
-//ˆÚ“®ŠÇ——p
+//ç§»å‹•ç®¡ç†ç”¨
 static const int dx[4] = { 0,-1,0,1 };
 static const int dy[4] = { 1,0,-1,0 };
 static const char dir[4] = { 'r','u','l','d' };
 
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ÌŒvZ—p
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®è¨ˆç®—ç”¨
 int MDT[N2][N2];
 
 
 
-//ƒpƒYƒ‹\‘¢‘Ì
+//ãƒ‘ã‚ºãƒ«æ§‹é€ ä½“
 struct Puzzle {
 	int f[N2], space, MD;
 	int count;
@@ -37,7 +37,7 @@ struct Puzzle {
 	}
 };
 
-//ƒpƒYƒ‹\‘¢‘Ì‚ğ“à•ï‚µ‚½ƒXƒeƒCƒg\‘¢‘Ì
+//ãƒ‘ã‚ºãƒ«æ§‹é€ ä½“ã‚’å†…åŒ…ã—ãŸã‚¹ãƒ†ã‚¤ãƒˆæ§‹é€ ä½“
 struct State {
 	Puzzle puzzle;
 	int estimated;
@@ -46,18 +46,18 @@ struct State {
 	}
 };
 
-int GetALLMD(Puzzle m); //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ
-int astar(Puzzle s); //’TõŠÖ”
-void result(int n); //’TõŒã‚ÌŒo˜H•\¦
+int GetALLMD(Puzzle m); //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—
+int astar(Puzzle s); //æ¢ç´¢é–¢æ•°
+void result(int n); //æ¢ç´¢å¾Œã®çµŒè·¯è¡¨ç¤º
 
-//Œo˜H‹L˜^—p
+//çµŒè·¯è¨˜éŒ²ç”¨
 vector<State> Log(50);
 
 
-//‚±‚±‚©‚çŠJn
+//ã“ã“ã‹ã‚‰é–‹å§‹
 int main() {
 
-	//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ìİ’è
+	//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®è¨­å®š
 	for (int i = 0;i < N2;i++)
 		for (int j = 0;j < N2;j++) 
 			MDT[i][j] = abs(i / N - j / N) + abs(i%N - j%N);
@@ -65,7 +65,7 @@ int main() {
 
 	Puzzle in;
 
-	//‰Šú”Õ–Ê‚ğ“ü—Í
+	//åˆæœŸç›¤é¢ã‚’å…¥åŠ›
 	in.f[0] = 8; in.f[1] = 1; in.f[2] = 5;
 	in.f[3] = 2; in.f[4] = 0; in.f[5] = 4;
 	in.f[6] = 6; in.f[7] = 3; in.f[8] = 7;
@@ -79,10 +79,10 @@ int main() {
 	}
 	//printf("\n");
 
-	//è”‚ğ•Ô‚è’l‚Æ‚·‚é
+	//æ‰‹æ•°ã‚’è¿”ã‚Šå€¤ã¨ã™ã‚‹
 	int n=astar(in);
 
-	//Œ‹‰Ê(Œo˜H‚Æ”­Œ©“IŠÖ”)‚ğo—Í
+	//çµæœ(çµŒè·¯ã¨ç™ºè¦‹çš„é–¢æ•°)ã‚’å‡ºåŠ›
 	
 		result(n);
 	
@@ -91,7 +91,7 @@ int main() {
 	return 0;
 }
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—
 int GetALLMD(Puzzle m) {
 	int sum = 0;
 	for (int i = 0;i < N2;i++) {
@@ -101,75 +101,75 @@ int GetALLMD(Puzzle m) {
 	return sum;
 }
 
-//’TõŠÖ”
+//æ¢ç´¢é–¢æ•°
 int astar(Puzzle s) {
 
-	priority_queue<State> Qu; //’TõŒó•â‚ğŠi”[‚·‚éƒLƒ…[
-	s.MD = GetALLMD(s); //Œ»İ‚Ì”Õ–Ê‚Åƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŒvZ
-	s.count = 0; //’Tõ‚Ì[‚³
-	map<Puzzle, bool>V; //Šùo”Õ–Ê‚Ì”»’è
+	priority_queue<State> Qu; //æ¢ç´¢å€™è£œã‚’æ ¼ç´ã™ã‚‹ã‚­ãƒ¥ãƒ¼
+	s.MD = GetALLMD(s); //ç¾åœ¨ã®ç›¤é¢ã§ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—
+	s.count = 0; //æ¢ç´¢ã®æ·±ã•
+	map<Puzzle, bool>V; //æ—¢å‡ºç›¤é¢ã®åˆ¤å®š
 	Puzzle u, v;
 	State first;
-	first.puzzle = s; //‰Šú”Õ–Ê‚ğŠi”[
-	first.estimated = GetALLMD(s); //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŠi”[
-	Qu.push(first); //ƒLƒ…[‚É‰Šúê–Ê‚ğŠi”[
+	first.puzzle = s; //åˆæœŸç›¤é¢ã‚’æ ¼ç´
+	first.estimated = GetALLMD(s); //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’æ ¼ç´
+	Qu.push(first); //ã‚­ãƒ¥ãƒ¼ã«åˆæœŸå ´é¢ã‚’æ ¼ç´
 
 	while (!Qu.empty()) {
-		State st = Qu.top();Qu.pop();	//ƒLƒ…[‚©‚ç”Õ–Ê‚ğæ‚èo‚·
+		State st = Qu.top();Qu.pop();	//ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ç›¤é¢ã‚’å–ã‚Šå‡ºã™
 		u = st.puzzle;
 
 
-		Log[st.puzzle.count] = st; //Œo˜H‚ğŠi”[
+		Log[st.puzzle.count] = st; //çµŒè·¯ã‚’æ ¼ç´
 
-		if (u.MD == 0)return u.count; //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ª0‚È‚ç‚ÎI—¹
+		if (u.MD == 0)return u.count; //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ãŒ0ãªã‚‰ã°çµ‚äº†
 
 		V[u] = true;
 
-		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£ŒvZ—p
+		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢è¨ˆç®—ç”¨
 		int sx = u.space / N;
 		int sy = u.space % N;
 
 		for (int r = 0;r < 4;r++) {
-			//’TõŒó•â‚Ì”Õ–Êì¬—p
+			//æ¢ç´¢å€™è£œã®ç›¤é¢ä½œæˆç”¨
 			int tx = sx + dx[r];
 			int ty = sy + dy[r];
 
 			if (tx < 0 || ty < 0 || tx >= N || ty >= N)continue;
 			v = u;
 
-			//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğXV‚µ‚ÄŒvZ
+			//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’æ›´æ–°ã—ã¦è¨ˆç®—
 			v.MD -= MDT[tx * N + ty][v.f[tx * N + ty] - 1];
 			v.MD += MDT[sx * N + sy][v.f[tx * N + ty] - 1];
 
 
-			//’TõŒó•â‚Ì”Õ–Ê‚ğì¬
+			//æ¢ç´¢å€™è£œã®ç›¤é¢ã‚’ä½œæˆ
 			swap(v.f[sx * N + sy], v.f[tx * N + ty]);
 			v.space = tx * N + ty;
 
 
-			//”Õ–Ê‚ªŠùo‚Å‚È‚¯‚ê‚ÎƒLƒ…[‚ÉŠi”[
+			//ç›¤é¢ãŒæ—¢å‡ºã§ãªã‘ã‚Œã°ã‚­ãƒ¥ãƒ¼ã«æ ¼ç´
 			if (!V[v]) {
 				v.count++;
 				State next;
 				next.puzzle = v;
 				next.estimated = v.count + v.MD;
-				Qu.push(next); //ƒLƒ…[‚ÉŠi”[
+				Qu.push(next); //ã‚­ãƒ¥ãƒ¼ã«æ ¼ç´
 			}
 
 		}
 
 	}
-	return -1; //ƒGƒ‰[”»’è
+	return -1; //ã‚¨ãƒ©ãƒ¼åˆ¤å®š
 }
 
-//’TõŒã‚ÌŒo˜H•\¦c‚ª‚µ‚½‚©‚Á‚½
+//æ¢ç´¢å¾Œã®çµŒè·¯è¡¨ç¤ºâ€¦ãŒã—ãŸã‹ã£ãŸ
 void result(int n) {
 
 	FILE *fp1, *fp2,*fp3;
 
-	fopen_s(&fp1, "Œo˜H.txt", "w");
-	fopen_s(&fp2, "”­Œ©“IŠÖ”.txt","w");
-	fopen_s(&fp3, "ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£.txt", "w");
+	fopen_s(&fp1, "çµŒè·¯.txt", "w");
+	fopen_s(&fp2, "ç™ºè¦‹çš„é–¢æ•°.txt","w");
+	fopen_s(&fp3, "ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢.txt", "w");
 	for (int i = 0;i <= n;i++) {
 		for (int j = 0;j < N2;j++) {
 			if (j % 3 == 0) {
@@ -185,7 +185,7 @@ void result(int n) {
 		fprintf(fp2,"%d %d\n",i,GetALLMD(Log[i].puzzle)+i);
 		fprintf(fp3, "%d %d\n", i, GetALLMD(Log[i].puzzle));
 	}
-	fprintf(fp1, "\nè”%d\n",n);
+	fprintf(fp1, "\næ‰‹æ•°%d\n",n);
 	fclose(fp1);
 	fclose(fp2);
 	fclose(fp3);

@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <math.h>
 
 int Man(int m);
@@ -11,8 +11,8 @@ int check(int c);
 #define MAX 5
 #define LIMIT 10000
 
-int p = 0; //ƒXƒ^ƒbƒN”Ô†
-int pp = 0; //close—pƒXƒ^ƒbƒN”Ô†
+int p = 0; //ã‚¹ã‚¿ãƒƒã‚¯ç•ªå·
+int pp = 0; //closeç”¨ã‚¹ã‚¿ãƒƒã‚¯ç•ªå·
 
 typedef struct {
     int a; int b; int c;
@@ -23,7 +23,7 @@ typedef struct {
 stack panel[MAX];
 stack close[LIMIT];
 
-//ƒ‹[ƒv‰ñ”ğ—p•Ï”
+//ãƒ«ãƒ¼ãƒ—å›é¿ç”¨å¤‰æ•°
 int count = 0;
 int roop_y = 0;
 int roop_x = 0;
@@ -31,11 +31,11 @@ int roop_y1 = 0;
 
 int roop_x1 = 0;
 
-//‰Šúó‘Ô
+//åˆæœŸçŠ¶æ…‹
 int a[3][3] = { { 8, 1, 5 },
 				{ 2, 9, 4 },
 				{ 6, 3, 7 } }; //a[y][x]
-//ƒS[ƒ‹ó‘Ô
+//ã‚´ãƒ¼ãƒ«çŠ¶æ…‹
 int b[3][3] = { { 1, 2, 3 },
 				{ 4, 5, 6 },
 				{ 7, 8, 9 } }; //b[y][x]
@@ -45,7 +45,7 @@ int c[3][3] = { { 0, 0, 0 },
 				{ 0, 0, 0 } }; //b[y][x]
 
 
-//ˆÚ“®—pƒRƒs[
+//ç§»å‹•ç”¨ã‚³ãƒ”ãƒ¼
 int d[3][3] = { { 0, 0, 0 },
 				{ 0, 0, 0 },
 				{ 0, 0, 0 } }; //b[y][x]
@@ -62,7 +62,7 @@ int h[3][3] = { { 0, 0, 0 },
 				{ 0, 0, 0 },
 				{ 0, 0, 0 } }; //b[y][x]
 
-//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£•Û‘¶—p
+//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ä¿å­˜ç”¨
 int ans[4] = {99,99,99,99};
 int ans_copy[4] = {99,99,99,99};
 int check_func = 0;
@@ -78,7 +78,7 @@ main(){
 	int d_cnt = 0;
 	int search = 0;
 
-	//‰ŠúƒXƒ^ƒbƒN“ü‚ê
+	//åˆæœŸã‚¹ã‚¿ãƒƒã‚¯å…¥ã‚Œ
 		panel[p].a = a[0][0];
 		panel[p].b = a[0][1];
 		panel[p].c = a[0][2];
@@ -99,7 +99,7 @@ main(){
 		close[pp].h = panel[p].h;
 		close[pp].i = panel[p].i;
 
-	//ƒƒ‚...”z—ñd`h‚ÍƒRƒs[—p”z—ñBƒ}ƒ“ƒnƒbƒ^ƒ“‹——£—p”z—ñ‚ÆÆ‚ç‚µ‡‚í‚¹‚é‚ÆA
+	//ãƒ¡ãƒ¢...é…åˆ—dã€œhã¯ã‚³ãƒ”ãƒ¼ç”¨é…åˆ—ã€‚ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ç”¨é…åˆ—ã¨ç…§ã‚‰ã—åˆã‚ã›ã‚‹ã¨ã€
 	//d = ans[0] f = ans[1] g = ans[2] h = ans[3]
 
 	while(1){
@@ -107,8 +107,8 @@ main(){
 		d_cnt = 0;
 
 		search++;
-		printf("’Tõ %d ‰ñ–Ú\n",search);
-		printf("Œ»İ[‚³ %d\n",p);
+		printf("æ¢ç´¢ %d å›ç›®\n",search);
+		printf("ç¾åœ¨æ·±ã• %d\n",p);
 
 		a[0][0] = panel[p].a;
 		a[0][1] = panel[p].b;
@@ -128,23 +128,23 @@ main(){
 		//}
 	
 
-		//•\¦
-			printf("p‚Ìó‘Ô\n");
+		//è¡¨ç¤º
+			printf("pã®çŠ¶æ…‹\n");
 			printf("%d %d %d\n%d %d %d\n%d %d %d\n",panel[p].a, panel[p].b, panel[p].c
 												     ,panel[p].d, panel[p].e, panel[p].f
 												     ,panel[p].g, panel[p].h, panel[p].i);
 		getchar();
-		printf("«\n\n");
+		printf("â†“\n\n");
 
 	if(a[0][0] == 1 && a[0][1] == 2 && a[0][2] == 3 &&
 	   a[1][0] == 4 && a[1][1] == 5 && a[1][2] == 6 &&
 	   a[2][0] == 7 && a[2][1] == 8){
-		   printf("I—¹\n");
+		   printf("çµ‚äº†\n");
 		   return 0;
 	}
 
 	pattern = Move(pass);
-	printf("%d•ûŒüˆÚ“®‰Â\n",pattern);
+	printf("%dæ–¹å‘ç§»å‹•å¯\n",pattern);
 
 	for(i = 0; i < pattern; i++){
 		ans_copy[i] = ans[i];
@@ -152,7 +152,7 @@ main(){
 
 	box = 0;
 
-	//¸‡ƒoƒuƒ‹ƒ\[ƒg
+	//æ˜‡é †ãƒãƒ–ãƒ«ã‚½ãƒ¼ãƒˆ
 	for (i = 0; i < (pattern-1); i++){
         for (j = (pattern-1); j > i; j--){
             if (ans[j-1] >= ans[j]){
@@ -166,7 +166,7 @@ main(){
 	for(i = 0; i < pattern; i++){
 		printf("%d ",ans[i]);
 	}
-	printf("‚Ì‡‚É’Tõ\n\n");
+	printf("ã®é †ã«æ¢ç´¢\n\n");
 	
 	i = 0;
 
@@ -194,7 +194,7 @@ main(){
 				}
 
 		}
-		printf("1’Ê‰ß\n");
+		printf("1é€šé\n");
 		if(ans[i] == ans_copy[1]){
 			if(p < MAX){p++;}else{p--;break;}
 				panel[p].a = f[0][0];
@@ -215,7 +215,7 @@ main(){
 					if(p > 0){p--;}
 				}
 		}
-		printf("2’Ê‰ß\n");
+		printf("2é€šé\n");
 		if(pattern >= 3){
 		if(ans[i] == ans_copy[2]){
 			if(p < MAX){p++;}else{p--;break;}
@@ -238,7 +238,7 @@ main(){
 				}
 		}
 		}
-		printf("3’Ê‰ß\n");
+		printf("3é€šé\n");
 		i++;
 		if(pattern >= 4){
 		if(ans[i] == ans_copy[3]){
@@ -261,16 +261,16 @@ main(){
 				}
 		}
 		}
-		//printf("3’Ê‰ß\n");
+		//printf("3é€šé\n");
 		if(d_cnt == 4){
 			p--;
 		}
 
-		printf("%d\n‡–Ú",i);
+		printf("%d\né †ç›®",i);
 		i = i++;
 
 		if(p == MAX){
-			printf("[‚³‚ªÅ‘å‚É‚È‚è‚Ü‚µ‚½\n");
+			printf("æ·±ã•ãŒæœ€å¤§ã«ãªã‚Šã¾ã—ãŸ\n");
 			p--;
 			break;
 		}
@@ -307,23 +307,23 @@ main(){
 
 int Man(int m){
 
-	//ƒJƒEƒ“ƒ^
+	//ã‚«ã‚¦ãƒ³ã‚¿
 	int i = 0;
 	int n = 0;
 
 	int ii = 0;
 	int nn = 0;
 
-	//®
+	//å¼
 	int aa = 0 , bb = 0;
 	int x = 0 , y = 0;
 	int ans = 0;
 
-	////ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	////ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	while(1){
-		for (i = 0; i < 3; i++){ // y²
+		for (i = 0; i < 3; i++){ // yè»¸
 
-			for (n = 0; n < 3; n++){ //x²
+			for (n = 0; n < 3; n++){ //xè»¸
 
 				if(c[0][0] == 1 && c[0][1] == 2 && c[0][2] == 3 &&
 				   c[1][0] == 4 && c[1][1] == 5 && c[1][2] == 6 &&
@@ -331,17 +331,17 @@ int Man(int m){
 
 				if (b[ii][nn] == d[i][n] && c[ii][nn] == 0){ 
 
-				c[ii][nn] = d[i][n];//•Ê‚ÌƒŠƒXƒgc‚Éa‚ğ‘ã“ü
+				c[ii][nn] = d[i][n];//åˆ¥ã®ãƒªã‚¹ãƒˆcã«aã‚’ä»£å…¥
 				y = abs(i - ii);
 				x = abs(n - nn);
 
-				//printf("–Ú•W%d ",a[ii][nn]);
+				//printf("ç›®æ¨™%d ",a[ii][nn]);
 
 				//printf("%d ",x+y);
 
 				ans = ans + x + y;
 
-				//printf("˜a%d\n",ans);
+				//printf("å’Œ%d\n",ans);
 				
 				nn = nn++;
 
@@ -359,53 +359,53 @@ int Man(int m){
 		if(c[2][1] == 8 && c[2][0] == 7){break;}
 	}
 
-	//ƒŠƒZƒbƒg
+	//ãƒªã‚»ãƒƒãƒˆ
 	for (i = 0; i < 3; i++){
 			for(n = 0; n < 3; n++){
 				c[i][n] = 0;
 			}
 	}
 
-	printf("ƒpƒ^[ƒ“‚P‘˜a%d\n",ans);
+	printf("ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼‘ç·å’Œ%d\n",ans);
 	return ans;
 
 }
 int Man2(int m2){
 
-	//ƒJƒEƒ“ƒ^
+	//ã‚«ã‚¦ãƒ³ã‚¿
 	int i = 0;
 	int n = 0;
 
 	int ii = 0;
 	int nn = 0;
 
-	//®
+	//å¼
 	int aa = 0 , bb = 0;
 	int x = 0 , y = 0;
 	int ans = 0;
 
-	////ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	////ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	while(1){
 
-		for (i = 0; i < 3; i++){ // y²
+		for (i = 0; i < 3; i++){ // yè»¸
 
-			for (n = 0; n < 3; n++){ //x²
+			for (n = 0; n < 3; n++){ //xè»¸
 
 				if(c[2][1] == 8 && c[2][0] == 7){break;}
 
 				if (b[ii][nn] == f[i][n] && c[ii][nn] == 0){ 
 
-				c[ii][nn] = f[i][n];//•Ê‚ÌƒŠƒXƒgc‚Éa‚ğ‘ã“ü
+				c[ii][nn] = f[i][n];//åˆ¥ã®ãƒªã‚¹ãƒˆcã«aã‚’ä»£å…¥
 				y = abs(i - ii);
 				x = abs(n - nn);
 
-				//printf("–Ú•W%d ",a[ii][nn]);
+				//printf("ç›®æ¨™%d ",a[ii][nn]);
 
 				//printf("%d ",x+y);
 
 				ans = ans + x + y;
 
-				//printf("˜a%d\n",ans);
+				//printf("å’Œ%d\n",ans);
 
 				nn = nn++;
 
@@ -423,51 +423,51 @@ int Man2(int m2){
 		if(c[2][1] == 8 && c[2][0] == 7){break;}
 	}
 
-	//ƒŠƒZƒbƒg
+	//ãƒªã‚»ãƒƒãƒˆ
 	for (i = 0; i < 3; i++){
 			for(n = 0; n < 3; n++){
 				c[i][n] = 0;
 			}
 	}
-	printf("ƒpƒ^[ƒ“‚Q‘˜a%d\n",ans);
+	printf("ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼’ç·å’Œ%d\n",ans);
 	return ans;
 	
 }
 int Man3(int m3){
 
-	//ƒJƒEƒ“ƒ^
+	//ã‚«ã‚¦ãƒ³ã‚¿
 	int i = 0;
 	int n = 0;
 
 	int ii = 0;
 	int nn = 0;
 
-	//®
+	//å¼
 	int aa = 0 , bb = 0;
 	int x = 0 , y = 0;
 	int ans = 0;
 
-	////ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	////ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	while(1){
-		for (i = 0; i < 3; i++){ // y²
+		for (i = 0; i < 3; i++){ // yè»¸
 
-			for (n = 0; n < 3; n++){ //x²
+			for (n = 0; n < 3; n++){ //xè»¸
 
 				if(c[2][1] == 8 && c[2][0] == 7){break;}
 
 				if (b[ii][nn] == g[i][n] && c[ii][nn] == 0){ 
 
-				c[ii][nn] = g[i][n];//•Ê‚ÌƒŠƒXƒgc‚Éa‚ğ‘ã“ü
+				c[ii][nn] = g[i][n];//åˆ¥ã®ãƒªã‚¹ãƒˆcã«aã‚’ä»£å…¥
 				y = abs(i - ii);
 				x = abs(n - nn);
 
-				//printf("–Ú•W%d ",a[ii][nn]);
+				//printf("ç›®æ¨™%d ",a[ii][nn]);
 				
 				//printf("%d ",x+y);
 
 				ans = ans + x + y;
 
-				//printf("˜a%d\n",ans);
+				//printf("å’Œ%d\n",ans);
 				
 				nn = nn++;
 
@@ -484,51 +484,51 @@ int Man3(int m3){
 		if(c[2][1] == 8 && c[2][0] == 7){break;}
 	}
 
-	//ƒŠƒZƒbƒg
+	//ãƒªã‚»ãƒƒãƒˆ
 	for (i = 0; i < 3; i++){
 			for(n = 0; n < 3; n++){
 				c[i][n] = 0;
 			}
 	}
-	printf("ƒpƒ^[ƒ“‚R‘˜a%d\n",ans);
+	printf("ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼“ç·å’Œ%d\n",ans);
 	return ans;
 	
 }
 int Man4(int m4){
 
-	//ƒJƒEƒ“ƒ^
+	//ã‚«ã‚¦ãƒ³ã‚¿
 	int i = 0;
 	int n = 0;
 
 	int ii = 0;
 	int nn = 0;
 
-	//®
+	//å¼
 	int aa = 0 , bb = 0;
 	int x = 0 , y = 0;
 	int ans = 0;
 
-	////ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	////ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	while(1){
-		for (i = 0; i < 3; i++){ // y²
+		for (i = 0; i < 3; i++){ // yè»¸
 
-			for (n = 0; n < 3; n++){ //x²
+			for (n = 0; n < 3; n++){ //xè»¸
 
 				if(c[2][1] == 8 && c[2][0] == 7){break;}
 
 				if (b[ii][nn] == h[i][n] && c[ii][nn] == 0){ 
 
-				c[ii][nn] = h[i][n];//•Ê‚ÌƒŠƒXƒgc‚Éa‚ğ‘ã“ü
+				c[ii][nn] = h[i][n];//åˆ¥ã®ãƒªã‚¹ãƒˆcã«aã‚’ä»£å…¥
 				y = abs(i - ii);
 				x = abs(n - nn);
 
-				//printf("–Ú•W%d ",a[ii][nn]);
+				//printf("ç›®æ¨™%d ",a[ii][nn]);
 				
 				//printf("%d ",x+y);
 
 				ans = ans + x + y;
 
-				//printf("˜a%d\n",ans);
+				//printf("å’Œ%d\n",ans);
 				
 				nn = nn++;
 
@@ -545,28 +545,28 @@ int Man4(int m4){
 		if(c[2][1] == 8 && c[2][0] == 7){break;}
 	}
 
-	//ƒŠƒZƒbƒg
+	//ãƒªã‚»ãƒƒãƒˆ
 	for (i = 0; i < 3; i++){
 			for(n = 0; n < 3; n++){
 				c[i][n] = 0;
 			}
 	}
-	printf("ƒpƒ^[ƒ“‚S‘˜a%d\n",ans);
+	printf("ãƒ‘ã‚¿ãƒ¼ãƒ³ï¼”ç·å’Œ%d\n",ans);
 	return ans;
 	
 }
 int Move(int mov){
 
-	//•Ï”
+	//å¤‰æ•°
 	int root1 = 0;
 	int root2 = 0;
 	int root3 = 0;
 	int root4 = 0;
 
-	//®
+	//å¼
 	int x = 0 , y = 0;
 
-	//ƒJƒEƒ“ƒ^
+	//ã‚«ã‚¦ãƒ³ã‚¿
 	int i = 0;
 	int n = 0;
 
@@ -580,7 +580,7 @@ int Move(int mov){
 
 		//printf("ok\n");
 
-		//ƒ‹[ƒv‹L‰¯
+		//ãƒ«ãƒ¼ãƒ—è¨˜æ†¶
 		roop_y1 = roop_y;
 		roop_x1 = roop_x;
 
@@ -588,7 +588,7 @@ int Move(int mov){
 		roop_y = i;
 		roop_x = n;
 
-		//ƒRƒs[•”z—ñƒŠƒZƒbƒg
+		//ã‚³ãƒ”ãƒ¼ï¼†é…åˆ—ãƒªã‚»ãƒƒãƒˆ
 		for (i = 0; i < 3; i++){
 			for(n = 0; n < 3; n++){
 				d[i][n] = a[i][n];
@@ -599,20 +599,20 @@ int Move(int mov){
 			ans[i] = 0;
 		}
 		
-		///9ˆÚ“®•”•ª
+		///9ç§»å‹•éƒ¨åˆ†
 		for (i = 0; i < 3; i++){
 			if(count == 1){break;}
 			for (n = 0; n < 3; n++){
-				if(a[i][n] == 9){ //9”­Œ©
+				if(a[i][n] == 9){ //9ç™ºè¦‹
 
-					//‰‰ñ‹L‰¯
+					//åˆå›è¨˜æ†¶
 					if(count == 0){
 						roop_y = i;
 						roop_x = n;
 					}
 
-					if(i == 0 && n == 0){ //00 ‰EE‰º
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 0 && n == 0){ //00 å³ãƒ»ä¸‹
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
 						ans[0] = Man(root1);
@@ -623,8 +623,8 @@ int Move(int mov){
 
 						return 2;
 					}
-					if(i == 0 && n == 1){ //01 ‰EE‰ºE¶
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 0 && n == 1){ //01 å³ãƒ»ä¸‹ãƒ»å·¦
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
 						ans[0] = Man(root1);
@@ -639,8 +639,8 @@ int Move(int mov){
 
 						return 3;
 					}
-					if(i == 0 && n == 2){ //02 ‰ºE¶
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 0 && n == 2){ //02 ä¸‹ãƒ»å·¦
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i+1][n];
 						d[i+1][n] = 9;
 						ans[0] = Man(root1);
@@ -651,8 +651,8 @@ int Move(int mov){
 
 						return 2;
 					}
-					if(i == 1 && n == 0){ //10 ‰EE‰ºEã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 1 && n == 0){ //10 å³ãƒ»ä¸‹ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
 						ans[0] = Man(root1);
@@ -667,8 +667,8 @@ int Move(int mov){
 
 						return 3;
 					}
-					if(i == 1 && n == 1){ //11 ‰EE‰ºE¶Eã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 1 && n == 1){ //11 å³ãƒ»ä¸‹ãƒ»å·¦ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						//printf("ok\n");
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
@@ -688,8 +688,8 @@ int Move(int mov){
 
 						return 4;
 					}
-					if(i == 1 && n == 2){ //12 ‰ºE¶Eã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 1 && n == 2){ //12 ä¸‹ãƒ»å·¦ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i+1][n];
 						d[i+1][n] = 9;
 						ans[0] = Man(root1);
@@ -704,8 +704,8 @@ int Move(int mov){
 
 						return 3;
 					}
-					if(i == 2 && n == 0){ //20 ‰EEã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 2 && n == 0){ //20 å³ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
 						ans[0] = Man(root1);
@@ -716,8 +716,8 @@ int Move(int mov){
 
 						return 2;
 					}
-					if(i == 2 && n == 1){ //21 ‰EE¶Eã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 2 && n == 1){ //21 å³ãƒ»å·¦ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n+1];
 						d[i][n+1] = 9;
 						ans[0] = Man(root1);
@@ -732,8 +732,8 @@ int Move(int mov){
 
 						return 3;
 					}
-					if(i == 2 && n == 2){ //22 ¶Eã
-						//printf("‘O‰ñ%d %d\n",roop_y1,roop_x1);
+					if(i == 2 && n == 2){ //22 å·¦ãƒ»ä¸Š
+						//printf("å‰å›%d %d\n",roop_y1,roop_x1);
 						d[i][n] = d[i][n-1];
 						d[i][n-1] = 9;
 						ans[0] = Man(root1);
@@ -768,7 +768,7 @@ int check(int c){
 			panel[p].f == close[count].f &&
 			panel[p].g == close[count].g &&
 			panel[p].h == close[count].h){
-		    //printf("‰ß‹‚É“¯‚¶‘g‚İ‡‚í‚¹‚ª‚ ‚è‚Ü‚µ‚½\n");
+		    //printf("éå»ã«åŒã˜çµ„ã¿åˆã‚ã›ãŒã‚ã‚Šã¾ã—ãŸ\n");
 				return 1;
 		 }
 		  i = i + 1;

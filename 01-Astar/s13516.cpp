@@ -1,27 +1,27 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdlib.h>
 
-#pragma warning(disable:4996)  //4996ƒGƒ‰[‚Ì•\¦‚ğ‚µ‚È‚¢
+#pragma warning(disable:4996)  //4996ã‚¨ãƒ©ãƒ¼ã®è¡¨ç¤ºã‚’ã—ãªã„
 
-int manhattan(int A[][3], int E[][3], int search);  //ŠÖ”‚ÌéŒ¾
+int manhattan(int A[][3], int E[][3], int search);  //é–¢æ•°ã®å®£è¨€
 
 int main(){
 	int B = 0;
-	int A[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } };  //‰Šúó‘Ô
-	int C_ue[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } }; //ŒğŠ·—p
+	int A[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } };  //åˆæœŸçŠ¶æ…‹
+	int C_ue[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } }; //äº¤æ›ç”¨
 	int C_sita[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } };
 	int C_migi[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } };
 	int C_hidari[3][3] = { { 8, 1, 5 }, { 2, B, 4 }, { 6, 3, 7 } };
-	int E[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, B } };  //ÅI
+	int E[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, B } };  //æœ€çµ‚
 
-	int i = 0, j = 0;  //‰Šúó‘Ô‚Ìs—ñ—p
-	int x = 0, y = 0;  //ÅIó‘Ô‚Ìs—ñ—p
+	int i = 0, j = 0;  //åˆæœŸçŠ¶æ…‹ã®è¡Œåˆ—ç”¨
+	int x = 0, y = 0;  //æœ€çµ‚çŠ¶æ…‹ã®è¡Œåˆ—ç”¨
 
 	int change = 0;
 
 	int B_i, B_j;
 	
-	int hp = 0;   //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+	int hp = 0;   //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	int ue = 10, sita = 10, migi = 10, hidari = 10;
 
 	int search = 0;
@@ -30,10 +30,10 @@ int main(){
 	int min = 0;
 	int f_ue = 0, f_sita = 0, f_migi = 0, f_hidari = 0;
 
-	FILE *outputfile;   //o—ÍƒXƒgƒŠ[ƒ€
+	FILE *outputfile;   //å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 
 
-	for (i = 0; i < 3; i++){    //‹ó”’‚Ì‚Æ‚±‚ë‚ğ’Tõ
+	for (i = 0; i < 3; i++){    //ç©ºç™½ã®ã¨ã“ã‚ã‚’æ¢ç´¢
 		for (j = 0; j < 3; j++){
 			if (A[i][j] == B){
 				B_i = i;
@@ -43,10 +43,10 @@ int main(){
 		}
 	}
 
-	//printf("‹ó”’‚Ì‚ ‚éˆÊ’uF( %d , %d )\n\n", B_i, B_j);   //‹ó”’‚Ì‚ ‚éˆÊ’u(x,y)
+	//printf("ç©ºç™½ã®ã‚ã‚‹ä½ç½®ï¼š( %d , %d )\n\n", B_i, B_j);   //ç©ºç™½ã®ã‚ã‚‹ä½ç½®(x,y)
 
-	//‹ß–T
-	if (B_i - 1>0 || B_i<3)      //‚à‚µ‹ó”’‚Ìã‚És‚ª‚ ‚ê‚ÎA•Ï”ue‚É‚»‚ÌˆÊ’u‚É‚ ‚é’l‚ğ“ü‚ê‚é
+	//è¿‘å‚
+	if (B_i - 1>0 || B_i<3)      //ã‚‚ã—ç©ºç™½ã®ä¸Šã«è¡ŒãŒã‚ã‚Œã°ã€å¤‰æ•°ueã«ãã®ä½ç½®ã«ã‚ã‚‹å€¤ã‚’å…¥ã‚Œã‚‹
 		ue = A[B_i - 1][B_j];
 	if (B_i + 1>0 || B_i<3)
 		sita = A[B_i + 1][B_j];
@@ -57,18 +57,18 @@ int main(){
 
 	//printf("%d %d\n", ue,sita);
 
-	//ŒğŠ·
+	//äº¤æ›
 	if (ue < 10){
-		//B‚Æue‚ÌˆÊ’u‚ğŒğŠ·
+		//Bã¨ueã®ä½ç½®ã‚’äº¤æ›
 		change = C_ue[B_i - 1][B_j];
 		C_ue[B_i - 1][B_j] = C_ue[B_i][B_j];
 		C_ue[B_i][B_j] = change;
 
 		for (i = 0; i < 9; i++){
 			hp = manhattan(C_ue, E, i);
-			//printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£F%d \n", hp);
+			//printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ï¼š%d \n", hp);
 			total_ue = total_ue + hp;
-		}//printf("ã@‡ŒvF%d\n", total_ue);
+		}//printf("ä¸Šã€€åˆè¨ˆï¼š%d\n", total_ue);
 	}
 	if (sita < 10){
 		change = C_sita[B_i + 1][B_j];
@@ -77,9 +77,9 @@ int main(){
 
 		for (i = 0; i < 9; i++){
 			hp = manhattan(C_sita, E, i);
-			//printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£F%d \n", hp);
+			//printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ï¼š%d \n", hp);
 			total_sita = total_sita + hp;
-		}//printf("‰º@‡ŒvF%d\n", total_sita);
+		}//printf("ä¸‹ã€€åˆè¨ˆï¼š%d\n", total_sita);
 	}
 	if (migi < 10){
 		change = C_migi[B_i][B_j + 1];
@@ -88,9 +88,9 @@ int main(){
 
 		for (i = 0; i < 9; i++){
 			hp = manhattan(C_migi, E, i);
-			//printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£F%d \n", hp);
+			//printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ï¼š%d \n", hp);
 			total_migi = total_migi + hp;
-		}//printf("‰E@‡ŒvF%d\n", total_migi);
+		}//printf("å³ã€€åˆè¨ˆï¼š%d\n", total_migi);
 	}
 	if (hidari < 10){
 		change = C_hidari[B_i][B_j - 1];
@@ -99,12 +99,12 @@ int main(){
 
 		for (i = 0; i < 9; i++){
 			hp = manhattan(C_hidari, E, i);
-			//printf("ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£F%d \n", hp);
+			//printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ï¼š%d \n", hp);
 			total_hidari = total_hidari + hp;
-		}//printf("¶@‡ŒvF%d\n", total_hidari);
+		}//printf("å·¦ã€€åˆè¨ˆï¼š%d\n", total_hidari);
 	}
 	
-	//Å¬‚ğ‘I‘ğ
+	//æœ€å°ã‚’é¸æŠ
 	if (total_ue <= total_sita){
 		min = total_ue;
 		f_ue = 1;
@@ -123,20 +123,20 @@ int main(){
 		f_hidari = 1;
 		f_ue = 0, f_sita = 0, f_migi = 0;
 	}
-	printf("\nÅ¬F%d\n\n", min);
+	printf("\næœ€å°ï¼š%d\n\n", min);
 
-	//ƒtƒ@ƒCƒ‹o—Í
-	outputfile = fopen("d.txt", "w");  //‘‚«‚İ—p
+	//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
+	outputfile = fopen("d.txt", "w");  //æ›¸ãè¾¼ã¿ç”¨
 	if (outputfile == NULL){
 		printf("cannot open\n");
 		exit(1);
 	}
 
 
-	//Å¬‚ğ•\¦
+	//æœ€å°ã‚’è¡¨ç¤º
 	if (f_ue == 1){
-		//printf("%d %d %d\n%d %d %d\n%d %d %d\n\n", C_ue[0][0], C_ue[0][1], C_ue[0][2], C_ue[1][0], C_ue[1][1], C_ue[1][2], C_ue[2][0], C_ue[2][1], C_ue[2][2]);  //ƒ^[ƒ~ƒiƒ‹•\¦
-		fprintf(outputfile, "%d %d %d\n%d %d %d\n%d %d %d\n\n", C_ue[0][0], C_ue[0][1], C_ue[0][2], C_ue[1][0], C_ue[1][1], C_ue[1][2], C_ue[2][0], C_ue[2][1], C_ue[2][2]);  //ƒtƒ@ƒCƒ‹‚É‘‚­
+		//printf("%d %d %d\n%d %d %d\n%d %d %d\n\n", C_ue[0][0], C_ue[0][1], C_ue[0][2], C_ue[1][0], C_ue[1][1], C_ue[1][2], C_ue[2][0], C_ue[2][1], C_ue[2][2]);  //ã‚¿ãƒ¼ãƒŸãƒŠãƒ«è¡¨ç¤º
+		fprintf(outputfile, "%d %d %d\n%d %d %d\n%d %d %d\n\n", C_ue[0][0], C_ue[0][1], C_ue[0][2], C_ue[1][0], C_ue[1][1], C_ue[1][2], C_ue[2][0], C_ue[2][1], C_ue[2][2]);  //ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ã
 	}
 	if (f_sita == 1){
 		//printf("%d %d %d\n%d %d %d\n%d %d %d\n\n", C_sita[0][0], C_sita[0][1], C_sita[0][2], C_sita[1][0], C_sita[1][1], C_sita[1][2], C_sita[2][0], C_sita[2][1], C_sita[2][2]);
@@ -150,9 +150,9 @@ int main(){
 		//printf("%d %d %d\n%d %d %d\n%d %d %d\n\n", C_hidari[0][0], C_hidari[0][1], C_hidari[0][2], C_hidari[1][0], C_hidari[1][1], C_hidari[1][2], C_hidari[2][0], C_hidari[2][1], C_hidari[2][2]);
 		fprintf(outputfile, "%d %d %d\n%d %d %d\n%d %d %d\n\n", C_hidari[0][0], C_hidari[0][1], C_hidari[0][2], C_hidari[1][0], C_hidari[1][1], C_hidari[1][2], C_hidari[2][0], C_hidari[2][1], C_hidari[2][2]);
 	}
-	printf("”­Œ©“IŠÖ”F%d\n", 1 + min);
+	printf("ç™ºè¦‹çš„é–¢æ•°ï¼š%d\n", 1 + min);
 	
-	fprintf(outputfile, "”­Œ©“IŠÖ”F%d\n", 1 + min);
+	fprintf(outputfile, "ç™ºè¦‹çš„é–¢æ•°ï¼š%d\n", 1 + min);
 
 
 	int fclose(FILE *outputfile);
@@ -165,9 +165,9 @@ int main(){
 int manhattan(int A[][3], int E[][3], int search){
 	int i, j;
 	int A_i, A_j, E_i, E_j, hp;
-	for (i = 0; i < 3; i++){		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚±‚±‚©‚ç
+	for (i = 0; i < 3; i++){		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã“ã“ã‹ã‚‰
 		for (j = 0; j < 3; j++){
-			if (A[i][j] == search){    //‚±‚±‚Ì”š‚ğN‚É‚·‚é
+			if (A[i][j] == search){    //ã“ã“ã®æ•°å­—ã‚’Nã«ã™ã‚‹
 				A_i = i;
 				A_j = j;
 				break;

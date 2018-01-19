@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include <stdlib.h>
 
 main(){
@@ -8,8 +8,8 @@ main(){
 	int  goal[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
 
-	//‹ó”’‚Ìƒ}ƒX‚ÌÀ•W‚ğ’T‚·
-	printf("ŠJnó‘Ô\n");
+	//ç©ºç™½ã®ãƒã‚¹ã®åº§æ¨™ã‚’æ¢ã™
+	printf("é–‹å§‹çŠ¶æ…‹\n");
 	for (j = 0; j < 3; j++){
 		for (i = 0; i < 3; i++){
 			printf(" %d", start[i][j]);
@@ -35,9 +35,9 @@ main(){
 
 		}
 		
-	}printf("‹ó”’ƒ}ƒX‚ÌÀ•W‚Í[%d,%d]\n",x, y);
+	}printf("ç©ºç™½ãƒã‚¹ã®åº§æ¨™ã¯[%d,%d]\n",x, y);
 
-	//‹ó”’‚Ìƒ}ƒX‚Ì‚S‹ß–T‚ÌÀ•W‚ğ‚ğans‚É‘ã“ü
+	//ç©ºç™½ã®ãƒã‚¹ã®ï¼”è¿‘å‚ã®åº§æ¨™ã‚’ã‚’ansã«ä»£å…¥
 	kinb = x - 1;
 	kinb2 = x + 1;
 	kinb3 = y - 1;
@@ -49,9 +49,9 @@ main(){
 	ans4 = start[x][kinb4];
 
 
-	printf("\n‹ó”’‚Ìƒ}ƒX‚Ì‹ß–T‚Í\nã‚ª%d\n‰º‚ª%d\n¶‚ª%d\n‰E‚ª%d\n", ans1, ans2, ans3, ans4);
+	printf("\nç©ºç™½ã®ãƒã‚¹ã®è¿‘å‚ã¯\nä¸ŠãŒ%d\nä¸‹ãŒ%d\nå·¦ãŒ%d\nå³ãŒ%d\n", ans1, ans2, ans3, ans4);
 
-	//‹ó”’‚Ìƒ}ƒX‚Æ‹ß–T‚ğ“ü‚ê‘Ö‚¦‚é
+	//ç©ºç™½ã®ãƒã‚¹ã¨è¿‘å‚ã‚’å…¥ã‚Œæ›¿ãˆã‚‹
 	int ato_x = kinb;
 	int ato_y = y;
 	int hozon = 0;

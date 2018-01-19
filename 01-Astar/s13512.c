@@ -1,14 +1,14 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <math.h>
 #include <string.h>
 
-#define STACK_SIZE  100   /* ƒXƒ^ƒbƒN‚ÉÏ‚Ş‚±‚Æ‚Ì‚Å‚«‚éƒf[ƒ^‚ÌÅ‘åŒÂ” */
+#define STACK_SIZE  100   /* ã‚¹ã‚¿ãƒƒã‚¯ã«ç©ã‚€ã“ã¨ã®ã§ãã‚‹ãƒ‡ãƒ¼ã‚¿ã®æœ€å¤§å€‹æ•° */
 
 
-int puzzle_cost[STACK_SIZE];  /* ƒXƒ^ƒbƒN–{‘Ì */
+int puzzle_cost[STACK_SIZE];  /* ã‚¹ã‚¿ãƒƒã‚¯æœ¬ä½“ */
 int puzzle[STACK_SIZE][3][3];
 
-int stack_amount=0;                  /* ƒXƒ^ƒbƒN“à‚Ìƒf[ƒ^” */
+int stack_amount=0;                  /* ã‚¹ã‚¿ãƒƒã‚¯å†…ã®ãƒ‡ãƒ¼ã‚¿æ•° */
 
 int node_array;
 
@@ -35,7 +35,7 @@ int main(){
 		}
 	}
 
-	distance(p,p_n);//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğ‚¾‚·
+	distance(p,p_n);//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’ã ã™
 	xnotoki(puzzle);
 
 }
@@ -47,25 +47,25 @@ int distance(int puzzle_s[][3], int puzzle_e[][3]){
 			for (x2 = 0; x2 < 3;x2++){
 				for (y2 = 0; y2 < 3;y2++){
 					if (puzzle_s[x1][y1]==puzzle_e[x2][y2]){
-						kyori = abs(x1 - x2) + abs(y1 - y2); //p‚Æp_n‚Ìx,y‚Ì·‚ğ‹‚ß‚é
+						kyori = abs(x1 - x2) + abs(y1 - y2); //pã¨p_nã®x,yã®å·®ã‚’æ±‚ã‚ã‚‹
 						dist = dist + kyori;
 					}
 				}
 			}
 		}
 	}
-	printf("ƒRƒXƒg=%d\n", dist);
+	printf("ã‚³ã‚¹ãƒˆ=%d\n", dist);
 	return dist;
 }
 
-int xnotoki(int x_mtrx[][3][3]){//ƒpƒYƒ‹‚ğ“®‚©‚·(x‚Ì‚Æ‚«)
+int xnotoki(int x_mtrx[][3][3]){//ãƒ‘ã‚ºãƒ«ã‚’å‹•ã‹ã™(xã®ã¨ã)
 	int x1, y1, x2, y2;
 	int costx[2],costy[2];
 	for (x1 = 0; x1 < 3; x1++){
 		for (y1 = 0; y1 < 3; y1++){
 			if (x_mtrx[stack_amount - 1][x1][y1] == 0){
-				x2 = x1;//‹ó”’‚ÌÀ•Wx
-				y2 = y1;//‹ó”’‚ÌÀ•Wy
+				x2 = x1;//ç©ºç™½ã®åº§æ¨™x
+				y2 = y1;//ç©ºç™½ã®åº§æ¨™y
 				
 			}
 		}
@@ -74,15 +74,15 @@ int xnotoki(int x_mtrx[][3][3]){//ƒpƒYƒ‹‚ğ“®‚©‚·(x‚Ì‚Æ‚«)
 	switch (x2){
 	case 0:
 
-			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 + 1][y2];//‰º‚É“®‚©‚·
+			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 + 1][y2];//ä¸‹ã«å‹•ã‹ã™
 			x_mtrx[stack_amount - 1][x2 + 1][y2] = 0;
 			costx[0] = distance(x_mtrx, p_n);
 			printpuzzle(x_mtrx);
 			ynotoki(x_mtrx, x2, y2);
-			//”»•Ê
+			//åˆ¤åˆ¥
 
 			if (puzzle_cost[stack_amount - 1]<costx[0]){
-				x_mtrx[stack_amount - 1][x2 + 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//Œ³‚É–ß‚·
+				x_mtrx[stack_amount - 1][x2 + 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//å…ƒã«æˆ»ã™
 				x_mtrx[stack_amount - 1][x2][y2] = 0;
 
 				ynotoki(x_mtrx,x2,y2);
@@ -96,41 +96,41 @@ int xnotoki(int x_mtrx[][3][3]){//ƒpƒYƒ‹‚ğ“®‚©‚·(x‚Ì‚Æ‚«)
 				pop();
 				push(costx[0], x_mtrx[stack_amount - 1][x2][y2]);
 				ynotoki(x_mtrx, x2, y2);
-				//ƒqƒ…[ƒŠƒXƒeƒBƒbƒN’l‚ª“¯‚¶‚¾‚Á‚½‚Æ‚«‚Ìˆ—‚ğ“ü‚ê‚é
+				//ãƒ’ãƒ¥ãƒ¼ãƒªã‚¹ãƒ†ã‚£ãƒƒã‚¯å€¤ãŒåŒã˜ã ã£ãŸã¨ãã®å‡¦ç†ã‚’å…¥ã‚Œã‚‹
 			}
-			else if (puzzle_cost[stack_amount - 1] == 0){//ƒRƒXƒg‚ª0‚¾‚Á‚½‚çI‚í‚é
+			else if (puzzle_cost[stack_amount - 1] == 0){//ã‚³ã‚¹ãƒˆãŒ0ã ã£ãŸã‚‰çµ‚ã‚ã‚‹
 				break;
 			}
 
 
 
 			break;
-	case 1://^‚ñ’†‚Ìê‡
-			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 + 1][y2];//‰º‚É“®‚©‚·
+	case 1://çœŸã‚“ä¸­ã®å ´åˆ
+			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 + 1][y2];//ä¸‹ã«å‹•ã‹ã™
 			x_mtrx[stack_amount - 1][x2 + 1][y2] = 0;
-			costx[0] = distance(x_mtrx, p_n);//ƒRƒXƒg‚ğ‹‚ß‚é
+			costx[0] = distance(x_mtrx, p_n);//ã‚³ã‚¹ãƒˆã‚’æ±‚ã‚ã‚‹
 			printpuzzle(x_mtrx);
 
-			x_mtrx[stack_amount - 1][x2 + 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//Œ³‚É–ß‚·
+			x_mtrx[stack_amount - 1][x2 + 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//å…ƒã«æˆ»ã™
 			x_mtrx[stack_amount - 1][x2][y2] = 0;
 
-			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 - 1][y2];//ã‚É“®‚©‚·
+			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 - 1][y2];//ä¸Šã«å‹•ã‹ã™
 			x_mtrx[stack_amount - 1][x2 - 1][y2] = 0;
 			costx[1] = distance(x_mtrx, p_n);
 			printpuzzle(x_mtrx);
 
-			x_mtrx[stack_amount - 1][x2 - 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//Œ³‚É–ß‚·
+			x_mtrx[stack_amount - 1][x2 - 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//å…ƒã«æˆ»ã™
 			x_mtrx[stack_amount - 1][x2][y2] = 0;
-			printf("x‚ÌƒRƒXƒg=%d %d \n", costx[0], costx[1]);
+			printf("xã®ã‚³ã‚¹ãƒˆ=%d %d \n", costx[0], costx[1]);
 			ynotoki(x_mtrx, x2, y2);
 			break;
 	case 2:
-			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 - 1][y2];//ã‚É“®‚©‚·
+			x_mtrx[stack_amount - 1][x2][y2] = x_mtrx[stack_amount - 1][x2 - 1][y2];//ä¸Šã«å‹•ã‹ã™
 			x_mtrx[stack_amount - 1][x2 - 1][y2] = 0;
-			costx[0] = distance(x_mtrx, p_n);//ƒRƒXƒg‚ğ‹‚ß‚é
+			costx[0] = distance(x_mtrx, p_n);//ã‚³ã‚¹ãƒˆã‚’æ±‚ã‚ã‚‹
 			printpuzzle(x_mtrx);
 
-			x_mtrx[stack_amount - 1][x2 - 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//Œ³‚É–ß‚·
+			x_mtrx[stack_amount - 1][x2 - 1][y2] = x_mtrx[stack_amount - 1][x2][y2];//å…ƒã«æˆ»ã™
 			x_mtrx[stack_amount - 1][x2][y2] = 0;
 			ynotoki(x_mtrx, x2, y2);
 			break;
@@ -145,66 +145,66 @@ int ynotoki(int y_mtrx[][3],int ynotoki_x,int ynotoki_y){
 	switch (ynotoki_y){
 	case 0:
 
-		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y + 1];//‰E‚É“®‚©‚·
+		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y + 1];//å³ã«å‹•ã‹ã™
 		y_mtrx[ynotoki_x][ynotoki_y + 1] = 0;
 		costy[0] = distance(y_mtrx, p_n);
 		printpuzzle(y_mtrx);
 
 		if (puzzle_cost[stack_amount - 1] < costy[0]){
-			y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//Œ³‚É–ß‚·
+			y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//å…ƒã«æˆ»ã™
 			y_mtrx[ynotoki_x][ynotoki_y] = 0;
 			xnotoki(y_mtrx,ynotoki_x,ynotoki_y);
 		}
-		else if (puzzle_cost[stack_amount - 1]>costy[0]){//ƒRƒXƒg‚ª¬‚³‚©‚Á‚½
-			pop();//ˆê‰ñƒ|ƒbƒv
-			push(costy[0],y_mtrx);//ƒvƒbƒVƒ…‚·‚é
+		else if (puzzle_cost[stack_amount - 1]>costy[0]){//ã‚³ã‚¹ãƒˆãŒå°ã•ã‹ã£ãŸæ™‚
+			pop();//ä¸€å›ãƒãƒƒãƒ—
+			push(costy[0],y_mtrx);//ãƒ—ãƒƒã‚·ãƒ¥ã™ã‚‹
 			xnotoki(y_mtrx, ynotoki_x, ynotoki_y);
 		}
 		else if (puzzle_cost[stack_amount - 1] == costy[0]){
-			y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//Œ³‚É–ß‚·
+			y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//å…ƒã«æˆ»ã™
 			y_mtrx[ynotoki_x][ynotoki_y] = 0;
 
 
-			//ƒqƒ…[ƒŠƒXƒeƒBƒbƒN’l‚ª“¯‚¶‚¾‚Á‚½‚Æ‚«‚Ìˆ—‚ğ“ü‚ê‚é
+			//ãƒ’ãƒ¥ãƒ¼ãƒªã‚¹ãƒ†ã‚£ãƒƒã‚¯å€¤ãŒåŒã˜ã ã£ãŸã¨ãã®å‡¦ç†ã‚’å…¥ã‚Œã‚‹
 
 
 		}
-		else if (puzzle_cost[stack_amount - 1] == 0){//ƒRƒXƒg‚ª0‚¾‚Á‚½‚çI‚í‚é
+		else if (puzzle_cost[stack_amount - 1] == 0){//ã‚³ã‚¹ãƒˆãŒ0ã ã£ãŸã‚‰çµ‚ã‚ã‚‹
 			break;
 		}
 		break;
 	case 1:
-		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y + 1];//‰E‚É“®‚©‚·
+		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y + 1];//å³ã«å‹•ã‹ã™
 		y_mtrx[ynotoki_x][ynotoki_y + 1] = 0;
 		costy[0] = distance(y_mtrx, p_n);
 		printpuzzle(y_mtrx);
 
-		y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//Œ³‚É–ß‚·
+		y_mtrx[ynotoki_x][ynotoki_y + 1] = y_mtrx[ynotoki_x][ynotoki_y];//å…ƒã«æˆ»ã™
 		y_mtrx[ynotoki_x][ynotoki_y] = 0;
 
-		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y - 1];//¶‚É“®‚©‚·
+		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y - 1];//å·¦ã«å‹•ã‹ã™
 		y_mtrx[ynotoki_x][ynotoki_y - 1] = 0;
 		costy[1] = distance(y_mtrx, p_n);
 		printpuzzle(y_mtrx);
 
-		y_mtrx[ynotoki_x][ynotoki_y - 1] = y_mtrx[ynotoki_x][ynotoki_y];//Œ³‚É–ß‚·
+		y_mtrx[ynotoki_x][ynotoki_y - 1] = y_mtrx[ynotoki_x][ynotoki_y];//å…ƒã«æˆ»ã™
 		y_mtrx[ynotoki_x][ynotoki_y] = 0;
 
-		printf("y‚ÌƒRƒXƒg=%d %d \n", costy[0], costy[1]);
+		printf("yã®ã‚³ã‚¹ãƒˆ=%d %d \n", costy[0], costy[1]);
 		break;
 	case 2:
-		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y - 1];//¶‚É“®‚©‚·
+		y_mtrx[ynotoki_x][ynotoki_y] = y_mtrx[ynotoki_x][ynotoki_y - 1];//å·¦ã«å‹•ã‹ã™
 		y_mtrx[ynotoki_x][ynotoki_y - 1] = 0;
 		costy[1] = distance(y_mtrx, p_n);
 		printpuzzle(y_mtrx);
 
-		y_mtrx[ynotoki_x][ynotoki_y - 1] = y_mtrx[ynotoki_x][ynotoki_y];//Œ³‚É–ß‚·
+		y_mtrx[ynotoki_x][ynotoki_y - 1] = y_mtrx[ynotoki_x][ynotoki_y];//å…ƒã«æˆ»ã™
 		y_mtrx[ynotoki_x][ynotoki_y] = 0;
 		break;
 	}
 }
 
-int printpuzzle(int print_puzzle[][3]){//ƒpƒYƒ‹‚Ìó‘Ô‚ğ•\¦‚·‚éŠÖ”
+int printpuzzle(int print_puzzle[][3]){//ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°
 	int i,j;
 	for (i = 0; i < 3;i++){
 		for (j = 0; j < 3;j++){
@@ -215,7 +215,7 @@ int printpuzzle(int print_puzzle[][3]){//ƒpƒYƒ‹‚Ìó‘Ô‚ğ•\¦‚·‚éŠÖ”
 	getchar();
 }
 
-int push(int push_cost,int push_puzzle[][3])//ƒuƒbƒVƒ…
+int push(int push_cost,int push_puzzle[][3])//ãƒ–ãƒƒã‚·ãƒ¥
 {
 	int i, j;
 	if (stack_amount < STACK_SIZE) {
@@ -233,7 +233,7 @@ int push(int push_cost,int push_puzzle[][3])//ƒuƒbƒVƒ…
 	}
 }
 
-int pop()//ƒ|ƒbƒv
+int pop()//ãƒãƒƒãƒ—
 {
 	int i, j;
 	if (stack_amount > 0) {
@@ -262,7 +262,7 @@ int printstack()
 	printf("]\n");
 }
 
-int dainyuu(int dainyuu_mtrx1[][3],int dainyuu_mtrx2[][3]){//‘ã“üŒ³A‘ã“üæ
+int dainyuu(int dainyuu_mtrx1[][3],int dainyuu_mtrx2[][3]){//ä»£å…¥å…ƒã€ä»£å…¥å…ˆ
 	int i, j;
 	for (i = 0; i < 3;i++){
 		for (j = 0; j < 3;j++){

@@ -1,13 +1,13 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<string.h>
 #include <stdlib.h>
 #include <math.h>
 #define N
-int s[3][3] = {//ƒXƒ^[ƒg
+int s[3][3] = {//ã‚¹ã‚¿ãƒ¼ãƒˆ
 	{ 8, 1, 5 },
 	{ 2, 0, 4},
 	{ 6, 3, 7}};
-int g[3][3] = { //ƒS[ƒ‹
+int g[3][3] = { //ã‚´ãƒ¼ãƒ«
 	{ 1, 2, 3 },
 	{ 4, 5, 6 },
 	{ 7, 8, 0 }};
@@ -17,8 +17,8 @@ int stac2[3][3];
 int stac3[3][3];
 int stac4[3][3];
 int i,n,i2,n2,mancount,minb,nb=0;
-int mini=100;//Å¬’l
-int manstac[4] ;//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ÌŠi”[êŠ
+int mini=100;//æœ€å°å€¤
+int manstac[4] ;//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®æ ¼ç´å ´æ‰€
 main() {
 	while (!(memcmp(s, g, sizeof s) == 0))
 	{
@@ -32,7 +32,7 @@ main() {
 					memcpy(stac1, stac, sizeof stac);
 					manstac[0] = ma();
 					print();
-					printf("ƒ}ƒ“ƒnƒbƒ^ƒ“=%d\n", manstac[0]);
+					printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³=%d\n", manstac[0]);
 
 				}
 				if (s[i][n + 1] == !NULL) {
@@ -42,7 +42,7 @@ main() {
 					memcpy(stac2, stac, sizeof stac);
 					manstac[1] = ma();
 					print();
-					printf("ƒ}ƒ“ƒnƒbƒ^ƒ“=%d\n", manstac[1]);
+					printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³=%d\n", manstac[1]);
 					
 				}
 				if (s[i - 1][n] == !NULL) {
@@ -52,7 +52,7 @@ main() {
 					memcpy(stac3, stac, sizeof stac);
 					manstac[2] = ma();
 					print();
-					printf("ƒ}ƒ“ƒnƒbƒ^ƒ“=%d\n", manstac[2]);
+					printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³=%d\n", manstac[2]);
 					
 				}
 				if (s[i + 1][n] == !NULL) {
@@ -62,17 +62,17 @@ main() {
 					memcpy(stac4, stac, sizeof stac);
 					manstac[3] = ma();
 					print();
-					printf("ƒ}ƒ“ƒnƒbƒ^ƒ“=%d\n", manstac[3]);
+					printf("ãƒãƒ³ãƒãƒƒã‚¿ãƒ³=%d\n", manstac[3]);
 					
 				}
-				for (i = 0; i <= 3; i++) {//Å¬’l‚ğ‹‚ß‚é
+				for (i = 0; i <= 3; i++) {//æœ€å°å€¤ã‚’æ±‚ã‚ã‚‹
 					if (!(0== manstac[i])) {
 						mini = min(mini, manstac[i]);
 						}
 						printf("\n %d", manstac[i]);
 					}
 				printf("\n mini %d", mini);
-				while (!(mini == manstac[nb]))//Å¬’l‚ªŠi”[‚³‚ê‚Ä‚¢‚éêŠ‚ğ’²‚×‚é
+				while (!(mini == manstac[nb]))//æœ€å°å€¤ãŒæ ¼ç´ã•ã‚Œã¦ã„ã‚‹å ´æ‰€ã‚’èª¿ã¹ã‚‹
 				{
 					nb++;
 				}
@@ -105,7 +105,7 @@ main() {
 			
 		
 
-int ma(){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
+int ma(){ //ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢
 	int m=0;
 	for (i = 0; i < 3; i++){
 		for (n = 0; n < 3; n++) {
@@ -115,7 +115,7 @@ int ma(){ //ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£
 	}
 			return m;
 	}
-int print(){//•\¦
+int print(){//è¡¨ç¤º
 	for (i = 0; i < 3; i++){
 		for (n = 0; n < 3; n++){
 			printf("%d", stac[i][n]);
@@ -126,7 +126,7 @@ int print(){//•\¦
 	return 0;
 }
 
-int loop(int i ,int n) {//ƒ‹[ƒv
+int loop(int i ,int n) {//ãƒ«ãƒ¼ãƒ—
 	int md=0;
 	for (i2 = 0; i2 < 3; i2++) {
 		for (n2 = 0; n2 < 3; n2++) {

@@ -1,50 +1,50 @@
-/*
-**  ì¬Ò:Daisuke Kuwahara
-**  ì¬”N:2017
-**	“®ìŠÂ‹«:
-**      ELinux
+ï»¿/*
+**  ä½œæˆè€…:Daisuke Kuwahara
+**  ä½œæˆå¹´:2017
+**	å‹•ä½œç’°å¢ƒ:
+**      ãƒ»Linux
 **          - Linux version 3.10.0-514.26.2.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc version 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) ) #1 SMP Tue Jul 4 15:04:05 UTC 2017
 **          - CentOS Linux release 7.3.1611 (Core) 
 **          - gcc version 4.8.5 20150623 (Red Hat 4.8.5-11) (GCC) 
-**      EWindows
+**      ãƒ»Windows
 **          - Windows 10 pro 64bit
 **          - Microsoft Visual Studio Express 2012 for Windows Desktop
-**  ‹@”\à–¾:
-**	EA*ƒAƒ‹ƒSƒŠƒYƒ€‚ğ—p‚¢‚Ä3*3‚ÌƒpƒYƒ‹‚ğŠ®¬‚³‚¹‚éƒvƒƒOƒ‰ƒ€
-**      E–Ø\‘¢‚ÍŠeƒm[ƒh‚ğ‘o•ûŒüƒ`ƒFƒCƒ“‚ğ—p‚¢‚Å•\Œ»‚µ‚Ä‚¢‚é
-**	E‹ó”’•”‚Í0‚Å¦‚µ‚Ü‚·
-**      EÀs‚ÉuSegmentation fault (core dumped)v‚ªo—Í‚³‚ê‚Ü‚·‚ªŒ‹‰Ê‚Í‘S‚Ä³‚µ‚­o—Í‚³‚ê‚Ü‚·B”­¶——R‚Í‚æ‚­‚í‚©‚è‚Ü‚¹‚ñB
+**  æ©Ÿèƒ½èª¬æ˜:
+**	ãƒ»A*ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ã‚’ç”¨ã„ã¦3*3ã®ãƒ‘ã‚ºãƒ«ã‚’å®Œæˆã•ã›ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+**      ãƒ»æœ¨æ§‹é€ ã¯å„ãƒãƒ¼ãƒ‰ã‚’åŒæ–¹å‘ãƒã‚§ã‚¤ãƒ³ã‚’ç”¨ã„ã§è¡¨ç¾ã—ã¦ã„ã‚‹
+**	ãƒ»ç©ºç™½éƒ¨ã¯0ã§ç¤ºã—ã¾ã™
+**      ãƒ»å®Ÿè¡Œæ™‚ã«ã€ŒSegmentation fault (core dumped)ã€ãŒå‡ºåŠ›ã•ã‚Œã¾ã™ãŒçµæœã¯å…¨ã¦æ­£ã—ãå‡ºåŠ›ã•ã‚Œã¾ã™ã€‚ç™ºç”Ÿç†ç”±ã¯ã‚ˆãã‚ã‹ã‚Šã¾ã›ã‚“ã€‚
 */
 
-//ƒwƒbƒ_“Ç‚İ‚İ•”
+//ãƒ˜ãƒƒãƒ€èª­ã¿è¾¼ã¿éƒ¨
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>
 
-//Visual Studio‚Ì‚İ•K—v@VisualStudio‚Å“®‚©‚·ê‡‚É‚Í #pragma~ ‚Ì•”•ª‚ÌƒRƒƒ“ƒg‚ğÁ‚·‚±‚Æ
+//Visual Studioã®ã¿å¿…è¦ã€€VisualStudioã§å‹•ã‹ã™å ´åˆã«ã¯ #pragma~ ã®éƒ¨åˆ†ã®ã‚³ãƒ¡ãƒ³ãƒˆã‚’æ¶ˆã™ã“ã¨
 //#pragma warning(disable:4996) 
 
-//\‘¢‘Ì’è‹`•”
+//æ§‹é€ ä½“å®šç¾©éƒ¨
 
 typedef struct def_tree{
-	unsigned int f;				//‚±‚ÌƒpƒYƒ‹‚Ìó‘Ô‚ª‚Â”­Œ©“IŠÖ”‚Ì’l
-	unsigned int g;				//‚±‚ÌƒŠƒXƒg‚ª‰½è–Ú‚É‘¶İ‚·‚é‚©(–Ø\‘¢ã‚Ì[‚³)‚ğ¦‚·•Ï”
-	unsigned int x;				//‚±‚Ìƒm[ƒh‚Ì‹ó”’‚ÌxÀ•W‚ğŠi”[
-	unsigned int y;				//‚±‚Ìƒm[ƒh‚Ì‹ó”’‚ÌyÀ•W‚ğŠi”[
-	unsigned int v[3][3];		//‚±‚Ìƒm[ƒh‚ÌƒpƒYƒ‹‚Ìó‘Ô‚ğŠi”[‚·‚é•Ï”
-	unsigned int before_type;	//‚±‚ÌƒŠƒXƒg‚Ìeƒm[ƒh‚©‚ç‚Ç‚Ì•ûŒü‚Éi‚ñ‚¾ê‡‚É‚±‚Ìƒm[ƒh‚É“’…‚·‚é‚Ì‚©‚ğ¦‚·•Ï”(0:¶ 1:‰E 2:ã 3:‰º 4:–³‚µ(©g‚ªƒ‹[ƒg))
-	struct def_tree* before;	//e‚Ìƒm[ƒh‚ğ¦‚·ƒ|ƒCƒ“ƒ^(NULL : ƒ‹[ƒg)
-	struct def_tree* p[4];		//Œ»İ‚Ìó‘Ô‚©‚ç“®‚©‚µ‚½ê‡‚ÌƒŠƒXƒg‚ğ¦‚·ƒ|ƒCƒ“ƒ^”z—ñ(0:¶ 1:‰E 2:ã 3:‰º ‘¶İ‚µ‚È‚¢ê‡:NULL)
+	unsigned int f;				//ã“ã®ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ãŒæŒã¤ç™ºè¦‹çš„é–¢æ•°ã®å€¤
+	unsigned int g;				//ã“ã®ãƒªã‚¹ãƒˆãŒä½•æ‰‹ç›®ã«å­˜åœ¨ã™ã‚‹ã‹(æœ¨æ§‹é€ ä¸Šã®æ·±ã•)ã‚’ç¤ºã™å¤‰æ•°
+	unsigned int x;				//ã“ã®ãƒãƒ¼ãƒ‰ã®ç©ºç™½ã®xåº§æ¨™ã‚’æ ¼ç´
+	unsigned int y;				//ã“ã®ãƒãƒ¼ãƒ‰ã®ç©ºç™½ã®yåº§æ¨™ã‚’æ ¼ç´
+	unsigned int v[3][3];		//ã“ã®ãƒãƒ¼ãƒ‰ã®ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+	unsigned int before_type;	//ã“ã®ãƒªã‚¹ãƒˆã®è¦ªãƒãƒ¼ãƒ‰ã‹ã‚‰ã©ã®æ–¹å‘ã«é€²ã‚“ã å ´åˆã«ã“ã®ãƒãƒ¼ãƒ‰ã«åˆ°ç€ã™ã‚‹ã®ã‹ã‚’ç¤ºã™å¤‰æ•°(0:å·¦ 1:å³ 2:ä¸Š 3:ä¸‹ 4:ç„¡ã—(è‡ªèº«ãŒãƒ«ãƒ¼ãƒˆ))
+	struct def_tree* before;	//è¦ªã®ãƒãƒ¼ãƒ‰ã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿(NULL : ãƒ«ãƒ¼ãƒˆ)
+	struct def_tree* p[4];		//ç¾åœ¨ã®çŠ¶æ…‹ã‹ã‚‰å‹•ã‹ã—ãŸå ´åˆã®ãƒªã‚¹ãƒˆã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿é…åˆ—(0:å·¦ 1:å³ 2:ä¸Š 3:ä¸‹ å­˜åœ¨ã—ãªã„å ´åˆ:NULL)
 } Tree;
 
 //Open List
 typedef struct def_List{
-	Tree* tree;				//Tree\‘¢‘Ì‚ÌƒAƒhƒŒƒX‚ğŠi”[‚·‚é•Ï”
-	struct def_List* next;	//Ÿ‚ÌŒŸõ‘ÎÛ‚Ö‚Ìƒ|ƒCƒ“ƒ^
+	Tree* tree;				//Treeæ§‹é€ ä½“ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+	struct def_List* next;	//æ¬¡ã®æ¤œç´¢å¯¾è±¡ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 } List;
 
-//ŠÖ”ƒvƒƒgƒ^ƒCƒvéŒ¾•”
-//ŠÖ”‚ÍˆêŠ‡‚µ‚Ä¬Œ÷‚É‚Í0,¸”s‚É‚Íƒ}ƒCƒiƒX‚ğ•Ô‚·
+//é–¢æ•°ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€éƒ¨
+//é–¢æ•°ã¯ä¸€æ‹¬ã—ã¦æˆåŠŸæ™‚ã«ã¯0,å¤±æ•—æ™‚ã«ã¯ãƒã‚¤ãƒŠã‚¹ã‚’è¿”ã™
 
 int LoadData(unsigned int c[3][3],unsigned int g[3][3],unsigned int* x,unsigned int* y,unsigned int gc[9][2]);
 int PrintLog( unsigned int c[3][3], unsigned int f);
@@ -57,25 +57,25 @@ int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int mo
 int Close(Tree* head);
 
 int main(){
-	Tree* head;								//ƒcƒŠ[‚Ìƒ‹[ƒg‚ğ¦‚·ƒ|ƒCƒ“ƒ^
-	Tree* p;								//ƒcƒŠ[‚Ì‚Ç‚±‚ğQÆ‚µ‚Ä‚¢‚é‚Ì‚©‚ğ¦‚·ƒ|ƒCƒ“ƒ^
-	unsigned int start[3][3];				//ƒpƒYƒ‹‚Ì‰Šúó‘Ô‚ğŠi”[‚·‚é\‘¢‘Ì
-	unsigned int goal[3][3];				//ƒpƒYƒ‹‚ÌŠ®¬Œ`‚ğŠi”[‚·‚é\‘¢‘Ì
-	unsigned int coordinates_of_goal[9][2];	//ƒpƒYƒ‹‚ÌƒS[ƒ‹‚ÌŠeƒpƒlƒ‹‚ÌÀ•W
-	unsigned int start_x;			        //‹ó”’‚Ì‰ŠúxÀ•W‚ğ¦‚·•Ï”
-	unsigned int start_y;			        //‹ó”’‚Ì‰ŠúyÀ•W‚ğ¦‚·•Ï”
+	Tree* head;								//ãƒ„ãƒªãƒ¼ã®ãƒ«ãƒ¼ãƒˆã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿
+	Tree* p;								//ãƒ„ãƒªãƒ¼ã®ã©ã“ã‚’å‚ç…§ã—ã¦ã„ã‚‹ã®ã‹ã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿
+	unsigned int start[3][3];				//ãƒ‘ã‚ºãƒ«ã®åˆæœŸçŠ¶æ…‹ã‚’æ ¼ç´ã™ã‚‹æ§‹é€ ä½“
+	unsigned int goal[3][3];				//ãƒ‘ã‚ºãƒ«ã®å®Œæˆå½¢ã‚’æ ¼ç´ã™ã‚‹æ§‹é€ ä½“
+	unsigned int coordinates_of_goal[9][2];	//ãƒ‘ã‚ºãƒ«ã®ã‚´ãƒ¼ãƒ«ã®å„ãƒ‘ãƒãƒ«ã®åº§æ¨™
+	unsigned int start_x;			        //ç©ºç™½ã®åˆæœŸxåº§æ¨™ã‚’ç¤ºã™å¤‰æ•°
+	unsigned int start_y;			        //ç©ºç™½ã®åˆæœŸyåº§æ¨™ã‚’ç¤ºã™å¤‰æ•°
 
-	FILE* fp;						    	//ƒtƒ@ƒCƒ‹ì¬—pƒ|ƒCƒ“ƒ^
-	unsigned int i,k;						//ƒ‹[ƒv—pƒJƒEƒ“ƒ^
-	int ret=0;								//ŠÖ”‚Ì–ß‚è’l‚ğŠi”[‚·‚é•Ï”
+	FILE* fp;						    	//ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆç”¨ãƒã‚¤ãƒ³ã‚¿
+	unsigned int i,k;						//ãƒ«ãƒ¼ãƒ—ç”¨ã‚«ã‚¦ãƒ³ã‚¿
+	int ret=0;								//é–¢æ•°ã®æˆ»ã‚Šå€¤ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
 
-	//ƒpƒYƒ‹‚Ìƒf[ƒ^‚ğ“Ç‚İ‚Ş
+	//ãƒ‘ã‚ºãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€
 	if(0>LoadData(start,goal,&start_x,&start_y,coordinates_of_goal)){
 		perror("LoadData");
 		return -1;
 	}
 
-	//o—Íƒtƒ@ƒCƒ‹‚ğ¶¬
+	//å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”Ÿæˆ
 	if(NULL==(fp=fopen("output.txt","w+"))){
 		perror("fopen");
 		return -1;
@@ -88,13 +88,13 @@ int main(){
 	}
 	fclose(fp);
 
-	//ƒ‹[ƒg‚Ìƒƒ‚ƒŠŠm•Û
+	//ãƒ«ãƒ¼ãƒˆã®ãƒ¡ãƒ¢ãƒªç¢ºä¿
 	if(NULL==(head=(Tree*)malloc(sizeof(Tree)))){
 		perror("malloc");
 		return -2;
 	}
 
-	//ƒ‹[ƒg‚Ì‰Šú‰»
+	//ãƒ«ãƒ¼ãƒˆã®åˆæœŸåŒ–
 	head->before_type=4;
 	head->g=0;
 	head->x=start_x;
@@ -104,30 +104,30 @@ int main(){
 	for(i=0;i<3;i++) for(k=0;k<3;k++) head->v[i][k]=start[i][k];
 
 
-	//”­Œ©“IŠÖ”‚Ì’l‚ğŒvZ
+	//ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã‚’è¨ˆç®—
 	if(0>CaluculateF(head,coordinates_of_goal)){
 		perror("CaluculateF");
 		return -2;
 	}
 
-	//ƒƒO‚ğo—Í
+	//ãƒ­ã‚°ã‚’å‡ºåŠ›
 	PrintLog(head->v,head->f);
 
 	p=head;
 
 	while(1){
-		//‘I‘ğ‚³‚ê‚½ƒm[ƒh‚ª–Ú•Wó‘Ô‰»‚ğŠm”F‚·‚é( f(p)=g(p)+h(p) ‚æ‚èA h(p)=f(p)-g(p) h(p)=0‚Í–Ú•Wó‘Ô)
+		//é¸æŠã•ã‚ŒãŸãƒãƒ¼ãƒ‰ãŒç›®æ¨™çŠ¶æ…‹åŒ–ã‚’ç¢ºèªã™ã‚‹( f(p)=g(p)+h(p) ã‚ˆã‚Šã€ h(p)=f(p)-g(p) h(p)=0ã¯ç›®æ¨™çŠ¶æ…‹)
 		if(0==((p->f)-(p->g))){
 			printf("found!\n");
 			break;
 		}
 
-		//Open List‚©‚çæ‚èo‚µ‚½ƒm[ƒh‚É—×Ú‚µ‚Ä‚¢‚éƒm[ƒh‚ğì¬
+		//Open Listã‹ã‚‰å–ã‚Šå‡ºã—ãŸãƒãƒ¼ãƒ‰ã«éš£æ¥ã—ã¦ã„ã‚‹ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
 		if(0>CreateTree(p)){
 			perror("CreateTree");
 			return -3;
 		}
-		//ì¬‚µ‚½ƒm[ƒh‚Ì”­Œ©“IŠÖ”‚ğŒvZ
+		//ä½œæˆã—ãŸãƒãƒ¼ãƒ‰ã®ç™ºè¦‹çš„é–¢æ•°ã‚’è¨ˆç®—
 		for(i=0;i<4;i++){
 			if(p->p[i]!=NULL){
 				if(0>CaluculateF(p->p[i],coordinates_of_goal)){
@@ -136,12 +136,12 @@ int main(){
 				}
 			}
 		}
-		//V‹Kì¬‚µ‚½ƒm[ƒh‚ğOpen List‚É’Ç‰Á
+		//æ–°è¦ä½œæˆã—ãŸãƒãƒ¼ãƒ‰ã‚’Open Listã«è¿½åŠ 
 		if(0>OpenList(&p,0)){
 			perror("Priority - 0");
 			return -4;
 		}
-		//Open List“à‚ÅÅ‚à”­Œ©“IŠÖ”‚Ì’l‚ª’á‚¢‚à‚Ì‚ğŸ‚Ì‘ÎÛ‚Æ‚·‚é
+		//Open Listå†…ã§æœ€ã‚‚ç™ºè¦‹çš„é–¢æ•°ã®å€¤ãŒä½ã„ã‚‚ã®ã‚’æ¬¡ã®å¯¾è±¡ã¨ã™ã‚‹
 		if(0>(ret=OpenList(&p,1))){
 			perror("Priority - 1");
 			return -5;
@@ -153,7 +153,7 @@ int main(){
 		PrintLog(p->v,p->f);
 	}
 		
-	//‰Šúó‘Ô‚©‚çƒS[ƒ‹ó‘Ô‚Ü‚Å‚ÌˆÚ“®Œo˜H‚ğ‰ğÍ
+	//åˆæœŸçŠ¶æ…‹ã‹ã‚‰ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ã¾ã§ã®ç§»å‹•çµŒè·¯ã‚’è§£æ
 	if(0>PrintGoalRoot(p)){
 		perror("PrintGoalRoot");
 		return -6;
@@ -166,26 +166,26 @@ int main(){
 	return 0;
 }
 
-//ƒtƒ@ƒCƒ‹‚©‚çƒpƒYƒ‹‚Ì‰Šúó‘ÔE–Ú•Wó‘Ô‚ğ“Ç‚İ‚ŞŠÖ”
-//ˆø”	:	ƒpƒYƒ‹‚Ì‰Šú’l‚ªŠi”[‚³‚ê‚é”z—ñ,ƒpƒYƒ‹‚ÌƒS[ƒ‹‚ªŠi”[‚³‚ê‚é”z—ñ,‹ó”’‚ÌxÀ•W‚ªŠi”[‚³‚ê‚é•Ï”,‹ó”’‚ÌyÀ•W‚ªŠi”[‚³‚ê‚é•Ï”,ƒS[ƒ‹ó‘Ô‚ÌŠeƒpƒlƒ‹‚ÌÀ•W‚ªŠi”[‚³‚ê‚é”z—ñ
+//ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ‘ã‚ºãƒ«ã®åˆæœŸçŠ¶æ…‹ãƒ»ç›®æ¨™çŠ¶æ…‹ã‚’èª­ã¿è¾¼ã‚€é–¢æ•°
+//å¼•æ•°	:	ãƒ‘ã‚ºãƒ«ã®åˆæœŸå€¤ãŒæ ¼ç´ã•ã‚Œã‚‹é…åˆ—,ãƒ‘ã‚ºãƒ«ã®ã‚´ãƒ¼ãƒ«ãŒæ ¼ç´ã•ã‚Œã‚‹é…åˆ—,ç©ºç™½ã®xåº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹å¤‰æ•°,ç©ºç™½ã®yåº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹å¤‰æ•°,ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ã®å„ãƒ‘ãƒãƒ«ã®åº§æ¨™ãŒæ ¼ç´ã•ã‚Œã‚‹é…åˆ—
 int LoadData(unsigned int c[3][3],unsigned int g[3][3],unsigned int* x,unsigned int* y,unsigned int gc[9][2]){
 	FILE* fp;
 	int i,k;
 
-	//ƒtƒ@ƒCƒ‹‹Lqq‚ÌŠm•Û‚ÆƒGƒ‰[ˆ—
+	//ãƒ•ã‚¡ã‚¤ãƒ«è¨˜è¿°å­ã®ç¢ºä¿ã¨ã‚¨ãƒ©ãƒ¼å‡¦ç†
 	if(NULL==(fp=fopen("input.txt","r"))){
 		perror("fopen");
 		return -1;
 	}
 
-	//ƒtƒ@ƒCƒ‹‚©‚çƒf[ƒ^‚ğ“Ç‚İ‚Ş
-	//‰ŠúğŒ
+	//ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€
+	//åˆæœŸæ¡ä»¶
 	fscanf(fp,"%u %u %u",&c[0][0],&c[0][1],&c[0][2]);
 	fscanf(fp,"%u %u %u",&c[1][0],&c[1][1],&c[1][2]);
 	fscanf(fp,"%u %u %u",&c[2][0],&c[2][1],&c[2][2]);
 	fgetc(fp);
 
-	//–Ú•Wó‘Ô
+	//ç›®æ¨™çŠ¶æ…‹
 	fscanf(fp,"%u %u %u",&g[0][0],&g[0][1],&g[0][2]);
 	fscanf(fp,"%u %u %u",&g[1][0],&g[1][1],&g[1][2]);
 	fscanf(fp,"%u %u %u",&g[2][0],&g[2][1],&g[2][2]);
@@ -194,13 +194,13 @@ int LoadData(unsigned int c[3][3],unsigned int g[3][3],unsigned int* x,unsigned 
 
 	for(i=0;i<3;i++){
 		for(k=0;k<3;k++){
-			//‹ó”’‚ÌˆÊ’u‚ğüŒ`’Tõ‚µAŠe•Ï”‚ÉŠi”[‚·‚éB
+			//ç©ºç™½ã®ä½ç½®ã‚’ç·šå½¢æ¢ç´¢ã—ã€å„å¤‰æ•°ã«æ ¼ç´ã™ã‚‹ã€‚
 			if(c[i][k]==0){
 				*x=i;
 				*y=k;
 			}
 
-			//ƒS[ƒ‹ó‘Ô‚Ìƒpƒlƒ‹‚ÌÀ•W‚ğŠi”[
+			//ã‚´ãƒ¼ãƒ«çŠ¶æ…‹ã®ãƒ‘ãƒãƒ«ã®åº§æ¨™ã‚’æ ¼ç´
 			gc[g[i][k]][0]=i;
 			gc[g[i][k]][1]=k;
 
@@ -210,12 +210,12 @@ int LoadData(unsigned int c[3][3],unsigned int g[3][3],unsigned int* x,unsigned 
 	return 0;
 }
 
-//ƒtƒ@ƒCƒ‹‚É”­Œ©“IŠÖ”‚ÆƒpƒYƒ‹‚Ìó‘Ô‚ğ‘‚«‚ŞŠÖ”
-//ˆø”	:	ƒpƒYƒ‹‚ÌŒ»İ‚Ìó‘Ô‚ªŠi”[‚³‚ê‚½ŠÖ”,”­Œ©“IŠÖ”‚Ì’l
+//ãƒ•ã‚¡ã‚¤ãƒ«ã«ç™ºè¦‹çš„é–¢æ•°ã¨ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’æ›¸ãè¾¼ã‚€é–¢æ•°
+//å¼•æ•°	:	ãƒ‘ã‚ºãƒ«ã®ç¾åœ¨ã®çŠ¶æ…‹ãŒæ ¼ç´ã•ã‚ŒãŸé–¢æ•°,ç™ºè¦‹çš„é–¢æ•°ã®å€¤
 int PrintLog(unsigned int c[3][3], unsigned int f){
 	FILE* fp;
 
-	//ƒtƒ@ƒCƒ‹‹Lqq‚ÌŠm•Û‚ÆƒGƒ‰[ˆ—
+	//ãƒ•ã‚¡ã‚¤ãƒ«è¨˜è¿°å­ã®ç¢ºä¿ã¨ã‚¨ãƒ©ãƒ¼å‡¦ç†
 	if(NULL==(fp=fopen("output.txt","a+"))){
 		perror("fopen");
 		return -1;
@@ -229,7 +229,7 @@ int PrintLog(unsigned int c[3][3], unsigned int f){
 
 	fclose(fp);
 
-	//ƒtƒ@ƒCƒ‹‹Lqq‚ÌŠm•Û‚ÆƒGƒ‰[ˆ—
+	//ãƒ•ã‚¡ã‚¤ãƒ«è¨˜è¿°å­ã®ç¢ºä¿ã¨ã‚¨ãƒ©ãƒ¼å‡¦ç†
 	if(NULL==(fp=fopen("f.txt","a+"))){
 		perror("fopen");
 		return -1;
@@ -242,59 +242,59 @@ int PrintLog(unsigned int c[3][3], unsigned int f){
 	return 0;
 }
 
-//ƒm[ƒh‚©‚ç”h¶‚·‚éƒm[ƒh‚ğŒvZAì¬‚µA”­Œ©“IŠÖ”‚Ì’l‚ğŒvZ‚·‚éŠÖ”
-//ˆø”	:	ŒvZ‚µ‚½‚¢ƒm[ƒh,ƒpƒYƒ‹‚Ì–Ú•Wó‘Ô‚ÌŠeƒpƒlƒ‹‚ÌÀ•W
+//ãƒãƒ¼ãƒ‰ã‹ã‚‰æ´¾ç”Ÿã™ã‚‹ãƒãƒ¼ãƒ‰ã‚’è¨ˆç®—ã€ä½œæˆã—ã€ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
+//å¼•æ•°	:	è¨ˆç®—ã—ãŸã„ãƒãƒ¼ãƒ‰,ãƒ‘ã‚ºãƒ«ã®ç›®æ¨™çŠ¶æ…‹ã®å„ãƒ‘ãƒãƒ«ã®åº§æ¨™
 int CaluculateF(Tree* t, unsigned int gc[9][2]){
-	unsigned int h=0;		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ğŠi”[‚·‚é•Ï”
-	int i,k;				//ƒ‹[ƒvƒJƒEƒ“ƒ^
+	unsigned int h=0;		//ãƒãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+	int i,k;				//ãƒ«ãƒ¼ãƒ—ã‚«ã‚¦ãƒ³ã‚¿
 	
 	for(i=0;i<3;i++) for(k=0;k<3;k++){
 		if(t->v[i][k]==0) continue;
 		h+=(unsigned int)(abs((int)(i-gc[t->v[i][k]][0]))+abs((int)(k-gc[t->v[i][k]][1])));
 	}
 
-	//‚±‚Ìƒ‹[ƒg‚ğ‘I‘ğ‚µ‚½ê‡‚Ì”­Œ©“IŠÖ”‚Ì’l‚ğŒvZ
+	//ã“ã®ãƒ«ãƒ¼ãƒˆã‚’é¸æŠã—ãŸå ´åˆã®ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã‚’è¨ˆç®—
 	t->f=t->g+h;
         
 	return 0;
 }
 
-//ƒ†[ƒU‚É“ü—Í‚³‚ê‚½ƒpƒYƒ‹ó‘Ô‚©‚çˆø”‚É“ü—Í‚³‚ê‚½ƒm[ƒh‚Ìó‘Ô‚Ü‚Å‚ÌˆÚ“®•ûŒü‚ğŒvZ‚·‚éŠÖ”
-//ˆø”	:	ŒvZ‚µ‚½‚¢ƒm[ƒh,ƒ†[ƒU‚©‚ç“ü—Í‚³‚ê‚½ƒpƒYƒ‹‚Ì”z’u
+//ãƒ¦ãƒ¼ã‚¶ã«å…¥åŠ›ã•ã‚ŒãŸãƒ‘ã‚ºãƒ«çŠ¶æ…‹ã‹ã‚‰å¼•æ•°ã«å…¥åŠ›ã•ã‚ŒãŸãƒãƒ¼ãƒ‰ã®çŠ¶æ…‹ã¾ã§ã®ç§»å‹•æ–¹å‘ã‚’è¨ˆç®—ã™ã‚‹é–¢æ•°
+//å¼•æ•°	:	è¨ˆç®—ã—ãŸã„ãƒãƒ¼ãƒ‰,ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰å…¥åŠ›ã•ã‚ŒãŸãƒ‘ã‚ºãƒ«ã®é…ç½®
 int PrintGoalRoot(Tree* t){
-	FILE *fp;			//o—Íƒtƒ@ƒCƒ‹ì¬—p•Ï”
-	Tree *p;			//ŒvZ—p‚Ìƒ|ƒCƒ“ƒ^
-	unsigned int i;    	//ƒ‹[ƒv—pƒJƒEƒ“ƒ^
-	unsigned int *root;	//–Ú•Wó‘Ô‚Ü‚Å‚Ìƒ‹[ƒg‚ğŠi”[‚·‚é•Ï”
+	FILE *fp;			//å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆç”¨å¤‰æ•°
+	Tree *p;			//è¨ˆç®—ç”¨ã®ãƒã‚¤ãƒ³ã‚¿
+	unsigned int i;    	//ãƒ«ãƒ¼ãƒ—ç”¨ã‚«ã‚¦ãƒ³ã‚¿
+	unsigned int *root;	//ç›®æ¨™çŠ¶æ…‹ã¾ã§ã®ãƒ«ãƒ¼ãƒˆã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
 	
 	p=t;
 	
-      	//ƒ‹[ƒg—p‚Ìƒƒ‚ƒŠ‚ğŠm•Û
+      	//ãƒ«ãƒ¼ãƒˆç”¨ã®ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
        	if(NULL==(root=(unsigned int*)malloc( (sizeof(unsigned int)*( ((size_t)t->g) +10 )) ))){
 		perror("malloc");
 		return -1;
 	}
 	
-	//ƒ‹[ƒgî•ñ‚ğroot”z—ñ‚ÉŠi”[‚·‚é
+	//ãƒ«ãƒ¼ãƒˆæƒ…å ±ã‚’rooté…åˆ—ã«æ ¼ç´ã™ã‚‹
 	for(i=t->g;i>0;i--){
 		if(p->before_type!=4) root[i-1]=p->before_type;
 		if(p->before!=NULL) p=p->before;
 	}
 		
-       	//o—Í—pƒtƒ@ƒCƒ‹‚ğì¬
+       	//å‡ºåŠ›ç”¨ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆ
 	if(NULL==(fp=fopen("start_goal.txt","w+"))){
 		perror("fopen");
 		return -1;
 	}	
 	
 	for(i=0;i<t->g;i++){
-		//ƒtƒ@ƒCƒ‹‚Éo—Í
+		//ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›
 		fprintf(fp,"%u %u %u\n",p->v[0][0],p->v[0][1],p->v[0][2]);
 		fprintf(fp,"%u %u %u\n",p->v[1][0],p->v[1][1],p->v[1][2]);
 		fprintf(fp,"%u %u %u\n",p->v[2][0],p->v[2][1],p->v[2][2]);
 		fprintf(fp,"f = %u\n\n",p->f);
 		
-		//Ÿ‚ÉˆÚ“®
+		//æ¬¡ã«ç§»å‹•
 		if(p->p[root[i]]!=NULL) p=p->p[root[i]];
 	}
 	
@@ -309,24 +309,24 @@ int PrintGoalRoot(Tree* t){
 	return 0;
 }
 
-//ƒŠƒXƒg‚©‚ç¶‰Eã‰º‚É“®‚©‚µ‚½ê‡‚ÌƒŠƒXƒg‚ğì¬
-//ˆø”	:	ƒ`ƒFƒCƒ“Œ³‚ÌƒŠƒXƒg
+//ãƒªã‚¹ãƒˆã‹ã‚‰å·¦å³ä¸Šä¸‹ã«å‹•ã‹ã—ãŸå ´åˆã®ãƒªã‚¹ãƒˆã‚’ä½œæˆ
+//å¼•æ•°	:	ãƒã‚§ã‚¤ãƒ³å…ƒã®ãƒªã‚¹ãƒˆ
 int CreateTree(Tree* now){
-	unsigned int p,i,k;		//ƒ‹[ƒvƒJƒEƒ“ƒ^
-	Tree* chain;			//Šm•Û‚µ‚½•Ï”‚ğŠi”[‚·‚éƒ|ƒCƒ“ƒ^
-	unsigned int ret;		//ŠÖ”‚Ì–ß‚è’l‚ğó‚¯æ‚é•Ï”
+	unsigned int p,i,k;		//ãƒ«ãƒ¼ãƒ—ã‚«ã‚¦ãƒ³ã‚¿
+	Tree* chain;			//ç¢ºä¿ã—ãŸå¤‰æ•°ã‚’æ ¼ç´ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿
+	unsigned int ret;		//é–¢æ•°ã®æˆ»ã‚Šå€¤ã‚’å—ã‘å–ã‚‹å¤‰æ•°
 
 	for(p=0;p<4;p++){
-		//V‚µ‚¢ƒm[ƒh‚ğì¬
+		//æ–°ã—ã„ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
 		if(NULL==(chain=(Tree*)malloc(sizeof(Tree)))){
 			perror("malloc");
 			return -1;
 		}
 		
-		//‹ó”’‚ÌˆÚ“®æ‚Ì„’è
+		//ç©ºç™½ã®ç§»å‹•å…ˆã®æ¨å®š
 		switch(p){
 		case 0:
-			//¶‚ÉˆÚ“®‚Å‚«‚é‚©Šm”F
+			//å·¦ã«ç§»å‹•ã§ãã‚‹ã‹ç¢ºèª
 			if(now->x==0){
 				now->p[p]=NULL;
 				free(chain);
@@ -334,7 +334,7 @@ int CreateTree(Tree* now){
 			}
 			break;
 		case 1:
-			//‰E‚ÉˆÚ“®‚Å‚«‚é‚©Šm”F
+			//å³ã«ç§»å‹•ã§ãã‚‹ã‹ç¢ºèª
 			if((now->x+1)>2){
 				now->p[p]=NULL;
 				free(chain);
@@ -342,7 +342,7 @@ int CreateTree(Tree* now){
 			}
 			break;
 		case 2:
-			//ã‚ÉˆÚ“®‚Å‚«‚é‚©Šm”F
+			//ä¸Šã«ç§»å‹•ã§ãã‚‹ã‹ç¢ºèª
 			if(now->y==0){
 				now->p[p]=NULL;
 				free(chain);
@@ -350,7 +350,7 @@ int CreateTree(Tree* now){
 			}
 			break;
 		case 3:
-			//‰º‚ÉˆÚ“®‚Å‚«‚é‚©Šm”F
+			//ä¸‹ã«ç§»å‹•ã§ãã‚‹ã‹ç¢ºèª
 			if((now->y+1)>2){
 				now->p[p]=NULL;
 				free(chain);
@@ -364,7 +364,7 @@ int CreateTree(Tree* now){
 			break;
 		}
 
-		//•Ï”‚Ì‰Šú‰»
+		//å¤‰æ•°ã®åˆæœŸåŒ–
 		chain->before_type=p;
 		chain->g=now->g+1;
 		chain->before=now;
@@ -372,15 +372,15 @@ int CreateTree(Tree* now){
 		chain->y=now->y;
 		for(i=0;i<4;i++) chain->p[i]=NULL;
 
-		//ƒm[ƒh‚ÌƒpƒYƒ‹‚ğ•ÏŒ`
+		//ãƒãƒ¼ãƒ‰ã®ãƒ‘ã‚ºãƒ«ã‚’å¤‰å½¢
 		for(i=0;i<3;i++) for(k=0;k<3;k++) chain->v[i][k]=now->v[i][k];
-		//Memo : MoveToŠÖ”‚Ì’†‚Åx,yÀ•W‚ÍˆÚ“®‚³‚ê‚é
+		//Memo : MoveToé–¢æ•°ã®ä¸­ã§x,yåº§æ¨™ã¯ç§»å‹•ã•ã‚Œã‚‹
 		if(0>MoveTo(chain->v,&(chain->x),&(chain->y),p)){
 			perror("MoveTo");
 			return -3;
 		}
 
-		//CloseList‚É‘¶İ‚·‚éê‡‚É‚ÍNULL‚É‚·‚é
+		//CloseListã«å­˜åœ¨ã™ã‚‹å ´åˆã«ã¯NULLã«ã™ã‚‹
 		if(1==(ret=CloseList(chain,1))){
 			free(chain);
 			chain=NULL;
@@ -391,30 +391,30 @@ int CreateTree(Tree* now){
 		}
 
 
-		//ƒŠƒXƒg“¯m‚ğ‚Â‚È‚°‚é
+		//ãƒªã‚¹ãƒˆåŒå£«ã‚’ã¤ãªã’ã‚‹
 		now->p[p]=chain;
 	}
 	
 	return 0;
 }
 
-//Open List‚ğ‘€ì‚·‚é‚½‚ß‚ÌŠÖ”
-//‚±‚ÌŠÖ”‚Í—áŠO“I‚É1‚ğ•Ô‚·B1‚ğ•Ô‚·ê‡‚Ído_type=1‚Å‚ ‚èAOpen List‚ª‚©‚ç‚Å‚ ‚Á‚½‚Å‚ ‚é
-//ˆø”	:	ƒpƒYƒ‹‚Ìó‘Ô‚ğ¦‚·ƒm[ƒh‚Ì\‘¢‘Ìƒ|ƒCƒ“ƒ^,‚±‚ÌŠÖ”‚Ì“®ì‚ğŒˆ‚ß‚é•Ï”(0:V‚µ‚¢ƒm[ƒh‚ğ’Ç‰Á 1:ƒŠƒXƒg“à‚©‚ç”­Œ©“IŠÖ”‚Ì’l‚ªÅ‚à’á‚¢‚à‚Ì‚ğt‚ÉŠi”[‚·‚é 2:ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é)
+//Open Listã‚’æ“ä½œã™ã‚‹ãŸã‚ã®é–¢æ•°
+//ã“ã®é–¢æ•°ã¯ä¾‹å¤–çš„ã«1ã‚’è¿”ã™ã€‚1ã‚’è¿”ã™å ´åˆã¯do_type=1ã§ã‚ã‚Šã€Open ListãŒã‹ã‚‰ã§ã‚ã£ãŸæ™‚ã§ã‚ã‚‹
+//å¼•æ•°	:	ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’ç¤ºã™ãƒãƒ¼ãƒ‰ã®æ§‹é€ ä½“ãƒã‚¤ãƒ³ã‚¿,ã“ã®é–¢æ•°ã®å‹•ä½œã‚’æ±ºã‚ã‚‹å¤‰æ•°(0:æ–°ã—ã„ãƒãƒ¼ãƒ‰ã‚’è¿½åŠ  1:ãƒªã‚¹ãƒˆå†…ã‹ã‚‰ç™ºè¦‹çš„é–¢æ•°ã®å€¤ãŒæœ€ã‚‚ä½ã„ã‚‚ã®ã‚’tã«æ ¼ç´ã™ã‚‹ 2:ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾ã™ã‚‹)
 int OpenList(Tree** t,unsigned char do_type){
-	static List* head=NULL;				//\‘¢‘ÌƒŠƒXƒg‚Ìæ“ª‚ğ¦‚·ƒ|ƒCƒ“ƒ^
-	List *p,*keep;	       				//Šeí‘€ì‚É—˜—p‚·‚éƒ|ƒCƒ“ƒ^
-	unsigned int i;	       				//ƒ‹[ƒv—pƒJƒEƒ“ƒ^
-	int found_flag;					//‚·‚Å‚É‘}“ü‚¸‚İ‚©‚ğ”»’f‚·‚éƒtƒ‰ƒO
+	static List* head=NULL;				//æ§‹é€ ä½“ãƒªã‚¹ãƒˆã®å…ˆé ­ã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿
+	List *p,*keep;	       				//å„ç¨®æ“ä½œã«åˆ©ç”¨ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿
+	unsigned int i;	       				//ãƒ«ãƒ¼ãƒ—ç”¨ã‚«ã‚¦ãƒ³ã‚¿
+	int found_flag;					//ã™ã§ã«æŒ¿å…¥ãšã¿ã‹ã‚’åˆ¤æ–­ã™ã‚‹ãƒ•ãƒ©ã‚°
 
-	//Open List‚É‰½‚à“ü‚Á‚Ä‚¢‚È‚¢ê‡Aì¬
+	//Open Listã«ä½•ã‚‚å…¥ã£ã¦ã„ãªã„å ´åˆã€ä½œæˆ
 	if(head==NULL){
-		//ƒƒ‚ƒŠŠm•Û
+		//ãƒ¡ãƒ¢ãƒªç¢ºä¿
 		if(NULL==(head=(List*)malloc(sizeof(List)))){
 			perror("malloc");
 			return -1;
 		}
-		//ì¬‚µ‚½•Ï”‚Ì‰Šú‰»
+		//ä½œæˆã—ãŸå¤‰æ•°ã®åˆæœŸåŒ–
 		head->next=NULL;
 		head->tree=NULL;
 	}
@@ -422,7 +422,7 @@ int OpenList(Tree** t,unsigned char do_type){
 	switch(do_type){
 	case 0:
 		for(i=0;i<4;i++){
-			//ƒGƒ‰[ˆ—
+			//ã‚¨ãƒ©ãƒ¼å‡¦ç†
 			if((*t)->p[i]==NULL) continue;
 			
 			if(head->tree==NULL){
@@ -430,91 +430,91 @@ int OpenList(Tree** t,unsigned char do_type){
 				continue;
 			}
 			
-			//•Ï”‚Ì‰Šú‰»
+			//å¤‰æ•°ã®åˆæœŸåŒ–
 			p=head;
 			keep=NULL;
 			found_flag=1;
 	
-			//üŒ`’Tõ‚Å‚Ç‚Ì‡ˆÊ‚É‘}“ü‚·‚é‚©‚ğŒˆ‚ß‚é
+			//ç·šå½¢æ¢ç´¢ã§ã©ã®é †ä½ã«æŒ¿å…¥ã™ã‚‹ã‹ã‚’æ±ºã‚ã‚‹
 			while(1){
-				//“ü‚éˆÊ’u‚ª‚ ‚é‚©‚ğ”äŠr
+				//å…¥ã‚‹ä½ç½®ãŒã‚ã‚‹ã‹ã‚’æ¯”è¼ƒ
 				if((p->tree->f) >= ((*t)->p[i]->f)){
-					//”­Œ©“IŠÖ”‚Ì’l‚ª“¯‚¶ê‡Ag‚Ì’l‚ª‘Šè‚æ‚è‚à‘å‚«‚¢‚Ì‚Å‚ ‚ê‚ÎŸ‚Ìƒ‹[ƒv‚ÉˆÚ“®‚·‚é
+					//ç™ºè¦‹çš„é–¢æ•°ã®å€¤ãŒåŒã˜å ´åˆã€gã®å€¤ãŒç›¸æ‰‹ã‚ˆã‚Šã‚‚å¤§ãã„ã®ã§ã‚ã‚Œã°æ¬¡ã®ãƒ«ãƒ¼ãƒ—ã«ç§»å‹•ã™ã‚‹
 					if((p->tree->f) == ((*t)->p[i]->f) && (p->tree->g) < ((*t)->p[i]->g)){
-						//‚±‚ÌƒŠƒXƒg‚ª––’[‚©‚ğŠm”F
+						//ã“ã®ãƒªã‚¹ãƒˆãŒæœ«ç«¯ã‹ã‚’ç¢ºèª
 						if(p->next==NULL){
-							//“ü‚éˆÊ’u‚ª‘¶İ‚µ‚È‚©‚Á‚½ê‡‚ÍÅŒã”ö‚É’Ç‰Á‚·‚é
+							//å…¥ã‚‹ä½ç½®ãŒå­˜åœ¨ã—ãªã‹ã£ãŸå ´åˆã¯æœ€å¾Œå°¾ã«è¿½åŠ ã™ã‚‹
 					
-							//ƒƒ‚ƒŠ‚ğŠm•Û
+							//ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 							if(NULL==(p->next=(List*)malloc(sizeof(List)))){
 								perror("malloc");
 								return -1;
 							}
-							//‰Šú‰»
+							//åˆæœŸåŒ–
 							p->next->next=NULL;
-							//‘}“ü
+							//æŒ¿å…¥
 							p->next->tree=(*t)->p[i];
 
 							break;
 						}
 						
-						//Ÿ‚ÌƒŠƒXƒg‚Éi‚Ş
+						//æ¬¡ã®ãƒªã‚¹ãƒˆã«é€²ã‚€
 						keep=p;
 						p=p->next;
 						continue;
 					}
 											
-					//Open List“à‚Å”­Œ©“IŠÖ”‚Ì’l‚ªÅ‚à’á‚¢ê‡‚Ìˆ—
+					//Open Listå†…ã§ç™ºè¦‹çš„é–¢æ•°ã®å€¤ãŒæœ€ã‚‚ä½ã„å ´åˆã®å‡¦ç†
 					if(keep==NULL){
-						//ƒƒ‚ƒŠ‚ğŠm•Û
+						//ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 						if(NULL==(keep=(List*)malloc(sizeof(List)))){
 							perror("malloc");
 							return -1;
 						}
-						//‘}“ü
+						//æŒ¿å…¥
 						keep->next=p;
-						//ƒm[ƒh‚Æ•R‚Ã‚¯
+						//ãƒãƒ¼ãƒ‰ã¨ç´ã¥ã‘
 						keep->tree=(*t)->p[i];
-						//head‚ÌˆÚ“®
+						//headã®ç§»å‹•
 						head=keep;
-						//ƒtƒ‰ƒO‚ğ‰º‚°‚é
+						//ãƒ•ãƒ©ã‚°ã‚’ä¸‹ã’ã‚‹
 						found_flag=0;
 						break;
 					}
 					
-					//ƒƒ‚ƒŠ‚ğŠm•Û
+					//ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 					if(NULL==(keep->next=(List*)malloc(sizeof(List)))){
 						perror("malloc");
 						return -1;
 					}
-					//‘}“ü
+					//æŒ¿å…¥
 					keep->next->next=p;
-					//ƒm[ƒh‚Æ•R‚Ã‚¯
+					//ãƒãƒ¼ãƒ‰ã¨ç´ã¥ã‘
 					keep->next->tree=(*t)->p[i];
-					//ƒtƒ‰ƒO‚ğ‰ğœ‚·‚é
+					//ãƒ•ãƒ©ã‚°ã‚’è§£é™¤ã™ã‚‹
 					found_flag=0;
 
 					break;
 				}
 
-				//‚±‚ÌƒŠƒXƒg‚ª––’[‚©‚ğŠm”F
+				//ã“ã®ãƒªã‚¹ãƒˆãŒæœ«ç«¯ã‹ã‚’ç¢ºèª
 				if(p->next==NULL){
-					//“ü‚éˆÊ’u‚ª‘¶İ‚µ‚È‚©‚Á‚½ê‡‚ÍÅŒã”ö‚É’Ç‰Á‚·‚é
+					//å…¥ã‚‹ä½ç½®ãŒå­˜åœ¨ã—ãªã‹ã£ãŸå ´åˆã¯æœ€å¾Œå°¾ã«è¿½åŠ ã™ã‚‹
 					
-					//ƒƒ‚ƒŠ‚ğŠm•Û
+					//ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 					if(NULL==(p->next=(List*)malloc(sizeof(List)))){
 						perror("malloc");
 						return -1;
 					}
-					//‰Šú‰»
+					//åˆæœŸåŒ–
 					p->next->next=NULL;
-					//‘}“ü
+					//æŒ¿å…¥
 					p->next->tree=(*t)->p[i];
 
 					break;
 				}
 				
-				//Ÿ‚ÌƒŠƒXƒg‚Éi‚Ş
+				//æ¬¡ã®ãƒªã‚¹ãƒˆã«é€²ã‚€
 				keep=p;
 				p=p->next;
 			}
@@ -523,27 +523,27 @@ int OpenList(Tree** t,unsigned char do_type){
 		break;
 
 	case 1:
-		//ƒGƒ‰[ˆ—
+		//ã‚¨ãƒ©ãƒ¼å‡¦ç†
 		if(head->tree==NULL) return 1;
 
-		//ˆø”‚Ìƒ|ƒCƒ“ƒ^‚ÉÅ‚à”­Œ©“IŠÖ”‚Ì’l‚ª¬‚³‚¢ƒm[ƒh‚ğ“n‚·
+		//å¼•æ•°ã®ãƒã‚¤ãƒ³ã‚¿ã«æœ€ã‚‚ç™ºè¦‹çš„é–¢æ•°ã®å€¤ãŒå°ã•ã„ãƒãƒ¼ãƒ‰ã‚’æ¸¡ã™
 		*t=head->tree;
 
-		//Open List‚©‚çÁ‚·‚à‚Ì‚ğClose List‚É’Ç‰Á
+		//Open Listã‹ã‚‰æ¶ˆã™ã‚‚ã®ã‚’Close Listã«è¿½åŠ 
 		CloseList(head->tree,0);
 
-		//ƒGƒ‰[ˆ—
+		//ã‚¨ãƒ©ãƒ¼å‡¦ç†
 		if(head->next==NULL){
 			head->tree=NULL;
 			return 0;
 		}
 
-		//ˆê‚ÂƒŠƒXƒg‚ğ‹l‚ß‚é
+		//ä¸€ã¤ãƒªã‚¹ãƒˆã‚’è©°ã‚ã‚‹
 		head->tree=head->next->tree;
 		keep=head;
 		head=head->next;
 
-		//g—p‚µ‚È‚­‚È‚Á‚½ƒŠƒXƒg‚ğƒƒ‚ƒŠŠJ•ú
+		//ä½¿ç”¨ã—ãªããªã£ãŸãƒªã‚¹ãƒˆã‚’ãƒ¡ãƒ¢ãƒªé–‹æ”¾
 		free(keep);
 
 		break;
@@ -551,15 +551,15 @@ int OpenList(Tree** t,unsigned char do_type){
 	case 2:
 	        if(head==NULL) break;
 		
-		//ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é‹@”\
+		//ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾ã™ã‚‹æ©Ÿèƒ½
 		keep=head->next;
 		p=head;
 		
 		while(1){
-			//ƒƒ‚ƒŠ‚ğ‰ğ•ú
+			//ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾
 			free(p);
 
-			//Ÿ‚ª‚È‚¢‚Ì‚È‚çI—¹
+			//æ¬¡ãŒãªã„ã®ãªã‚‰çµ‚äº†
 			if(keep==NULL) break;
 
                 	p=keep;
@@ -577,30 +577,30 @@ int OpenList(Tree** t,unsigned char do_type){
 	return 0;
 }
 
-//Close List‚ğ‘€ì‚·‚é‚½‚ß‚ÌŠÖ”
-//‚±‚ÌŠÖ”‚Í—áŠO“I‚É1‚ğ•Ô‚·B1‚ğ•Ô‚·ê‡‚Ído_type=1‚Å‚ ‚èAOpen List‚ª‚©‚ç‚Å‚ ‚Á‚½‚Å‚ ‚é
-//ˆø”	:	ƒpƒYƒ‹‚Ìó‘Ô‚ğ¦‚·ƒm[ƒh‚Ì\‘¢‘Ìƒ|ƒCƒ“ƒ^,‚±‚ÌŠÖ”‚Ì“®ì‚ğŒˆ‚ß‚é•Ï”(0:V‚µ‚¢ƒm[ƒh‚ğ’Ç‰Á 1:(*t)->v‚Éˆê’v‚·‚é‚à‚Ì‚ª‚ ‚é‚©‚ğŒŸõ‚·‚é 2:ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é)
+//Close Listã‚’æ“ä½œã™ã‚‹ãŸã‚ã®é–¢æ•°
+//ã“ã®é–¢æ•°ã¯ä¾‹å¤–çš„ã«1ã‚’è¿”ã™ã€‚1ã‚’è¿”ã™å ´åˆã¯do_type=1ã§ã‚ã‚Šã€Open ListãŒã‹ã‚‰ã§ã‚ã£ãŸæ™‚ã§ã‚ã‚‹
+//å¼•æ•°	:	ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã‚’ç¤ºã™ãƒãƒ¼ãƒ‰ã®æ§‹é€ ä½“ãƒã‚¤ãƒ³ã‚¿,ã“ã®é–¢æ•°ã®å‹•ä½œã‚’æ±ºã‚ã‚‹å¤‰æ•°(0:æ–°ã—ã„ãƒãƒ¼ãƒ‰ã‚’è¿½åŠ  1:(*t)->vã«ä¸€è‡´ã™ã‚‹ã‚‚ã®ãŒã‚ã‚‹ã‹ã‚’æ¤œç´¢ã™ã‚‹ 2:ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾ã™ã‚‹)
 int CloseList(Tree* t,unsigned char do_type){
-	static List* head=NULL;				//\‘¢‘ÌƒŠƒXƒg‚Ìæ“ª‚ğ¦‚·ƒ|ƒCƒ“ƒ^
-	List *p,*keep;						//Šeí‘€ì‚É—˜—p‚·‚éƒ|ƒCƒ“ƒ^
-	unsigned int i,k;					//ƒ‹[ƒv—pƒJƒEƒ“ƒ^
-	unsigned int end_counter=0;			//ƒpƒYƒ‹‚Ìó‘Ô‚Ìˆê’v‹ï‡‚ğŒv‘ª‚·‚é‚½‚ß‚ÌƒJƒEƒ“ƒ^
+	static List* head=NULL;				//æ§‹é€ ä½“ãƒªã‚¹ãƒˆã®å…ˆé ­ã‚’ç¤ºã™ãƒã‚¤ãƒ³ã‚¿
+	List *p,*keep;						//å„ç¨®æ“ä½œã«åˆ©ç”¨ã™ã‚‹ãƒã‚¤ãƒ³ã‚¿
+	unsigned int i,k;					//ãƒ«ãƒ¼ãƒ—ç”¨ã‚«ã‚¦ãƒ³ã‚¿
+	unsigned int end_counter=0;			//ãƒ‘ã‚ºãƒ«ã®çŠ¶æ…‹ã®ä¸€è‡´å…·åˆã‚’è¨ˆæ¸¬ã™ã‚‹ãŸã‚ã®ã‚«ã‚¦ãƒ³ã‚¿
 
-	//Open List‚É‰½‚à“ü‚Á‚Ä‚¢‚È‚¢ê‡Aì¬
+	//Open Listã«ä½•ã‚‚å…¥ã£ã¦ã„ãªã„å ´åˆã€ä½œæˆ
 	if(head==NULL){
-		//ƒƒ‚ƒŠŠm•Û
+		//ãƒ¡ãƒ¢ãƒªç¢ºä¿
 		if(NULL==(head=(List*)malloc(sizeof(List)))){
 			perror("malloc");
 			return -1;
 		}
-		//ì¬‚µ‚½•Ï”‚Ì‰Šú‰»
+		//ä½œæˆã—ãŸå¤‰æ•°ã®åˆæœŸåŒ–
 		head->next=NULL;
 		head->tree=NULL;
 	}
 
 	switch(do_type){
 	case 0:
-		//ƒGƒ‰[ˆ—
+		//ã‚¨ãƒ©ãƒ¼å‡¦ç†
 		if(t==NULL){
 			perror("t is NULL");
 			return -3;
@@ -611,25 +611,25 @@ int CloseList(Tree* t,unsigned char do_type){
 			break;
 		}
 
-		//•Ï”‚Ì‰Šú‰»
+		//å¤‰æ•°ã®åˆæœŸåŒ–
 		p=head;
 	
-		//Œ»İ‚ÌƒŠƒXƒg‚ÌÅŒã”ö‚É“’B‚·‚é
+		//ç¾åœ¨ã®ãƒªã‚¹ãƒˆã®æœ€å¾Œå°¾ã«åˆ°é”ã™ã‚‹
 		while(1){
 			if(p->next==NULL) break;
 			p=p->next;
 		}
 
-		//ƒƒ‚ƒŠ‚ğŠm•Û
+		//ãƒ¡ãƒ¢ãƒªã‚’ç¢ºä¿
 		if(NULL==(p->next=(List*)malloc(sizeof(List)))){
 			perror("malloc");
 			return -1;
 		}
 
-		//V‚µ‚­ƒŠƒXƒg‚É’l‚ğ’Ç‰Á
+		//æ–°ã—ããƒªã‚¹ãƒˆã«å€¤ã‚’è¿½åŠ 
 		p->next->tree=t;
 
-		//V‚µ‚­Šm•Û‚µ‚½’l‚Ì‰Šú‰»
+		//æ–°ã—ãç¢ºä¿ã—ãŸå€¤ã®åˆæœŸåŒ–
 		p->next->next=NULL;
 
 		break;
@@ -637,15 +637,15 @@ int CloseList(Tree* t,unsigned char do_type){
 	case 1:
 		if(head->tree==NULL) return 0;
 
-		//‰Šú‰»
+		//åˆæœŸåŒ–
 		p=head;
 
-		//üŒ`’Tõ‚Åˆê’v‚·‚é‚à‚Ì‚ª‚ ‚é‚©‚ğŠm”F
+		//ç·šå½¢æ¢ç´¢ã§ä¸€è‡´ã™ã‚‹ã‚‚ã®ãŒã‚ã‚‹ã‹ã‚’ç¢ºèª
 		while(1){
 		        end_counter=0;
 			if(p==NULL) break;
 			
-			//ƒpƒYƒ‹ó‘Ô‚Ì”äŠr
+			//ãƒ‘ã‚ºãƒ«çŠ¶æ…‹ã®æ¯”è¼ƒ
 			for(i=0;i<3;i++) for(k=0;k<3;k++) if(t->v[i][k]==p->tree->v[i][k]) end_counter++;
 
 			if(end_counter==9) return 1;
@@ -659,15 +659,15 @@ int CloseList(Tree* t,unsigned char do_type){
 	case 2:
 	        if(head==NULL) break;
 		
-		//ƒƒ‚ƒŠ‚ğ‰ğ•ú‚·‚é‹@”\
+		//ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾ã™ã‚‹æ©Ÿèƒ½
 		keep=head->next;
 		p=head;
 
 		while(1){
-			//ƒƒ‚ƒŠ‚ğ‰ğ•ú
+			//ãƒ¡ãƒ¢ãƒªã‚’è§£æ”¾
 			free(p);
 
-			//Ÿ‚ª‚È‚¢‚Ì‚È‚çI—¹
+			//æ¬¡ãŒãªã„ã®ãªã‚‰çµ‚äº†
 			if(keep==NULL) break;
 
 			p=keep;
@@ -685,14 +685,14 @@ int CloseList(Tree* t,unsigned char do_type){
 	return 0;
 }
 
-//ƒpƒYƒ‹‚Ì‹ó”’‚ğw’è‚µ‚½•ûŒü‚É“®‚©‚·ŠÖ”
-//ˆø”	:	“®‚©‚·ƒpƒYƒ‹,‹ó”’‚ÌxÀ•W,‹ó”’‚ÌyÀ•W,ˆÚ“®‚³‚¹‚é•ûŒü(0:¶ 1:‰E 2:ã 3:‰º)
+//ãƒ‘ã‚ºãƒ«ã®ç©ºç™½ã‚’æŒ‡å®šã—ãŸæ–¹å‘ã«å‹•ã‹ã™é–¢æ•°
+//å¼•æ•°	:	å‹•ã‹ã™ãƒ‘ã‚ºãƒ«,ç©ºç™½ã®xåº§æ¨™,ç©ºç™½ã®yåº§æ¨™,ç§»å‹•ã•ã›ã‚‹æ–¹å‘(0:å·¦ 1:å³ 2:ä¸Š 3:ä¸‹)
 int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int move){
-	unsigned int keep;	//ŒvZ‚Ì“r’†Œ‹‰Ê‚ğŠi”[‚·‚é•Ï”
+	unsigned int keep;	//è¨ˆç®—ã®é€”ä¸­çµæœã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
 
 	switch(move){
 	case 0:
-		//¶‚ÉˆÚ“®
+		//å·¦ã«ç§»å‹•
 		keep=v[*x][*y];
 
 		if((*x)==0){
@@ -707,7 +707,7 @@ int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int mo
 		break;
 
 	case 1:
-		//‰E‚ÉˆÚ“®
+		//å³ã«ç§»å‹•
 		keep=v[*x][*y];
 
 		if((*x)+1>2){
@@ -722,7 +722,7 @@ int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int mo
 		break;
 
 	case 2:
-		//ã‚ÉˆÚ“®
+		//ä¸Šã«ç§»å‹•
 		keep=v[*x][*y];
 
 		if((*y)==0){
@@ -737,7 +737,7 @@ int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int mo
 		break;
 
 	case 3:
-		//¶‚ÉˆÚ“®
+		//å·¦ã«ç§»å‹•
 		keep=v[*x][*y];
 
 		if((*y)+1>2){
@@ -759,10 +759,10 @@ int MoveTo(unsigned int v[3][3],unsigned int* x,unsigned int* y, unsigned int mo
 	return 0;
 }
 
-//ƒŠƒXƒg‚Ì‰ğ•ú‚ğs‚¤ŠÖ”
-//ˆø”	:	ƒŠƒXƒg‚Ìƒ‹[ƒg
+//ãƒªã‚¹ãƒˆã®è§£æ”¾ã‚’è¡Œã†é–¢æ•°
+//å¼•æ•°	:	ãƒªã‚¹ãƒˆã®ãƒ«ãƒ¼ãƒˆ
 int Close(Tree* head){
-	unsigned int i;	//ƒ‹[ƒv—pƒJƒEƒ“ƒ^
+	unsigned int i;	//ãƒ«ãƒ¼ãƒ—ç”¨ã‚«ã‚¦ãƒ³ã‚¿
 
 	for(i=0;i<4;i++) if(head->p[i]!=NULL) Close(head->p[i]);
 

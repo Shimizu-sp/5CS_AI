@@ -1,4 +1,4 @@
-
+ï»¿
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
@@ -7,44 +7,44 @@
 int input[3][3]={{8,1,5},{2,0,4},{6,3,7}};
 int answer[3][3]={{1,2,3},{4,5,6},{7,8,0}};
 
-//ƒpƒYƒ‹ƒf[ƒ^
+//ãƒ‘ã‚ºãƒ«ãƒ‡ãƒ¼ã‚¿
 typedef struct _Pazzle{
-	int data[3][3];			//ƒpƒYƒ‹‚Ìƒf[ƒ^
-	int g;					//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜a
-	int f;					//’Tõ–Ø‚ÌŠK‘w
-	int cost;				//”­Œ©“IŠÖ”‚Ì’l
-	unsigned long int ID;	//ƒNƒ[ƒYƒŠƒXƒg‚ÉŽg‚¤ID ƒpƒYƒ‹‚Ìƒf[ƒ^‚ðunsigned long intŒ^‚É‚Ü‚Æ‚ß‚½‚à‚Ì
+	int data[3][3];			//ãƒ‘ã‚ºãƒ«ã®ãƒ‡ãƒ¼ã‚¿
+	int g;					//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’Œ
+	int f;					//æŽ¢ç´¢æœ¨ã®éšŽå±¤
+	int cost;				//ç™ºè¦‹çš„é–¢æ•°ã®å€¤
+	unsigned long int ID;	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã«ä½¿ã†ID ãƒ‘ã‚ºãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã‚’unsigned long intåž‹ã«ã¾ã¨ã‚ãŸã‚‚ã®
 
-	//’Tõ–Ø‚ÌŽq‚Ìƒ|ƒCƒ“ƒ^
+	//æŽ¢ç´¢æœ¨ã®å­ã®ãƒã‚¤ãƒ³ã‚¿
 	struct _Pazzle *t_next[4];
-	//’Tõ–Ø‚Ìe‚Ìƒ|ƒCƒ“ƒ^
+	//æŽ¢ç´¢æœ¨ã®è¦ªã®ãƒã‚¤ãƒ³ã‚¿
 	struct _Pazzle *t_prev;
 
-	//"’TõI—¹Œã"‚ÉŒ©‚Â‚©‚Á‚½‰ð‚ð’H‚é‚½‚ß‚Ìƒ|ƒCƒ“ƒ^
-	//’Tõ’†‚ÍNULL
+	//"æŽ¢ç´¢çµ‚äº†å¾Œ"ã«è¦‹ã¤ã‹ã£ãŸè§£ã‚’è¾¿ã‚‹ãŸã‚ã®ãƒã‚¤ãƒ³ã‚¿
+	//æŽ¢ç´¢ä¸­ã¯NULL
 	struct _Pazzle *ans;
 
 }Pazzle;
 
-//OpenƒŠƒXƒg
+//Openãƒªã‚¹ãƒˆ
 typedef struct _OpenList {
 
-	//‘ÎÛ‚ÌƒpƒYƒ‹ƒf[ƒ^
+	//å¯¾è±¡ã®ãƒ‘ã‚ºãƒ«ãƒ‡ãƒ¼ã‚¿
 	struct _Pazzle *pzl;
 
-	//‘o•ûŒüƒŠƒXƒg‚Ì‚½‚ß‚Ìƒ|ƒCƒ“ƒ^
+	//åŒæ–¹å‘ãƒªã‚¹ãƒˆã®ãŸã‚ã®ãƒã‚¤ãƒ³ã‚¿
 	struct _OpenList *next;
 	struct _OpenList *prev;
 }OpenList;
 
 
-//CloseƒŠƒXƒg
+//Closeãƒªã‚¹ãƒˆ
 typedef struct _ClozeList{
 
-	//ƒpƒYƒ‹‚Ìƒf[ƒ^‚ðunsigned long intŒ^‚É‚Ü‚Æ‚ß‚½‚à‚Ì
+	//ãƒ‘ã‚ºãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã‚’unsigned long intåž‹ã«ã¾ã¨ã‚ãŸã‚‚ã®
 	unsigned long int ID;
 
-	//’P•ûŒüƒŠƒXƒg‚Ì‚½‚ß‚Ìƒ|ƒCƒ“ƒ^
+	//å˜æ–¹å‘ãƒªã‚¹ãƒˆã®ãŸã‚ã®ãƒã‚¤ãƒ³ã‚¿
 	struct _ClozeList *next;
 }CloseList;
 
@@ -66,31 +66,31 @@ int main(){
 	Pazzle *pazzle;
 	int i,n;
 
-	//ƒƒ‚ƒŠŠm•Û
+	//ãƒ¡ãƒ¢ãƒªç¢ºä¿
 	pazzle = (Pazzle*)malloc(sizeof(Pazzle));
 	if(pazzle == NULL) return -1;
 	
-	//‰ŠúÝ’è
-	//ƒpƒYƒ‹‚Ì‰Šúƒf[ƒ^‚ð“Ç‚Ýž‚Ý‘ã“ü
+	//åˆæœŸè¨­å®š
+	//ãƒ‘ã‚ºãƒ«ã®åˆæœŸãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿ä»£å…¥
 	pazzle->ID = 0;
 	for (i = 0; i < 3; i++) for (n = 0; n < 3; n++) {
 		pazzle->data[i][n] = input[i][n];
 		pazzle->ID += pow(10, (8 - (i*3 + n)))*input[i][n];
 	}
-	//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ðŒvŽZ‚µ‘ã“ü
+	//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—ã—ä»£å…¥
 	pazzle->g = Manhattan(pazzle->data);
-	//Œo˜HƒRƒXƒg(ŠK‘w”)‚Ì‰Šú’l‚ð‘ã“ü
+	//çµŒè·¯ã‚³ã‚¹ãƒˆ(éšŽå±¤æ•°)ã®åˆæœŸå€¤ã‚’ä»£å…¥
 	pazzle->f = 0;
-	//”­Œ©“IŠÖ”‚ðŒvŽZ‚µ‘ã“ü
+	//ç™ºè¦‹çš„é–¢æ•°ã‚’è¨ˆç®—ã—ä»£å…¥
 	pazzle->cost = pazzle->f + pazzle->g;
-	//ƒŠƒXƒg‚Ì‰ŠúÝ’è
+	//ãƒªã‚¹ãƒˆã®åˆæœŸè¨­å®š
 	for(i = 0; i < 4; i++) pazzle->t_next[i] = NULL;
 	pazzle->t_prev = NULL;
 
-	//’TõŠJŽn
+	//æŽ¢ç´¢é–‹å§‹
 	MainSearch(pazzle);
 
-	//ƒtƒ@ƒCƒ‹o—Í
+	//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
 	FileOutput(pazzle);
 
 	getchar();
@@ -98,68 +98,68 @@ int main(){
 	return 0;
 }
 
-//”­Œ©“IŠÖ”‚ð‹‚ß‚é
+//ç™ºè¦‹çš„é–¢æ•°ã‚’æ±‚ã‚ã‚‹
 int MainSearch(Pazzle *pazzle){
 
-	//ƒI[ƒvƒ“ƒŠƒXƒg
+	//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆ
 	OpenList *openL, *openL_now;
 
-	//ƒNƒ[ƒYƒŠƒXƒg‚Æ‚»‚Ìæ“ª
+	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã¨ãã®å…ˆé ­
 	CloseList *closeL, *closeL_start;
 	int i,n,m;
 	int count = 0;
 
-	//ƒI[ƒvƒ“ƒŠƒXƒgƒƒ‚ƒŠŠm•Û
+	//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆãƒ¡ãƒ¢ãƒªç¢ºä¿
 	openL = (OpenList*)malloc(sizeof(OpenList));
 	if (openL == NULL) return -1;
-	//ƒI[ƒvƒ“ƒŠƒXƒg‰Šú‰»
+	//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆåˆæœŸåŒ–
 	openL->prev = NULL;
 	openL->next = NULL;
 	openL->pzl = pazzle;
 
-	//ƒNƒ[ƒYƒŠƒXƒgƒƒ‚ƒŠŠm•Û
+	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆãƒ¡ãƒ¢ãƒªç¢ºä¿
 	closeL = (CloseList*)malloc(sizeof(CloseList));
 	if (closeL == NULL) return -1;
-	//ƒNƒ[ƒYƒŠƒXƒg‰Šú‰»
+	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆåˆæœŸåŒ–
 	closeL->ID = 0;
 	closeL->next = NULL;
 
-	//ƒNƒ[ƒYƒŠƒXƒg‚Ì‰Šú’n“_‚ð‹L‰¯
+	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã®åˆæœŸåœ°ç‚¹ã‚’è¨˜æ†¶
 	closeL_start = closeL;
 
-	//’Tõ‚ªI—¹‚·‚é‚Ü‚Åƒ‹[ƒv‚ðŒJ‚è•Ô‚·
+	//æŽ¢ç´¢ãŒçµ‚äº†ã™ã‚‹ã¾ã§ãƒ«ãƒ¼ãƒ—ã‚’ç¹°ã‚Šè¿”ã™
 	while (1){
 
 		count+=1;
 
-		//‘ÎÛ‚ÌŽqƒm[ƒhipazzle->t_next[]j‚Ì‰Šú‰»
+		//å¯¾è±¡ã®å­ãƒŽãƒ¼ãƒ‰ï¼ˆpazzle->t_next[]ï¼‰ã®åˆæœŸåŒ–
 		for (i = 0; i < 4; i++) {
-			//ƒƒ‚ƒŠŠm•Û
+			//ãƒ¡ãƒ¢ãƒªç¢ºä¿
 			pazzle->t_next[i] = (Pazzle*)malloc(sizeof(Pazzle));
 			if (pazzle->t_next[i] == NULL) return -1;
-			//ŠK‘w‚ÌXV
+			//éšŽå±¤ã®æ›´æ–°
 			pazzle->t_next[i]->f = pazzle->f + 1;
-			//e‚Ìƒf[ƒ^‚ðƒRƒs[
+			//è¦ªã®ãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼
 			for (n = 0; n < 3; n++) for (m = 0; m < 3; m++)
 				pazzle->t_next[i]->data[n][m] = pazzle->data[n][m];
-			//ƒRƒXƒg‚Ì‰Šú‰»
+			//ã‚³ã‚¹ãƒˆã®åˆæœŸåŒ–
 			pazzle->t_next[i]->cost = pazzle->cost;
-			//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‰Šú‰»
+			//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®åˆæœŸåŒ–
 			pazzle->t_next[i]->g = pazzle->g;
-			//ƒ|ƒCƒ“ƒ^‚Ì‰Šú‰»
+			//ãƒã‚¤ãƒ³ã‚¿ã®åˆæœŸåŒ–
 			for (n = 0; n < 4; n++) pazzle->t_next[i]->t_next[n] = NULL;
 			pazzle->t_next[i]->t_prev = pazzle;
 		}
 
-		//Šî€‚ÌƒpƒYƒ‹ƒf[ƒ^‚ð‹L‰¯
+		//åŸºæº–ã®ãƒ‘ã‚ºãƒ«ãƒ‡ãƒ¼ã‚¿ã‚’è¨˜æ†¶
 		openL_now = openL;
 		C_ListAdd(closeL, pazzle->ID);
 
-		//‹ó—“‚Ì“ü‚ê‘Ö‚¦‚ðs‚¤
+		//ç©ºæ¬„ã®å…¥ã‚Œæ›¿ãˆã‚’è¡Œã†
 		for (n = 0; n < 3; n++) for (m = 0; m < 3; m++){
-			//‹ó—“‚ÌˆÚ“®æ‚ª”ÍˆÍŠO‚¾‚Á‚½ê‡AƒRƒXƒg‚ð•‰”‚É‚·‚é(ƒtƒ‰ƒO‚Ì‘ã—p)
+			//ç©ºæ¬„ã®ç§»å‹•å…ˆãŒç¯„å›²å¤–ã ã£ãŸå ´åˆã€ã‚³ã‚¹ãƒˆã‚’è² æ•°ã«ã™ã‚‹(ãƒ•ãƒ©ã‚°ã®ä»£ç”¨)
 			if (pazzle->data[n][m] == 0){
-				//ã
+				//ä¸Š
 				if (n != 0){
 					pazzle->t_next[0]->data[n][m] = pazzle->t_next[0]->data[n - 1][m];
 					pazzle->t_next[0]->data[n - 1][m] = 0;
@@ -167,7 +167,7 @@ int MainSearch(Pazzle *pazzle){
 					pazzle->t_next[0]->t_prev = pazzle;
 				}
 				else pazzle->t_next[0]->cost = -1;
-				//¶
+				//å·¦
 				if (m != 0){
 					pazzle->t_next[1]->data[n][m] = pazzle->t_next[1]->data[n][m - 1];
 					pazzle->t_next[1]->data[n][m - 1] = 0;
@@ -175,7 +175,7 @@ int MainSearch(Pazzle *pazzle){
 					pazzle->t_next[1]->t_prev = pazzle;
 				}
 				else pazzle->t_next[1]->cost = -1;
-				//‰º
+				//ä¸‹
 				if (n != 2){
 					pazzle->t_next[2]->data[n][m] = pazzle->t_next[2]->data[n + 1][m];
 					pazzle->t_next[2]->data[n + 1][m] = 0;
@@ -183,7 +183,7 @@ int MainSearch(Pazzle *pazzle){
 					pazzle->t_next[2]->t_prev = pazzle;
 				}
 				else pazzle->t_next[2]->cost = -1;
-				//‰E
+				//å³
 				if (m != 2){
 					pazzle->t_next[3]->data[n][m] = pazzle->t_next[3]->data[n][m + 1];
 					pazzle->t_next[3]->data[n][m + 1] = 0;
@@ -194,21 +194,21 @@ int MainSearch(Pazzle *pazzle){
 			}
 		}
 
-		//‹ó—“‚ªˆÚ“®‚Å‚«‚½ê‡Aƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Æ”­Œ©“IŠÖ”‚ðŒvŽZ‚·‚é
+		//ç©ºæ¬„ãŒç§»å‹•ã§ããŸå ´åˆã€ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã¨ç™ºè¦‹çš„é–¢æ•°ã‚’è¨ˆç®—ã™ã‚‹
 		for (i = 0; i < 4; i++){
-			//‚±‚±‚Å‹ó—“‚ªˆÚ“®‚Å‚«‚½‚©”»’fAX‚ÉƒNƒ[ƒYƒŠƒXƒg“à‚É‘ÎÛ‚ÌID‚ª‘¶Ý‚µ‚È‚¢‚±‚Æ‚ðŠm”F
+			//ã“ã“ã§ç©ºæ¬„ãŒç§»å‹•ã§ããŸã‹åˆ¤æ–­ã€æ›´ã«ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆå†…ã«å¯¾è±¡ã®IDãŒå­˜åœ¨ã—ãªã„ã“ã¨ã‚’ç¢ºèª
 			if (pazzle->t_next[i]->cost != -1 && C_ListCheck(closeL_start, pazzle->t_next[i]->ID) == 0) {
-				//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜a‚ðŒvŽZ‚µAƒRƒXƒg‚ðŽZoA‚»‚ÌŒãƒI[ƒvƒ“ƒŠƒXƒg‚É‰Á‚¦‚é
+				//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’Œã‚’è¨ˆç®—ã—ã€ã‚³ã‚¹ãƒˆã‚’ç®—å‡ºã€ãã®å¾Œã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã«åŠ ãˆã‚‹
 				pazzle->t_next[i]->g = Manhattan(pazzle->t_next[i]->data);
 				pazzle->t_next[i]->cost = pazzle->t_next[i]->f + pazzle->t_next[i]->g;
 				O_ListAdd(openL, pazzle->t_next[i]);
 			}
 		}
 
-		//Œ»Ý‚ÌOpenList‚ð‹L˜^‚·‚é
+		//ç¾åœ¨ã®OpenListã‚’è¨˜éŒ²ã™ã‚‹
 		openL = openL_now;
 
-		//ƒ|ƒCƒ“ƒ^‚ÌˆÊ’u‚ª––’[‚Å‚È‚¢ê‡ƒŠƒXƒg‚ð‚Â‚È‚¬‚È‚¨‚·
+		//ãƒã‚¤ãƒ³ã‚¿ã®ä½ç½®ãŒæœ«ç«¯ã§ãªã„å ´åˆãƒªã‚¹ãƒˆã‚’ã¤ãªãŽãªãŠã™
 		if (openL->prev != NULL) {
 			openL->prev->next = openL->next;
 		}
@@ -216,46 +216,46 @@ int MainSearch(Pazzle *pazzle){
 			openL->next->prev = openL->prev;
 		}
 
-		//ŽŸ‚Ìƒ|ƒCƒ“ƒ^‚ÉˆÚ“®
+		//æ¬¡ã®ãƒã‚¤ãƒ³ã‚¿ã«ç§»å‹•
 		openL = openL->next;
 
-		//ƒI[ƒvƒ“ƒŠƒXƒg‚©‚çÁ‚·
+		//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã‹ã‚‰æ¶ˆã™
 		free(openL_now);
 
-		//ƒŠƒXƒg‚ðæ“ª‚É–ß‚·
+		//ãƒªã‚¹ãƒˆã‚’å…ˆé ­ã«æˆ»ã™
 		while (openL->prev != NULL) openL = openL->prev;
-		//ƒI[ƒvƒ“ƒŠƒXƒg‚Ì’†g•\Ž¦
+		//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã®ä¸­èº«è¡¨ç¤º
 		while (1) {
 			if (openL->next == NULL) break;
 			else openL = openL->next;
 		}
 
-		//ƒŠƒXƒg‚ðæ“ª‚É–ß‚·
+		//ãƒªã‚¹ãƒˆã‚’å…ˆé ­ã«æˆ»ã™
 		while (openL->prev != NULL) openL = openL->prev;
-		//ƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜a‚ª‚ª0‚É‚È‚Á‚½‚Æ‚«‚É’Tõ‚ðI—¹‚·‚é
+		//ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’ŒãŒãŒ0ã«ãªã£ãŸã¨ãã«æŽ¢ç´¢ã‚’çµ‚äº†ã™ã‚‹
 		if (openL->pzl->g == 0){
-			printf("’TõI—¹");
+			printf("æŽ¢ç´¢çµ‚äº†");
 			ShowPazzle(openL->pzl->data);
-			printf("ƒRƒXƒg%d ƒ}ƒ“ƒnƒbƒ^ƒ“%d ŠK‘w%d\n", openL->pzl->cost, openL->pzl->g, openL->pzl->f);
+			printf("ã‚³ã‚¹ãƒˆ%d ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³%d éšŽå±¤%d\n", openL->pzl->cost, openL->pzl->g, openL->pzl->f);
 			break;
 		}
-		//ƒI[ƒvƒ“ƒŠƒXƒg‚ð‚·‚×‚Ä’Tõ‚µ‚½‚Æ‚«
+		//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã‚’ã™ã¹ã¦æŽ¢ç´¢ã—ãŸã¨ã
 		if (openL->next == NULL) {
-			printf("’TõŽ¸”s ‰ð‚É‚½‚Ç‚è’…‚¯‚Ü‚¹‚ñ\n");
+			printf("æŽ¢ç´¢å¤±æ•— è§£ã«ãŸã©ã‚Šç€ã‘ã¾ã›ã‚“\n");
 			return -1;
 		}
 
-		//”­Œ©“IŠÖ”‚Ì’l‚ðo—Í
+		//ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã‚’å‡ºåŠ›
 		F_Output(pazzle->cost,count);
 
-		//ƒI[ƒvƒ“ƒŠƒXƒg‚©‚çŽŸ‚ÌƒpƒYƒ‹‚ð“Ç‚Ýž‚Þ
+		//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã‹ã‚‰æ¬¡ã®ãƒ‘ã‚ºãƒ«ã‚’èª­ã¿è¾¼ã‚€
 		pazzle = openL->pzl;
 
 	}
 
-	//’TõI—¹ŒãAe‚Ìƒm[ƒh‚ð‚½‚Ç‚Á‚ÄŽè‡‚ð‹L˜^‚·‚é
+	//æŽ¢ç´¢çµ‚äº†å¾Œã€è¦ªã®ãƒŽãƒ¼ãƒ‰ã‚’ãŸã©ã£ã¦æ‰‹é †ã‚’è¨˜éŒ²ã™ã‚‹
 	if (openL->pzl->g != 0) {
-		printf("’Tõ‚ªŠ®—¹‚µ‚Ä‚¢‚Ü‚¹‚ñ\n");
+		printf("æŽ¢ç´¢ãŒå®Œäº†ã—ã¦ã„ã¾ã›ã‚“\n");
 		return -1;
 	}
 	else {
@@ -267,19 +267,19 @@ int MainSearch(Pazzle *pazzle){
 		}
 	}
 
-	//ƒŠƒXƒg‚ðæ“ª‚É–ß‚·
+	//ãƒªã‚¹ãƒˆã‚’å…ˆé ­ã«æˆ»ã™
 	while (openL->prev != NULL) openL = openL->prev;
-	//ƒI[ƒvƒ“ƒŠƒXƒgŠJ•ú
+	//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆé–‹æ”¾
 	O_ListClear(openL);
-	printf("ƒI[ƒvƒ“ƒŠƒXƒg‚ðŠJ•ú‚µ‚Ü‚µ‚½\n");
-	//ƒNƒ[ƒYƒŠƒXƒgŠJ•ú
+	printf("ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã‚’é–‹æ”¾ã—ã¾ã—ãŸ\n");
+	//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆé–‹æ”¾
 	C_ListClear(closeL_start);
-	printf("ƒNƒ[ƒYƒŠƒXƒg‚ðŠJ•ú‚µ‚Ü‚µ‚½\n");
+	printf("ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã‚’é–‹æ”¾ã—ã¾ã—ãŸ\n");
 
 	return 0;
 }
 
-//ƒRƒXƒg‚ª¬‚³‚¢‡‚ÉƒI[ƒvƒ“ƒŠƒXƒg‚É‘}“ü‚·‚é
+//ã‚³ã‚¹ãƒˆãŒå°ã•ã„é †ã«ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã«æŒ¿å…¥ã™ã‚‹
 int O_ListAdd(OpenList *openL, Pazzle *pazzle){
 
 	OpenList *newInput;
@@ -287,19 +287,19 @@ int O_ListAdd(OpenList *openL, Pazzle *pazzle){
 	newInput = (OpenList*)malloc(sizeof(OpenList));
 
 	if(openL==NULL || pazzle==NULL || newInput==NULL){
-		printf("error ƒŠƒXƒg‚ª‘¶Ý‚µ‚È‚¢‚½‚ß’Ç‰Á‚Å‚«‚Ü‚¹‚ñ\n");
+		printf("error ãƒªã‚¹ãƒˆãŒå­˜åœ¨ã—ãªã„ãŸã‚è¿½åŠ ã§ãã¾ã›ã‚“\n");
 		return -1;
 	}
 
-	//’l‚ÌƒRƒs[
+	//å€¤ã®ã‚³ãƒ”ãƒ¼
 	newInput->next = NULL;
 	newInput->prev = NULL;
 	newInput->pzl = pazzle;
 
-	//ƒŠƒXƒg‚ðæ“ª‚ÉˆÚ“®
+	//ãƒªã‚¹ãƒˆã‚’å…ˆé ­ã«ç§»å‹•
 	while (openL->prev != NULL) openL = openL->prev;
 
-	//”­Œ©“IŠÖ”‚Ì’lAŠK‘w‚Å¬‚³‚¢‡‚É‚È‚é‚æ‚¤‚ÉƒŠƒXƒg‚É‘}“ü
+	//ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã€éšŽå±¤ã§å°ã•ã„é †ã«ãªã‚‹ã‚ˆã†ã«ãƒªã‚¹ãƒˆã«æŒ¿å…¥
 	while (1){
 		if(newInput->pzl->cost < openL->pzl->cost){
 			newInput->prev=openL->prev;
@@ -321,7 +321,7 @@ int O_ListAdd(OpenList *openL, Pazzle *pazzle){
 
 }
 
-//ƒI[ƒvƒ“ƒŠƒXƒg‚ðíœ‚·‚é@ˆø”‚ÍƒŠƒXƒg‚Ìæ“ª‚ð“n‚·•K—v‚ª‚ ‚é
+//ã‚ªãƒ¼ãƒ—ãƒ³ãƒªã‚¹ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€€å¼•æ•°ã¯ãƒªã‚¹ãƒˆã®å…ˆé ­ã‚’æ¸¡ã™å¿…è¦ãŒã‚ã‚‹
 void O_ListClear(OpenList *openL_start) {
 
 	OpenList *p;
@@ -334,7 +334,7 @@ void O_ListClear(OpenList *openL_start) {
 
 }
 
-//ƒNƒ[ƒYƒŠƒXƒg‚É’Ç‰Á‚·‚é
+//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹
 int C_ListAdd(CloseList *closeL, unsigned long int ID) {
 	CloseList *new_closeL;
 
@@ -345,14 +345,14 @@ int C_ListAdd(CloseList *closeL, unsigned long int ID) {
 	new_closeL->next = NULL;
 	new_closeL->ID = ID;
 
-	//––’[‚ÉˆÚ“®
+	//æœ«ç«¯ã«ç§»å‹•
 	while (closeL->next != NULL) closeL = closeL->next;
 	closeL->next = new_closeL;
 
 	return 0;
 }
 
-//ƒNƒ[ƒYƒŠƒXƒg‚ðíœ‚·‚é@ˆø”‚ÍƒŠƒXƒg‚Ìæ“ª‚ð“n‚·•K—v‚ª‚ ‚é
+//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã‚’å‰Šé™¤ã™ã‚‹ã€€å¼•æ•°ã¯ãƒªã‚¹ãƒˆã®å…ˆé ­ã‚’æ¸¡ã™å¿…è¦ãŒã‚ã‚‹
 void C_ListClear(CloseList *closeL_start) {
 
 	CloseList *p;
@@ -370,9 +370,9 @@ void C_ListClear(CloseList *closeL_start) {
 	}
 }
 
-//ƒNƒ[ƒYƒŠƒXƒg‚Éˆø”‚ÌID‚ª‚ ‚é‚©Šm”F‚·‚é(ƒŠƒXƒg‚Ìæ“ª‚ðˆø”‚É‚·‚é•K—v‚ ‚è)
-//–ß‚è’l0EEEƒNƒ[ƒYƒŠƒXƒg“à‚É‘¶Ý‚µ‚È‚¢
-//–ß‚è’l1EEEƒNƒ[ƒYƒŠƒXƒg“à‚É‘¶Ý‚·‚é
+//ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆã«å¼•æ•°ã®IDãŒã‚ã‚‹ã‹ç¢ºèªã™ã‚‹(ãƒªã‚¹ãƒˆã®å…ˆé ­ã‚’å¼•æ•°ã«ã™ã‚‹å¿…è¦ã‚ã‚Š)
+//æˆ»ã‚Šå€¤0ãƒ»ãƒ»ãƒ»ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆå†…ã«å­˜åœ¨ã—ãªã„
+//æˆ»ã‚Šå€¤1ãƒ»ãƒ»ãƒ»ã‚¯ãƒ­ãƒ¼ã‚ºãƒªã‚¹ãƒˆå†…ã«å­˜åœ¨ã™ã‚‹
 int C_ListCheck(CloseList *closeL, unsigned long int ID) {
 
 	if (closeL == NULL) return -1;
@@ -386,20 +386,20 @@ int C_ListCheck(CloseList *closeL, unsigned long int ID) {
 	return 0;
 }
 
-//ƒpƒYƒ‹‚©‚çƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜a‚ðŒvŽZ‚µ–ß‚è’l‚Æ‚µ‚Ä•Ô‚·
+//ãƒ‘ã‚ºãƒ«ã‹ã‚‰ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’Œã‚’è¨ˆç®—ã—æˆ»ã‚Šå€¤ã¨ã—ã¦è¿”ã™
 int Manhattan(int data[3][3]){
 	int sum=0;
 	int i,n,m,l,j;
 
-	//1`8‚Ì’l‚ð‡”Ô‚É’Tõ
+	//1ã€œ8ã®å€¤ã‚’é †ç•ªã«æŽ¢ç´¢
 	for(i=1;i<9;i++){
-		//“ü—Íƒf[ƒ^‚©‚ç’Tõ
+		//å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰æŽ¢ç´¢
 		for(n=0;n<3;n++) for(m=0;m<3;m++){
 			if(data[n][m]==i){
-				//³‰ðƒf[ƒ^‚©‚ç’Tõ
+				//æ­£è§£ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰æŽ¢ç´¢
 				for(l=0;l<3;l++) for(j=0;j<3;j++){
 					if(answer[l][j]==i){
-						//—v‘f”‚Ì‚¸‚ê‚©‚çƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚ðŒvŽZ
+						//è¦ç´ æ•°ã®ãšã‚Œã‹ã‚‰ãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã‚’è¨ˆç®—
 						sum += abs(n-l)+abs(m-j);
 					}
 				}
@@ -409,7 +409,7 @@ int Manhattan(int data[3][3]){
 	return sum;
 }
 
-//ƒpƒYƒ‹ƒf[ƒ^‚©‚çID‚ð”­s‚µ–ß‚è’l‚Æ‚µ‚Ä•Ô‚·
+//ãƒ‘ã‚ºãƒ«ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰IDã‚’ç™ºè¡Œã—æˆ»ã‚Šå€¤ã¨ã—ã¦è¿”ã™
 unsigned long int SetID(int data[3][3]) {
 	unsigned long int ID = 0;
 	int n, m;
@@ -422,7 +422,7 @@ unsigned long int SetID(int data[3][3]) {
 	return ID;
 }
 
-//ƒpƒYƒ‹‚Ì”z’u‚ð•\Ž¦‚·‚é
+//ãƒ‘ã‚ºãƒ«ã®é…ç½®ã‚’è¡¨ç¤ºã™ã‚‹
 void ShowPazzle(int data[3][3]){
 	int n,m;
 	printf("\n");
@@ -434,22 +434,22 @@ void ShowPazzle(int data[3][3]){
 	}
 }
 
-//ƒtƒ@ƒCƒ‹o—Í
+//ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
 int FileOutput(Pazzle *pazzle) {
 	int n, m;
 	FILE *file;
 	errno_t error;
 
 	if ((error = fopen_s(&file, "8puzzle.txt", "w+")) != 0) {
-		// ƒGƒ‰[ˆ—
-		printf("error ƒtƒ@ƒCƒ‹‚ðŠJ‚­‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ\n");
+		// ã‚¨ãƒ©ãƒ¼å‡¦ç†
+		printf("error ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã“ã¨ãŒã§ãã¾ã›ã‚“\n");
 		return -1;
 	}
 
-	//ƒŠƒXƒg‚Ìæ“ª‚Ö
+	//ãƒªã‚¹ãƒˆã®å…ˆé ­ã¸
 	while (pazzle->t_prev != NULL) pazzle = pazzle->t_prev;
 
-	//ƒ|ƒCƒ“ƒ^‚ð’H‚Á‚Äƒtƒ@ƒCƒ‹‚É‘‚«ž‚Þ
+	//ãƒã‚¤ãƒ³ã‚¿ã‚’è¾¿ã£ã¦ãƒ•ã‚¡ã‚¤ãƒ«ã«æ›¸ãè¾¼ã‚€
 	while (1) {
 		for (n = 0; n < 3; n++) {
 			for (m = 0; m < 3; m++) {
@@ -457,7 +457,7 @@ int FileOutput(Pazzle *pazzle) {
 			}
 			fprintf(file, "\n");
 		}
-		fprintf(file, "”­Œ©“IŠÖ”‚Ì’l:%d\nƒ}ƒ“ƒnƒbƒ^ƒ“‹——£‚Ì‘˜a:%d ŠK‘w:%d\n\n", pazzle->cost, pazzle->g, pazzle->f);
+		fprintf(file, "ç™ºè¦‹çš„é–¢æ•°ã®å€¤:%d\nãƒžãƒ³ãƒãƒƒã‚¿ãƒ³è·é›¢ã®ç·å’Œ:%d éšŽå±¤:%d\n\n", pazzle->cost, pazzle->g, pazzle->f);
 
 		if (pazzle->ans == NULL) break;
 		else pazzle = pazzle->ans;
@@ -469,23 +469,23 @@ int FileOutput(Pazzle *pazzle) {
 
 }
 
-//”­Œ©“IŠÖ”‚Ì’l‚ðo—Í‚·‚é
-//start_flag‚ª1‚È‚çƒtƒ@ƒCƒ‹‚ðã‘‚«‚µA‚»‚êˆÈŠO‚È‚çƒtƒ@ƒCƒ‹‚É’Ç‰Á‚·‚é
+//ç™ºè¦‹çš„é–¢æ•°ã®å€¤ã‚’å‡ºåŠ›ã™ã‚‹
+//start_flagãŒ1ãªã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¸Šæ›¸ãã—ã€ãã‚Œä»¥å¤–ãªã‚‰ãƒ•ã‚¡ã‚¤ãƒ«ã«è¿½åŠ ã™ã‚‹
 int F_Output(int F,int start_flag) {
 	FILE *file;
 	errno_t error;
 
 	if(start_flag==1){
 		if ((error = fopen_s(&file, "8puzzle_F.txt", "w+")) != 0) {
-			// ƒGƒ‰[ˆ—
-			printf("error ƒtƒ@ƒCƒ‹‚ðŠJ‚­‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ\n");
+			// ã‚¨ãƒ©ãƒ¼å‡¦ç†
+			printf("error ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã“ã¨ãŒã§ãã¾ã›ã‚“\n");
 			return -1;
 		}
 	}
 	else {
 		if ((error = fopen_s(&file, "8puzzle_F.txt", "a+")) != 0) {
-			// ƒGƒ‰[ˆ—
-			printf("error ƒtƒ@ƒCƒ‹‚ðŠJ‚­‚±‚Æ‚ª‚Å‚«‚Ü‚¹‚ñ\n");
+			// ã‚¨ãƒ©ãƒ¼å‡¦ç†
+			printf("error ãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ãã“ã¨ãŒã§ãã¾ã›ã‚“\n");
 			return -1;
 		}
 	}
