@@ -42,9 +42,11 @@
 
 （後日画像を入れる）
 
-なお，A*アルゴリズムにおいては，発見的関数
-<img src="https://latex.codecogs.com/gif.latex?f(p)=g(p)&plus;h(p)"/>(gif)
-<img src="https://latex.codecogs.com/png.latex?f(p)=g(p)&plus;h(p)"/>(png)
+なお，A*アルゴリズムにおいては，発見的関数  
+<img src="https://latex.codecogs.com/gif.latex?f(p)=g(p)&plus;h(p)"/>(gif)  
+<img src="https://latex.codecogs.com/png.latex?f(p)=g(p)&plus;h(p)"/>(png)  
+<img src="https://latex.codecogs.com/pdf.latex?f(p)=g(p)&plus;h(p)"/>(pdf)  
+<img src="https://latex.codecogs.com/svg.latex?f(p)=g(p)&plus;h(p)"/>(svg)  
 において，
 <img src="https://latex.codecogs.com/gif.latex?g(p)"/>
 は初期状態から現在の状態
