@@ -45,6 +45,8 @@ Temporary Items
 # =========================
 # VSCode Files
 # =========================
+.vscode
+.vscode/*
 workspaceStorage/
 *.backup
 
