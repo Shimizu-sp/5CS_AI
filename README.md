@@ -45,7 +45,7 @@
 なお，A*アルゴリズムにおいては，発見的関数
 <img src="https://latex.codecogs.com/svg.latex?f(p)=g(p)&plus;h(p)"/>
 において，
-<img src="https://latex.codecogs.com/svg.latex?g(p)"/>
+<img src="https://latex.codecogs.com/svg.latex?g(p)"/>
 は初期状態から現在の状態
 <img src="https://latex.codecogs.com/svg.latex?p"/>
 までのスライド回数，
@@ -101,26 +101,20 @@
 * 画像２：グレースケールの画像
 
 #### 画像について
-- 元画像：img_n.bmp
-- テンプレート画像：Timg_n.bmp
-- 元画像テキストデータ：img_data_n.txt
-- テンプレート画像テキストデータ：Timg_data_n.txt
-
-（n=1：白黒２値からなる画像，n=2：グレースケールの画像）
 
 **ファイル名一覧表**
 |                 | 元画像     | テンプレート画像 | 元画像テキストデータ | テンプレート画像テキストデータ |
 |:---------------:|:---------:|:-:|:-:|:-:|
-| 白黒2値画像       | img_1.bmp | Timg_1.bmp | img_data_1.txt | Timg_data_1.txt |
-| グレースケール画像 | img_2.bmp | Timg_2.bmp | img_data_2.txt | Timg_data_2.txt |
+| 白黒2値画像       | img_1.bmp | Timg_1.bmp | img_data_1.txt | Timg_data_1.txt |
+| グレースケール画像 | img_2.bmp | Timg_2.bmp | img_data_2.txt | Timg_data_2.txt |
 
 **画像仕様**
 | 画像 | size | 画素値 |
 |:---:|:-----:|:-----:|
 | img_1.bmp | 512x512 | 0 or 255の2値 |
-| Timg_1.bmp | 200x200 | 0 or 255の2値 |
+| Timg_1.bmp | 200x200 | 0 or 255の2値 |
 | img_2.bmp | 512x512 | 0〜255 |
-| Timg_2.bmp | 216x136 | 0〜255 |
+| Timg_2.bmp | 216x136 | 0〜255 |
 
 - テキストデータの場合は，1画素に対し3バイト分の情報のみ
 - (R=G=Bのため，1種類のみもつ)
@@ -136,8 +130,7 @@
 ### 05-遺伝的アルゴリズム
 
 #### 課題内容について
-- 下記関数に対し，
-<img src="https://latex.codecogs.com/svg.latex?x\in[-10,15]"/>
+- 下記関数に対し，<img src="https://latex.codecogs.com/svg.latex?x\in[-10,15]"/>
 における最大値を遺伝的アルゴリズムを用いて小数点第2位まで求める．
 - 遺伝的アルゴリズムは0と1からなる10桁の数値とし，選択，交叉および突然変異を繰り返して次の世代を構成する
 - 世代生成のルールは以下とする
@@ -147,7 +140,7 @@
     - 突然変異は全体の5%に対し，10桁のうちの1桁分の数値が変化するものとする
     - 500世代まで実施する
 
-<img src="https://latex.codecogs.com/svg.latex?f(x)&space;=&space;\sin&space;\frac{x&space;\pi}{7}&space;\times&space;\frac{4&space;\log_2(x&space;&plus;&space;15)}{x&plus;15}&space;&plus;&space;0.35&space;\sqrt{x&space;&plus;&space;8.5}"/>
+<img src="https://latex.codecogs.com/svg.latex?f(x)&space;=\large&space;\sin&space;\frac{x&space;\pi}{7}&space;\times&space;\frac{4&space;\log_2(x&space;&plus;&space;15)}{x&plus;15}&space;&plus;&space;0.35&space;\sqrt{x&space;&plus;&space;8.5}"/>
 
 #### レポートについて
 1. アルゴリズムの説明
