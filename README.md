@@ -40,7 +40,10 @@
 ### 課題内容
 下図に示す３×３のパズルに対し，初期状態をゴール状態にするプログラムをA*アルゴリズムを用いて作成する．なお，パズルにおいては，空欄の位置にあるパズルの上下左右にあるマスのみ空欄と交換可能であるとする．
 
-（後日画像を入れる）
+
+![初期状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/master/images/01-init-state.svg)
+
+![ゴール状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/master/images/02-goal-state.svg)
 
 なお，A*アルゴリズムにおいては，発見的関数
 <img src="https://latex.codecogs.com/svg.latex?f(p)=g(p)&plus;h(p)"/>
