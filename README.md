@@ -41,7 +41,9 @@
 下図に示す３×３のパズルに対し，初期状態をゴール状態にするプログラムをA*アルゴリズムを用いて作成する．なお，パズルにおいては，空欄の位置にあるパズルの上下左右にあるマスのみ空欄と交換可能であるとする．
 
 
-![初期状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/master/images/01-init-state.svg)
+![初期状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/images/01-init-state.svg)
+
+![初期状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/images/01-init-state.pdf)
 
 ![ゴール状態](https://raw.githubusercontent.com/Shimizu-sp/5CS_AI/master/images/02-goal-state.svg)
 
