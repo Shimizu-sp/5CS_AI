@@ -1,8 +1,8 @@
 ﻿#include <stdio.h>
-#include<string.h>
+#include <string.h>
 
-int min(int*);
-int max(int*);
+int min(int *);
+int max(int *);
 
 int main(void)
 {
@@ -13,27 +13,27 @@ int main(void)
 
 	return 0;
 }
-		int min(int *all)
-		{
-		
-				int min = all[2];
-				for (int n = 1; n<9; ++n){
-						if (all[0]>all[n]){
-								min = all[n];
-							
-						}
-				}
-	
-		}
-	int max(int *all)
-		
-		{
-				int max = all[2];
-				for (int i = 1; i<9; ++i){
-						if (all[0]<all[i]){
-								max = all[i];
-						}
-				}
 
-
+int min(int *all)
+{
+	int min = all[2];
+	for (int n = 1; n < 9; ++n)
+	{
+		if (all[0] > all[n])
+		{
+			min = all[n];
 		}
+	}
+}
+int max(int *all)
+
+{
+	int max = all[2];
+	for (int i = 1; i < 9; ++i)
+	{
+		if (all[0] < all[i])
+		{
+			max = all[i];
+		}
+	}
+}
