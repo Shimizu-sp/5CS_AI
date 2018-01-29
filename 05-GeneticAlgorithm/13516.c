@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-main(){
+int main(){
 	int gene_10[10] = { 1, 1, 1, 1, 1, 1, 0, 1, 1, 0 };
 	int gene_9[10] = { 1, 1, 1, 1, 1, 1, 0, 1, 1, 1 };
 	int gene_8[10] = { 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 };

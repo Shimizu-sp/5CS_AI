@@ -40,5 +40,5 @@ ga.evolve(freq_stats=100)
 
 # 最も良いものを表示
 best = ga.bestIndividual()
-print best
-print "best score: %.2f" % best.getRawScore()
+print(best)
+print("best score: %.2f" % best.getRawScore())
